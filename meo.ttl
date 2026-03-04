@@ -1,0 +1,166 @@
+#
+# Prefixes
+#
+@prefix az: <https://w3id.org/people/az/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fo: <http://purl.org/family/> .
+@prefix meo: <http://purl.org/meo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#
+# Ontology definition and metadata
+#
+meo: a owl:Ontology;
+     owl:imports fo:;
+     rdfs:label "The Middle-earth ontology"@en;
+     rdfs:comment "An ontology for J.R.R. Tolkien's legendarium."@en;
+     dct:title "The Middle-earth ontology"@en;
+     dct:created "2023-11-19T07:42:42+01:00"^^xsd:dateTime;
+     dct:creator az:me .
+
+#
+# Classes
+#
+meo:God a owl:Class;
+        owl:oneOf (meo:eru);
+        rdfs:label "God"@en;
+        rdfs:comment "A singleton class that only contains Eru Iluvatar, the One Allfather."@en .
+
+meo:Immortal a owl:Class;
+             owl:disjointWith meo:Mortal;
+             rdfs:label "immortal"@en;
+             rdfs:comment "An individual that does not die of natural death."@en .
+
+meo:Mortal a owl:Class;
+           owl:disjointWith meo:Immortal;
+           rdfs:label "mortal"@en;
+           rdfs:comment "Mortal living being, such as Men and Dwarves."@en .
+
+meo:EvilBeing a owl:Class;
+              rdfs:label "evil being"@en;
+              rdfs:comment "The evil beings are sentient agents that have chosen to do bad things."@en .
+
+meo:Ainu a owl:Class;
+         rdfs:subClassOf meo:Immortal;
+         rdfs:label "Ainu"@qya, "Holy one"@en;
+         rdfs:comment "The Ainur are the spirits created by Eru Iluvatar before time existed."@en .
+
+meo:Vala a owl:Class;
+         rdfs:subClassOf meo:Ainu;
+         rdfs:label "Vala"@qya, "angelic power"@en;
+         rdfs:comment "The Valar are the most powerful Ainur who entered Arda."@en .
+
+meo:Maia a owl:Class;
+         rdfs:subClassOf meo:Ainu;
+         rdfs:label "Maia"@qya, "Beautiful"@en;
+         rdfs:comment "The Maiar are Ainur who entered Arda and serve the Valar."@en .
+
+meo:Eruhin a owl:Class;
+           rdfs:label "Eruhin"@qya, "Child of Iluvatar"@en;
+           skos:altLabel "Child of Eru"@en;
+           rdfs:comment "The Children of Eru: Elves and Men."@en .
+
+meo:Quende a owl:Class;
+           rdfs:subClassOf meo:Eruhin, meo:Immortal;
+           rdfs:label "Quende"@qya, "Elf"@en;
+           rdfs:comment "The Quendi are the first born of the Children of Iluvatar, the Elves."@en .
+
+meo:Elda a owl:Class;
+         owl:equivalentClass meo:Quende;
+         rdfs:label "Elda"@qya, "Elf"@en;
+         rdfs:comment "The Eldar are the Elves."@en .
+
+meo:Atan a owl:Class;
+         rdfs:label "Atan"@qya, "Man"@en;
+         skos:altLabel "Secondborn"@en, "Human"@en;
+         rdfs:comment "The Atani are the second born of the Children of Iluvatar, the Men."@en .
+
+meo:Adan a owl:Class;
+         rdfs:subClassOf meo:Atan;
+         rdfs:label "Adan"@sjn, "Man"@en;
+         rdfs:comment "The Edain are the Men that belong to the Three Houses of Men that came to Beleriand."@en .
+
+meo:Peredhel a owl:Class;
+             rdfs:subClassOf meo:Eruhin;
+             rdfs:label "Peredhel"@sjn, "Half-elf"@en;
+             rdfs:comment "Peredhil are descendent of both elves and humans."@en .
+
+meo:Casar a owl:Class;
+          rdfs:subClassOf meo:Mortal;
+          rdfs:label "Casar"@qya, "Dwarf"@en;
+          rdfs:comment "The Dwarves created by the Vala Aule."@en .
+
+meo:Torog a owl:Class;
+          rdfs:subClassOf meo:EvilBeing;
+          rdfs:label "torog"@sjn, "troll"@en;
+          rdfs:comment "The Trolls, large humanoid monsters."@en .
+
+meo:Loce a owl:Class;
+         rdfs:subClassOf meo:EvilBeing;
+         rdfs:label "Loce"@qya, "Dragon"@en;
+         rdfs:comment "Evil and powerful monster."@en .
+
+#
+# Object properties
+#
+meo:served a owl:ObjectProperty;
+           rdfs:label "serves"@en;
+           rdfs:comment "Relates someone to someone else that they serve."@en .
+
+#
+# Individuals
+#
+meo:eru a meo:God;
+        rdfs:label "Eru"@qya, "The One"@en;
+        rdfs:comment "The one God creator of everything."@en .
+
+meo:melkor a meo:Vala;
+           rdfs:label "Melkor"@qya, "He who arises in might"@en;
+           rdfs:comment "The greatest of the Ainur."@en .
+
+meo:morgoth a meo:EvilBeing;
+            owl:sameAs meo:melkor;
+            rdfs:label "Morgoth"@sjn, "The Black Enemy"@en;
+            rdfs:comment "The only Vala who became evil."@en .
+
+#
+# Axioms
+#
+# Whoever serves Morgoth is evil
+[
+    a owl:Restriction;
+    owl:onProperty meo:served;
+    owl:hasValue meo:morgoth
+] rdfs:subClassOf meo:EvilBeing .
+
+# Those whose parents are all Elves are also Elves
+[
+    a owl:Restriction;
+    owl:onProperty fo:isAChildOf;
+    owl:allValuesFrom meo:Elda
+] rdfs:subClassOf meo:Elda .
+
+# Those whose parents are all Men are also Men
+[
+    a owl:Restriction;
+    owl:onProperty fo:isAChildOf;
+    owl:allValuesFrom meo:Atan
+] rdfs:subClassOf meo:Atan .
+
+# Those who have an Elvish parent and a Human parent are Half-elven
+[
+    a owl:Class;
+    owl:intersectionOf ([
+        a owl:Restriction;
+        owl:onProperty fo:isAChildOf;
+        owl:someValuesFrom meo:Elda
+    ] [
+        a owl:Restriction;
+        owl:onProperty fo:isAChildOf;
+        owl:someValuesFrom meo:Adan
+    ])
+] rdfs:subClassOf meo:Peredhel .
