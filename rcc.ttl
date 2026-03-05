@@ -1,0 +1,67 @@
+#
+# Region Connection Calculus (RCC8) Ontology
+#
+
+@prefix az:   <https://w3id.org/people/az/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rcc:  <https://purl.org/region/rcc8/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+rcc: a owl:Ontology ;
+    rdfs:label "The RCC8 ontology"@en ;
+    rdfs:comment "RCC8 spatial relations between regions."@en ;
+    dct:creator az:me .
+
+rcc:Region a owl:Class ;
+    rdfs:label "region"@en ;
+    rdfs:comment "A continuous extent of space."@en .
+
+rcc:dc a owl:ObjectProperty ;
+    rdfs:label "disconnected"@en ;
+    rdfs:comment "The two regions share no points at all."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
+
+rcc:ec a owl:ObjectProperty ;
+    rdfs:label "externally connected"@en ;
+    rdfs:comment "Boundaries touch but interiors don't overlap."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
+
+rcc:po a owl:ObjectProperty ;
+    rdfs:label "partially overlapping"@en ;
+    rdfs:comment "The regions partially overlap."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
+
+rcc:eq a owl:ObjectProperty ;
+    rdfs:label "equal"@en ;
+    rdfs:comment "Same spatial extent."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
+
+rcc:tpp a owl:ObjectProperty ;
+    rdfs:label "tangential proper part"@en ;
+    rdfs:comment "First region is inside the second and their boundaries touch."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
+
+rcc:tppi a owl:ObjectProperty ;
+    rdfs:label "tangential proper part inverse"@en ;
+    rdfs:comment "Inverse of TPP."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
+
+rcc:ntpp a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part"@en ;
+    rdfs:comment "First region is completely inside the second, boundaries don't touch."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
+
+rcc:ntppi a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part inverse"@en ;
+    rdfs:comment "Inverse of NTPP."@en ;
+    rdfs:domain rcc:Region ;
+    rdfs:range rcc:Region .
