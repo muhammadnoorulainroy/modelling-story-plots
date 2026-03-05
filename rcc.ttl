@@ -18,7 +18,7 @@ rcc:Region a owl:Class ;
     rdfs:label "region"@en ;
     rdfs:comment "A continuous extent of space."@en .
 
-rcc:dc a owl:ObjectProperty, owl:SymmetricProperty ;
+rcc:dc a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:label "disconnected"@en ;
     rdfs:comment "The two regions share no points at all."@en ;
     rdfs:domain rcc:Region ;
@@ -30,7 +30,7 @@ rcc:ec a owl:ObjectProperty, owl:SymmetricProperty ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:po a owl:ObjectProperty, owl:SymmetricProperty ;
+rcc:po a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:label "partially overlapping"@en ;
     rdfs:comment "The regions partially overlap."@en ;
     rdfs:domain rcc:Region ;
@@ -42,26 +42,28 @@ rcc:eq a owl:ObjectProperty, owl:SymmetricProperty, owl:TransitiveProperty ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:tpp a owl:ObjectProperty ;
+rcc:tpp a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:label "tangential proper part"@en ;
     rdfs:comment "First region is inside the second and their boundaries touch."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:tppi a owl:ObjectProperty ;
+rcc:tppi a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf rcc:tpp ;
     rdfs:label "tangential proper part inverse"@en ;
-    rdfs:comment "Inverse of TPP."@en ;
+    rdfs:comment "Inverse of TPP. First region contains the second, boundaries touching."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:ntpp a owl:ObjectProperty ;
+rcc:ntpp a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:label "non-tangential proper part"@en ;
     rdfs:comment "First region is completely inside the second, boundaries don't touch."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:ntppi a owl:ObjectProperty ;
+rcc:ntppi a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf rcc:ntpp ;
     rdfs:label "non-tangential proper part inverse"@en ;
-    rdfs:comment "Inverse of NTPP."@en ;
+    rdfs:comment "Inverse of NTPP. First region completely contains the second."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
