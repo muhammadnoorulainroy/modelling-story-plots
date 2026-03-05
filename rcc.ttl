@@ -18,27 +18,27 @@ rcc:Region a owl:Class ;
     rdfs:label "region"@en ;
     rdfs:comment "A continuous extent of space."@en .
 
-rcc:dc a owl:ObjectProperty ;
+rcc:dc a owl:ObjectProperty, owl:SymmetricProperty ;
     rdfs:label "disconnected"@en ;
     rdfs:comment "The two regions share no points at all."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:ec a owl:ObjectProperty ;
+rcc:ec a owl:ObjectProperty, owl:SymmetricProperty ;
     rdfs:label "externally connected"@en ;
     rdfs:comment "Boundaries touch but interiors don't overlap."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:po a owl:ObjectProperty ;
+rcc:po a owl:ObjectProperty, owl:SymmetricProperty ;
     rdfs:label "partially overlapping"@en ;
     rdfs:comment "The regions partially overlap."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-rcc:eq a owl:ObjectProperty ;
+rcc:eq a owl:ObjectProperty, owl:SymmetricProperty, owl:TransitiveProperty ;
     rdfs:label "equal"@en ;
-    rdfs:comment "Same spatial extent."@en ;
+    rdfs:comment "Same spatial extent. Symmetric and transitive."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
