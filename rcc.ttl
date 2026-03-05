@@ -67,3 +67,7 @@ rcc:ntppi a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:comment "Inverse of NTPP. First region completely contains the second."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
+
+# Pairwise disjointness (only between simple properties).
+# The rest cannot be declared disjoint due to property chains.
+rcc:dc owl:propertyDisjointWith rcc:po .
