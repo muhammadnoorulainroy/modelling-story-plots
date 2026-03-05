@@ -1,6 +1,12 @@
 #
 # Region Connection Calculus (RCC8) Ontology
 #
+# RCC8 with OWL axioms: symmetry, transitivity, inverses, partial disjointness.
+#
+# DC, EC, PO: symmetric, irreflexive
+# EQ: symmetric + transitive (reflexivity omitted, see comment on rcc:eq)
+# TPP, NTPP: transitive (inverses: TPPi, NTPPi)
+#
 
 @prefix az:   <https://w3id.org/people/az/> .
 @prefix dct:  <http://purl.org/dc/terms/> .
@@ -11,12 +17,14 @@
 
 rcc: a owl:Ontology ;
     rdfs:label "The RCC8 ontology"@en ;
-    rdfs:comment "RCC8 spatial relations between regions."@en ;
+    dct:title "Region Connection Calculus (RCC8) Ontology"@en ;
+    rdfs:comment "RCC8 spatial relations between regions, encoded with DL-safe OWL axioms."@en ;
+    owl:versionInfo "1.0" ;
     dct:creator az:me .
 
 rcc:Region a owl:Class ;
     rdfs:label "region"@en ;
-    rdfs:comment "A continuous extent of space."@en .
+    rdfs:comment "A continuous extent of space. In story modelling, places occupy regions."@en .
 
 rcc:dc a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:label "disconnected"@en ;
