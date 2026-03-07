@@ -160,3 +160,30 @@ loc:Realm a owl:Class ;
 # Water subtypes
 [] a owl:AllDisjointClasses ;
     owl:members ( loc:River loc:Lake loc:Sea ) .
+
+###############################################################
+# Object Properties
+###############################################################
+
+loc:partOf a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain loc:Place ;
+    rdfs:range loc:Place ;
+    rdfs:label "part of"@en ;
+    rdfs:comment "Spatial containment between places. E.g. Menegroth is part of Doriath."@en .
+
+loc:hasPart a owl:ObjectProperty ;
+    owl:inverseOf loc:partOf ;
+    rdfs:label "has part"@en ;
+    rdfs:comment "Inverse of partOf."@en .
+
+loc:adjacentTo a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:domain loc:Place ;
+    rdfs:range loc:Place ;
+    rdfs:label "adjacent to"@en ;
+    rdfs:comment "Two places that share a boundary or are next to each other."@en .
+
+loc:occupiesRegion a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain loc:Place ;
+    rdfs:range rcc:Region ;
+    rdfs:label "occupies region"@en ;
+    rdfs:comment "Links a place to its spatial region. Functional (one region per place)."@en .
