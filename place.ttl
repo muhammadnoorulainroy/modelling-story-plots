@@ -140,3 +140,23 @@ loc:Realm a owl:Class ;
     rdfs:subClassOf loc:LandArea ;
     rdfs:label "Realm"@en ;
     rdfs:comment "A kingdom or administrative region containing settlements and wild areas."@en .
+
+###############################################################
+# Disjointness
+###############################################################
+
+# Top-level partition of Place
+[] a owl:AllDisjointClasses ;
+    owl:members ( loc:LandArea loc:WaterArea loc:Building loc:Room loc:Road ) .
+
+# LandArea subtypes
+[] a owl:AllDisjointClasses ;
+    owl:members ( loc:Settlement loc:WildArea loc:Realm ) .
+
+# Settlement subtypes
+[] a owl:AllDisjointClasses ;
+    owl:members ( loc:City loc:Town loc:Hamlet ) .
+
+# Water subtypes
+[] a owl:AllDisjointClasses ;
+    owl:members ( loc:River loc:Lake loc:Sea ) .
