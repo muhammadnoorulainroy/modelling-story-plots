@@ -70,3 +70,73 @@ loc:Fortress a owl:Class ;
     rdfs:subClassOf loc:Settlement ;
     rdfs:label "Fortress"@en ;
     rdfs:comment "A fortified settlement or stronghold, like Nargothrond or Menegroth. Not disjoint with City since some fortresses are city-sized."@en .
+
+# --- Wild areas ---
+
+loc:WildArea a owl:Class ;
+    rdfs:subClassOf loc:LandArea ;
+    rdfs:label "Wild area"@en ;
+    rdfs:comment "Uninhabited natural area."@en .
+
+loc:WoodedArea a owl:Class ;
+    rdfs:subClassOf loc:WildArea ;
+    rdfs:label "Wooded area"@en ;
+    rdfs:comment "Area covered mostly by trees."@en .
+
+loc:Forest a owl:Class ;
+    rdfs:subClassOf loc:WoodedArea ;
+    rdfs:label "Forest"@en ;
+    rdfs:comment "A large wooded area. E.g. Brethil in the Narn."@en .
+
+loc:MountainRange a owl:Class ;
+    rdfs:subClassOf loc:WildArea ;
+    rdfs:label "Mountain range"@en ;
+    rdfs:comment "A chain of mountains."@en .
+
+loc:Plain a owl:Class ;
+    rdfs:subClassOf loc:WildArea ;
+    rdfs:label "Plain"@en ;
+    rdfs:comment "Flat open land."@en .
+
+# --- Buildings ---
+
+loc:Building a owl:Class ;
+    rdfs:subClassOf loc:Place ;
+    rdfs:label "Building"@en ;
+    rdfs:comment "A structure with walls and a roof."@en .
+
+loc:Room a owl:Class ;
+    rdfs:subClassOf loc:Place ;
+    rdfs:label "Room"@en ;
+    rdfs:comment "A space inside a building."@en .
+
+# --- Water subtypes ---
+
+loc:River a owl:Class ;
+    rdfs:subClassOf loc:WaterArea ;
+    rdfs:label "River"@en ;
+    rdfs:comment "A flowing watercourse."@en .
+
+loc:Lake a owl:Class ;
+    rdfs:subClassOf loc:WaterArea ;
+    rdfs:label "Lake"@en ;
+    rdfs:comment "Standing water surrounded by land."@en .
+
+loc:Sea a owl:Class ;
+    rdfs:subClassOf loc:WaterArea ;
+    rdfs:label "Sea"@en ;
+    rdfs:comment "A large body of salt water."@en .
+
+# --- Roads ---
+
+loc:Road a owl:Class ;
+    rdfs:subClassOf loc:Place ;
+    rdfs:label "Road"@en ;
+    rdfs:comment "A path or route connecting places."@en .
+
+# --- Realms ---
+
+loc:Realm a owl:Class ;
+    rdfs:subClassOf loc:LandArea ;
+    rdfs:label "Realm"@en ;
+    rdfs:comment "A kingdom or administrative region containing settlements and wild areas."@en .
