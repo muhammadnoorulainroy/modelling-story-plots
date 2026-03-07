@@ -1,0 +1,45 @@
+#
+# Place Ontology
+#
+# Categories of places and spatial relations for story modelling.
+# Place is separate from Region (rcc.ttl). A Place is a named location
+# like a city or forest, a Region is its abstract spatial extent.
+#
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rcc:  <https://purl.org/region/rcc8/> .
+@prefix loc:  <https://example.org/story/place#> .
+
+loc: a owl:Ontology ;
+    owl:imports rcc: ;
+    rdfs:label "Place Ontology"@en ;
+    dct:title "Place Ontology"@en ;
+    rdfs:comment "Place categories and spatial relations for story plots."@en ;
+    owl:versionInfo "1.0" ;
+    dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# Top-level class
+###############################################################
+
+loc:Place a owl:Class ;
+    rdfs:label "Place"@en ;
+    rdfs:comment "A named location in the story world."@en .
+
+###############################################################
+# Place hierarchy
+###############################################################
+
+loc:LandArea a owl:Class ;
+    rdfs:subClassOf loc:Place ;
+    rdfs:label "Land area"@en ;
+    rdfs:comment "A place on land."@en .
+
+loc:WaterArea a owl:Class ;
+    rdfs:subClassOf loc:Place ;
+    rdfs:label "Water area"@en ;
+    rdfs:comment "A body of water: river, lake, or sea."@en .
