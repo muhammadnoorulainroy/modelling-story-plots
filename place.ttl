@@ -43,3 +43,30 @@ loc:WaterArea a owl:Class ;
     rdfs:subClassOf loc:Place ;
     rdfs:label "Water area"@en ;
     rdfs:comment "A body of water: river, lake, or sea."@en .
+
+# --- Settlements ---
+
+loc:Settlement a owl:Class ;
+    rdfs:subClassOf loc:LandArea ;
+    rdfs:label "Settlement"@en ;
+    rdfs:comment "An inhabited place."@en .
+
+loc:City a owl:Class ;
+    rdfs:subClassOf loc:Settlement ;
+    rdfs:label "City"@en ;
+    rdfs:comment "A large settlement with political importance."@en .
+
+loc:Town a owl:Class ;
+    rdfs:subClassOf loc:Settlement ;
+    rdfs:label "Town"@en ;
+    rdfs:comment "Bigger than a hamlet, smaller than a city."@en .
+
+loc:Hamlet a owl:Class ;
+    rdfs:subClassOf loc:Settlement ;
+    rdfs:label "Hamlet"@en ;
+    rdfs:comment "A very small settlement."@en .
+
+loc:Fortress a owl:Class ;
+    rdfs:subClassOf loc:Settlement ;
+    rdfs:label "Fortress"@en ;
+    rdfs:comment "A fortified settlement or stronghold, like Nargothrond or Menegroth. Not disjoint with City since some fortresses are city-sized."@en .
