@@ -239,3 +239,29 @@ loc:hasFoundationDate a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:label "has foundation date"@en ;
     rdfs:comment "When the place was established. String because fictional dates don't always fit xsd:date."@en .
+
+###############################################################
+# Bridge axioms: Place mereology -> Region RCC8
+#
+# If P1 interiorPartOf P2, then the region of P1 is ntpp of the region of P2.
+# If P1 tangentialPartOf P2, then the region of P1 is tpp of the region of P2.
+# If P1 adjacentTo P2, then their regions are ec.
+###############################################################
+
+rcc:ntpp owl:propertyChainAxiom (
+    [ owl:inverseOf loc:occupiesRegion ]
+    loc:interiorPartOf
+    loc:occupiesRegion
+) .
+
+rcc:tpp owl:propertyChainAxiom (
+    [ owl:inverseOf loc:occupiesRegion ]
+    loc:tangentialPartOf
+    loc:occupiesRegion
+) .
+
+rcc:ec owl:propertyChainAxiom (
+    [ owl:inverseOf loc:occupiesRegion ]
+    loc:adjacentTo
+    loc:occupiesRegion
+) .
