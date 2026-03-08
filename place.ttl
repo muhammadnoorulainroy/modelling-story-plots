@@ -176,6 +176,28 @@ loc:hasPart a owl:ObjectProperty ;
     rdfs:label "has part"@en ;
     rdfs:comment "Inverse of partOf."@en .
 
+loc:interiorPartOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf loc:partOf ;
+    rdfs:domain loc:Place ;
+    rdfs:range loc:Place ;
+    rdfs:label "interior part of"@en ;
+    rdfs:comment "The place is fully inside another, not touching the boundary. Maps to rcc:ntpp."@en .
+
+loc:tangentialPartOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf loc:partOf ;
+    rdfs:domain loc:Place ;
+    rdfs:range loc:Place ;
+    rdfs:label "tangential part of"@en ;
+    rdfs:comment "The place is inside another but touches its boundary. Maps to rcc:tpp."@en .
+
+# A room must be part of some building or fortress
+loc:Room rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty loc:partOf ;
+    owl:someValuesFrom [ a owl:Class ;
+        owl:unionOf ( loc:Building loc:Fortress ) ]
+] .
+
 loc:adjacentTo a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:domain loc:Place ;
     rdfs:range loc:Place ;
