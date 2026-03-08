@@ -209,3 +209,33 @@ loc:occupiesRegion a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:range rcc:Region ;
     rdfs:label "occupies region"@en ;
     rdfs:comment "Links a place to its spatial region. Functional (one region per place)."@en .
+
+loc:isCapitalOf a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
+    rdfs:domain loc:Settlement ;
+    rdfs:range loc:Realm ;
+    rdfs:label "is capital of"@en ;
+    rdfs:comment "The settlement is the capital of this realm. Functional and inverse-functional (one capital per realm, one realm per capital)."@en .
+
+# A capital must be part of its realm
+loc:isCapitalOf rdfs:subPropertyOf loc:partOf .
+
+loc:hasCapital a owl:ObjectProperty ;
+    owl:inverseOf loc:isCapitalOf ;
+    rdfs:label "has capital"@en ;
+    rdfs:comment "Inverse of isCapitalOf."@en .
+
+###############################################################
+# Datatype Properties
+###############################################################
+
+loc:hasPopulation a owl:DatatypeProperty ;
+    rdfs:domain loc:Settlement ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "has population"@en ;
+    rdfs:comment "Number of inhabitants. Only makes sense for settlements."@en .
+
+loc:hasFoundationDate a owl:DatatypeProperty ;
+    rdfs:domain loc:Place ;
+    rdfs:range xsd:string ;
+    rdfs:label "has foundation date"@en ;
+    rdfs:comment "When the place was established. String because fictional dates don't always fit xsd:date."@en .
