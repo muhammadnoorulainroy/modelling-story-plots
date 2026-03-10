@@ -37,12 +37,18 @@ tm:Interval a owl:Class ;
     rdfs:comment "A stretch of time between two instants."@en .
 
 tm:StartingInterval a owl:Class ;
-    rdfs:subClassOf tm:Interval ;
+    rdfs:subClassOf tm:Interval,
+        [ a owl:Restriction ;
+          owl:onProperty tm:startsAt ;
+          owl:someValuesFrom tm:Instant ] ;
     rdfs:label "Starting interval"@en ;
     rdfs:comment "An interval with a known start."@en .
 
 tm:EndingInterval a owl:Class ;
-    rdfs:subClassOf tm:Interval ;
+    rdfs:subClassOf tm:Interval,
+        [ a owl:Restriction ;
+          owl:onProperty tm:endsAt ;
+          owl:someValuesFrom tm:Instant ] ;
     rdfs:label "Ending interval"@en ;
     rdfs:comment "An interval with a known end."@en .
 
