@@ -62,3 +62,44 @@ tm:InfiniteInterval a owl:Class ;
 # Disjointness
 tm:Instant owl:disjointWith tm:Interval .
 tm:FiniteInterval owl:disjointWith tm:InfiniteInterval .
+
+###############################################################
+# Instant-level properties
+###############################################################
+
+tm:startsAt a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Instant ;
+    rdfs:label "starts at"@en ;
+    rdfs:comment "When an interval begins."@en .
+
+tm:endsAt a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Instant ;
+    rdfs:label "ends at"@en ;
+    rdfs:comment "When an interval ends."@en .
+
+tm:occursBefore a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain tm:Instant ;
+    rdfs:range tm:Instant ;
+    rdfs:label "occurs before"@en ;
+    rdfs:comment "Strict ordering between instants."@en .
+
+tm:occursAfter a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf tm:occursBefore ;
+    rdfs:domain tm:Instant ;
+    rdfs:range tm:Instant ;
+    rdfs:label "occurs after"@en ;
+    rdfs:comment "Inverse of occursBefore."@en .
+
+tm:occursSimultaneouslyWith a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:domain tm:Instant ;
+    rdfs:range tm:Instant ;
+    rdfs:label "occurs simultaneously with"@en ;
+    rdfs:comment "Two instants at the same point in time."@en .
+
+tm:occursDuring a owl:ObjectProperty ;
+    rdfs:domain tm:Instant ;
+    rdfs:range tm:Interval ;
+    rdfs:label "occurs during"@en ;
+    rdfs:comment "An instant that falls within an interval."@en .
