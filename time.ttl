@@ -155,3 +155,52 @@ tm:overlappedByInterval a owl:ObjectProperty, owl:AsymmetricProperty, owl:Irrefl
     rdfs:range tm:Interval ;
     rdfs:label "overlapped by"@en ;
     rdfs:comment "Allen's 'overlapped by': inverse of overlaps."@en .
+
+# 7/8. STARTS / STARTED BY
+tm:startsInterval a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "starts"@en ;
+    rdfs:comment "Allen's 'starts': same start time, first ends before second."@en .
+
+tm:startedByInterval a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    owl:inverseOf tm:startsInterval ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "started by"@en ;
+    rdfs:comment "Allen's 'started by': inverse of starts."@en .
+
+# 9/10. DURING / CONTAINS
+tm:duringInterval a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "during"@en ;
+    rdfs:comment "Allen's 'during': first interval is entirely within the second."@en .
+
+tm:containsInterval a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf tm:duringInterval ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "contains"@en ;
+    rdfs:comment "Allen's 'contains': inverse of during."@en .
+
+# 11/12. FINISHES / FINISHED BY
+tm:finishesInterval a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "finishes"@en ;
+    rdfs:comment "Allen's 'finishes': same end time, first starts after second."@en .
+
+tm:finishedByInterval a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    owl:inverseOf tm:finishesInterval ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "finished by"@en ;
+    rdfs:comment "Allen's 'finished by': inverse of finishes."@en .
+
+# 13. EQUALS
+tm:intervalEquals a owl:ObjectProperty, owl:SymmetricProperty, owl:TransitiveProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "equals"@en ;
+    rdfs:comment "Allen's 'equals': same start and end."@en .
