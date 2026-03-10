@@ -109,3 +109,49 @@ tm:occursDuring a owl:ObjectProperty ;
     rdfs:range tm:Interval ;
     rdfs:label "occurs during"@en ;
     rdfs:comment "An instant that falls within an interval."@en .
+
+###############################################################
+# Allen's 13 Interval Relations
+###############################################################
+
+# 1/2. BEFORE / AFTER
+tm:beforeInterval a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "before"@en ;
+    rdfs:comment "Allen's 'before': first interval ends before second starts."@en .
+
+tm:afterInterval a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf tm:beforeInterval ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "after"@en ;
+    rdfs:comment "Allen's 'after': inverse of before."@en .
+
+# 3/4. MEETS / MET BY
+tm:meetsInterval a owl:ObjectProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "meets"@en ;
+    rdfs:comment "Allen's 'meets': first interval ends exactly when second starts."@en .
+
+tm:metByInterval a owl:ObjectProperty ;
+    owl:inverseOf tm:meetsInterval ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "met by"@en ;
+    rdfs:comment "Allen's 'met by': inverse of meets."@en .
+
+# 5/6. OVERLAPS / OVERLAPPED BY
+tm:overlapsInterval a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "overlaps"@en ;
+    rdfs:comment "Allen's 'overlaps': first starts before second and ends during it."@en .
+
+tm:overlappedByInterval a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    owl:inverseOf tm:overlapsInterval ;
+    rdfs:domain tm:Interval ;
+    rdfs:range tm:Interval ;
+    rdfs:label "overlapped by"@en ;
+    rdfs:comment "Allen's 'overlapped by': inverse of overlaps."@en .
