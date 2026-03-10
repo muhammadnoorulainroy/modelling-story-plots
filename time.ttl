@@ -1,0 +1,64 @@
+#
+# Time Ontology
+#
+# Temporal concepts: instants, intervals, and Allen's 13 interval relations.
+#
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix tm:   <https://example.org/story/time#> .
+
+tm: a owl:Ontology ;
+    rdfs:label "Time Ontology"@en ;
+    dct:title "Time Ontology"@en ;
+    rdfs:comment "Instants, intervals, and Allen's 13 temporal relations."@en ;
+    owl:versionInfo "1.0" ;
+    dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# Classes
+###############################################################
+
+tm:TemporalEntity a owl:Class ;
+    rdfs:label "Temporal entity"@en ;
+    rdfs:comment "Superclass of instants and intervals."@en .
+
+tm:Instant a owl:Class ;
+    rdfs:subClassOf tm:TemporalEntity ;
+    rdfs:label "Instant"@en ;
+    rdfs:comment "A single point in time."@en .
+
+tm:Interval a owl:Class ;
+    rdfs:subClassOf tm:TemporalEntity ;
+    rdfs:label "Interval"@en ;
+    rdfs:comment "A stretch of time between two instants."@en .
+
+tm:StartingInterval a owl:Class ;
+    rdfs:subClassOf tm:Interval ;
+    rdfs:label "Starting interval"@en ;
+    rdfs:comment "An interval with a known start."@en .
+
+tm:EndingInterval a owl:Class ;
+    rdfs:subClassOf tm:Interval ;
+    rdfs:label "Ending interval"@en ;
+    rdfs:comment "An interval with a known end."@en .
+
+tm:FiniteInterval a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf ( tm:StartingInterval tm:EndingInterval )
+    ] ;
+    rdfs:label "Finite interval"@en ;
+    rdfs:comment "An interval with both start and end. Defined as StartingInterval and EndingInterval."@en .
+
+tm:InfiniteInterval a owl:Class ;
+    rdfs:subClassOf tm:Interval ;
+    rdfs:label "Infinite interval"@en ;
+    rdfs:comment "An interval unbounded on at least one side."@en .
+
+# Disjointness
+tm:Instant owl:disjointWith tm:Interval .
+tm:FiniteInterval owl:disjointWith tm:InfiniteInterval .
