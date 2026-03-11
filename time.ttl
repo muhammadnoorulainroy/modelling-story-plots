@@ -204,3 +204,32 @@ tm:intervalEquals a owl:ObjectProperty, owl:SymmetricProperty, owl:TransitivePro
     rdfs:range tm:Interval ;
     rdfs:label "equals"@en ;
     rdfs:comment "Allen's 'equals': same start and end."@en .
+
+###############################################################
+# Pairwise disjointness (simple relations only)
+###############################################################
+
+tm:startsInterval owl:propertyDisjointWith
+    tm:startedByInterval, tm:finishesInterval, tm:finishedByInterval .
+
+tm:startedByInterval owl:propertyDisjointWith
+    tm:finishesInterval, tm:finishedByInterval .
+
+tm:finishesInterval owl:propertyDisjointWith tm:finishedByInterval .
+
+###############################################################
+# Property chains: infer interval relations from instant data
+###############################################################
+
+# If end of I1 is before start of I2, then I1 before I2
+tm:beforeInterval owl:propertyChainAxiom (
+    tm:endsAt
+    tm:occursBefore
+    [ owl:inverseOf tm:startsAt ]
+) .
+
+# If end of I1 is the same instant as start of I2, then I1 meets I2
+tm:meetsInterval owl:propertyChainAxiom (
+    tm:endsAt
+    [ owl:inverseOf tm:startsAt ]
+) .
