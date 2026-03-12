@@ -1,0 +1,53 @@
+#
+# Social Relations Ontology
+#
+# Non-family social relations between characters. The Narn description
+# uses a soc: prefix for things like livedIn and serves. This module
+# formalises those with OWL axioms.
+#
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix fo:   <http://purl.org/family/> .
+@prefix meo:  <http://purl.org/meo/> .
+@prefix loc:  <https://example.org/story/place#> .
+@prefix soc:  <https://example.org/story/social#> .
+
+soc: a owl:Ontology ;
+    owl:imports fo: , meo: ;
+    rdfs:label "Social Relations Ontology"@en ;
+    dct:title "Social Relations Ontology"@en ;
+    rdfs:comment "Non-familial social relations between characters: friendship, enmity, alliance, service, etc."@en ;
+    owl:versionInfo "1.0" ;
+    dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# Properties
+###############################################################
+
+soc:sociallyRelatedTo a owl:ObjectProperty ;
+    rdfs:label "socially related to"@en ;
+    rdfs:comment "Top-level property grouping all social relations."@en .
+
+soc:friendOf a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "friend of"@en ;
+    rdfs:comment "Friendship between two characters."@en .
+
+soc:allyOf a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "ally of"@en ;
+    rdfs:comment "Alliance, cooperating towards a common goal. Not necessarily friends."@en .
+
+soc:enemyOf a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "enemy of"@en ;
+    rdfs:comment "Enmity between two characters."@en .
+
+soc:companionOf a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "companion of"@en ;
+    rdfs:comment "Characters who travel together or spend significant time together in the story."@en .
