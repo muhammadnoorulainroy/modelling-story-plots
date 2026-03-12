@@ -51,3 +51,30 @@ soc:companionOf a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProp
     rdfs:subPropertyOf soc:sociallyRelatedTo ;
     rdfs:label "companion of"@en ;
     rdfs:comment "Characters who travel together or spend significant time together in the story."@en .
+
+soc:serves a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    owl:equivalentProperty meo:served ;
+    rdfs:label "serves"@en ;
+    rdfs:comment "A vassal/servant relation. Linked to meo:served so facts work with both properties."@en .
+
+soc:rulesOver a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    owl:inverseOf soc:serves ;
+    rdfs:label "rules over"@en ;
+    rdfs:comment "Inverse of serves. The subject has authority over the object."@en .
+
+soc:livedIn a owl:ObjectProperty ;
+    rdfs:range loc:Place ;
+    rdfs:label "lived in"@en ;
+    rdfs:comment "Where a character has resided. No rdfs:domain declared because characters, peoples, and other agents could all live somewhere. Range is Place."@en .
+
+soc:fostersChild a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "fosters child"@en ;
+    rdfs:comment "Raising someone as a foster-child. E.g. Thingol fosters Turin."@en .
+
+soc:fosteredBy a owl:ObjectProperty ;
+    owl:inverseOf soc:fostersChild ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "fostered by"@en ;
+    rdfs:comment "Inverse of fostersChild."@en .
