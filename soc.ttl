@@ -78,3 +78,31 @@ soc:fosteredBy a owl:ObjectProperty ;
     rdfs:subPropertyOf soc:sociallyRelatedTo ;
     rdfs:label "fostered by"@en ;
     rdfs:comment "Inverse of fostersChild."@en .
+
+###############################################################
+# Disjointness
+###############################################################
+
+# Can't be friends and enemies at the same time
+soc:friendOf owl:propertyDisjointWith soc:enemyOf .
+
+# Can't be allies and enemies at the same time
+soc:allyOf owl:propertyDisjointWith soc:enemyOf .
+
+###############################################################
+# Extra axioms
+###############################################################
+
+# Friends are also allies (friendship implies alliance)
+soc:friendOf rdfs:subPropertyOf soc:allyOf .
+
+# Fostering is a social relation too
+soc:fostersChild rdfs:subPropertyOf soc:sociallyRelatedTo .
+
+# In the feudal model of this ontology, service and friendship are
+# incompatible for the same pair. A servant-master bond is not friendship.
+soc:serves owl:propertyDisjointWith soc:friendOf .
+
+# Property chain: if A serves B, and B is enemy of C, then A is enemy of C
+# ("the servant of my enemy is my enemy")
+soc:enemyOf owl:propertyChainAxiom ( soc:serves soc:enemyOf ) .
