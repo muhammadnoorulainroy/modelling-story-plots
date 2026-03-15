@@ -121,3 +121,19 @@ evt:Reign a owl:Class ;
     rdfs:subClassOf evt:State ;
     rdfs:label "Reign"@en ;
     rdfs:comment "A state of ruling over a realm or people."@en .
+
+# The three top-level event categories are pairwise disjoint.
+[] a owl:AllDisjointClasses ;
+    owl:members ( evt:PhysicalEvent evt:SocialEvent evt:State ) .
+
+# Social event subtypes
+[] a owl:AllDisjointClasses ;
+    owl:members ( evt:Birth evt:Death evt:Marriage evt:Meeting evt:Coronation ) .
+
+# Physical event subtypes
+[] a owl:AllDisjointClasses ;
+    owl:members ( evt:Journey evt:Battle evt:War evt:NaturalDisaster ) .
+
+# State subtypes
+[] a owl:AllDisjointClasses ;
+    owl:members ( evt:Residence evt:Captivity evt:Reign ) .
