@@ -1,0 +1,52 @@
+#
+# Event Ontology
+#
+# Events, their types, participant roles, and connections to time/place/items.
+#
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix fo:   <http://purl.org/family/> .
+@prefix meo:  <http://purl.org/meo/> .
+@prefix soc:  <https://example.org/story/social#> .
+@prefix loc:  <https://example.org/story/place#> .
+@prefix tm:   <https://example.org/story/time#> .
+@prefix evt:  <https://example.org/story/event#> .
+
+evt: a owl:Ontology ;
+    owl:imports <place.ttl>, <time.ttl>, <fo.ttl>, <soc.ttl> ;
+    rdfs:label "Event Ontology"@en ;
+    dct:title "Event Ontology"@en ;
+    rdfs:comment "Events in story plots: occurrences involving characters, places, and time."@en ;
+    owl:versionInfo "1.0" ;
+    dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# Top-level Event class
+###############################################################
+
+evt:Event a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "Something that happens in the story world, with a time, place, and participants."@en .
+
+###############################################################
+# Event hierarchy
+###############################################################
+
+evt:PhysicalEvent a owl:Class ;
+    rdfs:subClassOf evt:Event ;
+    rdfs:label "Physical event"@en ;
+    rdfs:comment "Events with physical consequences: battles, journeys, disasters."@en .
+
+evt:SocialEvent a owl:Class ;
+    rdfs:subClassOf evt:Event ;
+    rdfs:label "Social event"@en ;
+    rdfs:comment "Events with social significance: births, deaths, marriages, coronations."@en .
+
+evt:State a owl:Class ;
+    rdfs:subClassOf evt:Event ;
+    rdfs:label "State"@en ;
+    rdfs:comment "An ongoing state of affairs: a residence, captivity, or reign."@en .
