@@ -50,3 +50,74 @@ evt:State a owl:Class ;
     rdfs:subClassOf evt:Event ;
     rdfs:label "State"@en ;
     rdfs:comment "An ongoing state of affairs: a residence, captivity, or reign."@en .
+
+# --- Social events ---
+
+evt:Birth a owl:Class ;
+    rdfs:subClassOf evt:SocialEvent ;
+    rdfs:label "Birth"@en ;
+    rdfs:comment "The birth of a character."@en .
+
+evt:Death a owl:Class ;
+    rdfs:subClassOf evt:SocialEvent ;
+    rdfs:label "Death"@en ;
+    rdfs:comment "The death of a character."@en .
+
+evt:Marriage a owl:Class ;
+    rdfs:subClassOf evt:SocialEvent ;
+    rdfs:label "Marriage"@en ;
+    rdfs:comment "A marriage event with husband, wife, and officiant roles."@en .
+
+evt:Meeting a owl:Class ;
+    rdfs:subClassOf evt:SocialEvent ;
+    rdfs:label "Meeting"@en ;
+    rdfs:comment "Two or more characters encounter each other."@en .
+
+evt:Conversation a owl:Class ;
+    rdfs:subClassOf evt:Meeting ;
+    rdfs:label "Conversation"@en ;
+    rdfs:comment "A meeting involving verbal exchange."@en .
+
+evt:Coronation a owl:Class ;
+    rdfs:subClassOf evt:SocialEvent ;
+    rdfs:label "Coronation"@en ;
+    rdfs:comment "An event in which a character is crowned or given authority."@en .
+
+# --- Physical events ---
+
+evt:Journey a owl:Class ;
+    rdfs:subClassOf evt:PhysicalEvent ;
+    rdfs:label "Journey"@en ;
+    rdfs:comment "Moving from one place to another."@en .
+
+evt:Battle a owl:Class ;
+    rdfs:subClassOf evt:PhysicalEvent ;
+    rdfs:label "Battle"@en ;
+    rdfs:comment "A violent confrontation."@en .
+
+evt:War a owl:Class ;
+    rdfs:subClassOf evt:PhysicalEvent ;
+    rdfs:label "War"@en ;
+    rdfs:comment "A prolonged conflict made up of multiple battles."@en .
+
+evt:NaturalDisaster a owl:Class ;
+    rdfs:subClassOf evt:PhysicalEvent ;
+    rdfs:label "Natural disaster"@en ;
+    rdfs:comment "A catastrophic natural event such as a flood, earthquake, or volcanic eruption."@en .
+
+# --- States ---
+
+evt:Residence a owl:Class ;
+    rdfs:subClassOf evt:State ;
+    rdfs:label "Residence"@en ;
+    rdfs:comment "A state of living at a particular place for a period of time."@en .
+
+evt:Captivity a owl:Class ;
+    rdfs:subClassOf evt:State ;
+    rdfs:label "Captivity"@en ;
+    rdfs:comment "Being held prisoner."@en .
+
+evt:Reign a owl:Class ;
+    rdfs:subClassOf evt:State ;
+    rdfs:label "Reign"@en ;
+    rdfs:comment "A state of ruling over a realm or people."@en .
