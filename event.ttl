@@ -316,3 +316,49 @@ evt:hasCaptor a owl:ObjectProperty ;
     rdfs:domain evt:Captivity ;
     rdfs:label "has captor"@en ;
     rdfs:comment "The character or entity holding the captive."@en .
+
+###############################################################
+# Location and time properties
+###############################################################
+
+evt:hasLocation a owl:ObjectProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range loc:Place ;
+    rdfs:label "has location"@en ;
+    rdfs:comment "The place where an event occurs."@en .
+
+evt:hasTemporalExtent a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range tm:Interval ;
+    rdfs:label "has temporal extent"@en ;
+    rdfs:comment "When the event occurs (as an interval)."@en .
+
+evt:isTemporalExtentOf a owl:ObjectProperty ;
+    owl:inverseOf evt:hasTemporalExtent ;
+    rdfs:label "is temporal extent of"@en ;
+    rdfs:comment "Inverse of hasTemporalExtent."@en .
+
+###############################################################
+# Item usage
+###############################################################
+
+evt:usesItem a owl:ObjectProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range evt:Item ;
+    rdfs:label "uses item"@en ;
+    rdfs:comment "An item used in the event."@en .
+
+###############################################################
+# Sub-event structure
+###############################################################
+
+evt:hasSubEvent a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range evt:Event ;
+    rdfs:label "has sub-event"@en ;
+    rdfs:comment "An event contains another as a sub-event. Transitive."@en .
+
+evt:partOfEvent a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf evt:hasSubEvent ;
+    rdfs:label "part of event"@en ;
+    rdfs:comment "Inverse of hasSubEvent."@en .
