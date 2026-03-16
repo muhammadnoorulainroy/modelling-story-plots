@@ -188,3 +188,67 @@ evt:hasPatient a owl:ObjectProperty ;
     rdfs:domain evt:Event ;
     rdfs:label "has patient"@en ;
     rdfs:comment "The character affected by the event."@en .
+
+# --- Birth-specific roles ---
+
+evt:hasNewborn a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Birth ;
+    rdfs:label "has newborn"@en ;
+    rdfs:comment "The character born."@en .
+
+evt:hasMother a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Birth ;
+    rdfs:range fo:Female ;
+    rdfs:label "has mother"@en ;
+    rdfs:comment "The mother."@en .
+
+evt:hasFather a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Birth ;
+    rdfs:range fo:Male ;
+    rdfs:label "has father"@en ;
+    rdfs:comment "The father."@en .
+
+# --- Death-specific roles ---
+
+evt:hasDeceased a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Death ;
+    rdfs:label "has deceased"@en ;
+    rdfs:comment "The character who dies."@en .
+
+evt:hasKiller a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Death ;
+    rdfs:label "has killer"@en ;
+    rdfs:comment "Who caused the death, if anyone."@en .
+
+# --- Marriage-specific roles ---
+
+evt:hasHusband a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Marriage ;
+    rdfs:range fo:Male ;
+    rdfs:label "has husband"@en ;
+    rdfs:comment "The husband in the marriage."@en .
+
+evt:hasWife a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Marriage ;
+    rdfs:range fo:Female ;
+    rdfs:label "has wife"@en ;
+    rdfs:comment "The wife in the marriage."@en .
+
+evt:hasOfficiant a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Marriage ;
+    rdfs:label "has officiant"@en ;
+    rdfs:comment "The authority who validates the marriage (priest, king, etc.)."@en .
+
+# Husband and wife must be different individuals in a marriage
+evt:hasHusband owl:propertyDisjointWith evt:hasWife .
+
+# Father and mother must be different in a birth
+evt:hasFather owl:propertyDisjointWith evt:hasMother .
