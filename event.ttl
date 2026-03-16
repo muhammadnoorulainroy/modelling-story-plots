@@ -252,3 +252,67 @@ evt:hasHusband owl:propertyDisjointWith evt:hasWife .
 
 # Father and mother must be different in a birth
 evt:hasFather owl:propertyDisjointWith evt:hasMother .
+
+# --- Journey-specific roles ---
+
+evt:hasTraveler a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Journey ;
+    rdfs:label "has traveler"@en ;
+    rdfs:comment "A character undertaking the journey."@en .
+
+evt:hasOrigin a owl:ObjectProperty ;
+    rdfs:domain evt:Journey ;
+    rdfs:range loc:Place ;
+    rdfs:label "has origin"@en ;
+    rdfs:comment "The starting place of a journey."@en .
+
+evt:hasDestination a owl:ObjectProperty ;
+    rdfs:domain evt:Journey ;
+    rdfs:range loc:Place ;
+    rdfs:label "has destination"@en ;
+    rdfs:comment "The destination place of a journey."@en .
+
+# --- Battle-specific roles ---
+
+evt:hasCombatant a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Battle ;
+    rdfs:label "has combatant"@en ;
+    rdfs:comment "A character fighting in the battle."@en .
+
+evt:hasVictor a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasCombatant ;
+    rdfs:domain evt:Battle ;
+    rdfs:label "has victor"@en ;
+    rdfs:comment "The winning side of a battle."@en .
+
+# --- Conversation-specific roles ---
+
+evt:hasSpeaker a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Conversation ;
+    rdfs:label "has speaker"@en ;
+    rdfs:comment "A character who speaks during the conversation."@en .
+
+# --- Residence-specific ---
+
+evt:hasResident a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Residence ;
+    rdfs:label "has resident"@en ;
+    rdfs:comment "The character residing at a place."@en .
+
+# --- Captivity-specific ---
+
+evt:hasCaptive a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Captivity ;
+    rdfs:label "has captive"@en ;
+    rdfs:comment "The character held prisoner."@en .
+
+evt:hasCaptor a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Captivity ;
+    rdfs:label "has captor"@en ;
+    rdfs:comment "The character or entity holding the captive."@en .
