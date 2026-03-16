@@ -137,3 +137,54 @@ evt:Reign a owl:Class ;
 # State subtypes
 [] a owl:AllDisjointClasses ;
     owl:members ( evt:Residence evt:Captivity evt:Reign ) .
+
+###############################################################
+# Item classes
+###############################################################
+
+evt:Item a owl:Class ;
+    rdfs:label "Item"@en ;
+    rdfs:comment "A significant object that can be used in events."@en .
+
+evt:Weapon a owl:Class ;
+    rdfs:subClassOf evt:Item ;
+    rdfs:label "Weapon"@en ;
+    rdfs:comment "An object designed or used for combat."@en .
+
+evt:Vehicle a owl:Class ;
+    rdfs:subClassOf evt:Item ;
+    rdfs:label "Vehicle"@en ;
+    rdfs:comment "A means of transport used in a journey."@en .
+
+evt:Artifact a owl:Class ;
+    rdfs:subClassOf evt:Item ;
+    rdfs:label "Artifact"@en ;
+    rdfs:comment "A crafted object of special significance, such as a jewel, ring, or magical item."@en .
+
+evt:Weapon owl:disjointWith evt:Vehicle .
+
+###############################################################
+# Participant properties
+###############################################################
+
+evt:hasParticipant a owl:ObjectProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:label "has participant"@en ;
+    rdfs:comment "A character involved in the event."@en .
+
+evt:participatesIn a owl:ObjectProperty ;
+    owl:inverseOf evt:hasParticipant ;
+    rdfs:label "participates in"@en ;
+    rdfs:comment "Inverse of hasParticipant."@en .
+
+evt:hasAgent a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Event ;
+    rdfs:label "has agent"@en ;
+    rdfs:comment "The active performer of the event."@en .
+
+evt:hasPatient a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Event ;
+    rdfs:label "has patient"@en ;
+    rdfs:comment "The character affected by the event."@en .
