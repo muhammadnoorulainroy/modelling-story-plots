@@ -362,3 +362,97 @@ evt:partOfEvent a owl:ObjectProperty, owl:TransitiveProperty ;
     owl:inverseOf evt:hasSubEvent ;
     rdfs:label "part of event"@en ;
     rdfs:comment "Inverse of hasSubEvent."@en .
+
+###############################################################
+# Cardinality restrictions
+###############################################################
+
+# Every event should have a temporal extent.
+# Functional (at most 1) is on the property itself.
+# Here we say at least 1, under OWA events with no stated interval are not inconsistent.
+evt:Event rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evt:hasTemporalExtent ;
+    owl:someValuesFrom tm:Interval
+] .
+
+# A Birth is uniquely identified by its newborn. No two Birth events
+# can share the same newborn (each person is born exactly once).
+evt:Birth owl:hasKey ( evt:hasNewborn ) .
+
+# A birth has exactly 1 newborn, exactly 1 mother, at most 1 father
+evt:Birth rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasNewborn ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasMother ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasFather ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
+
+# A Death is uniquely identified by its deceased (a person dies once).
+evt:Death owl:hasKey ( evt:hasDeceased ) .
+
+# A death has exactly 1 deceased, at most 1 killer
+evt:Death rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasDeceased ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasKiller ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
+
+# A marriage has exactly 1 husband, exactly 1 wife, at most 1 officiant
+evt:Marriage rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasHusband ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasWife ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasOfficiant ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
+
+# A journey has at least 1 traveler, exactly 1 origin, exactly 1 destination
+evt:Journey rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasTraveler ;
+      owl:someValuesFrom owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasOrigin ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass loc:Place ],
+    [ a owl:Restriction ; owl:onProperty evt:hasDestination ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass loc:Place ] .
+
+# A battle has at least 2 combatants
+evt:Battle rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasCombatant ;
+      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
+
+# A conversation has at least 2 speakers
+evt:Conversation rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasSpeaker ;
+      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
+
+# A meeting involves at least 2 participants
+evt:Meeting rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasParticipant ;
+      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
+
+# A residence involves at least 1 resident and at least 1 location
+evt:Residence rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasResident ;
+      owl:someValuesFrom owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
+
+# A captivity has at least 1 captive and at least 1 captor
+evt:Captivity rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasCaptive ;
+      owl:someValuesFrom owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasCaptor ;
+      owl:someValuesFrom owl:Thing ] .
+
+# A war contains at least one battle as a sub-event
+evt:War rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasSubEvent ;
+      owl:someValuesFrom evt:Battle ] .
+
+# All sub-events of a war must be battles or other wars
+evt:War rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasSubEvent ;
+      owl:allValuesFrom [ a owl:Class ;
+          owl:unionOf ( evt:Battle evt:War ) ] ] .
