@@ -456,3 +456,43 @@ evt:War rdfs:subClassOf
     [ a owl:Restriction ; owl:onProperty evt:hasSubEvent ;
       owl:allValuesFrom [ a owl:Class ;
           owl:unionOf ( evt:Battle evt:War ) ] ] .
+
+###############################################################
+# Cross-module inference chains
+#
+# These connect the event layer to the family and social layers.
+###############################################################
+
+# From a Death event, infer who killed whom
+evt:killed a owl:ObjectProperty ;
+    rdfs:label "killed"@en ;
+    rdfs:comment "X killed Y. Inferred from Death events."@en .
+
+evt:killed owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasKiller ]
+    evt:hasDeceased
+) .
+
+# From a Marriage event, infer the marriage relation
+fo:isMarriedTo owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasHusband ]
+    evt:hasWife
+) .
+
+# From a Birth event, infer the child-parent relation (father)
+fo:isAChildOf owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasNewborn ]
+    evt:hasFather
+) .
+
+# From a Birth event, infer the child-parent relation (mother)
+fo:isAChildOf owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasNewborn ]
+    evt:hasMother
+) .
+
+# From a Residence event, infer where a character lived
+soc:livedIn owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasResident ]
+    evt:hasLocation
+) .
