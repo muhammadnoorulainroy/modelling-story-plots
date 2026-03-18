@@ -496,3 +496,52 @@ soc:livedIn owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasResident ]
     evt:hasLocation
 ) .
+
+###############################################################
+# Event-level temporal relations (derived via property chains)
+###############################################################
+
+evt:beforeEvent a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range evt:Event ;
+    rdfs:label "before event"@en ;
+    rdfs:comment "E1 happens entirely before E2."@en .
+
+evt:afterEvent a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf evt:beforeEvent ;
+    rdfs:label "after event"@en ;
+    rdfs:comment "Inverse of beforeEvent."@en .
+
+evt:meetsEvent a owl:ObjectProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range evt:Event ;
+    rdfs:label "meets event"@en ;
+    rdfs:comment "Event E1 ends exactly when event E2 starts."@en .
+
+evt:overlapsEvent a owl:ObjectProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range evt:Event ;
+    rdfs:label "overlaps event"@en ;
+    rdfs:comment "Event E1 starts before and partially overlaps event E2."@en .
+
+evt:duringEvent a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain evt:Event ;
+    rdfs:range evt:Event ;
+    rdfs:label "during event"@en ;
+    rdfs:comment "Event E1 occurs entirely within the time span of event E2."@en .
+
+# Property chains: event temporal relations from interval-level Allen relations
+evt:beforeEvent owl:propertyChainAxiom (
+    evt:hasTemporalExtent tm:beforeInterval evt:isTemporalExtentOf ) .
+
+evt:afterEvent owl:propertyChainAxiom (
+    evt:hasTemporalExtent tm:afterInterval evt:isTemporalExtentOf ) .
+
+evt:meetsEvent owl:propertyChainAxiom (
+    evt:hasTemporalExtent tm:meetsInterval evt:isTemporalExtentOf ) .
+
+evt:overlapsEvent owl:propertyChainAxiom (
+    evt:hasTemporalExtent tm:overlapsInterval evt:isTemporalExtentOf ) .
+
+evt:duringEvent owl:propertyChainAxiom (
+    evt:hasTemporalExtent tm:duringInterval evt:isTemporalExtentOf ) .
