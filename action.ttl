@@ -1,0 +1,122 @@
+#
+# Action Ontology
+#
+# Action is defined using equivalentClass. Any event with an agent
+# gets classified as an action.
+#
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix loc:  <https://example.org/story/place#> .
+@prefix evt:  <https://example.org/story/event#> .
+@prefix act:  <https://example.org/story/action#> .
+
+act: a owl:Ontology ;
+    owl:imports evt: ;
+    rdfs:label "Action Ontology"@en ;
+    dct:title "Action Ontology"@en ;
+    rdfs:comment "Actions as a subclass of events, defined by having an intentional agent."@en ;
+    owl:versionInfo "1.0" ;
+    dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# Action class, defined as Event + having an agent
+###############################################################
+
+act:Action a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            evt:Event
+            [ a owl:Restriction ;
+              owl:onProperty evt:hasAgent ;
+              owl:someValuesFrom owl:Thing ]
+        )
+    ] ;
+    rdfs:label "Action"@en ;
+    rdfs:comment "An event with a deliberate agent. Any event that has an agent gets classified as an action."@en .
+
+###############################################################
+# Action types
+###############################################################
+
+act:MoveAction a owl:Class ;
+    rdfs:subClassOf act:Action ;
+    rdfs:label "Move action"@en ;
+    rdfs:comment "Moving from one place to another."@en .
+
+act:MoveAction rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty evt:hasOrigin ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ],
+    [ a owl:Restriction ;
+      owl:onProperty evt:hasDestination ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ] .
+
+act:AttackAction a owl:Class ;
+    rdfs:subClassOf act:Action,
+    [ a owl:Restriction ;
+      owl:onProperty act:hasPatient ;
+      owl:someValuesFrom owl:Thing ] ;
+    rdfs:label "Attack action"@en ;
+    rdfs:comment "A hostile action directed at a patient. Left as a conservative subclass rather than a defined class, because patienthood alone would wrongly classify non-violent actions such as curses as attacks."@en .
+
+act:UseItemAction a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            act:Action
+            [ a owl:Restriction ;
+              owl:onProperty evt:usesItem ;
+              owl:someValuesFrom evt:Item ]
+        )
+    ] ;
+    rdfs:label "Use-item action"@en ;
+    rdfs:comment "An action that involves an item. Any action with usesItem is classified here."@en .
+
+act:SpeechAction a owl:Class ;
+    rdfs:subClassOf act:Action ;
+    rdfs:label "Speech action"@en ;
+    rdfs:comment "Deliberate speech: commands, declarations, curses, prophecies."@en .
+
+act:CurseAction a owl:Class ;
+    rdfs:subClassOf act:SpeechAction ;
+    rdfs:label "Curse action"@en ;
+    rdfs:comment "Placing a curse on someone."@en .
+
+act:CurseAction rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty act:hasPatient ;
+      owl:someValuesFrom owl:Thing ] .
+
+###############################################################
+# Properties
+###############################################################
+
+act:hasAgent a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasAgent ;
+    rdfs:label "has agent"@en ;
+    rdfs:comment "Who deliberately performs the action. Sub-property of evt:hasAgent."@en .
+
+act:hasPatient a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasPatient ;
+    rdfs:domain act:Action ;
+    rdfs:label "has patient"@en ;
+    rdfs:comment "Who is affected by the action."@en .
+
+act:resultsIn a owl:ObjectProperty ;
+    rdfs:domain act:Action ;
+    rdfs:range evt:Event ;
+    rdfs:label "results in"@en ;
+    rdfs:comment "What happens as a consequence of the action, e.g. an attack results in a death."@en .
+
+act:hasPurpose a owl:DatatypeProperty ;
+    rdfs:domain act:Action ;
+    rdfs:range xsd:string ;
+    rdfs:label "has purpose"@en ;
+    rdfs:comment "Why the agent performed the action (textual description)."@en .
