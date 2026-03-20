@@ -135,3 +135,127 @@ plot:Publisher owl:disjointWith plot:Contributor .
 
 [] a owl:AllDisjointClasses ;
     owl:members ( plot:Prologue plot:Chapter plot:Epilogue ) .
+
+###############################################################
+# Structural properties
+###############################################################
+
+plot:hasSection a owl:ObjectProperty ;
+    rdfs:domain plot:Story ;
+    rdfs:range plot:StorySection ;
+    rdfs:label "has section"@en ;
+    rdfs:comment "A story is divided into sections."@en .
+
+plot:sectionOf a owl:ObjectProperty ;
+    owl:inverseOf plot:hasSection ;
+    rdfs:label "section of"@en ;
+    rdfs:comment "Inverse of hasSection."@en .
+
+plot:containsPlotEvent a owl:ObjectProperty ;
+    rdfs:domain plot:StorySection ;
+    rdfs:range plot:PlotEvent ;
+    rdfs:label "contains plot event"@en ;
+    rdfs:comment "A story section contains plot events."@en .
+
+plot:startsWith a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain plot:NarrativeContainer ;
+    rdfs:range plot:PlotEvent ;
+    rdfs:label "starts with"@en ;
+    rdfs:comment "The first plot event in a story or section."@en .
+
+plot:endsWith a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain plot:NarrativeContainer ;
+    rdfs:range plot:PlotEvent ;
+    rdfs:label "ends with"@en ;
+    rdfs:comment "The last plot event in a story or section."@en .
+
+###############################################################
+# Plot event ordering
+###############################################################
+
+plot:nextPlotEvent a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf plot:precedesPlotEvent ;
+    rdfs:domain plot:PlotEvent ;
+    rdfs:range plot:PlotEvent ;
+    rdfs:label "next plot event"@en ;
+    rdfs:comment "The next plot event in the narrative."@en .
+
+plot:precedesPlotEvent a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain plot:PlotEvent ;
+    rdfs:range plot:PlotEvent ;
+    rdfs:label "precedes plot event"@en ;
+    rdfs:comment "A plot event earlier in the narrative. Transitive."@en .
+
+plot:nextSection a owl:ObjectProperty ;
+    rdfs:domain plot:StorySection ;
+    rdfs:range plot:StorySection ;
+    rdfs:label "next section"@en ;
+    rdfs:comment "The next section in the narrative. Derived from plot event ordering via property chain."@en .
+
+# If section S1 endsWith PE1, PE1 nextPlotEvent PE2, and S2 startsWith PE2,
+# then S1 nextSection S2.
+plot:nextSection owl:propertyChainAxiom (
+    plot:endsWith
+    plot:nextPlotEvent
+    [ owl:inverseOf plot:startsWith ]
+) .
+
+###############################################################
+# Bridge between narrative and in-world events
+###############################################################
+
+plot:describesEvent a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain plot:PlotEvent ;
+    rdfs:range evt:Event ;
+    rdfs:label "describes event"@en ;
+    rdfs:comment "Links a plot event to the in-world event it describes."@en .
+
+###############################################################
+# Metadata properties
+###############################################################
+
+plot:hasTitle a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "has title"@en ;
+    rdfs:comment "The title of a story, section, or narrative work. No domain restriction because both NarrativeContainer and NarrativeWork can have titles."@en .
+
+plot:hasTextSummary a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "has text summary"@en ;
+    rdfs:comment "A textual summary. No domain restriction for the same reason as hasTitle."@en .
+
+plot:hasChapterNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain plot:Chapter ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "has chapter number"@en ;
+    rdfs:comment "The ordinal number of a chapter within the story."@en .
+
+###############################################################
+# Cardinality restrictions
+###############################################################
+
+# A story must have at least one section
+plot:Story rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty plot:hasSection ;
+      owl:someValuesFrom plot:StorySection ] .
+
+# A story section must contain at least one plot event
+plot:StorySection rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty plot:containsPlotEvent ;
+      owl:someValuesFrom plot:PlotEvent ] .
+
+# A plot event describes exactly one in-world event
+plot:PlotEvent rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty plot:describesEvent ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass evt:Event ] .
+
+# A story section belongs to exactly one story
+plot:StorySection rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty plot:sectionOf ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass plot:Story ] .
