@@ -1,0 +1,84 @@
+#
+# Plot Structure Ontology
+#
+# Narrative structure of stories, bridging the fictional world (events,
+# characters) and the real world (authors, publications).
+#
+# NarrativeWork = the real-world book with author, publication date, etc.
+# Story = the fictional story from the characters' perspective.
+# PlotEvent = narrative element that links to an in-world Event.
+#
+# This keeps real-world time and fictional time completely separate.
+#
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix evt:  <https://example.org/story/event#> .
+@prefix plot: <https://example.org/story/plot#> .
+
+plot: a owl:Ontology ;
+    owl:imports <event.ttl> ;
+    rdfs:label "Plot Structure Ontology"@en ;
+    dct:title "Plot Structure Ontology"@en ;
+    rdfs:comment "Narrative and literary structure of stories, with a real-world layer (authors, books) and a fictional layer (sections, plot events)."@en ;
+    owl:versionInfo "1.0" ;
+    dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# Real-world literary layer
+###############################################################
+
+plot:Contributor a owl:Class ;
+    rdfs:label "Contributor"@en ;
+    rdfs:comment "A real-world person who contributes to the production of a narrative work."@en .
+
+plot:NarrativeWork a owl:Class ;
+    rdfs:label "Narrative work"@en ;
+    rdfs:comment "A real-world book, manuscript, or film script with authorship and publication metadata."@en .
+
+plot:Author a owl:Class ;
+    rdfs:subClassOf plot:Contributor ;
+    rdfs:label "Author"@en ;
+    rdfs:comment "A real-world person who originally wrote the work."@en .
+
+plot:Editor a owl:Class ;
+    rdfs:subClassOf plot:Contributor ;
+    rdfs:label "Editor"@en ;
+    rdfs:comment "A real-world person who edited or compiled the published work."@en .
+
+plot:Publisher a owl:Class ;
+    rdfs:label "Publisher"@en ;
+    rdfs:comment "A real-world organization that publishes a narrative work."@en .
+
+plot:hasAuthor a owl:ObjectProperty ;
+    rdfs:domain plot:NarrativeWork ;
+    rdfs:range plot:Author ;
+    rdfs:label "has author"@en ;
+    rdfs:comment "The original author of the narrative work."@en .
+
+plot:hasEditor a owl:ObjectProperty ;
+    rdfs:domain plot:NarrativeWork ;
+    rdfs:range plot:Editor ;
+    rdfs:label "has editor"@en ;
+    rdfs:comment "An editor or compiler responsible for the published work."@en .
+
+plot:hasPublicationDate a owl:DatatypeProperty ;
+    rdfs:domain plot:NarrativeWork ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "has publication date"@en ;
+    rdfs:comment "The real-world date the narrative work was published."@en .
+
+plot:hasPublisher a owl:ObjectProperty ;
+    rdfs:domain plot:NarrativeWork ;
+    rdfs:range plot:Publisher ;
+    rdfs:label "has publisher"@en ;
+    rdfs:comment "The publishing organization of the narrative work."@en .
+
+plot:narrates a owl:ObjectProperty ;
+    rdfs:domain plot:NarrativeWork ;
+    rdfs:range plot:Story ;
+    rdfs:label "narrates"@en ;
+    rdfs:comment "Links the real-world work to the fictional story it tells."@en .
