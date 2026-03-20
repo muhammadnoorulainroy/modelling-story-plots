@@ -82,3 +82,56 @@ plot:narrates a owl:ObjectProperty ;
     rdfs:range plot:Story ;
     rdfs:label "narrates"@en ;
     rdfs:comment "Links the real-world work to the fictional story it tells."@en .
+
+###############################################################
+# Fictional narrative layer
+###############################################################
+
+plot:NarrativeContainer a owl:Class ;
+    rdfs:label "Narrative container"@en ;
+    rdfs:comment "A structural element that can contain other narrative parts."@en .
+
+plot:NarrativeElement a owl:Class ;
+    rdfs:label "Narrative element"@en ;
+    rdfs:comment "An atomic narrative element, like a single plot event."@en .
+
+plot:Story a owl:Class ;
+    rdfs:subClassOf plot:NarrativeContainer ;
+    rdfs:label "Story"@en ;
+    rdfs:comment "The fictional story as a whole."@en .
+
+plot:StorySection a owl:Class ;
+    rdfs:subClassOf plot:NarrativeContainer ;
+    rdfs:label "Story section"@en ;
+    rdfs:comment "A structural part of a story: prologue, chapter, or epilogue."@en .
+
+plot:Prologue a owl:Class ;
+    rdfs:subClassOf plot:StorySection ;
+    rdfs:label "Prologue"@en ;
+    rdfs:comment "An introductory section that precedes the main narrative."@en .
+
+plot:Chapter a owl:Class ;
+    rdfs:subClassOf plot:StorySection ;
+    rdfs:label "Chapter"@en ;
+    rdfs:comment "A main division of the narrative."@en .
+
+plot:Epilogue a owl:Class ;
+    rdfs:subClassOf plot:StorySection ;
+    rdfs:label "Epilogue"@en ;
+    rdfs:comment "A concluding section that follows the main narrative."@en .
+
+plot:PlotEvent a owl:Class ;
+    rdfs:subClassOf plot:NarrativeElement ;
+    rdfs:label "Plot event"@en ;
+    rdfs:comment "A narrative element describing an in-world event. Bridges the plot layer and the event layer via describesEvent."@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( plot:NarrativeWork plot:NarrativeContainer plot:NarrativeElement ) .
+
+plot:Publisher owl:disjointWith plot:Contributor .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( plot:Story plot:StorySection ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( plot:Prologue plot:Chapter plot:Epilogue ) .
