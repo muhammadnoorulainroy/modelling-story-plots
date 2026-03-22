@@ -109,3 +109,72 @@ narn:Morwen fo:isTheMotherOf narn:Turin, narn:Nienor .
 narn:Turin fo:isASiblingOf narn:Nienor .
 narn:Galdor fo:isTheFatherOf narn:Hurin .
 narn:Orodreth fo:isTheFatherOf narn:Finduilas .
+
+###############################################################
+# SOCIAL RELATIONS (soc:)
+###############################################################
+
+narn:Hurin soc:allyOf narn:Thingol .
+narn:Glaurung soc:enemyOf narn:Turin .
+narn:Mablung soc:companionOf narn:Turin .
+narn:Beleg soc:friendOf narn:Turin ;
+    soc:companionOf narn:Turin .
+narn:Thingol soc:fostersChild narn:Turin .
+narn:Turin soc:fosteredBy narn:Thingol .
+narn:Glaurung soc:serves narn:Morgoth .
+narn:Turin soc:livedIn narn:DorLomin, narn:Menegroth, narn:Nargothrond, narn:Brethil .
+narn:Morgoth soc:enemyOf narn:Thingol .
+
+###############################################################
+# PLACES (loc:)
+###############################################################
+
+narn:Beleriand a loc:Realm ;
+    rdfs:label "Beleriand"@en ;
+    rdfs:comment "The great region of Middle-earth west of the Blue Mountains."@en .
+
+narn:DorLomin a loc:Realm ;
+    rdfs:label "Dor-lómin"@en ;
+    rdfs:comment "A region in Hithlum, domain of the House of Hador."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:Doriath a loc:Realm ;
+    rdfs:label "Doriath"@en ;
+    rdfs:comment "The kingdom of Thingol, protected by the Girdle of Melian."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:Menegroth a loc:Fortress ;
+    rdfs:label "Menegroth"@en ;
+    rdfs:comment "The Thousand Caves, the fortress-city of Thingol in Doriath."@en ;
+    loc:interiorPartOf narn:Doriath ;
+    loc:isCapitalOf narn:Doriath .
+
+narn:Nargothrond a loc:Fortress ;
+    rdfs:label "Nargothrond"@en ;
+    rdfs:comment "A great underground fortress on the river Narog."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:Brethil a loc:Forest ;
+    rdfs:label "Brethil"@en ;
+    rdfs:comment "The Forest of Brethil between the rivers Teiglin and Sirion."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:Angband a loc:Fortress ;
+    rdfs:label "Angband"@en ;
+    rdfs:comment "The great fortress of Morgoth in the north."@en .
+
+narn:ThroneRoom a loc:Room ;
+    rdfs:label "Throne Room of Menegroth"@en ;
+    rdfs:comment "The throne room within Menegroth where Thingol held court."@en ;
+    loc:interiorPartOf narn:Menegroth .
+
+narn:TaurNuFuin a loc:Forest ;
+    rdfs:label "Taur-nu-Fuin"@en ;
+    rdfs:comment "The forest of dread north of Doriath, formerly Dorthonion."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:AnfauglithPlain a loc:Plain ;
+    rdfs:label "Anfauglith"@en ;
+    rdfs:comment "The desert plain before Angband where the Nirnaeth Arnoediad was fought."@en ;
+    loc:tangentialPartOf narn:Beleriand ;
+    loc:adjacentTo narn:Angband .
