@@ -178,3 +178,69 @@ narn:AnfauglithPlain a loc:Plain ;
     rdfs:comment "The desert plain before Angband where the Nirnaeth Arnoediad was fought."@en ;
     loc:tangentialPartOf narn:Beleriand ;
     loc:adjacentTo narn:Angband .
+
+# All places are distinct individuals
+[] a owl:AllDifferent ;
+    owl:distinctMembers (
+        narn:Beleriand narn:DorLomin narn:Doriath narn:Menegroth
+        narn:Nargothrond narn:Brethil narn:Angband narn:ThroneRoom
+        narn:TaurNuFuin narn:AnfauglithPlain
+    ) .
+
+###############################################################
+# SPATIAL REGIONS (rcc:)
+###############################################################
+
+narn:regBeleriand a rcc:Region ; rdfs:label "Region of Beleriand"@en ;
+    rdfs:comment "Spatial extent of Beleriand."@en .
+narn:regDorLomin a rcc:Region ; rdfs:label "Region of Dor-lómin"@en ;
+    rdfs:comment "Spatial extent of Dor-lómin."@en .
+narn:regDoriath a rcc:Region ; rdfs:label "Region of Doriath"@en ;
+    rdfs:comment "Spatial extent of Doriath."@en .
+narn:regMenegroth a rcc:Region ; rdfs:label "Region of Menegroth"@en ;
+    rdfs:comment "Spatial extent of Menegroth."@en .
+narn:regNargothrond a rcc:Region ; rdfs:label "Region of Nargothrond"@en ;
+    rdfs:comment "Spatial extent of Nargothrond."@en .
+narn:regBrethil a rcc:Region ; rdfs:label "Region of Brethil"@en ;
+    rdfs:comment "Spatial extent of the Forest of Brethil."@en .
+narn:regAngband a rcc:Region ; rdfs:label "Region of Angband"@en ;
+    rdfs:comment "Spatial extent of Angband, north of Beleriand."@en .
+narn:regThroneRoom a rcc:Region ; rdfs:label "Region of Throne Room"@en ;
+    rdfs:comment "Spatial extent of Menegroth's throne room."@en .
+narn:regTaurNuFuin a rcc:Region ; rdfs:label "Region of Taur-nu-Fuin"@en ;
+    rdfs:comment "Spatial extent of Taur-nu-Fuin."@en .
+narn:regAnfauglith a rcc:Region ; rdfs:label "Region of Anfauglith"@en ;
+    rdfs:comment "Spatial extent of Anfauglith, on the northern edge of Beleriand."@en .
+
+# Places occupy regions
+narn:Beleriand loc:occupiesRegion narn:regBeleriand .
+narn:DorLomin loc:occupiesRegion narn:regDorLomin .
+narn:Doriath loc:occupiesRegion narn:regDoriath .
+narn:Menegroth loc:occupiesRegion narn:regMenegroth .
+narn:Nargothrond loc:occupiesRegion narn:regNargothrond .
+narn:Brethil loc:occupiesRegion narn:regBrethil .
+narn:Angband loc:occupiesRegion narn:regAngband .
+narn:ThroneRoom loc:occupiesRegion narn:regThroneRoom .
+narn:TaurNuFuin loc:occupiesRegion narn:regTaurNuFuin .
+narn:AnfauglithPlain loc:occupiesRegion narn:regAnfauglith .
+
+# RCC8 spatial relations
+narn:regDorLomin rcc:ntpp narn:regBeleriand .
+narn:regDoriath rcc:ntpp narn:regBeleriand .
+narn:regMenegroth rcc:ntpp narn:regDoriath .
+narn:regThroneRoom rcc:ntpp narn:regMenegroth .
+narn:regBrethil rcc:ntpp narn:regBeleriand .
+narn:regNargothrond rcc:ntpp narn:regBeleriand .
+narn:regTaurNuFuin rcc:ntpp narn:regBeleriand .
+narn:regTaurNuFuin rcc:dc narn:regDoriath .
+# Anfauglith is on the northern edge of Beleriand (tpp, not ntpp)
+narn:regAnfauglith rcc:tpp narn:regBeleriand .
+# Disconnected pairs
+narn:regDorLomin rcc:dc narn:regDoriath .
+narn:regNargothrond rcc:dc narn:regBrethil .
+narn:regDorLomin rcc:dc narn:regBrethil .
+# Angband is just north of Beleriand, their boundaries touch at the Ered Engrin
+narn:regAngband rcc:ec narn:regBeleriand .
+narn:regAnfauglith rcc:dc narn:regDoriath .
+# Anfauglith and Angband share a boundary at the northern mountains
+narn:regAnfauglith rcc:ec narn:regAngband .
