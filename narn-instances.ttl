@@ -1,0 +1,87 @@
+#
+# Instance File: Narn i Chîn Húrin
+#
+# Example data from the Children of Húrin, using all ontology modules.
+#
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Base ontology prefixes
+@prefix fo:   <http://purl.org/family/> .
+@prefix meo:  <http://purl.org/meo/> .
+@prefix rcc:  <https://purl.org/region/rcc8/> .
+
+# Module prefixes
+@prefix soc:  <https://example.org/story/social#> .
+@prefix loc:  <https://example.org/story/place#> .
+@prefix tm:   <https://example.org/story/time#> .
+@prefix evt:  <https://example.org/story/event#> .
+@prefix act:  <https://example.org/story/action#> .
+@prefix plot: <https://example.org/story/plot#> .
+
+# Instance namespace
+@prefix narn: <https://example.org/story/narn#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+
+narn: a owl:Ontology ;
+    owl:imports <fo.ttl>, <meo.ttl>, <rcc.ttl>, <place.ttl>, <time.ttl>,
+        <soc.ttl>, <event.ttl>, <action.ttl>, <plot.ttl> ;
+    rdfs:label "Narn i Chîn Húrin, Instance Data"@en ;
+    rdfs:comment "Example data from the Narn. Imports pull in all other modules."@en ;
+    dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# CHARACTERS (meo: races + fo: gender)
+###############################################################
+
+narn:Turin a meo:Adan, fo:Male ;
+    rdfs:label "Túrin"@en ;
+    rdfs:comment "Túrin Turambar, son of Húrin and Morwen. The tragic hero of the Narn."@en .
+
+narn:Morwen a meo:Adan, fo:Female ;
+    rdfs:label "Morwen"@en ;
+    rdfs:comment "Morwen Eledhwen, wife of Húrin, mother of Túrin and Niënor."@en .
+
+narn:Hurin a meo:Adan, fo:Male ;
+    rdfs:label "Húrin"@en ;
+    rdfs:comment "Húrin Thalion, lord of Dor-lómin, father of Túrin and Niënor."@en .
+
+narn:Nienor a meo:Adan, fo:Female ;
+    rdfs:label "Niënor"@en ;
+    rdfs:comment "Niënor Níniel, daughter of Húrin and Morwen, sister of Túrin."@en .
+
+narn:Thingol a meo:Elda, fo:Male ;
+    rdfs:label "Thingol"@en ;
+    rdfs:comment "Elu Thingol, King of Doriath. Foster-father of Túrin."@en .
+
+narn:Glaurung a meo:Loce ;
+    rdfs:label "Glaurung"@en ;
+    rdfs:comment "Glaurung, the Father of Dragons, a great worm of Morgoth."@en .
+
+narn:Mablung a meo:Elda, fo:Male ;
+    rdfs:label "Mablung"@en ;
+    rdfs:comment "Mablung of Doriath, captain of Thingol's guard."@en .
+
+narn:Beleg a meo:Elda, fo:Male ;
+    rdfs:label "Beleg"@en ;
+    rdfs:comment "Beleg Cúthalion, a great archer and companion of Túrin."@en .
+
+narn:Morgoth a meo:Vala, meo:EvilBeing ;
+    owl:sameAs meo:morgoth ;
+    rdfs:label "Morgoth"@en ;
+    rdfs:comment "The Dark Lord, the great enemy."@en .
+
+narn:Finduilas a meo:Elda, fo:Female ;
+    rdfs:label "Finduilas"@en ;
+    rdfs:comment "Finduilas of Nargothrond, who loved Túrin."@en .
+
+narn:Orodreth a meo:Elda, fo:Male ;
+    rdfs:label "Orodreth"@en ;
+    rdfs:comment "Orodreth, King of Nargothrond, father of Finduilas."@en .
+
+narn:Galdor a meo:Adan, fo:Male ;
+    rdfs:label "Galdor"@en ;
+    rdfs:comment "Galdor the Tall, lord of Dor-lómin, father of Húrin."@en .
