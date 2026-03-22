@@ -85,3 +85,27 @@ narn:Orodreth a meo:Elda, fo:Male ;
 narn:Galdor a meo:Adan, fo:Male ;
     rdfs:label "Galdor"@en ;
     rdfs:comment "Galdor the Tall, lord of Dor-lómin, father of Húrin."@en .
+
+###############################################################
+# Unique Name Assumption guards.
+# OWL does not assume different IRIs denote different things.
+###############################################################
+
+# Characters
+[] a owl:AllDifferent ;
+    owl:distinctMembers (
+        narn:Turin narn:Morwen narn:Hurin narn:Nienor narn:Thingol
+        narn:Glaurung narn:Mablung narn:Beleg narn:Morgoth
+        narn:Finduilas narn:Orodreth narn:Galdor
+    ) .
+
+###############################################################
+# FAMILY RELATIONS (fo:)
+###############################################################
+
+narn:Hurin fo:isMarriedTo narn:Morwen .
+narn:Hurin fo:isTheFatherOf narn:Turin, narn:Nienor .
+narn:Morwen fo:isTheMotherOf narn:Turin, narn:Nienor .
+narn:Turin fo:isASiblingOf narn:Nienor .
+narn:Galdor fo:isTheFatherOf narn:Hurin .
+narn:Orodreth fo:isTheFatherOf narn:Finduilas .
