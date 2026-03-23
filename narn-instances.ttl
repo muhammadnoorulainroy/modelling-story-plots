@@ -244,3 +244,51 @@ narn:regAngband rcc:ec narn:regBeleriand .
 narn:regAnfauglith rcc:dc narn:regDoriath .
 # Anfauglith and Angband share a boundary at the northern mountains
 narn:regAnfauglith rcc:ec narn:regAngband .
+
+###############################################################
+# TEMPORAL INSTANTS AND INTERVALS (tm:)
+###############################################################
+
+narn:t1 a tm:Instant ; rdfs:label "t1"@en ; rdfs:comment "Húrin and Morwen's marriage."@en .
+narn:t2 a tm:Instant ; rdfs:label "t2"@en ; rdfs:comment "Túrin's birth."@en .
+narn:t10 a tm:Instant ; rdfs:label "t10"@en ; rdfs:comment "Start of the Nirnaeth Arnoediad."@en .
+narn:t10b a tm:Instant ; rdfs:label "t10b"@en ; rdfs:comment "End of the battle of Nirnaeth."@en .
+narn:t10c a tm:Instant ; rdfs:label "t10c"@en ; rdfs:comment "Morgoth taunts Húrin and pronounces the curse in Angband."@en .
+narn:t2b a tm:Instant ; rdfs:label "t2b"@en ; rdfs:comment "Niënor's birth (after the Nirnaeth, during Hurin's captivity)."@en .
+narn:t3 a tm:Instant ; rdfs:label "t3"@en ; rdfs:comment "Túrin arrives at Menegroth."@en .
+narn:t3b a tm:Instant ; rdfs:label "t3b"@en ; rdfs:comment "Túrin meets Beleg."@en .
+narn:t4 a tm:Instant ; rdfs:label "t4"@en ; rdfs:comment "Túrin leaves Menegroth."@en .
+narn:t4b a tm:Instant ; rdfs:label "t4b"@en ; rdfs:comment "Beleg's death."@en .
+narn:t4c a tm:Instant ; rdfs:label "t4c"@en ; rdfs:comment "Túrin begins the journey to Nargothrond after Beleg's death."@en .
+narn:t5 a tm:Instant ; rdfs:label "t5"@en ; rdfs:comment "Túrin arrives at Nargothrond."@en .
+narn:t6 a tm:Instant ; rdfs:label "t6"@en ; rdfs:comment "Túrin leaves Nargothrond."@en .
+narn:t7 a tm:Instant ; rdfs:label "t7"@en ; rdfs:comment "Túrin arrives in Brethil."@en .
+narn:t7b a tm:Instant ; rdfs:label "t7b"@en ; rdfs:comment "Niënor's death."@en .
+narn:t8 a tm:Instant ; rdfs:label "t8"@en ; rdfs:comment "Glaurung slain."@en .
+narn:t9 a tm:Instant ; rdfs:label "t9"@en ; rdfs:comment "Túrin's death."@en .
+
+# Instant ordering
+narn:t1 tm:occursBefore narn:t2 .
+narn:t2 tm:occursBefore narn:t10 .
+narn:t10 tm:occursBefore narn:t10b .
+narn:t10b tm:occursBefore narn:t10c .
+narn:t10c tm:occursBefore narn:t2b .
+narn:t2b tm:occursBefore narn:t3 .
+narn:t3 tm:occursBefore narn:t3b .
+narn:t3b tm:occursBefore narn:t4 .
+narn:t4 tm:occursBefore narn:t4b .
+narn:t4b tm:occursBefore narn:t4c .
+narn:t4c tm:occursBefore narn:t5 .
+narn:t5 tm:occursBefore narn:t6 .
+narn:t6 tm:occursBefore narn:t7 .
+narn:t7 tm:occursBefore narn:t7b .
+narn:t7b tm:occursBefore narn:t8 .
+narn:t8 tm:occursBefore narn:t9 .
+
+# Temporal instants (prevents timeline collapse)
+[] a owl:AllDifferent ;
+    owl:distinctMembers (
+        narn:t1 narn:t2 narn:t10 narn:t10b narn:t10c narn:t2b
+        narn:t3 narn:t3b narn:t4 narn:t4b narn:t4c narn:t5
+        narn:t6 narn:t7 narn:t7b narn:t8 narn:t9
+    ) .
