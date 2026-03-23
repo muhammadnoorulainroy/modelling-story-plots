@@ -292,3 +292,125 @@ narn:t8 tm:occursBefore narn:t9 .
         narn:t3 narn:t3b narn:t4 narn:t4b narn:t4c narn:t5
         narn:t6 narn:t7 narn:t7b narn:t8 narn:t9
     ) .
+
+# Sample instant-within-interval facts
+narn:t10c tm:occursDuring narn:intCaptivityHurin .
+narn:t3b tm:occursDuring narn:intResidenceMenegroth .
+
+# Intervals
+narn:intMarriage a tm:FiniteInterval ;
+    tm:startsAt narn:t1 ; tm:endsAt narn:t1 ;
+    rdfs:label "Marriage interval"@en ;
+    rdfs:comment "Point event: the marriage ceremony."@en .
+
+narn:intBirthTurin a tm:FiniteInterval ;
+    tm:startsAt narn:t2 ; tm:endsAt narn:t2 ;
+    rdfs:label "Birth of Túrin interval"@en ;
+    rdfs:comment "Point event: Túrin's birth."@en .
+
+narn:intBirthNienor a tm:FiniteInterval ;
+    tm:startsAt narn:t2b ; tm:endsAt narn:t2b ;
+    rdfs:label "Birth of Niënor interval"@en ;
+    rdfs:comment "Point event: Niënor's birth."@en .
+
+narn:intNirnaeth a tm:FiniteInterval ;
+    tm:startsAt narn:t10 ; tm:endsAt narn:t10b ;
+    rdfs:label "Nirnaeth Arnoediad interval"@en ;
+    rdfs:comment "Extended interval: the battle lasted days."@en .
+
+narn:intCurse a tm:FiniteInterval ;
+    tm:startsAt narn:t10c ; tm:endsAt narn:t10c ;
+    rdfs:label "Curse interval"@en ;
+    rdfs:comment "Point event: Morgoth pronounces the curse after Húrin's capture."@en .
+
+narn:intCaptivityHurin a tm:FiniteInterval ;
+    tm:startsAt narn:t10b ; tm:endsAt narn:t9 ;
+    rdfs:label "Captivity of Húrin interval"@en ;
+    rdfs:comment "Extended interval: ~28 years of imprisonment."@en .
+
+narn:intTaunt a tm:FiniteInterval ;
+    tm:startsAt narn:t10c ; tm:endsAt narn:t10c ;
+    rdfs:label "Morgoth taunts Húrin interval"@en ;
+    rdfs:comment "Point event: Morgoth gloats over his prisoner."@en .
+
+narn:intResidenceMenegroth a tm:FiniteInterval ;
+    tm:startsAt narn:t3 ; tm:endsAt narn:t4 ;
+    rdfs:label "Residence at Menegroth interval"@en ;
+    rdfs:comment "Extended interval: Túrin's years as foster-son."@en .
+
+narn:intMeetingBeleg a tm:FiniteInterval ;
+    tm:startsAt narn:t3b ; tm:endsAt narn:t3b ;
+    rdfs:label "Meeting Beleg interval"@en ;
+    rdfs:comment "Point event: first encounter."@en .
+
+narn:intDeathBeleg a tm:FiniteInterval ;
+    tm:startsAt narn:t4b ; tm:endsAt narn:t4b ;
+    rdfs:label "Death of Beleg interval"@en ;
+    rdfs:comment "Point event: accidental killing."@en .
+
+narn:intJourneyToNargothrond a tm:FiniteInterval ;
+    tm:startsAt narn:t4c ; tm:endsAt narn:t5 ;
+    rdfs:label "Journey to Nargothrond interval"@en ;
+    rdfs:comment "Extended interval: the journey from Taur-nu-Fuin to Nargothrond after Beleg's death."@en .
+
+narn:intResidenceNargothrond a tm:FiniteInterval ;
+    tm:startsAt narn:t5 ; tm:endsAt narn:t6 ;
+    rdfs:label "Residence at Nargothrond interval"@en ;
+    rdfs:comment "Extended interval: Túrin's time in Nargothrond."@en .
+
+narn:intJourneyToBrethil a tm:FiniteInterval ;
+    tm:startsAt narn:t6 ; tm:endsAt narn:t7 ;
+    rdfs:label "Journey to Brethil interval"@en ;
+    rdfs:comment "Extended interval: flight to Brethil."@en .
+
+narn:intDeathNienor a tm:FiniteInterval ;
+    tm:startsAt narn:t7b ; tm:endsAt narn:t7b ;
+    rdfs:label "Death of Niënor interval"@en ;
+    rdfs:comment "Point event: Niënor casts herself into the Teiglin."@en .
+
+narn:intSlayingGlaurung a tm:FiniteInterval ;
+    tm:startsAt narn:t8 ; tm:endsAt narn:t8 ;
+    rdfs:label "Slaying of Glaurung interval"@en ;
+    rdfs:comment "Point event: Túrin stabs Glaurung."@en .
+
+narn:intWarOfJewels a tm:Interval, tm:InfiniteInterval ;
+    rdfs:label "War of the Jewels interval"@en ;
+    rdfs:comment "Spans centuries. Start and end are beyond the Narn's scope, so no startsAt/endsAt."@en .
+
+narn:intReignThingol a tm:Interval, tm:InfiniteInterval ;
+    rdfs:label "Reign of Thingol interval"@en ;
+    rdfs:comment "Thingol's reign spans millennia. Unbounded in this model."@en .
+
+narn:intDeathTurin a tm:FiniteInterval ;
+    tm:startsAt narn:t9 ; tm:endsAt narn:t9 ;
+    rdfs:label "Death of Túrin interval"@en ;
+    rdfs:comment "Point event: Túrin falls on his sword."@en .
+
+# Allen relations between intervals
+narn:intMarriage tm:beforeInterval narn:intBirthTurin .
+narn:intBirthTurin tm:beforeInterval narn:intBirthNienor .
+narn:intNirnaeth tm:beforeInterval narn:intBirthNienor .
+narn:intBirthNienor tm:duringInterval narn:intCaptivityHurin .
+# The curse and the taunt are modeled as the same point event after the battle.
+narn:intCurse tm:intervalEquals narn:intTaunt .
+narn:intNirnaeth tm:beforeInterval narn:intTaunt .
+narn:intNirnaeth tm:beforeInterval narn:intCurse .
+narn:intTaunt tm:duringInterval narn:intCaptivityHurin .
+narn:intCurse tm:duringInterval narn:intCaptivityHurin .
+narn:intTaunt tm:beforeInterval narn:intResidenceMenegroth .
+narn:intMeetingBeleg tm:duringInterval narn:intResidenceMenegroth .
+narn:intResidenceMenegroth tm:beforeInterval narn:intJourneyToNargothrond .
+narn:intDeathBeleg tm:beforeInterval narn:intJourneyToNargothrond .
+narn:intJourneyToNargothrond tm:meetsInterval narn:intResidenceNargothrond .
+narn:intResidenceNargothrond tm:meetsInterval narn:intJourneyToBrethil .
+narn:intJourneyToBrethil tm:beforeInterval narn:intDeathNienor .
+narn:intDeathNienor tm:beforeInterval narn:intSlayingGlaurung .
+narn:intSlayingGlaurung tm:beforeInterval narn:intDeathTurin .
+# The captivity spans nearly the whole story
+narn:intCaptivityHurin tm:containsInterval narn:intResidenceMenegroth .
+narn:intCaptivityHurin tm:containsInterval narn:intSlayingGlaurung .
+# Túrin's death ends at the same time the captivity ends (t9)
+narn:intDeathTurin tm:finishesInterval narn:intCaptivityHurin .
+# The war and reign span the entire story
+narn:intWarOfJewels tm:containsInterval narn:intNirnaeth .
+narn:intReignThingol tm:containsInterval narn:intResidenceMenegroth .
