@@ -547,3 +547,74 @@ narn:journeyToBrethil a evt:Journey ;
     evt:hasTemporalExtent narn:intJourneyToBrethil ;
     rdfs:label "Journey to Brethil"@en ;
     rdfs:comment "Túrin flees to the Forest of Brethil."@en .
+
+# War of the Jewels
+narn:warOfJewels a evt:War ;
+    evt:hasSubEvent narn:nirnaeth ;
+    evt:hasLocation narn:Beleriand ;
+    evt:hasTemporalExtent narn:intWarOfJewels ;
+    rdfs:label "War of the Jewels"@en ;
+    rdfs:comment "The centuries-long war between Morgoth and the Elves/Men over the Silmarils."@en .
+
+# Thingol's reign
+narn:reignThingol a evt:Reign ;
+    evt:hasParticipant narn:Thingol ;
+    evt:hasLocation narn:Doriath ;
+    evt:hasTemporalExtent narn:intReignThingol ;
+    rdfs:label "Reign of Thingol"@en ;
+    rdfs:comment "Thingol's long rule as King of Doriath."@en .
+
+# Death of Niënor
+narn:deathNienor a evt:Death ;
+    evt:hasDeceased narn:Nienor ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intDeathNienor ;
+    rdfs:label "Death of Niënor"@en ;
+    rdfs:comment "Niënor threw herself into the river Teiglin."@en .
+
+# Death of Glaurung (killed by Túrin)
+narn:deathGlaurung a evt:Death ;
+    evt:hasDeceased narn:Glaurung ;
+    evt:hasKiller narn:Turin ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intSlayingGlaurung ;
+    rdfs:label "Death of Glaurung"@en ;
+    rdfs:comment "Túrin stabbed Glaurung from below with Gurthang."@en .
+
+# Death of Túrin (suicide)
+narn:deathTurin a evt:Death ;
+    evt:hasDeceased narn:Turin ;
+    evt:hasKiller narn:Turin ;
+    evt:usesItem narn:Gurthang ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intDeathTurin ;
+    rdfs:label "Death of Túrin"@en ;
+    rdfs:comment "Túrin killed himself by falling on Gurthang."@en .
+
+###############################################################
+# ITEMS
+###############################################################
+
+narn:Gurthang a evt:Weapon ;
+    rdfs:label "Gurthang"@en ;
+    rdfs:comment "The black sword of Túrin, forged by Eöl."@en .
+
+narn:DragonHelm a evt:Artifact ;
+    rdfs:label "Dragon-helm of Dor-lómin"@en ;
+    rdfs:comment "Heirloom of the House of Hador, given to Túrin."@en .
+
+###############################################################
+# ACTIONS (act:)
+###############################################################
+
+# Slaying of Glaurung
+narn:slayingGlaurung a act:AttackAction ;
+    act:hasAgent narn:Turin ;
+    act:hasPatient narn:Glaurung ;
+    evt:usesItem narn:Gurthang ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intSlayingGlaurung ;
+    act:resultsIn narn:deathGlaurung ;
+    act:hasPurpose "To slay the dragon Glaurung and avenge his people." ;
+    rdfs:label "Slaying of Glaurung"@en ;
+    rdfs:comment "Túrin stabbed Glaurung from below with Gurthang."@en .
