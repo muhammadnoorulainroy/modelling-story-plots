@@ -414,3 +414,75 @@ narn:intDeathTurin tm:finishesInterval narn:intCaptivityHurin .
 # The war and reign span the entire story
 narn:intWarOfJewels tm:containsInterval narn:intNirnaeth .
 narn:intReignThingol tm:containsInterval narn:intResidenceMenegroth .
+
+###############################################################
+# EVENTS (evt:)
+###############################################################
+
+narn:HostOfTheWest a owl:NamedIndividual ;
+    rdfs:label "Host of the West"@en ;
+    rdfs:comment "The coalition of Elves and Men led against Angband at the Nirnaeth Arnoediad."@en .
+
+narn:HostOfAngband a owl:NamedIndividual ;
+    rdfs:label "Host of Angband"@en ;
+    rdfs:comment "The forces of Morgoth that fought at the Nirnaeth Arnoediad."@en .
+
+# Marriage of Húrin and Morwen
+narn:marriageHurinMorwen a evt:Marriage ;
+    evt:hasHusband narn:Hurin ;
+    evt:hasWife narn:Morwen ;
+    evt:hasLocation narn:DorLomin ;
+    evt:hasTemporalExtent narn:intMarriage ;
+    rdfs:label "Marriage of Húrin and Morwen"@en ;
+    rdfs:comment "Húrin and Morwen married in Dor-lómin. The text does not specify the officiant, so that role is left open under the Open World Assumption."@en .
+
+# Birth of Túrin
+narn:birthTurin a evt:Birth ;
+    evt:hasNewborn narn:Turin ;
+    evt:hasMother narn:Morwen ;
+    evt:hasFather narn:Hurin ;
+    evt:hasLocation narn:DorLomin ;
+    evt:hasTemporalExtent narn:intBirthTurin ;
+    rdfs:label "Birth of Túrin"@en ;
+    rdfs:comment "Túrin was born in Dor-lómin."@en .
+
+# Birth of Niënor
+narn:birthNienor a evt:Birth ;
+    evt:hasNewborn narn:Nienor ;
+    evt:hasMother narn:Morwen ;
+    evt:hasFather narn:Hurin ;
+    evt:hasLocation narn:DorLomin ;
+    evt:hasTemporalExtent narn:intBirthNienor ;
+    rdfs:label "Birth of Niënor"@en ;
+    rdfs:comment "Niënor was born in Dor-lómin after Túrin was sent away."@en .
+
+# Nirnaeth Arnoediad (Battle of Unnumbered Tears)
+narn:nirnaeth a evt:Battle ;
+    evt:hasCombatant narn:HostOfTheWest, narn:HostOfAngband ;
+    evt:hasParticipant narn:Hurin, narn:Glaurung ;
+    evt:hasLocation narn:AnfauglithPlain ;
+    evt:hasTemporalExtent narn:intNirnaeth ;
+    evt:hasVictor narn:HostOfAngband ;
+    rdfs:label "Nirnaeth Arnoediad"@en ;
+    rdfs:comment "The Battle of Unnumbered Tears, the greatest defeat of Elves and Men."@en .
+
+# Morgoth's curse. This is both an event and an action.
+# Has evt:hasAgent, so it gets classified as act:Action too.
+narn:curseOfMorgoth a act:CurseAction ;
+    act:hasAgent narn:Morgoth ;
+    act:hasPatient narn:Hurin ;
+    evt:hasLocation narn:Angband ;
+    evt:hasTemporalExtent narn:intCurse ;
+    act:resultsIn narn:captivityHurin ;
+    act:hasPurpose "To condemn Húrin's children to grief and ruin." ;
+    rdfs:label "Curse of Morgoth"@en ;
+    rdfs:comment "Morgoth cursed Húrin and all his children after Húrin had been captured and brought to Angband."@en .
+
+# Captivity of Húrin
+narn:captivityHurin a evt:Captivity ;
+    evt:hasCaptive narn:Hurin ;
+    evt:hasCaptor narn:Morgoth ;
+    evt:hasLocation narn:Angband ;
+    evt:hasTemporalExtent narn:intCaptivityHurin ;
+    rdfs:label "Captivity of Húrin"@en ;
+    rdfs:comment "Morgoth held Húrin on Thangorodrim for 28 years."@en .
