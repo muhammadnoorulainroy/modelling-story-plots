@@ -486,3 +486,64 @@ narn:captivityHurin a evt:Captivity ;
     evt:hasTemporalExtent narn:intCaptivityHurin ;
     rdfs:label "Captivity of Húrin"@en ;
     rdfs:comment "Morgoth held Húrin on Thangorodrim for 28 years."@en .
+
+# Residence at Menegroth
+narn:residenceMenegroth a evt:Residence ;
+    evt:hasResident narn:Turin ;
+    evt:hasLocation narn:Menegroth ;
+    evt:usesItem narn:DragonHelm ;
+    evt:hasTemporalExtent narn:intResidenceMenegroth ;
+    rdfs:label "Residence at Menegroth"@en ;
+    rdfs:comment "Túrin's years as Thingol's foster-son. He received the Dragon-helm here."@en .
+
+# Meeting Beleg
+narn:meetingBeleg a evt:Meeting ;
+    evt:hasParticipant narn:Turin, narn:Beleg ;
+    evt:hasLocation narn:Menegroth ;
+    evt:hasTemporalExtent narn:intMeetingBeleg ;
+    rdfs:label "Túrin meets Beleg"@en ;
+    rdfs:comment "Túrin first meets Beleg Cúthalion in Menegroth."@en .
+
+# Morgoth taunts Húrin
+narn:tauntOfMorgoth a evt:Conversation ;
+    evt:hasSpeaker narn:Morgoth, narn:Hurin ;
+    evt:hasLocation narn:Angband ;
+    evt:hasTemporalExtent narn:intTaunt ;
+    rdfs:label "Morgoth taunts Húrin"@en ;
+    rdfs:comment "Morgoth reveals his curse to Húrin and gloats over his captivity."@en .
+
+# Death of Beleg
+narn:deathBeleg a evt:Death ;
+    evt:hasDeceased narn:Beleg ;
+    evt:hasKiller narn:Turin ;
+    evt:usesItem narn:Gurthang ;
+    evt:hasLocation narn:TaurNuFuin ;
+    evt:hasTemporalExtent narn:intDeathBeleg ;
+    rdfs:label "Death of Beleg"@en ;
+    rdfs:comment "Túrin accidentally killed Beleg with Gurthang while being rescued by Beleg in Taur-nu-Fuin."@en .
+
+# Journey to Nargothrond
+narn:journeyToNargothrond a evt:Journey ;
+    evt:hasTraveler narn:Turin ;
+    evt:hasOrigin narn:TaurNuFuin ;
+    evt:hasDestination narn:Nargothrond ;
+    evt:hasTemporalExtent narn:intJourneyToNargothrond ;
+    rdfs:label "Journey to Nargothrond"@en ;
+    rdfs:comment "After Beleg's death, Túrin is led south from Taur-nu-Fuin to Nargothrond."@en .
+
+# Residence at Nargothrond
+narn:residenceNargothrond a evt:Residence ;
+    evt:hasResident narn:Turin ;
+    evt:hasLocation narn:Nargothrond ;
+    evt:hasTemporalExtent narn:intResidenceNargothrond ;
+    rdfs:label "Residence at Nargothrond"@en ;
+    rdfs:comment "Túrin's time as a leader in Nargothrond."@en .
+
+# Journey to Brethil
+narn:journeyToBrethil a evt:Journey ;
+    evt:hasTraveler narn:Turin ;
+    evt:hasOrigin narn:Nargothrond ;
+    evt:hasDestination narn:Brethil ;
+    evt:hasTemporalExtent narn:intJourneyToBrethil ;
+    rdfs:label "Journey to Brethil"@en ;
+    rdfs:comment "Túrin flees to the Forest of Brethil."@en .
