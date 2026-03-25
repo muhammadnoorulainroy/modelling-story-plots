@@ -58,16 +58,16 @@ fo:isAParentOf a owl:ObjectProperty;
                rdfs:comment "A relation between a parent and their child"@en .
 
 fo:isASonOf a owl:ObjectProperty;
-            rdfs:subPropertyOf fo:isTheChildOf;
+            rdfs:subPropertyOf fo:isAChildOf;
             rdfs:domain fo:Male;
             rdfs:label "is a son of"@en;
             rdfs:comment "A relation between a male child and his parent."@en .
 
 fo:isADaughterOf a owl:ObjectProperty;
-                 rdfs:subPropertyOf fo:isTheChildOf;
+                 rdfs:subPropertyOf fo:isAChildOf;
                  rdfs:domain fo:Female;
                  rdfs:label "is a daughter of"@en;
-                 rdfs:comment "A relation between a female child and his parent."@en .
+                 rdfs:comment "A relation between a female child and her parent."@en .
 
 fo:isTheFatherOf a owl:ObjectProperty;
                  rdfs:subPropertyOf fo:isAParentOf;
@@ -81,9 +81,9 @@ fo:isTheMotherOf a owl:ObjectProperty;
                  rdfs:label "is the mother of"@en;
                  rdfs:comment "A relation between a mother and his child."@en .
 
-fo:isASibingOf a owl:ObjectProperty, owl:SymmetricProperty;
-               rdfs:label "is a sibling of"@en;
-               rdfs:comment "Two individuals who share the same parent."@en .
+fo:isASiblingOf a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty;
+                rdfs:label "is a sibling of"@en;
+                rdfs:comment "Two individuals who share the same parent."@en .
 
 fo:isABrotherOf a owl:ObjectProperty;
                 rdfs:subPropertyOf fo:isASiblingOf;
