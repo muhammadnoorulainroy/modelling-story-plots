@@ -29,6 +29,7 @@ fo:Male a owl:Class;
         rdfs:comment "A male individual."@en .
 
 fo:Female a owl:Class;
+          owl:disjointWith fo:Male;
           rdfs:label "female"@en;
           rdfs:comment "A female individual."@en .
 
