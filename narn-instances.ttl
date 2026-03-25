@@ -618,3 +618,74 @@ narn:slayingGlaurung a act:AttackAction ;
     act:hasPurpose "To slay the dragon Glaurung and avenge his people." ;
     rdfs:label "Slaying of Glaurung"@en ;
     rdfs:comment "Túrin stabbed Glaurung from below with Gurthang."@en .
+
+###############################################################
+# PLOT STRUCTURE (plot:)
+###############################################################
+
+# Real-world book
+narn:NarnBook a plot:NarrativeWork ;
+    rdfs:label "The Children of Húrin (book)"@en ;
+    rdfs:comment "The 2007 standalone edition of The Children of Húrin, edited by Christopher Tolkien from J.R.R. Tolkien's manuscripts."@en ;
+    plot:hasPublicationDate "2007-04-17T00:00:00Z"^^xsd:dateTime ;
+    plot:narrates narn:NarnStory .
+
+narn:Tolkien a plot:Author ;
+    rdfs:label "J.R.R. Tolkien"@en ;
+    rdfs:comment "The original author of the tale, published posthumously in standalone form."@en .
+
+narn:ChristopherTolkien a plot:Editor ;
+    rdfs:label "Christopher Tolkien"@en ;
+    rdfs:comment "Editor who compiled the standalone book."@en .
+
+narn:HarperCollins a plot:Publisher ;
+    rdfs:label "HarperCollins"@en ;
+    rdfs:comment "The publishing house of the 2007 standalone edition used in this instance file."@en .
+
+narn:NarnBook plot:hasAuthor narn:Tolkien ;
+    plot:hasEditor narn:ChristopherTolkien ;
+    plot:hasPublisher narn:HarperCollins .
+
+# Fictional story
+narn:NarnStory a plot:Story ;
+    rdfs:label "Narn i Chîn Húrin"@en ;
+    rdfs:comment "The fictional story of the children of Húrin as told within the legendarium."@en ;
+    plot:hasTitle "Narn i Chîn Húrin" ;
+    plot:hasTextSummary "The tale of the children of Húrin, cursed by Morgoth." .
+
+# Story sections
+narn:Prologue1 a plot:Prologue ;
+    rdfs:label "Prologue"@en ;
+    rdfs:comment "The battle of Nirnaeth, Húrin's capture, and Morgoth's curse."@en ;
+    plot:hasTitle "The curse of Morgoth" ;
+    plot:sectionOf narn:NarnStory ;
+    plot:startsWith narn:pe1 ;
+    plot:endsWith narn:pe2 .
+
+narn:Chapter1 a plot:Chapter ;
+    rdfs:label "Chapter 1"@en ;
+    rdfs:comment "Túrin's childhood in Dor-lómin and fostering in Doriath."@en ;
+    plot:hasTitle "Childhood and Fostering" ;
+    plot:hasChapterNumber "1"^^xsd:positiveInteger ;
+    plot:sectionOf narn:NarnStory ;
+    plot:startsWith narn:pe3 ;
+    plot:endsWith narn:pe3 .
+
+narn:Chapter2 a plot:Chapter ;
+    rdfs:label "Chapter 2"@en ;
+    rdfs:comment "Túrin in Nargothrond, the fall of the fortress, and the slaying of Glaurung."@en ;
+    plot:hasTitle "Nargothrond and the Dragon" ;
+    plot:hasChapterNumber "2"^^xsd:positiveInteger ;
+    plot:sectionOf narn:NarnStory ;
+    plot:startsWith narn:pe4 ;
+    plot:endsWith narn:pe7 .
+
+narn:Epilogue1 a plot:Epilogue ;
+    rdfs:label "Epilogue"@en ;
+    rdfs:comment "The death of Túrin and the end of the curse."@en ;
+    plot:hasTitle "The doom fulfilled" ;
+    plot:sectionOf narn:NarnStory ;
+    plot:startsWith narn:pe8 ;
+    plot:endsWith narn:pe8 .
+
+narn:NarnStory plot:hasSection narn:Prologue1, narn:Chapter1, narn:Chapter2, narn:Epilogue1 .
