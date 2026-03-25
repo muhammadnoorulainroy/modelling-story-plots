@@ -689,3 +689,61 @@ narn:Epilogue1 a plot:Epilogue ;
     plot:endsWith narn:pe8 .
 
 narn:NarnStory plot:hasSection narn:Prologue1, narn:Chapter1, narn:Chapter2, narn:Epilogue1 .
+
+# Plot events
+narn:pe1 a plot:PlotEvent ;
+    rdfs:label "PE: Nirnaeth Arnoediad"@en ;
+    rdfs:comment "The battle that sets the tragedy in motion."@en ;
+    plot:describesEvent narn:nirnaeth .
+narn:pe1b a plot:PlotEvent ;
+    rdfs:label "PE: Curse of Morgoth"@en ;
+    rdfs:comment "Morgoth curses Húrin and his children."@en ;
+    plot:describesEvent narn:curseOfMorgoth .
+narn:pe2 a plot:PlotEvent ;
+    rdfs:label "PE: Birth of Túrin"@en ;
+    rdfs:comment "Túrin is born in Dor-lómin."@en ;
+    plot:describesEvent narn:birthTurin .
+narn:pe3 a plot:PlotEvent ;
+    rdfs:label "PE: Residence at Menegroth"@en ;
+    rdfs:comment "Túrin lives in Menegroth as Thingol's foster-son."@en ;
+    plot:describesEvent narn:residenceMenegroth .
+narn:pe4 a plot:PlotEvent ;
+    rdfs:label "PE: Journey to Nargothrond"@en ;
+    rdfs:comment "After Beleg's death, Túrin is led south from Taur-nu-Fuin to Nargothrond."@en ;
+    plot:describesEvent narn:journeyToNargothrond .
+narn:pe5 a plot:PlotEvent ;
+    rdfs:label "PE: Residence at Nargothrond"@en ;
+    rdfs:comment "Túrin becomes a leader in Nargothrond."@en ;
+    plot:describesEvent narn:residenceNargothrond .
+narn:pe6 a plot:PlotEvent ;
+    rdfs:label "PE: Journey to Brethil"@en ;
+    rdfs:comment "Túrin flees to the Forest of Brethil."@en ;
+    plot:describesEvent narn:journeyToBrethil .
+narn:pe7 a plot:PlotEvent ;
+    rdfs:label "PE: Death of Glaurung"@en ;
+    rdfs:comment "Túrin slays the dragon Glaurung."@en ;
+    plot:describesEvent narn:deathGlaurung .
+narn:pe8 a plot:PlotEvent ;
+    rdfs:label "PE: Death of Túrin"@en ;
+    rdfs:comment "Túrin takes his own life."@en ;
+    plot:describesEvent narn:deathTurin .
+
+# Sections contain plot events
+narn:Prologue1 plot:containsPlotEvent narn:pe1, narn:pe1b, narn:pe2 .
+narn:Chapter1 plot:containsPlotEvent narn:pe3 .
+narn:Chapter2 plot:containsPlotEvent narn:pe4, narn:pe5, narn:pe6, narn:pe7 .
+narn:Epilogue1 plot:containsPlotEvent narn:pe8 .
+
+# Story starts and ends
+narn:NarnStory plot:startsWith narn:pe1 ;
+    plot:endsWith narn:pe8 .
+
+# Plot event ordering
+narn:pe1 plot:nextPlotEvent narn:pe1b .
+narn:pe1b plot:nextPlotEvent narn:pe2 .
+narn:pe2 plot:nextPlotEvent narn:pe3 .
+narn:pe3 plot:nextPlotEvent narn:pe4 .
+narn:pe4 plot:nextPlotEvent narn:pe5 .
+narn:pe5 plot:nextPlotEvent narn:pe6 .
+narn:pe6 plot:nextPlotEvent narn:pe7 .
+narn:pe7 plot:nextPlotEvent narn:pe8 .
