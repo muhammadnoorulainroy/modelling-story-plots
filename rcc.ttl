@@ -22,9 +22,16 @@ rcc: a owl:Ontology ;
     owl:versionInfo "1.0" ;
     dct:creator az:me .
 
+#
+# Class
+#
 rcc:Region a owl:Class ;
     rdfs:label "region"@en ;
     rdfs:comment "A continuous extent of space. In story modelling, places occupy regions."@en .
+
+#
+# The 8 relations
+#
 
 rcc:dc a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:label "disconnected"@en ;
@@ -40,15 +47,15 @@ rcc:ec a owl:ObjectProperty, owl:SymmetricProperty ;
 
 rcc:po a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:label "partially overlapping"@en ;
-    rdfs:comment "The regions partially overlap."@en ;
+    rdfs:comment "The regions partially overlap. Each has parts not in the other."@en ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
 rcc:eq a owl:ObjectProperty, owl:SymmetricProperty, owl:TransitiveProperty ;
-    rdfs:label "equal"@en ;
-    rdfs:comment "Same spatial extent. Symmetric and transitive."@en ;
     rdfs:domain rcc:Region ;
-    rdfs:range rcc:Region .
+    rdfs:range rcc:Region ;
+    rdfs:label "equal"@en ;
+    rdfs:comment "Same spatial extent. Symmetric and transitive. Reflexivity is part of the intended RCC8 semantics but not declared in OWL because ReflexiveProperty without domain/range would apply to all individuals, and with domain/range would force everything to be a Region."@en .
 
 rcc:tpp a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:label "tangential proper part"@en ;
