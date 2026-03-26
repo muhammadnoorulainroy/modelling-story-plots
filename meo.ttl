@@ -15,7 +15,7 @@
 # Ontology definition and metadata
 #
 meo: a owl:Ontology;
-     owl:imports fo:;
+     owl:imports <fo.ttl>;
      rdfs:label "The Middle-earth ontology"@en;
      rdfs:comment "An ontology for J.R.R. Tolkien's legendarium."@en;
      dct:title "The Middle-earth ontology"@en;
@@ -75,6 +75,7 @@ meo:Elda a owl:Class;
          rdfs:comment "The Eldar are the Elves."@en .
 
 meo:Atan a owl:Class;
+         rdfs:subClassOf meo:Eruhin, meo:Mortal;
          rdfs:label "Atan"@qya, "Man"@en;
          skos:altLabel "Secondborn"@en, "Human"@en;
          rdfs:comment "The Atani are the second born of the Children of Iluvatar, the Men."@en .
@@ -85,7 +86,15 @@ meo:Adan a owl:Class;
          rdfs:comment "The Edain are the Men that belong to the Three Houses of Men that came to Beleriand."@en .
 
 meo:Peredhel a owl:Class;
-             rdfs:subClassOf meo:Eruhin;
+             rdfs:subClassOf meo:Eruhin, [
+                a owl:Restriction;
+                owl:onProperty fo:isADescendentOf;
+                owl:someValuesFrom meo:Atan;
+             ], [
+                a owl:Restriction;
+                owl:onProperty fo:isADescendentOf;
+                owl:someValuesFrom meo:Elda;
+             ];
              rdfs:label "Peredhel"@sjn, "Half-elf"@en;
              rdfs:comment "Peredhil are descendent of both elves and humans."@en .
 
@@ -164,3 +173,29 @@ meo:morgoth a meo:EvilBeing;
         owl:someValuesFrom meo:Adan
     ])
 ] rdfs:subClassOf meo:Peredhel .
+
+# Those whose father and mother are both of the Man race, are also Men
+[
+    owl:intersectionOf ([
+        a owl:Restriction;
+        owl:onProperty [ owl:inverseOf fo:isTheFatherOf ];
+        owl:someValuesFrom meo:Atan
+    ] [
+        a owl:Restriction;
+        owl:onProperty [ owl:inverseOf fo:isTheMotherOf ];
+        owl:someValuesFrom meo:Atan
+    ])
+] rdfs:subClassOf meo:Atan .
+
+# Those whose father and mother are both of the Elf race, are also Elves
+[
+    owl:intersectionOf ([
+        a owl:Restriction;
+        owl:onProperty [ owl:inverseOf fo:isTheFatherOf ];
+        owl:someValuesFrom meo:Elda
+    ] [
+        a owl:Restriction;
+        owl:onProperty [ owl:inverseOf fo:isTheMotherOf ];
+        owl:someValuesFrom meo:Elda
+    ])
+] rdfs:subClassOf meo:Elda .
