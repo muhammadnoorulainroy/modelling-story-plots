@@ -3,6 +3,13 @@
 #
 # Temporal concepts: instants, intervals, and Allen's 13 interval relations.
 #
+# FiniteInterval = StartingInterval ⊓ EndingInterval (has both start and end).
+#
+# All 13 Allen relations with OWL characteristics. Pairwise disjointness
+# only for simple relations (starts, startedBy, finishes, finishedBy).
+#
+# Property chains infer interval relations from instant-level data.
+#
 
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
