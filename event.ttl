@@ -3,6 +3,15 @@
 #
 # Events, their types, participant roles, and connections to time/place/items.
 #
+# Events are organised as PhysicalEvent, SocialEvent, or State, with more
+# specific types under each (Birth, Death, Marriage, Battle, Journey, etc.).
+#
+# Specific event types have specialised roles with cardinality constraints.
+# E.g. Marriage has hasHusband/hasWife/hasOfficiant (not generic spouse1/spouse2).
+#
+# Event-level temporal relations (beforeEvent, etc.) are derived from
+# Allen's interval relations via property chains.
+#
 
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -20,7 +29,7 @@ evt: a owl:Ontology ;
     owl:imports <place.ttl>, <time.ttl>, <fo.ttl>, <soc.ttl> ;
     rdfs:label "Event Ontology"@en ;
     dct:title "Event Ontology"@en ;
-    rdfs:comment "Events in story plots: occurrences involving characters, places, and time."@en ;
+    rdfs:comment "Events in story plots: occurrences involving characters, places, and time. Includes an event hierarchy, participant roles, and temporal relations."@en ;
     owl:versionInfo "1.0" ;
     dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
 
