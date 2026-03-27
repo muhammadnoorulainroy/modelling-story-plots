@@ -92,6 +92,11 @@ evt:Coronation a owl:Class ;
     rdfs:label "Coronation"@en ;
     rdfs:comment "An event in which a character is crowned or given authority."@en .
 
+evt:Captivity a owl:Class ;
+    rdfs:subClassOf evt:State ;
+    rdfs:label "Captivity"@en ;
+    rdfs:comment "Being held prisoner."@en .
+
 # --- Physical events ---
 
 evt:Journey a owl:Class ;
@@ -121,11 +126,6 @@ evt:Residence a owl:Class ;
     rdfs:label "Residence"@en ;
     rdfs:comment "A state of living at a particular place for a period of time."@en .
 
-evt:Captivity a owl:Class ;
-    rdfs:subClassOf evt:State ;
-    rdfs:label "Captivity"@en ;
-    rdfs:comment "Being held prisoner."@en .
-
 evt:Reign a owl:Class ;
     rdfs:subClassOf evt:State ;
     rdfs:label "Reign"@en ;
@@ -148,17 +148,17 @@ evt:Reign a owl:Class ;
     owl:members ( evt:Residence evt:Captivity evt:Reign ) .
 
 ###############################################################
-# Item classes
+# Item classes (objects used in events)
 ###############################################################
 
 evt:Item a owl:Class ;
     rdfs:label "Item"@en ;
-    rdfs:comment "A significant object that can be used in events."@en .
+    rdfs:comment "A significant object that can be used in events. Items include weapons, vehicles, and artifacts."@en .
 
 evt:Weapon a owl:Class ;
     rdfs:subClassOf evt:Item ;
     rdfs:label "Weapon"@en ;
-    rdfs:comment "An object designed or used for combat."@en .
+    rdfs:comment "An object designed or used for combat. Example: Gurthang (Túrin's sword)."@en .
 
 evt:Vehicle a owl:Class ;
     rdfs:subClassOf evt:Item ;
