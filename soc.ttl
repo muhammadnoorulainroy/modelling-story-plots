@@ -5,6 +5,9 @@
 # uses a soc: prefix for things like livedIn and serves. This module
 # formalises those with OWL axioms.
 #
+# sociallyRelatedTo groups all social relations. friendOf and enemyOf
+# are disjoint. serves is linked to meo:served via equivalentProperty.
+#
 
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -17,7 +20,7 @@
 @prefix soc:  <https://example.org/story/social#> .
 
 soc: a owl:Ontology ;
-    owl:imports fo: , meo: ;
+    owl:imports <fo.ttl>, <meo.ttl>, <place.ttl> ;
     rdfs:label "Social Relations Ontology"@en ;
     dct:title "Social Relations Ontology"@en ;
     rdfs:comment "Non-familial social relations between characters: friendship, enmity, alliance, service, etc."@en ;
@@ -71,7 +74,7 @@ soc:livedIn a owl:ObjectProperty ;
 soc:fostersChild a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:subPropertyOf soc:sociallyRelatedTo ;
     rdfs:label "fosters child"@en ;
-    rdfs:comment "Raising someone as a foster-child. E.g. Thingol fosters Turin."@en .
+    rdfs:comment "Raising someone as a foster-child. E.g. Thingol fosters Túrin."@en .
 
 soc:fosteredBy a owl:ObjectProperty ;
     owl:inverseOf soc:fostersChild ;
