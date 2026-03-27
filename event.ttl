@@ -211,14 +211,14 @@ evt:hasMother a owl:ObjectProperty ;
     rdfs:domain evt:Birth ;
     rdfs:range fo:Female ;
     rdfs:label "has mother"@en ;
-    rdfs:comment "The mother."@en .
+    rdfs:comment "The mother. Range fo:Female."@en .
 
 evt:hasFather a owl:ObjectProperty ;
     rdfs:subPropertyOf evt:hasParticipant ;
     rdfs:domain evt:Birth ;
     rdfs:range fo:Male ;
     rdfs:label "has father"@en ;
-    rdfs:comment "The father."@en .
+    rdfs:comment "The father. Range fo:Male."@en .
 
 # --- Death-specific roles ---
 
@@ -373,7 +373,7 @@ evt:partOfEvent a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:comment "Inverse of hasSubEvent."@en .
 
 ###############################################################
-# Cardinality restrictions
+# Cardinality restrictions (rich axioms)
 ###############################################################
 
 # Every event should have a temporal extent.
