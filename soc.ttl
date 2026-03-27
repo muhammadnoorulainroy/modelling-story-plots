@@ -63,6 +63,7 @@ soc:serves a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty
 
 soc:rulesOver a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
     owl:inverseOf soc:serves ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
     rdfs:label "rules over"@en ;
     rdfs:comment "Inverse of serves. The subject has authority over the object."@en .
 
@@ -81,6 +82,9 @@ soc:fosteredBy a owl:ObjectProperty ;
     rdfs:subPropertyOf soc:sociallyRelatedTo ;
     rdfs:label "fostered by"@en ;
     rdfs:comment "Inverse of fostersChild."@en .
+
+# Disjointness
+###############################################################
 
 ###############################################################
 # Extra axioms
