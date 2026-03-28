@@ -377,8 +377,9 @@ evt:partOfEvent a owl:ObjectProperty, owl:TransitiveProperty ;
 ###############################################################
 
 # Every event should have a temporal extent.
-# Functional (at most 1) is on the property itself.
-# Here we say at least 1, under OWA events with no stated interval are not inconsistent.
+# Functional (at most 1) is declared on the property itself.
+# Here we say at least 1, together with Functional that gives exactly 1.
+# under OWA, events with no stated interval are not inconsistent.
 evt:Event rdfs:subClassOf [
     a owl:Restriction ;
     owl:onProperty evt:hasTemporalExtent ;
@@ -409,6 +410,7 @@ evt:Death rdfs:subClassOf
       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
 
 # A marriage has exactly 1 husband, exactly 1 wife, at most 1 officiant
+# (the officiant is max 1 because the text does not always name one)
 evt:Marriage rdfs:subClassOf
     [ a owl:Restriction ; owl:onProperty evt:hasHusband ;
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ],
@@ -460,7 +462,7 @@ evt:War rdfs:subClassOf
     [ a owl:Restriction ; owl:onProperty evt:hasSubEvent ;
       owl:someValuesFrom evt:Battle ] .
 
-# All sub-events of a war must be battles or other wars
+# All sub-events of a war must be battles or other wars (not births, etc.)
 evt:War rdfs:subClassOf
     [ a owl:Restriction ; owl:onProperty evt:hasSubEvent ;
       owl:allValuesFrom [ a owl:Class ;
