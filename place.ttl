@@ -4,6 +4,10 @@
 # Categories of places and spatial relations for story modelling.
 # Place is separate from Region (rcc.ttl). A Place is a named location
 # like a city or forest, a Region is its abstract spatial extent.
+# They're linked by occupiesRegion to enable RCC8 reasoning on places.
+#
+# The hierarchy splits into land/water first, then more specific types.
+# Settlements and wild areas are disjoint. A city can't be a forest.
 #
 
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -15,7 +19,7 @@
 @prefix loc:  <https://example.org/story/place#> .
 
 loc: a owl:Ontology ;
-    owl:imports rcc: ;
+    owl:imports <rcc.ttl> ;
     rdfs:label "Place Ontology"@en ;
     dct:title "Place Ontology"@en ;
     rdfs:comment "Place categories and spatial relations for story plots."@en ;
@@ -34,6 +38,8 @@ loc:Place a owl:Class ;
 # Place hierarchy
 ###############################################################
 
+# --- Land vs Water ---
+
 loc:LandArea a owl:Class ;
     rdfs:subClassOf loc:Place ;
     rdfs:label "Land area"@en ;
@@ -49,7 +55,7 @@ loc:WaterArea a owl:Class ;
 loc:Settlement a owl:Class ;
     rdfs:subClassOf loc:LandArea ;
     rdfs:label "Settlement"@en ;
-    rdfs:comment "An inhabited place."@en .
+    rdfs:comment "An inhabited place. Has a population."@en .
 
 loc:City a owl:Class ;
     rdfs:subClassOf loc:Settlement ;
@@ -108,7 +114,17 @@ loc:Building a owl:Class ;
 loc:Room a owl:Class ;
     rdfs:subClassOf loc:Place ;
     rdfs:label "Room"@en ;
-    rdfs:comment "A space inside a building."@en .
+    rdfs:comment "A space inside a building or fortified complex."@en .
+
+# A room must be part of some building or fortress
+loc:Room rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty loc:partOf ;
+    owl:someValuesFrom [
+        a owl:Class ;
+        owl:unionOf ( loc:Building loc:Fortress )
+    ]
+] .
 
 # --- Water subtypes ---
 
@@ -171,32 +187,24 @@ loc:partOf a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:label "part of"@en ;
     rdfs:comment "Spatial containment between places. E.g. Menegroth is part of Doriath."@en .
 
-loc:hasPart a owl:ObjectProperty ;
-    owl:inverseOf loc:partOf ;
-    rdfs:label "has part"@en ;
-    rdfs:comment "Inverse of partOf."@en .
-
-loc:interiorPartOf a owl:ObjectProperty ;
+loc:interiorPartOf a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:subPropertyOf loc:partOf ;
     rdfs:domain loc:Place ;
     rdfs:range loc:Place ;
     rdfs:label "interior part of"@en ;
-    rdfs:comment "The place is fully inside another, not touching the boundary. Maps to rcc:ntpp."@en .
+    rdfs:comment "Proper part relation where the subject lies wholly inside the larger place, corresponding to RCC8 NTPP at region level."@en .
 
-loc:tangentialPartOf a owl:ObjectProperty ;
+loc:tangentialPartOf a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:subPropertyOf loc:partOf ;
     rdfs:domain loc:Place ;
     rdfs:range loc:Place ;
     rdfs:label "tangential part of"@en ;
-    rdfs:comment "The place is inside another but touches its boundary. Maps to rcc:tpp."@en .
+    rdfs:comment "Proper part relation where the subject touches the boundary of the larger place, corresponding to RCC8 TPP at region level."@en .
 
-# A room must be part of some building or fortress
-loc:Room rdfs:subClassOf [
-    a owl:Restriction ;
-    owl:onProperty loc:partOf ;
-    owl:someValuesFrom [ a owl:Class ;
-        owl:unionOf ( loc:Building loc:Fortress ) ]
-] .
+loc:hasPart a owl:ObjectProperty ;
+    owl:inverseOf loc:partOf ;
+    rdfs:label "has part"@en ;
+    rdfs:comment "Inverse of partOf."@en .
 
 loc:adjacentTo a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:domain loc:Place ;
@@ -208,7 +216,7 @@ loc:occupiesRegion a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:domain loc:Place ;
     rdfs:range rcc:Region ;
     rdfs:label "occupies region"@en ;
-    rdfs:comment "Links a place to its spatial region. Functional (one region per place)."@en .
+    rdfs:comment "Links a place to its spatial region. Functional (one region per place). Enables RCC8 reasoning on places."@en .
 
 loc:isCapitalOf a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
     rdfs:domain loc:Settlement ;
@@ -225,6 +233,40 @@ loc:hasCapital a owl:ObjectProperty ;
     rdfs:comment "Inverse of isCapitalOf."@en .
 
 ###############################################################
+# Bridge axioms: Place mereology -> Region RCC8
+#
+# These property chains formally connect the place-level spatial
+# relations to the region-level RCC8 relations via occupiesRegion.
+# If P1 interiorPartOf P2, then the region of P1 is ntpp of the region of P2.
+# If P1 tangentialPartOf P2, then the region of P1 is tpp of the region of P2.
+# If P1 adjacentTo P2, then their regions are ec.
+###############################################################
+
+# interiorPartOf -> ntpp: if region R1 is occupied by place P1,
+# and P1 interiorPartOf P2, and P2 occupies region R2, then R1 ntpp R2.
+rcc:ntpp owl:propertyChainAxiom (
+    [ owl:inverseOf loc:occupiesRegion ]
+    loc:interiorPartOf
+    loc:occupiesRegion
+) .
+
+# tangentialPartOf -> tpp: if region R1 is occupied by place P1,
+# and P1 tangentialPartOf P2, and P2 occupies region R2, then R1 tpp R2.
+rcc:tpp owl:propertyChainAxiom (
+    [ owl:inverseOf loc:occupiesRegion ]
+    loc:tangentialPartOf
+    loc:occupiesRegion
+) .
+
+# adjacentTo -> ec: if region R1 is occupied by place P1,
+# and P1 adjacentTo P2, and P2 occupies region R2, then R1 ec R2.
+rcc:ec owl:propertyChainAxiom (
+    [ owl:inverseOf loc:occupiesRegion ]
+    loc:adjacentTo
+    loc:occupiesRegion
+) .
+
+###############################################################
 # Datatype Properties
 ###############################################################
 
@@ -239,29 +281,3 @@ loc:hasFoundationDate a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:label "has foundation date"@en ;
     rdfs:comment "When the place was established. String because fictional dates don't always fit xsd:date."@en .
-
-###############################################################
-# Bridge axioms: Place mereology -> Region RCC8
-#
-# If P1 interiorPartOf P2, then the region of P1 is ntpp of the region of P2.
-# If P1 tangentialPartOf P2, then the region of P1 is tpp of the region of P2.
-# If P1 adjacentTo P2, then their regions are ec.
-###############################################################
-
-rcc:ntpp owl:propertyChainAxiom (
-    [ owl:inverseOf loc:occupiesRegion ]
-    loc:interiorPartOf
-    loc:occupiesRegion
-) .
-
-rcc:tpp owl:propertyChainAxiom (
-    [ owl:inverseOf loc:occupiesRegion ]
-    loc:tangentialPartOf
-    loc:occupiesRegion
-) .
-
-rcc:ec owl:propertyChainAxiom (
-    [ owl:inverseOf loc:occupiesRegion ]
-    loc:adjacentTo
-    loc:occupiesRegion
-) .

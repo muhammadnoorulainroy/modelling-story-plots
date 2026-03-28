@@ -55,7 +55,7 @@ rcc:eq a owl:ObjectProperty, owl:SymmetricProperty, owl:TransitiveProperty ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region ;
     rdfs:label "equal"@en ;
-    rdfs:comment "Same spatial extent. Symmetric and transitive. Reflexivity is part of the intended RCC8 semantics but not declared in OWL because ReflexiveProperty without domain/range would apply to all individuals, and with domain/range would force everything to be a Region."@en .
+    rdfs:comment "Same spatial extent. Symmetric and transitive. Reflexivity is part of the intended RCC8 semantics but is not declared in OWL because ReflexiveProperty without domain/range would apply to all individuals, and with domain/range would force everything to be a Region."@en .
 
 rcc:tpp a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:label "tangential proper part"@en ;
