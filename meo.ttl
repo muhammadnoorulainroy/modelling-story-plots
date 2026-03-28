@@ -17,7 +17,7 @@
 meo: a owl:Ontology;
      owl:imports <fo.ttl>;
      rdfs:label "The Middle-earth ontology"@en;
-     rdfs:comment "An ontology for J.R.R. Tolkien's legendarium."@en;
+     rdfs:comment "An ontology for J.R.R. Tolkienʼs legendarium."@en;
      dct:title "The Middle-earth ontology"@en;
      dct:created "2023-11-19T07:42:42+01:00"^^xsd:dateTime;
      dct:creator az:me .
@@ -28,62 +28,64 @@ meo: a owl:Ontology;
 meo:God a owl:Class;
         owl:oneOf (meo:eru);
         rdfs:label "God"@en;
-        rdfs:comment "A singleton class that only contains Eru Iluvatar, the One Allfather."@en .
+        rdfs:comment "A sperior entity. A singleton class that only contains Eru Ilúvatar, the One Allfather."@en .
 
 meo:Immortal a owl:Class;
              owl:disjointWith meo:Mortal;
              rdfs:label "immortal"@en;
-             rdfs:comment "An individual that does not die of natural death."@en .
+             rdfs:comment "An individual that does not die of natural death. Some immortals may die from wounds inflicted to them by violence or accident (like Elves), but some are truly eternal, like the Ainur)."@en .
 
 meo:Mortal a owl:Class;
            owl:disjointWith meo:Immortal;
            rdfs:label "mortal"@en;
-           rdfs:comment "Mortal living being, such as Men and Dwarves."@en .
+           rdfs:comment "Mortal living being, such as Men and Dwarces."@en .
 
 meo:EvilBeing a owl:Class;
               rdfs:label "evil being"@en;
-              rdfs:comment "The evil beings are sentient agents that have chosen to do bad things."@en .
+              rdfs:comment "The evil beings are sentient agents that have chosen to do bad things, behave badly for the sake of doing bad, or became corrupted into doing evil. Some things are raised and bred to be evil. Some things are led to become evil by other evil beings by subversion. Some choose to become evil due to greed or as a way to overcome hardships of their lives."@en .
 
 meo:Ainu a owl:Class;
          rdfs:subClassOf meo:Immortal;
          rdfs:label "Ainu"@qya, "Holy one"@en;
-         rdfs:comment "The Ainur are the spirits created by Eru Iluvatar before time existed."@en .
+         rdfs:comment "The Ainur (plural form of Ainu) are the spirits created by Eru Ilúvatar before time existed"@en .
 
 meo:Vala a owl:Class;
          rdfs:subClassOf meo:Ainu;
          rdfs:label "Vala"@qya, "angelic power"@en;
-         rdfs:comment "The Valar are the most powerful Ainur who entered Arda."@en .
+         rdfs:comment "The Valar (plural form of Vala) are the most powerful Ainur who entered Arda, the world."@en .
 
 meo:Maia a owl:Class;
          rdfs:subClassOf meo:Ainu;
          rdfs:label "Maia"@qya, "Beautiful"@en;
-         rdfs:comment "The Maiar are Ainur who entered Arda and serve the Valar."@en .
+         rdfs:comment "The Maiar (plural form of Maia) are Ainur who entered Arda and serve the Valar."@en .
 
 meo:Eruhin a owl:Class;
-           rdfs:label "Eruhin"@qya, "Child of Iluvatar"@en;
+           rdfs:label "Eruhin"@qya, "Child of Ilúvatar"@en;
            skos:altLabel "Child of Eru"@en;
-           rdfs:comment "The Children of Eru: Elves and Men."@en .
+           rdfs:comment "The Eruhíni (plural form of Eruhin), literally “the Children of Eru”, are usually called the “Children of Ilúvatar”. They are the Elves and Men. “Children of Ilúvatar” is used to collectively refer to the two races of Men and Elves, and the singular form is rarely used."@en .
 
-meo:Quende a owl:Class;
+meo:Quendë a owl:Class;
            rdfs:subClassOf meo:Eruhin, meo:Immortal;
-           rdfs:label "Quende"@qya, "Elf"@en;
-           rdfs:comment "The Quendi are the first born of the Children of Iluvatar, the Elves."@en .
+           rdfs:label "Quendë"@qya, "Elf"@en;
+           skos:altLabel "one that speaks"@en, "Firstborn"@en, "Elda"@qya;
+           rdfs:comment "The Quendi (plural form of Quendë) are the first born of the Children of Ilúvatar, the Elves. They are named thus because they were the only ones who spoke when they first appeared, before Men and Dwarves came to be. They are more often called the Eldar."@en .
 
 meo:Elda a owl:Class;
-         owl:equivalentClass meo:Quende;
-         rdfs:label "Elda"@qya, "Elf"@en;
-         rdfs:comment "The Eldar are the Elves."@en .
+         owl:equivalentClass meo:Quendë;
+         rdfs:label "Elda"@qya, "Eledh"@sjn, "Elf"@en;
+         skos:altLabel "of the stars"@en, "person of the stars"@en, "Firstborn"@en;
+         rdfs:comment "The Eldar (plural form of Elda) are the Elves. They initially called themselves the Quendi, but the Vala Oromë, who met them at lake Cuiviénen under the stars, called them the Eldar. Now only the Quendi who followed Oromë to the West call themselves Eldar."@en .
 
 meo:Atan a owl:Class;
          rdfs:subClassOf meo:Eruhin, meo:Mortal;
-         rdfs:label "Atan"@qya, "Man"@en;
-         skos:altLabel "Secondborn"@en, "Human"@en;
-         rdfs:comment "The Atani are the second born of the Children of Iluvatar, the Men."@en .
+         rdfs:label "Atan"@qya, "Adan"@sjn, "Man"@en;
+         skos:altLabel "Secondborn"@en, "Hildo"@qya, "Follower"@en, "After-comer"@en, "Apanóna"@qya, "After-born"@en, "Engwa"@qya, "Sickly"@en, "Fírima"@qya, "Mortal"@en, "Human"@en; 
+         rdfs:comment "The Atani (plural form of Atan) are the second born of the Children of Ilúvatar, the Men (i.e. Humans, not male people). They were given many names also by the Eldar."@en .
 
 meo:Adan a owl:Class;
          rdfs:subClassOf meo:Atan;
          rdfs:label "Adan"@sjn, "Man"@en;
-         rdfs:comment "The Edain are the Men that belong to the Three Houses of Men that came to Beleriand."@en .
+         rdfs:comment "The Edain (plural form of Adan) are the Men that belong to the Three Houses of Men that came to Beleriand in the elder days. Originally, “Adan” (plural “Edain”) is the Sindarin equivalent of Quenya “Atan” (plural “Atani”) but eventually came to mean this narrow subgroup."@en .
 
 meo:Peredhel a owl:Class;
              rdfs:subClassOf meo:Eruhin, [
@@ -96,35 +98,38 @@ meo:Peredhel a owl:Class;
                 owl:someValuesFrom meo:Elda;
              ];
              rdfs:label "Peredhel"@sjn, "Half-elf"@en;
-             rdfs:comment "Peredhil are descendent of both elves and humans."@en .
-
+    	     rdfs:comment "Peredhil are descendent of both elves and humans."@en .
+    
 meo:Casar a owl:Class;
           rdfs:subClassOf meo:Mortal;
-          rdfs:label "Casar"@qya, "Dwarf"@en;
-          rdfs:comment "The Dwarves created by the Vala Aule."@en .
+          rdfs:label "Casar"@qya, "Naug"@sjn, "Dwarf"@en;
+          skos:altLabel "Aulëonna"@qya, "Child of Aulë"@en;
+          rdfs:comment "The Casari (plural form of Casar in Quenya), more often called with the Sindarin variant Naugrim (plural of Naug in Sindarin), are the Dwarves created by the Vala Aulë."@en .
 
 meo:Torog a owl:Class;
           rdfs:subClassOf meo:EvilBeing;
           rdfs:label "torog"@sjn, "troll"@en;
-          rdfs:comment "The Trolls, large humanoid monsters."@en .
+          rdfs:comment "The *Teryg (probably the plural form of Torog in Sindarin) are the Trolls, large humanoid monsters of great physical strength and weak intellect."@en .
 
-meo:Loce a owl:Class;
+meo:Lócë a owl:Class;
          rdfs:subClassOf meo:EvilBeing;
-         rdfs:label "Loce"@qya, "Dragon"@en;
+         rdfs:label "Lócë"@qya, "Dragon"@en;
          rdfs:comment "Evil and powerful monster."@en .
+
 
 #
 # Object properties
 #
 meo:served a owl:ObjectProperty;
            rdfs:label "serves"@en;
-           rdfs:comment "Relates someone to someone else that they serve."@en .
+           rdfs:comment "Relates someone to someone else that they serve. Relation servant-master."@en .
 
 #
 # Individuals
 #
 meo:eru a meo:God;
         rdfs:label "Eru"@qya, "The One"@en;
+        skos:altLabel "Ilúvatar"@qya, "Eru Ilúvatar"@qya, "God"@en, "The Allfather"@en;
         rdfs:comment "The one God creator of everything."@en .
 
 meo:melkor a meo:Vala;
@@ -134,7 +139,8 @@ meo:melkor a meo:Vala;
 meo:morgoth a meo:EvilBeing;
             owl:sameAs meo:melkor;
             rdfs:label "Morgoth"@sjn, "The Black Enemy"@en;
-            rdfs:comment "The only Vala who became evil."@en .
+            skos:altLabel "Bauglir"@sjn, "The Constrainer"@en;
+            rdfs:comment "The only Vala who became evil. The enemy of all other Valar."@en .
 
 #
 # Axioms
@@ -153,7 +159,7 @@ meo:morgoth a meo:EvilBeing;
     owl:allValuesFrom meo:Elda
 ] rdfs:subClassOf meo:Elda .
 
-# Those whose parents are all Men are also Men
+# Those whose parents are all Men (i.e., humans) are also Men (i.e., humans)
 [
     a owl:Restriction;
     owl:onProperty fo:isAChildOf;

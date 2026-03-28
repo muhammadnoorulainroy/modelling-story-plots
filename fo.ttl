@@ -26,12 +26,12 @@ fo: a owl:Ontology;
 #
 fo:Male a owl:Class;
         rdfs:label "male"@en;
-        rdfs:comment "A male individual."@en .
+        rdfs:comment "A male individual. The gender may be a 'natural' one, attributed at birth, or a given one by social conventions."@en .
 
 fo:Female a owl:Class;
           owl:disjointWith fo:Male;
           rdfs:label "female"@en;
-          rdfs:comment "A female individual."@en .
+          rdfs:comment "A female individual. The gender may be a 'natural' one, attributed at birth, or a given one by social conventions."@en .
 
 
 #
@@ -68,7 +68,7 @@ fo:isADaughterOf a owl:ObjectProperty;
                  rdfs:subPropertyOf fo:isAChildOf;
                  rdfs:domain fo:Female;
                  rdfs:label "is a daughter of"@en;
-                 rdfs:comment "A relation between a female child and her parent."@en .
+                 rdfs:comment "A relation between a female child and his parent."@en .
 
 fo:isTheFatherOf a owl:ObjectProperty;
                  rdfs:subPropertyOf fo:isAParentOf;
