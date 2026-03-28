@@ -379,6 +379,7 @@ evt:partOfEvent a owl:ObjectProperty, owl:TransitiveProperty ;
 # Every event should have a temporal extent.
 # Functional (at most 1) is declared on the property itself.
 # Here we say at least 1, together with Functional that gives exactly 1.
+# NOTE: under OWA, events with no stated interval are not inconsistent,
 # under OWA, events with no stated interval are not inconsistent.
 evt:Event rdfs:subClassOf [
     a owl:Restriction ;
@@ -472,9 +473,11 @@ evt:War rdfs:subClassOf
 # Cross-module inference chains
 #
 # These connect the event layer to the family and social layers.
+# These connect the event layer to the family and social layers.
 ###############################################################
 
-# From a Death event, infer who killed whom
+# From a Death event, infer who killed whom:
+# if Death D has killer X and deceased Y, then X killed Y.
 evt:killed a owl:ObjectProperty ;
     rdfs:label "killed"@en ;
     rdfs:comment "X killed Y. Inferred from Death events."@en .
@@ -484,25 +487,29 @@ evt:killed owl:propertyChainAxiom (
     evt:hasDeceased
 ) .
 
-# From a Marriage event, infer the marriage relation
+# From a Marriage event, infer the marriage relation:
+# if Marriage M has husband X and wife Y, then X isMarriedTo Y.
 fo:isMarriedTo owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasHusband ]
     evt:hasWife
 ) .
 
-# From a Birth event, infer the child-parent relation (father)
+# From a Birth event, infer the child-parent relation:
+# if Birth B has newborn X and father Y, then X isAChildOf Y.
 fo:isAChildOf owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasNewborn ]
     evt:hasFather
 ) .
 
-# From a Birth event, infer the child-parent relation (mother)
+# Same for mothers:
+# if Birth B has newborn X and mother Y, then X isAChildOf Y.
 fo:isAChildOf owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasNewborn ]
     evt:hasMother
 ) .
 
-# From a Residence event, infer where a character lived
+# From a Residence event, infer where a character lived:
+# if Residence R has resident X and location Y, then X livedIn Y.
 soc:livedIn owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasResident ]
     evt:hasLocation
@@ -541,7 +548,7 @@ evt:duringEvent a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:label "during event"@en ;
     rdfs:comment "Event E1 occurs entirely within the time span of event E2."@en .
 
-# Property chains: event temporal relations from interval-level Allen relations
+# Property chains: event temporal relations derived from interval-level Allen relations
 evt:beforeEvent owl:propertyChainAxiom (
     evt:hasTemporalExtent tm:beforeInterval evt:isTemporalExtentOf ) .
 
