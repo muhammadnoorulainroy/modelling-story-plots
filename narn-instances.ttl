@@ -57,7 +57,7 @@ narn:Thingol a meo:Elda, fo:Male ;
     rdfs:label "Thingol"@en ;
     rdfs:comment "Elu Thingol, King of Doriath. Foster-father of Túrin."@en .
 
-narn:Glaurung a meo:Loce ;
+narn:Glaurung a meo:Lócë ;
     rdfs:label "Glaurung"@en ;
     rdfs:comment "Glaurung, the Father of Dragons, a great worm of Morgoth."@en .
 
@@ -97,7 +97,17 @@ narn:Galdor a meo:Adan, fo:Male ;
         narn:Turin narn:Morwen narn:Hurin narn:Nienor narn:Thingol
         narn:Glaurung narn:Mablung narn:Beleg narn:Morgoth
         narn:Finduilas narn:Orodreth narn:Galdor
+        narn:HostOfTheWest narn:HostOfAngband
     ) .
+
+# Temporal instants (prevents timeline collapse)
+[] a owl:AllDifferent ;
+    owl:distinctMembers (
+        narn:t1 narn:t2 narn:t10 narn:t10b narn:t10c narn:t2b
+        narn:t3 narn:t3b narn:t4 narn:t4b narn:t4c narn:t5
+        narn:t6 narn:t7 narn:t7b narn:t8 narn:t9
+    ) .
+
 
 ###############################################################
 # FAMILY RELATIONS (fo:)
@@ -233,7 +243,8 @@ narn:regBrethil rcc:ntpp narn:regBeleriand .
 narn:regNargothrond rcc:ntpp narn:regBeleriand .
 narn:regTaurNuFuin rcc:ntpp narn:regBeleriand .
 narn:regTaurNuFuin rcc:dc narn:regDoriath .
-# Anfauglith is on the northern edge of Beleriand (tpp, not ntpp)
+# Anfauglith is on the northern EDGE of Beleriand (tpp, not ntpp —
+# its boundary touches Beleriand's boundary at the northern mountains)
 narn:regAnfauglith rcc:tpp narn:regBeleriand .
 # Disconnected pairs
 narn:regDorLomin rcc:dc narn:regDoriath .
@@ -251,10 +262,10 @@ narn:regAnfauglith rcc:ec narn:regAngband .
 
 narn:t1 a tm:Instant ; rdfs:label "t1"@en ; rdfs:comment "Húrin and Morwen's marriage."@en .
 narn:t2 a tm:Instant ; rdfs:label "t2"@en ; rdfs:comment "Túrin's birth."@en .
+narn:t2b a tm:Instant ; rdfs:label "t2b"@en ; rdfs:comment "Niënor's birth (after the Nirnaeth, during Hurin's captivity)."@en .
 narn:t10 a tm:Instant ; rdfs:label "t10"@en ; rdfs:comment "Start of the Nirnaeth Arnoediad."@en .
 narn:t10b a tm:Instant ; rdfs:label "t10b"@en ; rdfs:comment "End of the battle of Nirnaeth."@en .
 narn:t10c a tm:Instant ; rdfs:label "t10c"@en ; rdfs:comment "Morgoth taunts Húrin and pronounces the curse in Angband."@en .
-narn:t2b a tm:Instant ; rdfs:label "t2b"@en ; rdfs:comment "Niënor's birth (after the Nirnaeth, during Hurin's captivity)."@en .
 narn:t3 a tm:Instant ; rdfs:label "t3"@en ; rdfs:comment "Túrin arrives at Menegroth."@en .
 narn:t3b a tm:Instant ; rdfs:label "t3b"@en ; rdfs:comment "Túrin meets Beleg."@en .
 narn:t4 a tm:Instant ; rdfs:label "t4"@en ; rdfs:comment "Túrin leaves Menegroth."@en .
@@ -273,7 +284,7 @@ narn:t2 tm:occursBefore narn:t10 .
 narn:t10 tm:occursBefore narn:t10b .
 narn:t10b tm:occursBefore narn:t10c .
 narn:t10c tm:occursBefore narn:t2b .
-narn:t2b tm:occursBefore narn:t3 .
+narn:t10c tm:occursBefore narn:t3 .
 narn:t3 tm:occursBefore narn:t3b .
 narn:t3b tm:occursBefore narn:t4 .
 narn:t4 tm:occursBefore narn:t4b .
@@ -284,14 +295,6 @@ narn:t6 tm:occursBefore narn:t7 .
 narn:t7 tm:occursBefore narn:t7b .
 narn:t7b tm:occursBefore narn:t8 .
 narn:t8 tm:occursBefore narn:t9 .
-
-# Temporal instants (prevents timeline collapse)
-[] a owl:AllDifferent ;
-    owl:distinctMembers (
-        narn:t1 narn:t2 narn:t10 narn:t10b narn:t10c narn:t2b
-        narn:t3 narn:t3b narn:t4 narn:t4b narn:t4c narn:t5
-        narn:t6 narn:t7 narn:t7b narn:t8 narn:t9
-    ) .
 
 # Sample instant-within-interval facts
 narn:t10c tm:occursDuring narn:intCaptivityHurin .
@@ -373,10 +376,12 @@ narn:intSlayingGlaurung a tm:FiniteInterval ;
     rdfs:label "Slaying of Glaurung interval"@en ;
     rdfs:comment "Point event: Túrin stabs Glaurung."@en .
 
+# War of the Jewels spans the entire story and beyond
 narn:intWarOfJewels a tm:Interval, tm:InfiniteInterval ;
     rdfs:label "War of the Jewels interval"@en ;
     rdfs:comment "Spans centuries. Start and end are beyond the Narn's scope, so no startsAt/endsAt."@en .
 
+# Thingol's reign also spans beyond the Narn
 narn:intReignThingol a tm:Interval, tm:InfiniteInterval ;
     rdfs:label "Reign of Thingol interval"@en ;
     rdfs:comment "Thingol's reign spans millennia. Unbounded in this model."@en .
@@ -464,7 +469,7 @@ narn:nirnaeth a evt:Battle ;
     evt:hasTemporalExtent narn:intNirnaeth ;
     evt:hasVictor narn:HostOfAngband ;
     rdfs:label "Nirnaeth Arnoediad"@en ;
-    rdfs:comment "The Battle of Unnumbered Tears, the greatest defeat of Elves and Men."@en .
+    rdfs:comment "The Battle of Unnumbered Tears, the greatest defeat of Elves and Men. Húrin is modeled as a participant, while the victorious side is represented as the Host of Angband rather than Morgoth personally fighting on the battlefield."@en .
 
 # Morgoth's curse. This is both an event and an action.
 # Has evt:hasAgent, so it gets classified as act:Action too.
@@ -529,7 +534,7 @@ narn:journeyToNargothrond a evt:Journey ;
     evt:hasDestination narn:Nargothrond ;
     evt:hasTemporalExtent narn:intJourneyToNargothrond ;
     rdfs:label "Journey to Nargothrond"@en ;
-    rdfs:comment "After Beleg's death, Túrin is led south from Taur-nu-Fuin to Nargothrond."@en .
+    rdfs:comment "After Beleg's death in Taur-nu-Fuin, Túrin is led south to Nargothrond."@en .
 
 # Residence at Nargothrond
 narn:residenceNargothrond a evt:Residence ;
