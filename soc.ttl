@@ -83,6 +83,7 @@ soc:fosteredBy a owl:ObjectProperty ;
     rdfs:label "fostered by"@en ;
     rdfs:comment "Inverse of fostersChild."@en .
 
+###############################################################
 # Disjointness
 ###############################################################
 
@@ -92,9 +93,6 @@ soc:fosteredBy a owl:ObjectProperty ;
 
 # Friends are also allies (friendship implies alliance)
 soc:friendOf rdfs:subPropertyOf soc:allyOf .
-
-soc:friendOf owl:propertyDisjointWith soc:enemyOf .
-soc:allyOf owl:propertyDisjointWith soc:enemyOf .
 
 # Fostering is a social relation too
 soc:fostersChild rdfs:subPropertyOf soc:sociallyRelatedTo .

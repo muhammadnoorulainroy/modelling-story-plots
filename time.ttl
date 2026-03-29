@@ -65,7 +65,7 @@ tm:FiniteInterval a owl:Class ;
         owl:intersectionOf ( tm:StartingInterval tm:EndingInterval )
     ] ;
     rdfs:label "Finite interval"@en ;
-    rdfs:comment "An interval with both start and end. Defined as StartingInterval and EndingInterval."@en .
+    rdfs:comment "An interval with both start and end. Defined as StartingInterval ⊓ EndingInterval."@en .
 
 tm:InfiniteInterval a owl:Class ;
     rdfs:subClassOf tm:Interval ;
@@ -109,7 +109,7 @@ tm:occursSimultaneouslyWith a owl:ObjectProperty, owl:SymmetricProperty ;
     rdfs:domain tm:Instant ;
     rdfs:range tm:Instant ;
     rdfs:label "occurs simultaneously with"@en ;
-    rdfs:comment "Two instants at the same point in time."@en .
+    rdfs:comment "Two distinct instants at the same point in time. Used when different IRIs represent the same moment."@en .
 
 tm:occursDuring a owl:ObjectProperty ;
     rdfs:domain tm:Instant ;
@@ -215,7 +215,6 @@ tm:intervalEquals a owl:ObjectProperty, owl:SymmetricProperty, owl:TransitivePro
 ###############################################################
 # Pairwise disjointness (simple relations only)
 ###############################################################
-
 tm:startsInterval owl:propertyDisjointWith
     tm:startedByInterval, tm:finishesInterval, tm:finishedByInterval .
 
@@ -235,8 +234,10 @@ tm:beforeInterval owl:propertyChainAxiom (
     [ owl:inverseOf tm:startsAt ]
 ) .
 
-# If end of I1 is the same instant as start of I2, then I1 meets I2
-tm:meetsInterval owl:propertyChainAxiom (
-    tm:endsAt
-    [ owl:inverseOf tm:startsAt ]
-) .
+# The meetsInterval chain (endsAt . startsAt^-1) is intentionally not
+# declared. It over-generates: for point events where start = end, the
+# chain infers that every point event meets itself, and that two
+# simultaneous point events meet each other (conflicting with equals).
+# Allen's meets requires strict inequality conditions that cannot be
+# expressed in a 2-property OWL chain. All meets relations are asserted
+# directly in the instance data instead.
