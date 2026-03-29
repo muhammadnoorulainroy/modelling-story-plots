@@ -1,6 +1,10 @@
 #
 # Action Ontology
 #
+# Actions are events with a deliberate agent. Not every event has an agent
+# (e.g. an earthquake just happens), but when Túrin slays Glaurung, that's
+# an action because he chose to do it.
+#
 # Action is defined using equivalentClass. Any event with an agent
 # gets classified as an action.
 #
@@ -15,7 +19,7 @@
 @prefix act:  <https://example.org/story/action#> .
 
 act: a owl:Ontology ;
-    owl:imports evt: ;
+    owl:imports <event.ttl>, <place.ttl> ;
     rdfs:label "Action Ontology"@en ;
     dct:title "Action Ontology"@en ;
     rdfs:comment "Actions as a subclass of events, defined by having an intentional agent."@en ;
@@ -37,7 +41,7 @@ act:Action a owl:Class ;
         )
     ] ;
     rdfs:label "Action"@en ;
-    rdfs:comment "An event with a deliberate agent. Any event that has an agent gets classified as an action."@en .
+    rdfs:comment "An event with a deliberate agent. Defined as Action ≡ Event ⊓ ∃evt:hasAgent.⊤, so any event that has an agent gets classified as an action automatically."@en .
 
 ###############################################################
 # Action types
@@ -87,7 +91,7 @@ act:SpeechAction a owl:Class ;
 act:CurseAction a owl:Class ;
     rdfs:subClassOf act:SpeechAction ;
     rdfs:label "Curse action"@en ;
-    rdfs:comment "Placing a curse on someone."@en .
+    rdfs:comment "Placing a curse on someone. In the Narn, Morgoth curses the children of Húrin."@en .
 
 act:CurseAction rdfs:subClassOf
     [ a owl:Restriction ;
@@ -100,6 +104,8 @@ act:CurseAction rdfs:subClassOf
 
 act:hasAgent a owl:ObjectProperty ;
     rdfs:subPropertyOf evt:hasAgent ;
+    # No domain here, inherited from evt:hasAgent. Using this property
+    # will trigger the equivalentClass and classify the individual as Action.
     rdfs:label "has agent"@en ;
     rdfs:comment "Who deliberately performs the action. Sub-property of evt:hasAgent."@en .
 

@@ -37,7 +37,7 @@ plot:Contributor a owl:Class ;
 
 plot:NarrativeWork a owl:Class ;
     rdfs:label "Narrative work"@en ;
-    rdfs:comment "A real-world book, manuscript, or film script with authorship and publication metadata."@en .
+    rdfs:comment "A real-world book, manuscript, or film script with authorship, editorial, and publication metadata."@en .
 
 plot:Author a owl:Class ;
     rdfs:subClassOf plot:Contributor ;
