@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Story Plot Ontology — Documentation</title>
+    <title>Story Plot Ontology: Documentation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&family=Source+Code+Pro:wght@400&display=swap');
         :root {
@@ -149,9 +149,10 @@
             </ul>
         </li>
         <li>3. <a href="#instances">Instance File (narn-instances.ttl)</a></li>
-        <li>4. <a href="#cq">Competency Questions</a></li>
-        <li>5. <a href="#axioms">Notable Axioms</a></li>
-        <li>6. <a href="#ai">AI Tool Usage</a></li>
+        <li>4. <a href="#examples">Usage Examples</a></li>
+        <li>5. <a href="#cq">Competency Questions</a></li>
+        <li>6. <a href="#axioms">Notable Axioms</a></li>
+        <li>7. <a href="#ai">AI Tool Usage</a></li>
     </ul>
 </div>
 
@@ -180,13 +181,13 @@
 </div>
 <p>This ontology defines the races and peoples of Tolkien's legendarium: Ainur (Valar, Maiar), Eruhin (Elves/Quendi, Men/Atani), Dwarves (Casari/Naugrim), Trolls, Dragons (Lócë), and evil beings. It also contains rich axioms such as:</p>
 <div class="axiom">
-    <strong>Axiom:</strong> "Whoever serves Morgoth is evil" — expressed as <code>[owl:Restriction on meo:served, owl:hasValue meo:morgoth] rdfs:subClassOf meo:EvilBeing</code>.
+    <strong>Axiom:</strong> "Whoever serves Morgoth is evil", expressed as <code>[owl:Restriction on meo:served, owl:hasValue meo:morgoth] rdfs:subClassOf meo:EvilBeing</code>.
 </div>
 <div class="axiom">
-    <strong>Axiom:</strong> "Those whose parents are all Elves are also Elves" — using <code>owl:allValuesFrom</code> on <code>fo:isAChildOf</code>.
+    <strong>Axiom:</strong> "Those whose parents are all Elves are also Elves". using <code>owl:allValuesFrom</code> on <code>fo:isAChildOf</code>.
 </div>
 <div class="axiom">
-    <strong>Axiom:</strong> "Those with an Elvish parent and a Human parent are Half-elven (Peredhel)" — using <code>owl:intersectionOf</code> with two <code>someValuesFrom</code> restrictions.
+    <strong>Axiom:</strong> "Those with an Elvish parent and a Human parent are Half-elven (Peredhel)". using <code>owl:intersectionOf</code> with two <code>someValuesFrom</code> restrictions.
 </div>
 
 <h4>Classes</h4>
@@ -260,10 +261,10 @@
     <tr><td><code>soc:livedIn</code></td><td>lived in</td><td>Connects character to place (range: loc:Place)</td></tr>
 </table>
 <div class="axiom">
-    <strong>Axiom (property chain):</strong> <code>soc:serves ∘ soc:enemyOf ⊑ soc:enemyOf</code> — "the servant of my enemy is my enemy." If A serves B, and B is an enemy of C, then A is an enemy of C. This enables the reasoner to infer that Glaurung (who serves Morgoth) is an enemy of anyone Morgoth is an enemy of.
+    <strong>Axiom (property chain):</strong> <code>soc:serves ∘ soc:enemyOf ⊑ soc:enemyOf</code>. "the servant of my enemy is my enemy." If A serves B, and B is an enemy of C, then A is an enemy of C. This enables the reasoner to infer that Glaurung (who serves Morgoth) is an enemy of anyone Morgoth is an enemy of.
 </div>
 <div class="axiom">
-    <strong>Axiom (subproperty):</strong> <code>soc:friendOf rdfs:subPropertyOf soc:allyOf</code> — friendship entails alliance.
+    <strong>Axiom (subproperty):</strong> <code>soc:friendOf rdfs:subPropertyOf soc:allyOf</code>. Friendship entails alliance.
 </div>
 
 <h3 id="mod-place">2.5 Place Ontology (<code>place.ttl</code>)</h3>
@@ -296,16 +297,16 @@ Place
 </pre>
 <p>Properties: <code>loc:partOf</code> (transitive; kept DL-safe without explicit asymmetry/irreflexivity), <code>loc:interiorPartOf</code> and <code>loc:tangentialPartOf</code> (specialised sub-properties of <code>loc:partOf</code> used to bridge place mereology to RCC8), <code>loc:adjacentTo</code> (symmetric, irreflexive), <code>loc:occupiesRegion</code> (functional, links to <code>rcc:Region</code>), <code>loc:hasPopulation</code> (on settlements only), <code>loc:isCapitalOf</code> (functional &amp; inverse-functional, links Settlement → Realm).</p>
 <div class="axiom">
-    <strong>Axiom:</strong> <code>loc:isCapitalOf rdfs:subPropertyOf loc:partOf</code> — a capital is necessarily a part of its realm.
+    <strong>Axiom:</strong> <code>loc:isCapitalOf rdfs:subPropertyOf loc:partOf</code>. A capital is necessarily a part of its realm.
 </div>
 <div class="axiom">
-    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:interiorPartOf ∘ loc:occupiesRegion ⊑ rcc:ntpp</code> — if place P1 is an interior part of place P2, then the region of P1 is an ntpp of the region of P2. This formally connects Place-level mereology to RCC8 without collapsing tangential containment into non-tangential containment.
+    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:interiorPartOf ∘ loc:occupiesRegion ⊑ rcc:ntpp</code>. If place P1 is an interior part of place P2, then the region of P1 is an ntpp of the region of P2. This formally connects Place-level mereology to RCC8 without collapsing tangential containment into non-tangential containment.
 </div>
 <div class="axiom">
-    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:tangentialPartOf ∘ loc:occupiesRegion ⊑ rcc:tpp</code> — tangential containment is tracked separately so border-touching places do not infer non-tangential proper-part relations.
+    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:tangentialPartOf ∘ loc:occupiesRegion ⊑ rcc:tpp</code>. Tangential containment is tracked separately so border-touching places do not infer non-tangential proper-part relations.
 </div>
 <div class="axiom">
-    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:adjacentTo ∘ loc:occupiesRegion ⊑ rcc:ec</code> — if two places are adjacent, their regions are externally connected.
+    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:adjacentTo ∘ loc:occupiesRegion ⊑ rcc:ec</code>. If two places are adjacent, their regions are externally connected.
 </div>
 
 <h3 id="mod-time">2.6 Time Ontology (<code>time.ttl</code>)</h3>
@@ -347,7 +348,7 @@ Place
 <div class="axiom">
     <code>act:Action ≡ evt:Event ⊓ ∃evt:hasAgent.⊤</code>
 </div>
-<p>This uses the general <code>evt:hasAgent</code> property (not <code>act:hasAgent</code>) so that <strong>any event asserting an agent</strong> — whether via <code>evt:hasAgent</code> directly or any sub-property — is automatically classified as an Action by a DL reasoner. <code>act:UseItemAction</code> is also defined by equivalence (<code>Action and exists usesItem.Item</code>), while <code>AttackAction</code>, <code>MoveAction</code>, <code>SpeechAction</code>, and <code>CurseAction</code> remain specialised subclasses. <code>AttackAction</code> is intentionally not defined purely by <code>hasPatient</code>, because that would wrongly classify non-violent actions such as curses as attacks.</p>
+<p>This uses the general <code>evt:hasAgent</code> property (not <code>act:hasAgent</code>) so that <strong>any event asserting an agent</strong>, whether via <code>evt:hasAgent</code> directly or any sub-property, is automatically classified as an Action by a DL reasoner. <code>act:UseItemAction</code> is also defined by equivalence (<code>Action and exists usesItem.Item</code>), while <code>AttackAction</code>, <code>MoveAction</code>, <code>SpeechAction</code>, and <code>CurseAction</code> remain specialised subclasses. <code>AttackAction</code> is intentionally not defined purely by <code>hasPatient</code>, because that would wrongly classify non-violent actions such as curses as attacks.</p>
 <p>Actions differ from mere events in having: (1) an intentional agent, (2) observable consequences (<code>act:resultsIn</code>).</p>
 
 <h3 id="mod-plot">2.9 Plot Structure (<code>plot.ttl</code>)</h3>
@@ -369,7 +370,7 @@ Place
 <p>The instance file demonstrates all modules using concrete data from the Narn. It includes:</p>
 <ul>
     <li><strong>12 characters</strong> typed using <code>meo:</code> classes (Túrin, Morwen, Húrin, Niënor, Galdor, Thingol, Glaurung, Mablung, Beleg, Morgoth, Finduilas, Orodreth)</li>
-    <li><strong>Family relations</strong> using <code>fo:</code> (marriages, parent-child, siblings — 3 generations: Galdor → Húrin → Túrin)</li>
+    <li><strong>Family relations</strong> using <code>fo:</code> (marriages, parent-child, siblings. 3 generations: Galdor, Húrin, Túrin)</li>
     <li><strong>Social relations</strong> using <code>soc:</code> (alliances, enmities, fostering, service, plus <code>soc:enemyOf</code> between Morgoth and Thingol to trigger the servant-of-my-enemy chain)</li>
     <li><strong>10 places</strong> with specialised containment, capital relation, and <code>adjacentTo</code> (Beleriand → Doriath → Menegroth → Throne Room via <code>loc:interiorPartOf</code>; Menegroth <code>loc:isCapitalOf</code> Doriath; Anfauglith <code>loc:tangentialPartOf</code> Beleriand; Anfauglith adjacentTo Angband)</li>
     <li><strong>10 spatial regions</strong> with RCC8 relations (ntpp, tpp, dc, ec)</li>
@@ -380,14 +381,14 @@ Place
     <li><strong>Plot structure</strong> with real-world book, 1 author, 1 editor, 1 publisher, 4 story sections, 9 plot events</li>
 </ul>
 
-<h3>Example: Answering CQ7 — "What event ends story S?"</h3>
+<h3>Example: Answering CQ7: "What event ends story S?"</h3>
 <pre>
 narn:NarnStory plot:endsWith narn:pe8 .
 narn:pe8 plot:describesEvent narn:deathTurin .
 → The event that ends the Narn is the death of Túrin.
 </pre>
 
-<h3>Example: Answering CQ4 — "Did event E1 happen before E2?"</h3>
+<h3>Example: Answering CQ4: "Did event E1 happen before E2?"</h3>
 <pre>
 narn:marriageHurinMorwen evt:hasTemporalExtent narn:intMarriage .
 narn:intMarriage tm:beforeInterval narn:intBirthTurin .       (asserted)
@@ -396,7 +397,123 @@ narn:birthTurin evt:hasTemporalExtent narn:intBirthTurin .
   narn:marriageHurinMorwen evt:beforeEvent narn:birthTurin .  (inferred)
 </pre>
 
-<h2 id="cq">4. Competency Questions</h2>
+<h2 id="examples">4. Usage Examples</h2>
+
+<p>The following examples show how the key terms are used in the instance data.</p>
+
+<h3>Characters and family</h3>
+<pre>
+narn:Turin a meo:Adan, fo:Male ;
+    rdfs:label "Túrin"@en .
+
+narn:Hurin fo:isTheFatherOf narn:Turin, narn:Nienor .
+narn:Morwen fo:isTheMotherOf narn:Turin, narn:Nienor .
+narn:Turin fo:isASiblingOf narn:Nienor .
+narn:Galdor fo:isTheFatherOf narn:Hurin .
+# Reasoner infers: Turin fo:isADescendentOf Galdor (3-generation transitivity)
+</pre>
+
+<h3>Social relations</h3>
+<pre>
+narn:Beleg soc:friendOf narn:Turin .
+# Inferred: narn:Beleg soc:allyOf narn:Turin  (friendOf subPropertyOf allyOf)
+
+narn:Glaurung soc:serves narn:Morgoth .
+narn:Morgoth soc:enemyOf narn:Thingol .
+# Inferred: narn:Glaurung soc:enemyOf narn:Thingol  (property chain)
+</pre>
+
+<h3>Places and RCC8 spatial relations</h3>
+<pre>
+narn:Menegroth a loc:Fortress ;
+    loc:interiorPartOf narn:Doriath ;
+    loc:isCapitalOf narn:Doriath .
+# Inferred: narn:Menegroth loc:partOf narn:Doriath  (subPropertyOf)
+# Inferred: narn:Doriath loc:hasCapital narn:Menegroth  (inverseOf)
+
+narn:Menegroth loc:occupiesRegion narn:regMenegroth .
+narn:Doriath loc:occupiesRegion narn:regDoriath .
+# Inferred via bridge chain: narn:regMenegroth rcc:ntpp narn:regDoriath
+
+narn:AnfauglithPlain loc:adjacentTo narn:Angband .
+# Inferred via bridge chain: narn:regAnfauglith rcc:ec narn:regAngband
+</pre>
+
+<h3>Time and Allen relations</h3>
+<pre>
+narn:t1 a tm:Instant ; rdfs:comment "Marriage." .
+narn:t2 a tm:Instant ; rdfs:comment "Túrin's birth." .
+narn:t1 tm:occursBefore narn:t2 .
+
+narn:intMarriage a tm:FiniteInterval ;
+    tm:startsAt narn:t1 ; tm:endsAt narn:t1 .
+narn:intBirthTurin a tm:FiniteInterval ;
+    tm:startsAt narn:t2 ; tm:endsAt narn:t2 .
+narn:intMarriage tm:beforeInterval narn:intBirthTurin .
+
+narn:intCaptivityHurin tm:containsInterval narn:intResidenceMenegroth .
+narn:intDeathTurin tm:finishesInterval narn:intCaptivityHurin .
+</pre>
+
+<h3>Events with differentiated roles</h3>
+<pre>
+narn:marriageHurinMorwen a evt:Marriage ;
+    evt:hasHusband narn:Hurin ;
+    evt:hasWife narn:Morwen ;
+    evt:hasLocation narn:DorLomin ;
+    evt:hasTemporalExtent narn:intMarriage .
+# Inferred: narn:Hurin fo:isMarriedTo narn:Morwen  (property chain)
+# Inferred: narn:Hurin a fo:Male  (range of hasHusband)
+
+narn:birthTurin a evt:Birth ;
+    evt:hasNewborn narn:Turin ;
+    evt:hasFather narn:Hurin ;
+    evt:hasMother narn:Morwen .
+# Inferred: narn:Turin fo:isAChildOf narn:Hurin  (property chain)
+# Inferred: narn:Turin fo:isAChildOf narn:Morwen  (property chain)
+
+narn:deathBeleg a evt:Death ;
+    evt:hasDeceased narn:Beleg ;
+    evt:hasKiller narn:Turin .
+# Inferred: narn:Turin evt:killed narn:Beleg  (property chain)
+</pre>
+
+<h3>Actions (auto-classified from events)</h3>
+<pre>
+narn:curseOfMorgoth a act:CurseAction ;
+    act:hasAgent narn:Morgoth ;
+    act:hasPatient narn:Hurin ;
+    act:resultsIn narn:captivityHurin .
+# Inferred: narn:curseOfMorgoth a act:Action  (equivalentClass)
+
+narn:slayingGlaurung a act:AttackAction ;
+    act:hasAgent narn:Turin ;
+    evt:usesItem narn:Gurthang .
+# Inferred: narn:slayingGlaurung a act:UseItemAction  (equivalentClass)
+</pre>
+
+<h3>Plot structure (dual reality)</h3>
+<pre>
+# Real world
+narn:NarnBook a plot:NarrativeWork ;
+    plot:hasAuthor narn:Tolkien ;
+    plot:hasEditor narn:ChristopherTolkien ;
+    plot:hasPublisher narn:HarperCollins ;
+    plot:narrates narn:NarnStory .
+
+# Fictional world
+narn:NarnStory a plot:Story ;
+    plot:hasSection narn:Prologue1, narn:Chapter1, narn:Chapter2, narn:Epilogue1 ;
+    plot:startsWith narn:pe1 ;
+    plot:endsWith narn:pe8 .
+
+narn:pe1 a plot:PlotEvent ;
+    plot:describesEvent narn:nirnaeth .
+narn:pe1 plot:nextPlotEvent narn:pe1b .
+# Inferred: narn:Prologue1 plot:nextSection narn:Chapter1  (property chain)
+</pre>
+
+<h2 id="cq">5. Competency Questions</h2>
 
 <p>The ontology supports the following competency questions:</p>
 
@@ -439,7 +556,7 @@ narn:birthTurin evt:hasTemporalExtent narn:intBirthTurin .
 <div class="cq"><strong>CQ13 (custom):</strong> Who contributes to the narrative work in the real-world layer?<br>
 → Via <code>plot:hasAuthor</code>, <code>plot:hasEditor</code>, and <code>plot:hasPublisher</code> on a NarrativeWork.</div>
 
-<h2 id="axioms">5. Notable Axioms</h2>
+<h2 id="axioms">6. Notable Axioms</h2>
 
 <p>The goal was a small ontology with rich and complex axioms rather than broad but shallow coverage. Here are the most significant axioms across all modules:</p>
 
@@ -481,7 +598,7 @@ narn:birthTurin evt:hasTemporalExtent narn:intBirthTurin .
     <tr><td>event/place/plot</td><td>Disjointness via AllDisjointClasses (not pairwise)</td><td>owl:AllDisjointClasses</td></tr>
 </table>
 
-<h2 id="ai">6. AI Tool Usage</h2>
+<h2 id="ai">7. AI Tool Usage</h2>
 
 <p>AI assistants (Claude, by Anthropic, and Codex) were used as discussion and review partners at different stages of the project. This section documents what was tried, what was rejected, and what design decisions came out of it.</p>
 
@@ -504,10 +621,10 @@ narn:birthTurin evt:hasTemporalExtent narn:intBirthTurin .
 </ol>
 
 <h4>The refined exchange</h4>
-<p>After pushing back, the chatbot was asked: <em>"If actions are a subclass of events, what is the minimal differentia? What OWL construct best captures it?"</em> The chatbot then suggested using <code>owl:equivalentClass</code> with an intersection: <code>Action ≡ Event ⊓ ∃hasAgent.⊤</code>. This was a significant improvement — it means any event with an agent is <em>automatically</em> classified as an action by a DL reasoner, without manual tagging. The chatbot also referenced Donald Davidson's 1963 essay <em>"Actions, Reasons, and Causes"</em> and the BDI (Belief-Desire-Intention) model from AI agent theory as philosophical grounding for the intentionality criterion.</p>
+<p>After pushing back, the chatbot was asked: <em>"If actions are a subclass of events, what is the minimal differentia? What OWL construct best captures it?"</em> The chatbot then suggested using <code>owl:equivalentClass</code> with an intersection: <code>Action ≡ Event ⊓ ∃hasAgent.⊤</code>. This was a significant improvement. It means any event with an agent is <em>automatically</em> classified as an action by a DL reasoner, without manual tagging. The chatbot also referenced Donald Davidson's 1963 essay <em>"Actions, Reasons, and Causes"</em> and the BDI (Belief-Desire-Intention) model from AI agent theory as philosophical grounding for the intentionality criterion.</p>
 
 <h4>What was adopted and what was modified</h4>
-<p>The <code>equivalentClass</code> pattern was adopted directly — it is elegant and leverages OWL 2 DL classification. However, the chatbot also suggested adding a <code>hasIntention</code> property (pointing to a <code>MentalState</code> class) to model the BDI aspect. This was <strong>rejected as over-engineering</strong>: modelling mental states would require a full philosophy-of-mind ontology that is far beyond the scope of story plot modelling. Instead, the simpler <code>act:hasPurpose</code> (a datatype property with a textual description) was used as a pragmatic alternative. The chatbot's suggestion of <code>act:resultsIn</code> as the second differentia of actions (actions have observable consequences) was adopted.</p>
+<p>The <code>equivalentClass</code> pattern was adopted directly. It is elegant and leverages OWL 2 DL classification. However, the chatbot also suggested adding a <code>hasIntention</code> property (pointing to a <code>MentalState</code> class) to model the BDI aspect. This was <strong>rejected as over-engineering</strong>: modelling mental states would require a full philosophy-of-mind ontology that is far beyond the scope of story plot modelling. Instead, the simpler <code>act:hasPurpose</code> (a datatype property with a textual description) was used as a pragmatic alternative. The chatbot's suggestion of <code>act:resultsIn</code> as the second differentia of actions (actions have observable consequences) was adopted.</p>
 
 <h3>6.2 Plot structure and dual reality</h3>
 
@@ -542,11 +659,11 @@ narn:birthTurin evt:hasTemporalExtent narn:intBirthTurin .
 <table>
     <tr><th>Topic</th><th>AI suggestion</th><th>What I did</th></tr>
     <tr><td>OWL 2 DL consistency review</td><td>Codex challenged axioms and documentation against parser and HermiT behaviour</td><td>Used as a critical reviewer; changes were kept only after source-level checks passed</td></tr>
-    <tr><td>Action ≡ Event ⊓ ∃hasAgent</td><td>Proposed equivalentClass pattern after initial flat taxonomy was rejected</td><td>Adopted — clean and leverages DL classification</td></tr>
+    <tr><td>Action ≡ Event ⊓ ∃hasAgent</td><td>Proposed equivalentClass pattern after initial flat taxonomy was rejected</td><td>Adopted, clean and leverages DL classification</td></tr>
     <tr><td>hasIntention / MentalState</td><td>Suggested BDI-inspired intention modelling</td><td>Rejected as over-engineering; replaced with hasPurpose (datatype)</td></tr>
-    <tr><td>resultsIn property</td><td>Suggested consequence modelling for actions</td><td>Adopted — key differentia of actions vs passive events</td></tr>
-    <tr><td>Named graphs for dual reality</td><td>Proposed RDF Dataset approach</td><td>Rejected — not OWL 2 DL; used class-based separation instead</td></tr>
-    <tr><td>Bridge properties</td><td>Confirmed as standard pattern in narrative ontologies</td><td>Adopted — narrates + describesEvent</td></tr>
+    <tr><td>resultsIn property</td><td>Suggested consequence modelling for actions</td><td>Adopted, key differentia of actions vs passive events</td></tr>
+    <tr><td>Named graphs for dual reality</td><td>Proposed RDF Dataset approach</td><td>Rejected, not OWL 2 DL; used class-based separation instead</td></tr>
+    <tr><td>Bridge properties</td><td>Confirmed as standard pattern in narrative ontologies</td><td>Adopted, narrates + describesEvent</td></tr>
     <tr><td>Property chain validity</td><td>Confirmed OWL 2 supports n-hop chains</td><td>Verified against W3C spec; adopted</td></tr>
 </table>
 
