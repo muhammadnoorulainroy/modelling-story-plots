@@ -1,10 +1,6 @@
 widoco-docs/
-docs/
 widoco-1.4.25-jar-with-dependencies_JDK-17.jar
 catalog-v001.xml
-*.owl
-*.nt
-*.jsonld
 __pycache__/
 *.pyc
 .DS_Store

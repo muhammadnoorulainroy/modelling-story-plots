@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Plot Ontology — Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&family=Source+Code+Pro:wght@400&display=swap');
+        :root {
+            --bg: #fdfbf7;
+            --text: #2b2b2b;
+            --accent: #8b4513;
+            --accent-light: #d2a87a;
+            --border: #c8bfb0;
+            --code-bg: #f0ece5;
+            --section-bg: #f7f3ec;
+            --link: #6b3a1f;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.4em;
+            font-weight: 600;
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.7em;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 40px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+        h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 28px;
+            margin-bottom: 8px;
+        }
+        h4 {
+            font-size: 1.05em;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 6px;
+        }
+        p { margin-bottom: 12px; }
+        a { color: var(--link); }
+        code {
+            font-family: 'Source Code Pro', monospace;
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.92em;
+        }
+        pre {
+            font-family: 'Source Code Pro', monospace;
+            background: var(--code-bg);
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin: 12px 0 18px 0;
+            border-left: 4px solid var(--accent-light);
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 14px 0 20px 0;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        th { background: var(--section-bg); font-weight: 600; }
+        ul, ol { margin: 8px 0 14px 24px; }
+        li { margin-bottom: 4px; }
+        .module-box {
+            background: var(--section-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 14px 0;
+        }
+        .axiom {
+            background: #fdf5e6;
+            border-left: 4px solid var(--accent);
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        .cq {
+            background: #eef6ee;
+            border-left: 4px solid #4a7c4a;
+            padding: 10px 16px;
+            margin: 8px 0;
+        }
+        .meta { color: #777; font-size: 0.9em; margin-bottom: 30px; }
+        .toc { background: var(--section-bg); padding: 20px 24px; border-radius: 6px; margin: 20px 0 30px 0; }
+        .toc ul { list-style: none; margin: 0; padding: 0; }
+        .toc li { margin: 4px 0; }
+        .toc a { text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        .subtitle { font-family: 'Crimson Pro', serif; font-size: 1.1em; font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+
+<h1>Story Plot Ontology</h1>
+<p class="subtitle">A Modular OWL Ontology for Representing Story Plots, Characters, Events, Places, and Narrative Structure</p>
+<p class="meta">
+    Course: Knowledge Representation and Reasoning (CPS2 Master) · Instructor: Antoine Zimmermann<br>
+    Date: April 2026 · Use case: <em>Narn i Chîn Húrin</em> (J.R.R. Tolkien)
+</p>
+
+<div class="toc">
+    <strong>Table of Contents</strong>
+    <ul>
+        <li>1. <a href="#overview">Overview and Design Principles</a></li>
+        <li>2. <a href="#modules">Ontology Modules</a>
+            <ul>
+                <li>2.1 <a href="#mod-meo">Middle-earth Ontology (meo.ttl)</a></li>
+                <li>2.2 <a href="#mod-fo">Family Ontology (fo.ttl)</a></li>
+                <li>2.3 <a href="#mod-rcc">Region Connection Calculus (rcc.ttl)</a></li>
+                <li>2.4 <a href="#mod-soc">Social Relations (soc.ttl)</a></li>
+                <li>2.5 <a href="#mod-place">Place Ontology (place.ttl)</a></li>
+                <li>2.6 <a href="#mod-time">Time Ontology (time.ttl)</a></li>
+                <li>2.7 <a href="#mod-event">Event Ontology (event.ttl)</a></li>
+                <li>2.8 <a href="#mod-action">Action Ontology (action.ttl)</a></li>
+                <li>2.9 <a href="#mod-plot">Plot Structure (plot.ttl)</a></li>
+            </ul>
+        </li>
+        <li>3. <a href="#instances">Instance File (narn-instances.ttl)</a></li>
+        <li>4. <a href="#cq">Competency Questions</a></li>
+        <li>5. <a href="#axioms">Notable Axioms</a></li>
+        <li>6. <a href="#ai">AI Tool Usage</a></li>
+    </ul>
+</div>
+
+<h2 id="overview">1. Overview and Design Principles</h2>
+
+<p>This ontology provides a formal knowledge model for describing story plots. It is designed around the <em>Narn i Chîn Húrin</em> (Tale of the Children of Húrin) by J.R.R. Tolkien but is general enough to apply to any fictional or historical narrative.</p>
+
+<p>The design follows the <strong>separation of concerns</strong> principle: each aspect of the domain is modelled in a separate Turtle file (module). The modules are connected through <code>owl:imports</code> declarations and shared namespaces.</p>
+
+<h3>Key design decisions</h3>
+<ul>
+    <li><strong>Starting from existing ontologies:</strong> Three ontologies were given as starting points: <code>meo.ttl</code> (Middle-earth), <code>fo.ttl</code> (family relations), and <code>rcc.ttl</code> (RCC8 base). They are used as the starting point of the project, with minimal repairs where necessary to correct broken or disconnected axioms. On top of them, <code>rcc.ttl</code> was enriched with full axioms, and the social, place, time, event, action, and plot modules were created from scratch.</li>
+    <li><strong>Place vs. Region separation:</strong> A <em>Place</em> is a meaningful named location (Menegroth, Brethil); a <em>Region</em> is its abstract spatial extent. Places are linked to regions via <code>loc:occupiesRegion</code>, enabling RCC8 reasoning on the spatial properties of places.</li>
+    <li><strong>Event vs. PlotEvent:</strong> An <em>Event</em> is something that happens in the fictional world (a battle, a birth). A <em>PlotEvent</em> is a narrative element that describes an event from the story-telling perspective. This cleanly separates the in-world layer from the literary layer.</li>
+    <li><strong>Dual reality:</strong> The plot module distinguishes the real world (authors, publication dates) from the fictional world (characters, in-world events). A <em>NarrativeWork</em> belongs to the real world; a <em>Story</em> belongs to the fictional world.</li>
+    <li><strong>Rich axioms over broad coverage:</strong> The focus is on a moderate number of terms enriched with complex OWL axioms (cardinality restrictions, property chains, equivalence definitions, property disjointness) rather than a very large flat vocabulary.</li>
+</ul>
+
+<h2 id="modules">2. Ontology Modules</h2>
+
+<h3 id="mod-meo">2.1 Middle-earth Ontology (<code>meo.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>http://purl.org/meo/</code><br>
+    <strong>Source:</strong> Course material (Antoine Zimmermann)<br>
+    <strong>Status:</strong> Included with minimal repairs
+</div>
+<p>This ontology defines the races and peoples of Tolkien's legendarium: Ainur (Valar, Maiar), Eruhin (Elves/Quendi, Men/Atani), Dwarves (Casari/Naugrim), Trolls, Dragons (Lócë), and evil beings. It also contains rich axioms such as:</p>
+<div class="axiom">
+    <strong>Axiom:</strong> "Whoever serves Morgoth is evil" — expressed as <code>[owl:Restriction on meo:served, owl:hasValue meo:morgoth] rdfs:subClassOf meo:EvilBeing</code>.
+</div>
+<div class="axiom">
+    <strong>Axiom:</strong> "Those whose parents are all Elves are also Elves" — using <code>owl:allValuesFrom</code> on <code>fo:isAChildOf</code>.
+</div>
+<div class="axiom">
+    <strong>Axiom:</strong> "Those with an Elvish parent and a Human parent are Half-elven (Peredhel)" — using <code>owl:intersectionOf</code> with two <code>someValuesFrom</code> restrictions.
+</div>
+
+<h4>Classes</h4>
+<table>
+    <tr><th>Class</th><th>Label</th><th>Description</th></tr>
+    <tr><td><code>meo:God</code></td><td>God</td><td>Singleton class containing Eru Ilúvatar</td></tr>
+    <tr><td><code>meo:Immortal</code></td><td>Immortal</td><td>Beings that do not die naturally (disjoint with Mortal)</td></tr>
+    <tr><td><code>meo:Mortal</code></td><td>Mortal</td><td>Beings that die naturally</td></tr>
+    <tr><td><code>meo:Ainu</code></td><td>Holy one</td><td>Spirits created by Eru (subclass of Immortal)</td></tr>
+    <tr><td><code>meo:Vala</code></td><td>Angelic power</td><td>Most powerful Ainur</td></tr>
+    <tr><td><code>meo:Maia</code></td><td>Beautiful</td><td>Ainur who serve the Valar</td></tr>
+    <tr><td><code>meo:Quendë</code></td><td>Elf</td><td>Firstborn of the Children of Ilúvatar</td></tr>
+    <tr><td><code>meo:Atan</code></td><td>Man</td><td>Secondborn of the Children of Ilúvatar</td></tr>
+    <tr><td><code>meo:Adan</code></td><td>Man (Edain)</td><td>Subgroup of Men who came to Beleriand</td></tr>
+    <tr><td><code>meo:Peredhel</code></td><td>Half-elf</td><td>Descendant of both Elves and Men</td></tr>
+    <tr><td><code>meo:Casar</code></td><td>Dwarf</td><td>Created by the Vala Aulë</td></tr>
+    <tr><td><code>meo:Lócë</code></td><td>Dragon</td><td>Evil and powerful monster</td></tr>
+    <tr><td><code>meo:EvilBeing</code></td><td>Evil being</td><td>Beings corrupted to do evil</td></tr>
+</table>
+
+<h3 id="mod-fo">2.2 Family Ontology (<code>fo.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>http://purl.org/family/</code><br>
+    <strong>Source:</strong> Course material<br>
+    <strong>Status:</strong> Included with minimal repairs
+</div>
+<p>This ontology defines family relations (parent, child, sibling, spouse, ancestor, descendant) with gendered variants (father, mother, son, daughter, brother, sister). Notable features include:</p>
+<ul>
+    <li><code>fo:isACousinOf</code> defined via property chain: <code>isAChildOf ∘ isASiblingOf ∘ isAParentOf</code></li>
+    <li><code>fo:isAnAncestorOf</code> is transitive and inverse of <code>fo:isADescendentOf</code></li>
+    <li><code>fo:isMarriedTo</code> is symmetric</li>
+    <li>Gender classes: <code>fo:Male</code>, <code>fo:Female</code></li>
+</ul>
+
+<h3 id="mod-rcc">2.3 Region Connection Calculus (<code>rcc.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>https://purl.org/region/rcc8/</code><br>
+    <strong>Source:</strong> Base from course material, enriched with axioms<br>
+    <strong>Added:</strong> OWL property characteristics, inverses, and DL-safe spatial bridge axioms
+</div>
+<p>The base RCC8 file declares 8 properties with domain/range. The axiom enrichment adds OWL characteristics and inverses; full pairwise disjointness is documented rather than asserted so the ontology stays in OWL 2 DL when transitive relations are present.</p>
+
+<table>
+    <tr><th>Property</th><th>Label</th><th>Symmetric</th><th>Transitive</th><th>Irreflexive</th><th>Inverse of</th></tr>
+    <tr><td><code>rcc:dc</code></td><td>Disconnected</td><td>✓</td><td></td><td>✓</td><td>(self)</td></tr>
+    <tr><td><code>rcc:ec</code></td><td>Externally connected</td><td>✓</td><td></td><td></td><td>(self)</td></tr>
+    <tr><td><code>rcc:po</code></td><td>Partially overlapping</td><td>✓</td><td></td><td>✓</td><td>(self)</td></tr>
+    <tr><td><code>rcc:eq</code></td><td>Equal</td><td>✓</td><td>✓</td><td></td><td>(self)</td></tr>
+    <tr><td><code>rcc:tpp</code></td><td>Tangential proper part</td><td></td><td>✓</td><td></td><td>rcc:tppi</td></tr>
+    <tr><td><code>rcc:tppi</code></td><td>TPP inverse</td><td></td><td>✓</td><td></td><td>rcc:tpp</td></tr>
+    <tr><td><code>rcc:ntpp</code></td><td>Non-tangential proper part</td><td></td><td>✓</td><td></td><td>rcc:ntppi</td></tr>
+    <tr><td><code>rcc:ntppi</code></td><td>NTPP inverse</td><td></td><td>✓</td><td></td><td>rcc:ntpp</td></tr>
+</table>
+<p>The RCC8 semantics are intended to be mutually exclusive, but the full pairwise <code>owl:propertyDisjointWith</code> matrix was removed because it is not OWL 2 DL-safe once transitive proper-part relations are present.</p>
+
+<h3 id="mod-soc">2.4 Social Relations (<code>soc.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>https://example.org/story/social#</code><br>
+    <strong>Source:</strong> New module<br>
+    <strong>Corresponds to:</strong> The <code>soc:</code> prefix used in the Narn description for social relations
+</div>
+<table>
+    <tr><th>Property</th><th>Label</th><th>Characteristics</th></tr>
+    <tr><td><code>soc:sociallyRelatedTo</code></td><td>socially related to</td><td>Top-level super-property</td></tr>
+    <tr><td><code>soc:friendOf</code></td><td>friend of</td><td>Symmetric, irreflexive; subproperty of allyOf</td></tr>
+    <tr><td><code>soc:allyOf</code></td><td>ally of</td><td>Symmetric, irreflexive</td></tr>
+    <tr><td><code>soc:enemyOf</code></td><td>enemy of</td><td>Symmetric; chain-derived from serves/enemyOf</td></tr>
+    <tr><td><code>soc:companionOf</code></td><td>companion of</td><td>Symmetric, irreflexive</td></tr>
+    <tr><td><code>soc:serves</code></td><td>serves</td><td>Asymmetric, irreflexive; inverse: rulesOver; equivalent to meo:served</td></tr>
+    <tr><td><code>soc:fostersChild</code></td><td>fosters child</td><td>Asymmetric, irreflexive; inverse: fosteredBy</td></tr>
+    <tr><td><code>soc:livedIn</code></td><td>lived in</td><td>Connects character to place (range: loc:Place)</td></tr>
+</table>
+<div class="axiom">
+    <strong>Axiom (property chain):</strong> <code>soc:serves ∘ soc:enemyOf ⊑ soc:enemyOf</code> — "the servant of my enemy is my enemy." If A serves B, and B is an enemy of C, then A is an enemy of C. This enables the reasoner to infer that Glaurung (who serves Morgoth) is an enemy of anyone Morgoth is an enemy of.
+</div>
+<div class="axiom">
+    <strong>Axiom (subproperty):</strong> <code>soc:friendOf rdfs:subPropertyOf soc:allyOf</code> — friendship entails alliance.
+</div>
+
+<h3 id="mod-place">2.5 Place Ontology (<code>place.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>https://example.org/story/place#</code><br>
+    <strong>Imports:</strong> <code>rcc:</code>
+</div>
+<p>Places are organised in a hierarchy with disjointness axioms. Key class hierarchy:</p>
+<pre>
+Place
+├── LandArea
+│   ├── Settlement (disjoint with WildArea)
+│   │   ├── City
+│   │   ├── Town (disjoint with City, Hamlet)
+│   │   ├── Hamlet
+│   │   └── Fortress
+│   ├── WildArea
+│   │   ├── WoodedArea
+│   │   │   └── Forest
+│   │   ├── MountainRange
+│   │   └── Plain
+│   └── Realm
+├── WaterArea (disjoint with LandArea)
+│   ├── River (disjoint with Lake, Sea)
+│   ├── Lake
+│   └── Sea
+├── Building
+├── Room (⊑ ∃partOf.(Building ⊔ Fortress))
+└── Road
+</pre>
+<p>Properties: <code>loc:partOf</code> (transitive; kept DL-safe without explicit asymmetry/irreflexivity), <code>loc:interiorPartOf</code> and <code>loc:tangentialPartOf</code> (specialised sub-properties of <code>loc:partOf</code> used to bridge place mereology to RCC8), <code>loc:adjacentTo</code> (symmetric, irreflexive), <code>loc:occupiesRegion</code> (functional, links to <code>rcc:Region</code>), <code>loc:hasPopulation</code> (on settlements only), <code>loc:isCapitalOf</code> (functional &amp; inverse-functional, links Settlement → Realm).</p>
+<div class="axiom">
+    <strong>Axiom:</strong> <code>loc:isCapitalOf rdfs:subPropertyOf loc:partOf</code> — a capital is necessarily a part of its realm.
+</div>
+<div class="axiom">
+    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:interiorPartOf ∘ loc:occupiesRegion ⊑ rcc:ntpp</code> — if place P1 is an interior part of place P2, then the region of P1 is an ntpp of the region of P2. This formally connects Place-level mereology to RCC8 without collapsing tangential containment into non-tangential containment.
+</div>
+<div class="axiom">
+    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:tangentialPartOf ∘ loc:occupiesRegion ⊑ rcc:tpp</code> — tangential containment is tracked separately so border-touching places do not infer non-tangential proper-part relations.
+</div>
+<div class="axiom">
+    <strong>Bridge axiom (property chain):</strong> <code>(loc:occupiesRegion)⁻¹ ∘ loc:adjacentTo ∘ loc:occupiesRegion ⊑ rcc:ec</code> — if two places are adjacent, their regions are externally connected.
+</div>
+
+<h3 id="mod-time">2.6 Time Ontology (<code>time.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>https://example.org/story/time#</code>
+</div>
+<p>This module defines instants, intervals, and Allen's 13 temporal interval relations. <code>FiniteInterval</code> is defined as the intersection of <code>StartingInterval</code> and <code>EndingInterval</code> (using <code>owl:equivalentClass</code> with <code>owl:intersectionOf</code>).</p>
+<p>All 13 Allen relations are modelled with DL-safe OWL characteristics. Full pairwise <code>owl:propertyDisjointWith</code> axioms are documented rather than asserted because several relations are transitive or chain-derived. Property chain axioms connect instant-level ordering to interval-level relations:</p>
+<div class="axiom">
+    <strong>Property chain:</strong> <code>tm:endsAt ∘ tm:occursBefore ∘ (tm:startsAt)⁻¹ ⊑ tm:beforeInterval</code><br>
+    Meaning: if the end-instant of interval I1 occurs before the start-instant of interval I2, then I1 is before I2.
+</div>
+
+<h3 id="mod-event">2.7 Event Ontology (<code>event.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>https://example.org/story/event#</code><br>
+    <strong>Imports:</strong> <code>loc:</code>, <code>tm:</code>, <code>fo:</code>, <code>soc:</code>
+</div>
+<p>The core of the knowledge model. Events are typed (Birth, Death, Marriage, Journey, Battle, War, Residence, Captivity, etc.) and have specialised participant roles with cardinality constraints.</p>
+
+<h4>Marriage event (differentiated roles)</h4>
+<p>Marriage events distinguish the husband, wife, and officiant rather than using generic "spouse1/spouse2":</p>
+<div class="axiom">
+    <code>evt:Marriage subClassOf (=1 hasHusband) and (=1 hasWife) and (&lt;=1 hasOfficiant)</code>
+</div>
+
+<h4>Event-level temporal relations (property chains)</h4>
+<p>Event-level relations (<code>evt:beforeEvent</code>, <code>evt:meetsEvent</code>, etc.) are derived from Allen interval relations via property chains through <code>hasTemporalExtent</code>:</p>
+<div class="axiom">
+    <code>evt:hasTemporalExtent ∘ tm:beforeInterval ∘ evt:isTemporalExtentOf ⊑ evt:beforeEvent</code>
+</div>
+
+<h3 id="mod-action">2.8 Action Ontology (<code>action.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>https://example.org/story/action#</code><br>
+    <strong>Imports:</strong> <code>evt:</code>, <code>loc:</code>
+</div>
+<p>Actions are events with a deliberate agent. The class is defined using <code>owl:equivalentClass</code>:</p>
+<div class="axiom">
+    <code>act:Action ≡ evt:Event ⊓ ∃evt:hasAgent.⊤</code>
+</div>
+<p>This uses the general <code>evt:hasAgent</code> property (not <code>act:hasAgent</code>) so that <strong>any event asserting an agent</strong> — whether via <code>evt:hasAgent</code> directly or any sub-property — is automatically classified as an Action by a DL reasoner. <code>act:UseItemAction</code> is also defined by equivalence (<code>Action and exists usesItem.Item</code>), while <code>AttackAction</code>, <code>MoveAction</code>, <code>SpeechAction</code>, and <code>CurseAction</code> remain specialised subclasses. <code>AttackAction</code> is intentionally not defined purely by <code>hasPatient</code>, because that would wrongly classify non-violent actions such as curses as attacks.</p>
+<p>Actions differ from mere events in having: (1) an intentional agent, (2) observable consequences (<code>act:resultsIn</code>).</p>
+
+<h3 id="mod-plot">2.9 Plot Structure (<code>plot.ttl</code>)</h3>
+<div class="module-box">
+    <strong>Namespace:</strong> <code>https://example.org/story/plot#</code><br>
+    <strong>Imports:</strong> <code>evt:</code>
+</div>
+<p>This module handles the <strong>dual reality</strong> problem: the real world (where the author writes) and the fictional world (where characters act). The model separates:</p>
+<ul>
+    <li><strong>Real world:</strong> <code>plot:NarrativeWork</code> (a book), <code>plot:Author</code>, <code>plot:Editor</code>, <code>plot:Publisher</code>, and publication metadata. These have real-world dates.</li>
+    <li><strong>Fictional world:</strong> <code>plot:Story</code>, <code>plot:StorySection</code> (Prologue, Chapter, Epilogue), <code>plot:PlotEvent</code>. These have fictional timelines.</li>
+    <li><strong>Bridge:</strong> <code>plot:narrates</code> connects NarrativeWork → Story; <code>plot:describesEvent</code> connects PlotEvent → Event.</li>
+</ul>
+<p>This design makes it impossible to accidentally compare real-world publication time with fictional story time.</p>
+<p>Section order is also partially derived rather than asserted manually: <code>plot:nextSection</code> is inferred from a section's end plot event, the next plot event in the narrative, and the following section's start plot event.</p>
+
+<h2 id="instances">3. Instance File (<code>narn-instances.ttl</code>)</h2>
+
+<p>The instance file demonstrates all modules using concrete data from the Narn. It includes:</p>
+<ul>
+    <li><strong>12 characters</strong> typed using <code>meo:</code> classes (Túrin, Morwen, Húrin, Niënor, Galdor, Thingol, Glaurung, Mablung, Beleg, Morgoth, Finduilas, Orodreth)</li>
+    <li><strong>Family relations</strong> using <code>fo:</code> (marriages, parent-child, siblings — 3 generations: Galdor → Húrin → Túrin)</li>
+    <li><strong>Social relations</strong> using <code>soc:</code> (alliances, enmities, fostering, service, plus <code>soc:enemyOf</code> between Morgoth and Thingol to trigger the servant-of-my-enemy chain)</li>
+    <li><strong>10 places</strong> with specialised containment, capital relation, and <code>adjacentTo</code> (Beleriand → Doriath → Menegroth → Throne Room via <code>loc:interiorPartOf</code>; Menegroth <code>loc:isCapitalOf</code> Doriath; Anfauglith <code>loc:tangentialPartOf</code> Beleriand; Anfauglith adjacentTo Angband)</li>
+    <li><strong>10 spatial regions</strong> with RCC8 relations (ntpp, tpp, dc, ec)</li>
+    <li><strong>17 temporal instants</strong> with ordering, <strong>18 intervals</strong> with Allen relations (before, meets, during, contains, finishes, equals), plus <code>tm:occursDuring</code></li>
+    <li><strong>17 events</strong> (marriage, 2 births, battle, war, conversation, meeting, reign, 2 residences, 2 journeys, captivity, 4 deaths) and <strong>2 actions</strong> (slaying, curse)</li>
+    <li><strong>2 items</strong> (Gurthang sword, Dragon-helm of Dor-lómin)</li>
+    <li><strong>Action typing</strong> with the slaying of Glaurung asserted as <code>act:AttackAction</code> and inferred as <code>act:UseItemAction</code>, while Morgoth's curse is modeled as <code>act:CurseAction</code></li>
+    <li><strong>Plot structure</strong> with real-world book, 1 author, 1 editor, 1 publisher, 4 story sections, 9 plot events</li>
+</ul>
+
+<h3>Example: Answering CQ7 — "What event ends story S?"</h3>
+<pre>
+narn:NarnStory plot:endsWith narn:pe8 .
+narn:pe8 plot:describesEvent narn:deathTurin .
+→ The event that ends the Narn is the death of Túrin.
+</pre>
+
+<h3>Example: Answering CQ4 — "Did event E1 happen before E2?"</h3>
+<pre>
+narn:marriageHurinMorwen evt:hasTemporalExtent narn:intMarriage .
+narn:intMarriage tm:beforeInterval narn:intBirthTurin .       (asserted)
+narn:birthTurin evt:hasTemporalExtent narn:intBirthTurin .
+→ Via property chain (hasTemporalExtent ∘ beforeInterval ∘ isTemporalExtentOf):
+  narn:marriageHurinMorwen evt:beforeEvent narn:birthTurin .  (inferred)
+</pre>
+
+<h2 id="cq">4. Competency Questions</h2>
+
+<p>The ontology supports the following competency questions:</p>
+
+<div class="cq"><strong>CQ1:</strong> Who is parent of X? married to X? relative to X?<br>
+→ Answered via <code>fo:isAParentOf</code>, <code>fo:isMarriedTo</code>, and the general kinship properties in <code>fo.ttl</code>.</div>
+
+<div class="cq"><strong>CQ2:</strong> Where did character X go during the story?<br>
+→ Via <code>soc:livedIn</code> for residences, and <code>evt:Journey</code> events with <code>evt:hasOrigin</code> / <code>evt:hasDestination</code>.</div>
+
+<div class="cq"><strong>CQ3:</strong> Who was involved in event E?<br>
+→ Via <code>evt:hasParticipant</code> and its sub-properties.</div>
+
+<div class="cq"><strong>CQ4:</strong> Did event E1 happen before event E2?<br>
+→ Via <code>evt:beforeEvent</code> (derived from Allen's <code>tm:beforeInterval</code> through property chains).</div>
+
+<div class="cq"><strong>CQ5:</strong> Where did event E occur?<br>
+→ Via <code>evt:hasLocation</code>.</div>
+
+<div class="cq"><strong>CQ6:</strong> Is it possible to be in location L1 and L2 at the same time?<br>
+→ Answered by combining temporal overlap with spatial separation: if two simultaneous presences are tied to regions related by <code>rcc:dc</code>, the query should flag them as incompatible. This is a query pattern over the OWL model, not a built-in contradiction under the Open World Assumption.</div>
+
+<div class="cq"><strong>CQ7:</strong> What event ends story S?<br>
+→ Via <code>plot:endsWith</code> on the Story, then <code>plot:describesEvent</code> on the PlotEvent.</div>
+
+<div class="cq"><strong>CQ8:</strong> What item was used as part of event E (or action A)?<br>
+→ Via <code>evt:usesItem</code>.</div>
+
+<div class="cq"><strong>CQ9 (custom):</strong> Who was the officiant of a marriage?<br>
+→ Via <code>evt:hasOfficiant</code> on a Marriage event. The role is modelled explicitly even if the sample data leaves the officiant unspecified rather than inventing one.</div>
+
+<div class="cq"><strong>CQ10 (custom):</strong> What is the consequence of action A?<br>
+→ Via <code>act:resultsIn</code>.</div>
+
+<div class="cq"><strong>CQ11 (custom):</strong> Who fostered character X?<br>
+→ Via <code>soc:fosteredBy</code>.</div>
+
+<div class="cq"><strong>CQ12 (custom):</strong> Is place P inside place Q?<br>
+→ Via <code>loc:partOf</code>, <code>loc:interiorPartOf</code>, or <code>loc:tangentialPartOf</code> at the place level, and via <code>rcc:ntpp</code> or <code>rcc:tpp</code> on their regions.</div>
+
+<div class="cq"><strong>CQ13 (custom):</strong> Who contributes to the narrative work in the real-world layer?<br>
+→ Via <code>plot:hasAuthor</code>, <code>plot:hasEditor</code>, and <code>plot:hasPublisher</code> on a NarrativeWork.</div>
+
+<h2 id="axioms">5. Notable Axioms</h2>
+
+<p>The goal was a small ontology with rich and complex axioms rather than broad but shallow coverage. Here are the most significant axioms across all modules:</p>
+
+<table>
+    <tr><th>Module</th><th>Axiom</th><th>OWL construct</th></tr>
+    <tr><td>meo</td><td>Whoever serves Morgoth is evil</td><td>Restriction + hasValue + subClassOf</td></tr>
+    <tr><td>meo</td><td>Child of two Elves is an Elf</td><td>allValuesFrom</td></tr>
+    <tr><td>meo</td><td>Peredhel = descendant of both Elf and Man</td><td>intersectionOf + someValuesFrom</td></tr>
+    <tr><td>fo</td><td>Cousin = child of sibling of parent</td><td>propertyChainAxiom</td></tr>
+    <tr><td>rcc</td><td>RCC8 place-to-region bridge axioms for ntpp/tpp/ec</td><td>propertyChainAxiom</td></tr>
+    <tr><td>time</td><td>FiniteInterval = StartingInterval ⊓ EndingInterval</td><td>equivalentClass + intersectionOf</td></tr>
+    <tr><td>time</td><td>before derived from instant ordering</td><td>propertyChainAxiom</td></tr>
+    <tr><td>time</td><td>Allen inverse pairs such as before/after and meets/metBy</td><td>owl:inverseOf</td></tr>
+    <tr><td>event</td><td>Every event has a temporal extent (+ Functional = at most 1)</td><td>someValuesFrom + FunctionalProperty</td></tr>
+    <tr><td>event</td><td>Marriage has exactly 1 husband, exactly 1 wife, and at most 1 officiant</td><td>qualifiedCardinality + maxQualifiedCardinality</td></tr>
+    <tr><td>event</td><td>Battle has ≥ 2 combatants</td><td>minQualifiedCardinality</td></tr>
+    <tr><td>event</td><td>War contains at least one Battle</td><td>someValuesFrom</td></tr>
+    <tr><td>event</td><td>beforeEvent derived via property chain through intervals</td><td>propertyChainAxiom</td></tr>
+    <tr><td>action</td><td>Action ≡ Event ⊓ ∃evt:hasAgent.⊤</td><td>equivalentClass + intersectionOf</td></tr>
+    <tr><td>place</td><td>Room ⊑ ∃partOf.(Building ⊔ Fortress)</td><td>someValuesFrom + unionOf</td></tr>
+    <tr><td>place</td><td>isCapitalOf ⊑ partOf (capital is part of realm)</td><td>subPropertyOf</td></tr>
+    <tr><td>place</td><td>interiorPartOf → ntpp and tangentialPartOf → tpp (place mereology bridges to RCC8)</td><td>propertyChainAxiom</td></tr>
+    <tr><td>place</td><td>adjacentTo → ec (adjacency bridges to RCC8)</td><td>propertyChainAxiom</td></tr>
+    <tr><td>event→family</td><td>Birth(newborn, father) → isAChildOf</td><td>propertyChainAxiom (cross-module)</td></tr>
+    <tr><td>event→family</td><td>Birth(newborn, mother) → isAChildOf</td><td>propertyChainAxiom (cross-module)</td></tr>
+    <tr><td>event→social</td><td>Residence(resident, location) → livedIn</td><td>propertyChainAxiom (cross-module)</td></tr>
+    <tr><td>event</td><td>War ⊑ ∀hasSubEvent.(Battle ⊔ War)</td><td>allValuesFrom + unionOf</td></tr>
+    <tr><td>event</td><td>hasHusband range Male, hasWife range Female</td><td>rdfs:range as inference trigger</td></tr>
+    <tr><td>plot</td><td>PlotEvent describes exactly 1 Event</td><td>qualifiedCardinality</td></tr>
+    <tr><td>plot</td><td>StorySection belongs to exactly 1 Story</td><td>qualifiedCardinality</td></tr>
+    <tr><td>plot</td><td>nextSection derived from endsWith o nextPlotEvent o inverse(startsWith)</td><td>propertyChainAxiom</td></tr>
+    <tr><td>soc</td><td>The servant of my enemy is my enemy</td><td>propertyChainAxiom</td></tr>
+    <tr><td>soc</td><td>Friendship entails alliance</td><td>subPropertyOf</td></tr>
+    <tr><td>soc</td><td>soc:serves ≡ meo:served (cross-module alignment)</td><td>equivalentProperty</td></tr>
+    <tr><td>event</td><td>Birth keyed by newborn (one birth per person)</td><td>owl:hasKey</td></tr>
+    <tr><td>event</td><td>Death keyed by deceased (one death per person)</td><td>owl:hasKey</td></tr>
+    <tr><td>instances</td><td>All 12 characters declared pairwise different</td><td>owl:AllDifferent</td></tr>
+    <tr><td>instances</td><td>All 10 places declared pairwise different</td><td>owl:AllDifferent</td></tr>
+    <tr><td>event/place/plot</td><td>Disjointness via AllDisjointClasses (not pairwise)</td><td>owl:AllDisjointClasses</td></tr>
+</table>
+
+<h2 id="ai">6. AI Tool Usage</h2>
+
+<p>AI assistants (Claude, by Anthropic, and Codex) were used as discussion and review partners at different stages of the project. This section documents what was tried, what was rejected, and what design decisions came out of it.</p>
+
+<h3>6.1 The event/action distinction</h3>
+
+<p>The most substantive interaction was about the boundary between <em>events</em> and <em>actions</em>. The event/action distinction is quite conceptual, so using a chatbot as a sounding board seemed like a good approach.</p>
+
+<h4>What was asked</h4>
+<p>The initial prompt was: <em>"In ontology engineering, what distinguishes an action from an event? Are actions a subclass of events, or an entirely separate category?"</em></p>
+
+<h4>What the chatbot proposed</h4>
+<p>The chatbot initially proposed a flat taxonomy where Action and Event were <strong>sibling classes</strong> under a shared superclass <code>Occurrence</code>. Its reasoning was that actions are "intentional" while events are "things that happen", and therefore they are ontologically distinct.</p>
+
+<h4>Why this was rejected</h4>
+<p>This proposal was rejected for three reasons:</p>
+<ol>
+    <li><strong>Redundancy:</strong> making Action a sibling of Event would require duplicating all temporal, spatial, and participant properties on both classes.</li>
+    <li><strong>Failure on the use case:</strong> in the Narn, the slaying of Glaurung is simultaneously an <em>event</em> (it happened at a place and time, it involved participants) and an <em>action</em> (Túrin deliberately performed it). A sibling taxonomy cannot express this without multiple inheritance hacks.</li>
+    <li><strong>Contradiction with established ontologies:</strong> the BBC Event Ontology, DOLCE, and schema.org all treat actions as a specialisation of events, not a parallel category.</li>
+</ol>
+
+<h4>The refined exchange</h4>
+<p>After pushing back, the chatbot was asked: <em>"If actions are a subclass of events, what is the minimal differentia? What OWL construct best captures it?"</em> The chatbot then suggested using <code>owl:equivalentClass</code> with an intersection: <code>Action ≡ Event ⊓ ∃hasAgent.⊤</code>. This was a significant improvement — it means any event with an agent is <em>automatically</em> classified as an action by a DL reasoner, without manual tagging. The chatbot also referenced Donald Davidson's 1963 essay <em>"Actions, Reasons, and Causes"</em> and the BDI (Belief-Desire-Intention) model from AI agent theory as philosophical grounding for the intentionality criterion.</p>
+
+<h4>What was adopted and what was modified</h4>
+<p>The <code>equivalentClass</code> pattern was adopted directly — it is elegant and leverages OWL 2 DL classification. However, the chatbot also suggested adding a <code>hasIntention</code> property (pointing to a <code>MentalState</code> class) to model the BDI aspect. This was <strong>rejected as over-engineering</strong>: modelling mental states would require a full philosophy-of-mind ontology that is far beyond the scope of story plot modelling. Instead, the simpler <code>act:hasPurpose</code> (a datatype property with a textual description) was used as a pragmatic alternative. The chatbot's suggestion of <code>act:resultsIn</code> as the second differentia of actions (actions have observable consequences) was adopted.</p>
+
+<h3>6.2 Plot structure and dual reality</h3>
+
+<p>A second interaction explored how to model the distinction between the real world (authors, publication) and the fictional world (characters, events). The chatbot was asked: <em>"How should an ontology handle the fact that a story has both a real-world existence (a book written by an author) and an internal fictional reality (characters doing things)?"</em></p>
+
+<p>The chatbot proposed a <strong>context/reification</strong> approach using named graphs (one graph per reality). While technically sound, this was rejected because:</p>
+<ol>
+    <li>Named graphs are an RDF Dataset feature, not expressible in OWL 2 DL ontology files.</li>
+    <li>A class-based separation (NarrativeWork vs Story) is simpler and directly expressible in Turtle.</li>
+</ol>
+<p>The final design uses the class-based pattern with <code>plot:narrates</code> and <code>plot:describesEvent</code> as bridge properties. The chatbot confirmed that bridge properties (connecting the two layers without merging them) are a standard pattern in narrative ontologies.</p>
+
+<h3>6.3 Property chain design</h3>
+
+<p>The chatbot was consulted on whether the 3-hop property chain <code>hasTemporalExtent ∘ beforeInterval ∘ isTemporalExtentOf ⊑ evt:beforeEvent</code> would be valid in OWL 2 DL. It confirmed that OWL 2 supports property chains of arbitrary length in <code>owl:propertyChainAxiom</code>, subject to regularity constraints (the super-property must not appear in the chain). This was verified independently by checking the <a href="https://www.w3.org/TR/owl2-syntax/#Object_Subproperties">OWL 2 specification §9.2.1</a>.</p>
+
+<h3>6.4 Repairs to the provided files</h3>
+
+<p>The provided ontologies were kept as the foundation of the project, but a few minimal repairs were necessary so that the combined ontology would remain loadable and semantically connected:</p>
+<ul>
+    <li><code>fo.ttl</code> was repaired so that <code>fo:isASonOf</code> and <code>fo:isADaughterOf</code> correctly specialise <code>fo:isAChildOf</code>.</li>
+    <li><code>fo.ttl</code> was also normalised around the sibling relation: <code>fo:isASiblingOf</code> is now the canonical property, while the misspelled <code>fo:isASibingOf</code> is preserved only as a deprecated backward-compatibility alias.</li>
+    <li><code>meo.ttl</code> was minimally repaired by restoring missing subclass links for <code>meo:Atan</code> and correcting malformed OWL vocabulary such as <code>owl:inverseOf</code>.</li>
+    <li>These repairs are deliberately narrow: they preserve the teacher-provided modules as the basis of the work while making them usable in a coherent OWL 2 ontology.</li>
+</ul>
+<p>The goal of these edits was not to replace the provided ontologies, but to keep them usable as course material inside a reasoner-ready modular project.</p>
+
+<p>Later consistency review and debugging were assisted by Codex. Its role was adversarial rather than generative: challenge OWL 2 DL legality, look for unintended inferences, spot stale documentation claims, and rerun parsing and HermiT checks after each repair. Suggestions were kept only when they matched the source ontology and reasoner behaviour.</p>
+
+<h3>6.5 Summary of AI usage</h3>
+
+<table>
+    <tr><th>Topic</th><th>AI suggestion</th><th>What I did</th></tr>
+    <tr><td>OWL 2 DL consistency review</td><td>Codex challenged axioms and documentation against parser and HermiT behaviour</td><td>Used as a critical reviewer; changes were kept only after source-level checks passed</td></tr>
+    <tr><td>Action ≡ Event ⊓ ∃hasAgent</td><td>Proposed equivalentClass pattern after initial flat taxonomy was rejected</td><td>Adopted — clean and leverages DL classification</td></tr>
+    <tr><td>hasIntention / MentalState</td><td>Suggested BDI-inspired intention modelling</td><td>Rejected as over-engineering; replaced with hasPurpose (datatype)</td></tr>
+    <tr><td>resultsIn property</td><td>Suggested consequence modelling for actions</td><td>Adopted — key differentia of actions vs passive events</td></tr>
+    <tr><td>Named graphs for dual reality</td><td>Proposed RDF Dataset approach</td><td>Rejected — not OWL 2 DL; used class-based separation instead</td></tr>
+    <tr><td>Bridge properties</td><td>Confirmed as standard pattern in narrative ontologies</td><td>Adopted — narrates + describesEvent</td></tr>
+    <tr><td>Property chain validity</td><td>Confirmed OWL 2 supports n-hop chains</td><td>Verified against W3C spec; adopted</td></tr>
+</table>
+
+<p>In all cases, the AI was a sounding board. Every suggestion was checked against the OWL 2 spec and the actual use case. Several proposals were rejected because they didn't fit.</p>
+
+</body>
+</html>
