@@ -1,0 +1,3149 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/family/"
+     xml:base="http://purl.org/family/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://purl.org/family/">
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-19T07:42:42+01:00</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-19T14:42:42+01:00</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-28T00:00:00+00:00</terms:created>
+        <terms:creator rdf:resource="https://w3id.org/people/az/me"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-23T13:42:42+01:00</terms:modified>
+        <terms:title xml:lang="en">Action Ontology</terms:title>
+        <terms:title xml:lang="en">Event Ontology</terms:title>
+        <terms:title xml:lang="en">Place Ontology</terms:title>
+        <terms:title xml:lang="en">Plot Structure Ontology</terms:title>
+        <terms:title xml:lang="en">Region Connection Calculus (RCC8) Ontology</terms:title>
+        <terms:title xml:lang="en">Social Relations Ontology</terms:title>
+        <terms:title xml:lang="en">The Family Ontology</terms:title>
+        <terms:title xml:lang="en">The Middle-earth ontology</terms:title>
+        <terms:title xml:lang="en">Time Ontology</terms:title>
+        <rdfs:comment xml:lang="en">Actions as a subclass of events, defined by having an intentional agent.</rdfs:comment>
+        <rdfs:comment xml:lang="en">An ontology for J.R.R. Tolkienʼs legendarium.</rdfs:comment>
+        <rdfs:comment xml:lang="en">An ontology for family relationships.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Events in story plots: occurrences involving characters, places, and time. Includes an event hierarchy, participant roles, and temporal relations.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Instants, intervals, and Allen&apos;s 13 temporal relations.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Narrative and literary structure of stories, with a real-world layer (authors, books) and a fictional layer (sections, plot events).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Non-familial social relations between characters: friendship, enmity, alliance, service, etc.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Place categories and spatial relations for story plots.</rdfs:comment>
+        <rdfs:comment xml:lang="en">RCC8 spatial relations between regions, encoded with DL-safe OWL axioms.</rdfs:comment>
+        <rdfs:label xml:lang="en">Action Ontology</rdfs:label>
+        <rdfs:label xml:lang="en">Event Ontology</rdfs:label>
+        <rdfs:label xml:lang="en">Place Ontology</rdfs:label>
+        <rdfs:label xml:lang="en">Plot Structure Ontology</rdfs:label>
+        <rdfs:label xml:lang="en">Social Relations Ontology</rdfs:label>
+        <rdfs:label xml:lang="en">The Middle-earth ontology</rdfs:label>
+        <rdfs:label xml:lang="en">The RCC8 ontology</rdfs:label>
+        <rdfs:label xml:lang="en">The family ontology</rdfs:label>
+        <rdfs:label xml:lang="en">Time Ontology</rdfs:label>
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/family/isABrotherOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isABrotherOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isASiblingOf"/>
+        <rdfs:domain rdf:resource="http://purl.org/family/Male"/>
+        <rdfs:comment xml:lang="en">A male sibling of someone.</rdfs:comment>
+        <rdfs:label xml:lang="en">is a brother of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isAChildOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isAChildOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isADescendentOf"/>
+        <owl:inverseOf rdf:resource="http://purl.org/family/isAParentOf"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/event#hasNewborn"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/event#hasFather"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/event#hasNewborn"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/event#hasMother"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">A relation between someone and their parent</rdfs:comment>
+        <rdfs:label xml:lang="en">is a child of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isACousinOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isACousinOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/family/isAChildOf"/>
+            <rdf:Description rdf:about="http://purl.org/family/isASiblingOf"/>
+            <rdf:Description rdf:about="http://purl.org/family/isAParentOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">One that is the child of a sibling of the parent of someone else.</rdfs:comment>
+        <rdfs:label xml:lang="en">is a cousin of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isADaughterOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isADaughterOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isAChildOf"/>
+        <rdfs:domain rdf:resource="http://purl.org/family/Female"/>
+        <rdfs:comment xml:lang="en">A relation between a female child and his parent.</rdfs:comment>
+        <rdfs:label xml:lang="en">is a daughter of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isADescendentOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isADescendentOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">A relation between someone and one of their ancestors.</rdfs:comment>
+        <rdfs:label xml:lang="en">is a descendent of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isAParentOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isAParentOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isAnAncestorOf"/>
+        <rdfs:comment xml:lang="en">A relation between a parent and their child</rdfs:comment>
+        <rdfs:label xml:lang="en">is a parent of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isASiblingOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isASiblingOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:comment xml:lang="en">Two individuals who share the same parent.</rdfs:comment>
+        <rdfs:label xml:lang="en">is a sibling of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isASisterOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isASisterOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isASiblingOf"/>
+        <rdfs:domain rdf:resource="http://purl.org/family/Female"/>
+        <rdfs:comment xml:lang="en">A female sibling of someone.</rdfs:comment>
+        <rdfs:label xml:lang="en">is a sister of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isASonOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isASonOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isAChildOf"/>
+        <rdfs:domain rdf:resource="http://purl.org/family/Male"/>
+        <rdfs:comment xml:lang="en">A relation between a male child and his parent.</rdfs:comment>
+        <rdfs:label xml:lang="en">is a son of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isAnAncestorOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isAnAncestorOf">
+        <owl:inverseOf rdf:resource="http://purl.org/family/isADescendentOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">A relation between someone and one their of descendants.</rdfs:comment>
+        <rdfs:label xml:lang="en">is an ancestor of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isMarriedTo -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isMarriedTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/event#hasHusband"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/event#hasWife"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">People united through marriage.</rdfs:comment>
+        <rdfs:label xml:lang="en">is married to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isTheFatherOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isTheFatherOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isAParentOf"/>
+        <rdfs:domain rdf:resource="http://purl.org/family/Male"/>
+        <rdfs:comment xml:lang="en">A relation between a father and his child.</rdfs:comment>
+        <rdfs:label xml:lang="en">is the father of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/family/isTheMotherOf -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/family/isTheMotherOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/family/isAParentOf"/>
+        <rdfs:domain rdf:resource="http://purl.org/family/Female"/>
+        <rdfs:comment xml:lang="en">A relation between a mother and his child.</rdfs:comment>
+        <rdfs:label xml:lang="en">is the mother of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/meo/served -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/meo/served">
+        <owl:equivalentProperty rdf:resource="https://example.org/story/social#serves"/>
+        <rdfs:comment xml:lang="en">Relates someone to someone else that they serve. Relation servant-master.</rdfs:comment>
+        <rdfs:label xml:lang="en">serves</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/action#hasAgent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/action#hasAgent">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasAgent"/>
+        <rdfs:comment xml:lang="en">Who deliberately performs the action. Sub-property of evt:hasAgent.</rdfs:comment>
+        <rdfs:label xml:lang="en">has agent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/action#hasPatient -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/action#hasPatient">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasPatient"/>
+        <rdfs:domain rdf:resource="https://example.org/story/action#Action"/>
+        <rdfs:comment xml:lang="en">Who is affected by the action.</rdfs:comment>
+        <rdfs:label xml:lang="en">has patient</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/action#resultsIn -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/action#resultsIn">
+        <rdfs:domain rdf:resource="https://example.org/story/action#Action"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">What happens as a consequence of the action, e.g. an attack results in a death.</rdfs:comment>
+        <rdfs:label xml:lang="en">results in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#afterEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#afterEvent">
+        <owl:inverseOf rdf:resource="https://example.org/story/event#beforeEvent"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#hasTemporalExtent"/>
+            <rdf:Description rdf:about="https://example.org/story/time#afterInterval"/>
+            <rdf:Description rdf:about="https://example.org/story/event#isTemporalExtentOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Inverse of beforeEvent.</rdfs:comment>
+        <rdfs:label xml:lang="en">after event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#beforeEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#beforeEvent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#hasTemporalExtent"/>
+            <rdf:Description rdf:about="https://example.org/story/time#beforeInterval"/>
+            <rdf:Description rdf:about="https://example.org/story/event#isTemporalExtentOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">E1 happens entirely before E2.</rdfs:comment>
+        <rdfs:label xml:lang="en">before event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#duringEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#duringEvent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#hasTemporalExtent"/>
+            <rdf:Description rdf:about="https://example.org/story/time#duringInterval"/>
+            <rdf:Description rdf:about="https://example.org/story/event#isTemporalExtentOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Event E1 occurs entirely within the time span of event E2.</rdfs:comment>
+        <rdfs:label xml:lang="en">during event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasAgent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasAgent">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">The active performer of the event.</rdfs:comment>
+        <rdfs:label xml:lang="en">has agent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasCaptive -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasCaptive">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Captivity"/>
+        <rdfs:comment xml:lang="en">The character held prisoner.</rdfs:comment>
+        <rdfs:label xml:lang="en">has captive</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasCaptor -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasCaptor">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Captivity"/>
+        <rdfs:comment xml:lang="en">The character or entity holding the captive.</rdfs:comment>
+        <rdfs:label xml:lang="en">has captor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasCombatant -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasCombatant">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Battle"/>
+        <rdfs:comment xml:lang="en">A character fighting in the battle.</rdfs:comment>
+        <rdfs:label xml:lang="en">has combatant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasDeceased -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasDeceased">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Death"/>
+        <rdfs:comment xml:lang="en">The character who dies.</rdfs:comment>
+        <rdfs:label xml:lang="en">has deceased</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasDestination -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasDestination">
+        <rdfs:domain rdf:resource="https://example.org/story/event#Journey"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">The destination place of a journey.</rdfs:comment>
+        <rdfs:label xml:lang="en">has destination</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasFather -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasFather">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Birth"/>
+        <rdfs:range rdf:resource="http://purl.org/family/Male"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/event#hasMother"/>
+        <rdfs:comment xml:lang="en">The father. Range fo:Male.</rdfs:comment>
+        <rdfs:label xml:lang="en">has father</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasHusband -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasHusband">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Marriage"/>
+        <rdfs:range rdf:resource="http://purl.org/family/Male"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/event#hasWife"/>
+        <rdfs:comment xml:lang="en">The husband in the marriage.</rdfs:comment>
+        <rdfs:label xml:lang="en">has husband</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasKiller -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasKiller">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Death"/>
+        <rdfs:comment xml:lang="en">Who caused the death, if anyone.</rdfs:comment>
+        <rdfs:label xml:lang="en">has killer</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasLocation -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasLocation">
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">The place where an event occurs.</rdfs:comment>
+        <rdfs:label xml:lang="en">has location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasMother -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasMother">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Birth"/>
+        <rdfs:range rdf:resource="http://purl.org/family/Female"/>
+        <rdfs:comment xml:lang="en">The mother. Range fo:Female.</rdfs:comment>
+        <rdfs:label xml:lang="en">has mother</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasNewborn -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasNewborn">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Birth"/>
+        <rdfs:comment xml:lang="en">The character born.</rdfs:comment>
+        <rdfs:label xml:lang="en">has newborn</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasOfficiant -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasOfficiant">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Marriage"/>
+        <rdfs:comment xml:lang="en">The authority who validates the marriage (priest, king, etc.).</rdfs:comment>
+        <rdfs:label xml:lang="en">has officiant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasOrigin -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasOrigin">
+        <rdfs:domain rdf:resource="https://example.org/story/event#Journey"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">The starting place of a journey.</rdfs:comment>
+        <rdfs:label xml:lang="en">has origin</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasParticipant -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasParticipant">
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">A character involved in the event.</rdfs:comment>
+        <rdfs:label xml:lang="en">has participant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasPatient -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasPatient">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">The character affected by the event.</rdfs:comment>
+        <rdfs:label xml:lang="en">has patient</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasResident -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasResident">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Residence"/>
+        <rdfs:comment xml:lang="en">The character residing at a place.</rdfs:comment>
+        <rdfs:label xml:lang="en">has resident</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasSpeaker -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasSpeaker">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Conversation"/>
+        <rdfs:comment xml:lang="en">A character who speaks during the conversation.</rdfs:comment>
+        <rdfs:label xml:lang="en">has speaker</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasSubEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasSubEvent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">An event contains another as a sub-event. Transitive.</rdfs:comment>
+        <rdfs:label xml:lang="en">has sub-event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasTemporalExtent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasTemporalExtent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">When the event occurs (as an interval).</rdfs:comment>
+        <rdfs:label xml:lang="en">has temporal extent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasTraveler -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasTraveler">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Journey"/>
+        <rdfs:comment xml:lang="en">A character undertaking the journey.</rdfs:comment>
+        <rdfs:label xml:lang="en">has traveler</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasVictor -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasVictor">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasCombatant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Battle"/>
+        <rdfs:comment xml:lang="en">The winning side of a battle.</rdfs:comment>
+        <rdfs:label xml:lang="en">has victor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#hasWife -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#hasWife">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:domain rdf:resource="https://example.org/story/event#Marriage"/>
+        <rdfs:range rdf:resource="http://purl.org/family/Female"/>
+        <rdfs:comment xml:lang="en">The wife in the marriage.</rdfs:comment>
+        <rdfs:label xml:lang="en">has wife</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#isTemporalExtentOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#isTemporalExtentOf">
+        <owl:inverseOf rdf:resource="https://example.org/story/event#hasTemporalExtent"/>
+        <rdfs:comment xml:lang="en">Inverse of hasTemporalExtent.</rdfs:comment>
+        <rdfs:label xml:lang="en">is temporal extent of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#killed -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#killed">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/event#hasKiller"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/event#hasDeceased"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">X killed Y. Inferred from Death events.</rdfs:comment>
+        <rdfs:label xml:lang="en">killed</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#meetsEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#meetsEvent">
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#hasTemporalExtent"/>
+            <rdf:Description rdf:about="https://example.org/story/time#meetsInterval"/>
+            <rdf:Description rdf:about="https://example.org/story/event#isTemporalExtentOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Event E1 ends exactly when event E2 starts.</rdfs:comment>
+        <rdfs:label xml:lang="en">meets event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#overlapsEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#overlapsEvent">
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#hasTemporalExtent"/>
+            <rdf:Description rdf:about="https://example.org/story/time#overlapsInterval"/>
+            <rdf:Description rdf:about="https://example.org/story/event#isTemporalExtentOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Event E1 starts before and partially overlaps event E2.</rdfs:comment>
+        <rdfs:label xml:lang="en">overlaps event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#partOfEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#partOfEvent">
+        <owl:inverseOf rdf:resource="https://example.org/story/event#hasSubEvent"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Inverse of hasSubEvent.</rdfs:comment>
+        <rdfs:label xml:lang="en">part of event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#participatesIn -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#participatesIn">
+        <owl:inverseOf rdf:resource="https://example.org/story/event#hasParticipant"/>
+        <rdfs:comment xml:lang="en">Inverse of hasParticipant.</rdfs:comment>
+        <rdfs:label xml:lang="en">participates in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/event#usesItem -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/event#usesItem">
+        <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Item"/>
+        <rdfs:comment xml:lang="en">An item used in the event.</rdfs:comment>
+        <rdfs:label xml:lang="en">uses item</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#adjacentTo -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#adjacentTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">Two places that share a boundary or are next to each other.</rdfs:comment>
+        <rdfs:label xml:lang="en">adjacent to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#hasCapital -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#hasCapital">
+        <owl:inverseOf rdf:resource="https://example.org/story/place#isCapitalOf"/>
+        <rdfs:comment xml:lang="en">Inverse of isCapitalOf.</rdfs:comment>
+        <rdfs:label xml:lang="en">has capital</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#hasPart -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#hasPart">
+        <owl:inverseOf rdf:resource="https://example.org/story/place#partOf"/>
+        <rdfs:comment xml:lang="en">Inverse of partOf.</rdfs:comment>
+        <rdfs:label xml:lang="en">has part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#interiorPartOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#interiorPartOf">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/place#partOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">Proper part relation where the subject lies wholly inside the larger place, corresponding to RCC8 NTPP at region level.</rdfs:comment>
+        <rdfs:label xml:lang="en">interior part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#isCapitalOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#isCapitalOf">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/place#partOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/place#Settlement"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Realm"/>
+        <rdfs:comment xml:lang="en">The settlement is the capital of this realm. Functional and inverse-functional (one capital per realm, one realm per capital).</rdfs:comment>
+        <rdfs:label xml:lang="en">is capital of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#occupiesRegion -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#occupiesRegion">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:comment xml:lang="en">Links a place to its spatial region. Functional (one region per place). Enables RCC8 reasoning on places.</rdfs:comment>
+        <rdfs:label xml:lang="en">occupies region</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#partOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#partOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">Spatial containment between places. E.g. Menegroth is part of Doriath.</rdfs:comment>
+        <rdfs:label xml:lang="en">part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/place#tangentialPartOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/place#tangentialPartOf">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/place#partOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">Proper part relation where the subject touches the boundary of the larger place, corresponding to RCC8 TPP at region level.</rdfs:comment>
+        <rdfs:label xml:lang="en">tangential part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#containsPlotEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#containsPlotEvent">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:comment xml:lang="en">A story section contains plot events.</rdfs:comment>
+        <rdfs:label xml:lang="en">contains plot event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#describesEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#describesEvent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">Links a plot event to the in-world event it describes.</rdfs:comment>
+        <rdfs:label xml:lang="en">describes event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#endsWith -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#endsWith">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeContainer"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:comment xml:lang="en">The last plot event in a story or section.</rdfs:comment>
+        <rdfs:label xml:lang="en">ends with</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasAuthor -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#hasAuthor">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#Author"/>
+        <rdfs:comment xml:lang="en">The original author of the narrative work.</rdfs:comment>
+        <rdfs:label xml:lang="en">has author</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasEditor -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#hasEditor">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#Editor"/>
+        <rdfs:comment xml:lang="en">An editor or compiler responsible for the published work.</rdfs:comment>
+        <rdfs:label xml:lang="en">has editor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasPublisher -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#hasPublisher">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#Publisher"/>
+        <rdfs:comment xml:lang="en">The publishing organization of the narrative work.</rdfs:comment>
+        <rdfs:label xml:lang="en">has publisher</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasSection -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#hasSection">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#Story"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:comment xml:lang="en">A story is divided into sections.</rdfs:comment>
+        <rdfs:label xml:lang="en">has section</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#narrates -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#narrates">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#Story"/>
+        <rdfs:comment xml:lang="en">Links the real-world work to the fictional story it tells.</rdfs:comment>
+        <rdfs:label xml:lang="en">narrates</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#nextPlotEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#nextPlotEvent">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/plot#precedesPlotEvent"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:comment xml:lang="en">The next plot event in the narrative.</rdfs:comment>
+        <rdfs:label xml:lang="en">next plot event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#nextSection -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#nextSection">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#StorySection"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/plot#endsWith"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#nextPlotEvent"/>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/plot#startsWith"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">The next section in the narrative. Derived from plot event ordering via property chain.</rdfs:comment>
+        <rdfs:label xml:lang="en">next section</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#precedesPlotEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#precedesPlotEvent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:comment xml:lang="en">A plot event earlier in the narrative. Transitive.</rdfs:comment>
+        <rdfs:label xml:lang="en">precedes plot event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#sectionOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#sectionOf">
+        <owl:inverseOf rdf:resource="https://example.org/story/plot#hasSection"/>
+        <rdfs:comment xml:lang="en">Inverse of hasSection.</rdfs:comment>
+        <rdfs:label xml:lang="en">section of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#startsWith -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#startsWith">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeContainer"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#PlotEvent"/>
+        <rdfs:comment xml:lang="en">The first plot event in a story or section.</rdfs:comment>
+        <rdfs:label xml:lang="en">starts with</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#allyOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#allyOf">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:comment xml:lang="en">Alliance, cooperating towards a common goal. Not necessarily friends.</rdfs:comment>
+        <rdfs:label xml:lang="en">ally of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#companionOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#companionOf">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:comment xml:lang="en">Characters who travel together or spend significant time together in the story.</rdfs:comment>
+        <rdfs:label xml:lang="en">companion of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#enemyOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#enemyOf">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/social#serves"/>
+            <rdf:Description rdf:about="https://example.org/story/social#enemyOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Enmity between two characters.</rdfs:comment>
+        <rdfs:label xml:lang="en">enemy of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#fosteredBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#fosteredBy">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <owl:inverseOf rdf:resource="https://example.org/story/social#fostersChild"/>
+        <rdfs:comment xml:lang="en">Inverse of fostersChild.</rdfs:comment>
+        <rdfs:label xml:lang="en">fostered by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#fostersChild -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#fostersChild">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:comment xml:lang="en">Raising someone as a foster-child. E.g. Thingol fosters Túrin.</rdfs:comment>
+        <rdfs:label xml:lang="en">fosters child</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#friendOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#friendOf">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#allyOf"/>
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/social#serves"/>
+        <rdfs:comment xml:lang="en">Friendship between two characters.</rdfs:comment>
+        <rdfs:label xml:lang="en">friend of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#livedIn -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#livedIn">
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/event#hasResident"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/event#hasLocation"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Where a character has resided. No rdfs:domain declared because characters, peoples, and other agents could all live somewhere. Range is Place.</rdfs:comment>
+        <rdfs:label xml:lang="en">lived in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#rulesOver -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#rulesOver">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <owl:inverseOf rdf:resource="https://example.org/story/social#serves"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:comment xml:lang="en">Inverse of serves. The subject has authority over the object.</rdfs:comment>
+        <rdfs:label xml:lang="en">rules over</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#serves -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#serves">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:comment xml:lang="en">A vassal/servant relation. Linked to meo:served so facts work with both properties.</rdfs:comment>
+        <rdfs:label xml:lang="en">serves</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#sociallyRelatedTo -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#sociallyRelatedTo">
+        <rdfs:comment xml:lang="en">Top-level property grouping all social relations.</rdfs:comment>
+        <rdfs:label xml:lang="en">socially related to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#afterInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#afterInterval">
+        <owl:inverseOf rdf:resource="https://example.org/story/time#beforeInterval"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;after&apos;: inverse of before.</rdfs:comment>
+        <rdfs:label xml:lang="en">after</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#beforeInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#beforeInterval">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/time#endsAt"/>
+            <rdf:Description rdf:about="https://example.org/story/time#occursBefore"/>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/time#startsAt"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;before&apos;: first interval ends before second starts.</rdfs:comment>
+        <rdfs:label xml:lang="en">before</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#containsInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#containsInterval">
+        <owl:inverseOf rdf:resource="https://example.org/story/time#duringInterval"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;contains&apos;: inverse of during.</rdfs:comment>
+        <rdfs:label xml:lang="en">contains</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#duringInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#duringInterval">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;during&apos;: first interval is entirely within the second.</rdfs:comment>
+        <rdfs:label xml:lang="en">during</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#endsAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#endsAt">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:comment xml:lang="en">When an interval ends.</rdfs:comment>
+        <rdfs:label xml:lang="en">ends at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#finishedByInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#finishedByInterval">
+        <owl:inverseOf rdf:resource="https://example.org/story/time#finishesInterval"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/time#finishesInterval"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/time#startedByInterval"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/time#startsInterval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;finished by&apos;: inverse of finishes.</rdfs:comment>
+        <rdfs:label xml:lang="en">finished by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#finishesInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#finishesInterval">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/time#startedByInterval"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/time#startsInterval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;finishes&apos;: same end time, first starts after second.</rdfs:comment>
+        <rdfs:label xml:lang="en">finishes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#intervalEquals -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#intervalEquals">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;equals&apos;: same start and end.</rdfs:comment>
+        <rdfs:label xml:lang="en">equals</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#meetsInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#meetsInterval">
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;meets&apos;: first interval ends exactly when second starts.</rdfs:comment>
+        <rdfs:label xml:lang="en">meets</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#metByInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#metByInterval">
+        <owl:inverseOf rdf:resource="https://example.org/story/time#meetsInterval"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;met by&apos;: inverse of meets.</rdfs:comment>
+        <rdfs:label xml:lang="en">met by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#occursAfter -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#occursAfter">
+        <owl:inverseOf rdf:resource="https://example.org/story/time#occursBefore"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:comment xml:lang="en">Inverse of occursBefore.</rdfs:comment>
+        <rdfs:label xml:lang="en">occurs after</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#occursBefore -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#occursBefore">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:comment xml:lang="en">Strict ordering between instants.</rdfs:comment>
+        <rdfs:label xml:lang="en">occurs before</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#occursDuring -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#occursDuring">
+        <rdfs:domain rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">An instant that falls within an interval.</rdfs:comment>
+        <rdfs:label xml:lang="en">occurs during</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#occursSimultaneouslyWith -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#occursSimultaneouslyWith">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:comment xml:lang="en">Two distinct instants at the same point in time. Used when different IRIs represent the same moment.</rdfs:comment>
+        <rdfs:label xml:lang="en">occurs simultaneously with</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#overlappedByInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#overlappedByInterval">
+        <owl:inverseOf rdf:resource="https://example.org/story/time#overlapsInterval"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;overlapped by&apos;: inverse of overlaps.</rdfs:comment>
+        <rdfs:label xml:lang="en">overlapped by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#overlapsInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#overlapsInterval">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;overlaps&apos;: first starts before second and ends during it.</rdfs:comment>
+        <rdfs:label xml:lang="en">overlaps</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#startedByInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#startedByInterval">
+        <owl:inverseOf rdf:resource="https://example.org/story/time#startsInterval"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <owl:propertyDisjointWith rdf:resource="https://example.org/story/time#startsInterval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;started by&apos;: inverse of starts.</rdfs:comment>
+        <rdfs:label xml:lang="en">started by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#startsAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#startsAt">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Instant"/>
+        <rdfs:comment xml:lang="en">When an interval begins.</rdfs:comment>
+        <rdfs:label xml:lang="en">starts at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/time#startsInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/time#startsInterval">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:range rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">Allen&apos;s &apos;starts&apos;: same start time, first ends before second.</rdfs:comment>
+        <rdfs:label xml:lang="en">starts</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/dc -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/dc">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <owl:propertyDisjointWith rdf:resource="https://purl.org/region/rcc8/po"/>
+        <rdfs:comment xml:lang="en">The two regions share no points at all.</rdfs:comment>
+        <rdfs:label xml:lang="en">disconnected</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/ec -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/ec">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/place#occupiesRegion"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/place#adjacentTo"/>
+            <rdf:Description rdf:about="https://example.org/story/place#occupiesRegion"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Boundaries touch but interiors don&apos;t overlap.</rdfs:comment>
+        <rdfs:label xml:lang="en">externally connected</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/eq -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/eq">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:comment xml:lang="en">Same spatial extent. Symmetric and transitive. Reflexivity is part of the intended RCC8 semantics but is not declared in OWL because ReflexiveProperty without domain/range would apply to all individuals, and with domain/range would force everything to be a Region.</rdfs:comment>
+        <rdfs:label xml:lang="en">equal</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/ntpp -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/ntpp">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/place#occupiesRegion"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/place#interiorPartOf"/>
+            <rdf:Description rdf:about="https://example.org/story/place#occupiesRegion"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">First region is completely inside the second, boundaries don&apos;t touch.</rdfs:comment>
+        <rdfs:label xml:lang="en">non-tangential proper part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/ntppi -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/ntppi">
+        <owl:inverseOf rdf:resource="https://purl.org/region/rcc8/ntpp"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:comment xml:lang="en">Inverse of NTPP. First region completely contains the second.</rdfs:comment>
+        <rdfs:label xml:lang="en">non-tangential proper part inverse</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/po -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/po">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:comment xml:lang="en">The regions partially overlap. Each has parts not in the other.</rdfs:comment>
+        <rdfs:label xml:lang="en">partially overlapping</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/tpp -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/tpp">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/place#occupiesRegion"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/place#tangentialPartOf"/>
+            <rdf:Description rdf:about="https://example.org/story/place#occupiesRegion"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">First region is inside the second and their boundaries touch.</rdfs:comment>
+        <rdfs:label xml:lang="en">tangential proper part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/region/rcc8/tppi -->
+
+
+    <owl:ObjectProperty rdf:about="https://purl.org/region/rcc8/tppi">
+        <owl:inverseOf rdf:resource="https://purl.org/region/rcc8/tpp"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:range rdf:resource="https://purl.org/region/rcc8/Region"/>
+        <rdfs:comment xml:lang="en">Inverse of TPP. First region contains the second, boundaries touching.</rdfs:comment>
+        <rdfs:label xml:lang="en">tangential proper part inverse</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://example.org/story/action#hasPurpose -->
+
+
+    <owl:DatatypeProperty rdf:about="https://example.org/story/action#hasPurpose">
+        <rdfs:domain rdf:resource="https://example.org/story/action#Action"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Why the agent performed the action (textual description).</rdfs:comment>
+        <rdfs:label xml:lang="en">has purpose</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://example.org/story/place#hasFoundationDate -->
+
+
+    <owl:DatatypeProperty rdf:about="https://example.org/story/place#hasFoundationDate">
+        <rdfs:domain rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">When the place was established. String because fictional dates don&apos;t always fit xsd:date.</rdfs:comment>
+        <rdfs:label xml:lang="en">has foundation date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://example.org/story/place#hasPopulation -->
+
+
+    <owl:DatatypeProperty rdf:about="https://example.org/story/place#hasPopulation">
+        <rdfs:domain rdf:resource="https://example.org/story/place#Settlement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Number of inhabitants. Only makes sense for settlements.</rdfs:comment>
+        <rdfs:label xml:lang="en">has population</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasChapterNumber -->
+
+
+    <owl:DatatypeProperty rdf:about="https://example.org/story/plot#hasChapterNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://example.org/story/plot#Chapter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:comment xml:lang="en">The ordinal number of a chapter within the story.</rdfs:comment>
+        <rdfs:label xml:lang="en">has chapter number</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasPublicationDate -->
+
+
+    <owl:DatatypeProperty rdf:about="https://example.org/story/plot#hasPublicationDate">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">The real-world date the narrative work was published.</rdfs:comment>
+        <rdfs:label xml:lang="en">has publication date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasTextSummary -->
+
+
+    <owl:DatatypeProperty rdf:about="https://example.org/story/plot#hasTextSummary">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">A textual summary. No domain restriction for the same reason as hasTitle.</rdfs:comment>
+        <rdfs:label xml:lang="en">has text summary</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://example.org/story/plot#hasTitle -->
+
+
+    <owl:DatatypeProperty rdf:about="https://example.org/story/plot#hasTitle">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The title of a story, section, or narrative work. No domain restriction because both NarrativeContainer and NarrativeWork can have titles.</rdfs:comment>
+        <rdfs:label xml:lang="en">has title</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/family/Female -->
+
+
+    <owl:Class rdf:about="http://purl.org/family/Female">
+        <owl:disjointWith rdf:resource="http://purl.org/family/Male"/>
+        <rdfs:comment xml:lang="en">A female individual. The gender may be a &apos;natural&apos; one, attributed at birth, or a given one by social conventions.</rdfs:comment>
+        <rdfs:label xml:lang="en">female</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/family/Male -->
+
+
+    <owl:Class rdf:about="http://purl.org/family/Male">
+        <rdfs:comment xml:lang="en">A male individual. The gender may be a &apos;natural&apos; one, attributed at birth, or a given one by social conventions.</rdfs:comment>
+        <rdfs:label xml:lang="en">male</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Adan -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Adan">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Atan"/>
+        <rdfs:comment xml:lang="en">The Edain (plural form of Adan) are the Men that belong to the Three Houses of Men that came to Beleriand in the elder days. Originally, “Adan” (plural “Edain”) is the Sindarin equivalent of Quenya “Atan” (plural “Atani”) but eventually came to mean this narrow subgroup.</rdfs:comment>
+        <rdfs:label xml:lang="sjn">Adan</rdfs:label>
+        <rdfs:label xml:lang="en">Man</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Ainu -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Ainu">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Immortal"/>
+        <rdfs:comment xml:lang="en">The Ainur (plural form of Ainu) are the spirits created by Eru Ilúvatar before time existed</rdfs:comment>
+        <rdfs:label xml:lang="qya">Ainu</rdfs:label>
+        <rdfs:label xml:lang="en">Holy one</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Atan -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Atan">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Eruhin"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Mortal"/>
+        <rdfs:comment xml:lang="en">The Atani (plural form of Atan) are the second born of the Children of Ilúvatar, the Men (i.e. Humans, not male people). They were given many names also by the Eldar.</rdfs:comment>
+        <rdfs:label xml:lang="sjn">Adan</rdfs:label>
+        <rdfs:label xml:lang="qya">Atan</rdfs:label>
+        <rdfs:label xml:lang="en">Man</rdfs:label>
+        <skos:altLabel xml:lang="en">After-born</skos:altLabel>
+        <skos:altLabel xml:lang="en">After-comer</skos:altLabel>
+        <skos:altLabel xml:lang="qya">Apanóna</skos:altLabel>
+        <skos:altLabel xml:lang="qya">Engwa</skos:altLabel>
+        <skos:altLabel xml:lang="en">Follower</skos:altLabel>
+        <skos:altLabel xml:lang="qya">Fírima</skos:altLabel>
+        <skos:altLabel xml:lang="qya">Hildo</skos:altLabel>
+        <skos:altLabel xml:lang="en">Human</skos:altLabel>
+        <skos:altLabel xml:lang="en">Mortal</skos:altLabel>
+        <skos:altLabel xml:lang="en">Secondborn</skos:altLabel>
+        <skos:altLabel xml:lang="en">Sickly</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Casar -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Casar">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Mortal"/>
+        <rdfs:comment xml:lang="en">The Casari (plural form of Casar in Quenya), more often called with the Sindarin variant Naugrim (plural of Naug in Sindarin), are the Dwarves created by the Vala Aulë.</rdfs:comment>
+        <rdfs:label xml:lang="qya">Casar</rdfs:label>
+        <rdfs:label xml:lang="en">Dwarf</rdfs:label>
+        <rdfs:label xml:lang="sjn">Naug</rdfs:label>
+        <skos:altLabel xml:lang="qya">Aulëonna</skos:altLabel>
+        <skos:altLabel xml:lang="en">Child of Aulë</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Elda -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Elda">
+        <owl:equivalentClass rdf:resource="http://purl.org/meo/Quendë"/>
+        <rdfs:comment xml:lang="en">The Eldar (plural form of Elda) are the Elves. They initially called themselves the Quendi, but the Vala Oromë, who met them at lake Cuiviénen under the stars, called them the Eldar. Now only the Quendi who followed Oromë to the West call themselves Eldar.</rdfs:comment>
+        <rdfs:label xml:lang="qya">Elda</rdfs:label>
+        <rdfs:label xml:lang="sjn">Eledh</rdfs:label>
+        <rdfs:label xml:lang="en">Elf</rdfs:label>
+        <skos:altLabel xml:lang="en">Firstborn</skos:altLabel>
+        <skos:altLabel xml:lang="en">of the stars</skos:altLabel>
+        <skos:altLabel xml:lang="en">person of the stars</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Eruhin -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Eruhin">
+        <rdfs:comment xml:lang="en">The Eruhíni (plural form of Eruhin), literally “the Children of Eru”, are usually called the “Children of Ilúvatar”. They are the Elves and Men. “Children of Ilúvatar” is used to collectively refer to the two races of Men and Elves, and the singular form is rarely used.</rdfs:comment>
+        <rdfs:label xml:lang="en">Child of Ilúvatar</rdfs:label>
+        <rdfs:label xml:lang="qya">Eruhin</rdfs:label>
+        <skos:altLabel xml:lang="en">Child of Eru</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/EvilBeing -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/EvilBeing">
+        <rdfs:comment xml:lang="en">The evil beings are sentient agents that have chosen to do bad things, behave badly for the sake of doing bad, or became corrupted into doing evil. Some things are raised and bred to be evil. Some things are led to become evil by other evil beings by subversion. Some choose to become evil due to greed or as a way to overcome hardships of their lives.</rdfs:comment>
+        <rdfs:label xml:lang="en">evil being</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/God -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/God">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/meo/eru"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">A sperior entity. A singleton class that only contains Eru Ilúvatar, the One Allfather.</rdfs:comment>
+        <rdfs:label xml:lang="en">God</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Immortal -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Immortal">
+        <owl:disjointWith rdf:resource="http://purl.org/meo/Mortal"/>
+        <rdfs:comment xml:lang="en">An individual that does not die of natural death. Some immortals may die from wounds inflicted to them by violence or accident (like Elves), but some are truly eternal, like the Ainur).</rdfs:comment>
+        <rdfs:label xml:lang="en">immortal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Lócë -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Lócë">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/EvilBeing"/>
+        <rdfs:comment xml:lang="en">Evil and powerful monster.</rdfs:comment>
+        <rdfs:label xml:lang="en">Dragon</rdfs:label>
+        <rdfs:label xml:lang="qya">Lócë</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Maia -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Maia">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Ainu"/>
+        <rdfs:comment xml:lang="en">The Maiar (plural form of Maia) are Ainur who entered Arda and serve the Valar.</rdfs:comment>
+        <rdfs:label xml:lang="en">Beautiful</rdfs:label>
+        <rdfs:label xml:lang="qya">Maia</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Mortal -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Mortal">
+        <rdfs:comment xml:lang="en">Mortal living being, such as Men and Dwarces.</rdfs:comment>
+        <rdfs:label xml:lang="en">mortal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Peredhel -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Peredhel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Eruhin"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/family/isADescendentOf"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Atan"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/family/isADescendentOf"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Elda"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Peredhil are descendent of both elves and humans.</rdfs:comment>
+        <rdfs:label xml:lang="en">Half-elf</rdfs:label>
+        <rdfs:label xml:lang="sjn">Peredhel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Quendë -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Quendë">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Eruhin"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Immortal"/>
+        <rdfs:comment xml:lang="en">The Quendi (plural form of Quendë) are the first born of the Children of Ilúvatar, the Elves. They are named thus because they were the only ones who spoke when they first appeared, before Men and Dwarves came to be. They are more often called the Eldar.</rdfs:comment>
+        <rdfs:label xml:lang="en">Elf</rdfs:label>
+        <rdfs:label xml:lang="qya">Quendë</rdfs:label>
+        <skos:altLabel xml:lang="qya">Elda</skos:altLabel>
+        <skos:altLabel xml:lang="en">Firstborn</skos:altLabel>
+        <skos:altLabel xml:lang="en">one that speaks</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Torog -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Torog">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/EvilBeing"/>
+        <rdfs:comment xml:lang="en">The *Teryg (probably the plural form of Torog in Sindarin) are the Trolls, large humanoid monsters of great physical strength and weak intellect.</rdfs:comment>
+        <rdfs:label xml:lang="sjn">torog</rdfs:label>
+        <rdfs:label xml:lang="en">troll</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/meo/Vala -->
+
+
+    <owl:Class rdf:about="http://purl.org/meo/Vala">
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Ainu"/>
+        <rdfs:comment xml:lang="en">The Valar (plural form of Vala) are the most powerful Ainur who entered Arda, the world.</rdfs:comment>
+        <rdfs:label xml:lang="qya">Vala</rdfs:label>
+        <rdfs:label xml:lang="en">angelic power</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/action#Action -->
+
+
+    <owl:Class rdf:about="https://example.org/story/action#Action">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://example.org/story/event#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://example.org/story/event#hasAgent"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">An event with a deliberate agent. Defined as Action ≡ Event ⊓ ∃evt:hasAgent.⊤, so any event that has an agent gets classified as an action automatically.</rdfs:comment>
+        <rdfs:label xml:lang="en">Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/action#AttackAction -->
+
+
+    <owl:Class rdf:about="https://example.org/story/action#AttackAction">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/action#Action"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/action#hasPatient"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A hostile action directed at a patient. Left as a conservative subclass rather than a defined class, because patienthood alone would wrongly classify non-violent actions such as curses as attacks.</rdfs:comment>
+        <rdfs:label xml:lang="en">Attack action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/action#CurseAction -->
+
+
+    <owl:Class rdf:about="https://example.org/story/action#CurseAction">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/action#SpeechAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/action#hasPatient"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Placing a curse on someone. In the Narn, Morgoth curses the children of Húrin.</rdfs:comment>
+        <rdfs:label xml:lang="en">Curse action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/action#MoveAction -->
+
+
+    <owl:Class rdf:about="https://example.org/story/action#MoveAction">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/action#Action"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasDestination"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://example.org/story/place#Place"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasOrigin"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://example.org/story/place#Place"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Moving from one place to another.</rdfs:comment>
+        <rdfs:label xml:lang="en">Move action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/action#SpeechAction -->
+
+
+    <owl:Class rdf:about="https://example.org/story/action#SpeechAction">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/action#Action"/>
+        <rdfs:comment xml:lang="en">Deliberate speech: commands, declarations, curses, prophecies.</rdfs:comment>
+        <rdfs:label xml:lang="en">Speech action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/action#UseItemAction -->
+
+
+    <owl:Class rdf:about="https://example.org/story/action#UseItemAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://example.org/story/action#Action"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://example.org/story/event#usesItem"/>
+                        <owl:someValuesFrom rdf:resource="https://example.org/story/event#Item"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">An action that involves an item. Any action with usesItem is classified here.</rdfs:comment>
+        <rdfs:label xml:lang="en">Use-item action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Artifact -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Artifact">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#Item"/>
+        <rdfs:comment xml:lang="en">A crafted object of special significance, such as a jewel, ring, or magical item.</rdfs:comment>
+        <rdfs:label xml:lang="en">Artifact</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Battle -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Battle">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#PhysicalEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasCombatant"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A violent confrontation.</rdfs:comment>
+        <rdfs:label xml:lang="en">Battle</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Birth -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Birth">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#SocialEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasMother"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasNewborn"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasFather"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#hasNewborn"/>
+        </owl:hasKey>
+        <rdfs:comment xml:lang="en">The birth of a character.</rdfs:comment>
+        <rdfs:label xml:lang="en">Birth</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Captivity -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Captivity">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#State"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasCaptive"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasCaptor"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Being held prisoner.</rdfs:comment>
+        <rdfs:label xml:lang="en">Captivity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Conversation -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Conversation">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#Meeting"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasSpeaker"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A meeting involving verbal exchange.</rdfs:comment>
+        <rdfs:label xml:lang="en">Conversation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Coronation -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Coronation">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#SocialEvent"/>
+        <rdfs:comment xml:lang="en">An event in which a character is crowned or given authority.</rdfs:comment>
+        <rdfs:label xml:lang="en">Coronation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Death -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Death">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#SocialEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasDeceased"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasKiller"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#hasDeceased"/>
+        </owl:hasKey>
+        <rdfs:comment xml:lang="en">The death of a character.</rdfs:comment>
+        <rdfs:label xml:lang="en">Death</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Event -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Event">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasTemporalExtent"/>
+                <owl:someValuesFrom rdf:resource="https://example.org/story/time#Interval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Something that happens in the story world, with a time, place, and participants.</rdfs:comment>
+        <rdfs:label xml:lang="en">Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Item -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Item">
+        <rdfs:comment xml:lang="en">A significant object that can be used in events. Items include weapons, vehicles, and artifacts.</rdfs:comment>
+        <rdfs:label xml:lang="en">Item</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Journey -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Journey">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#PhysicalEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasTraveler"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasDestination"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://example.org/story/place#Place"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasOrigin"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://example.org/story/place#Place"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Moving from one place to another.</rdfs:comment>
+        <rdfs:label xml:lang="en">Journey</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Marriage -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Marriage">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#SocialEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasHusband"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasWife"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasOfficiant"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A marriage event with husband, wife, and officiant roles.</rdfs:comment>
+        <rdfs:label xml:lang="en">Marriage</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Meeting -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Meeting">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#SocialEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasParticipant"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Two or more characters encounter each other.</rdfs:comment>
+        <rdfs:label xml:lang="en">Meeting</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#NaturalDisaster -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#NaturalDisaster">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#PhysicalEvent"/>
+        <rdfs:comment xml:lang="en">A catastrophic natural event such as a flood, earthquake, or volcanic eruption.</rdfs:comment>
+        <rdfs:label xml:lang="en">Natural disaster</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#PhysicalEvent -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#PhysicalEvent">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">Events with physical consequences: battles, journeys, disasters.</rdfs:comment>
+        <rdfs:label xml:lang="en">Physical event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Reign -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Reign">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#State"/>
+        <rdfs:comment xml:lang="en">A state of ruling over a realm or people.</rdfs:comment>
+        <rdfs:label xml:lang="en">Reign</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Residence -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Residence">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#State"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasLocation"/>
+                <owl:someValuesFrom rdf:resource="https://example.org/story/place#Place"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasResident"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A state of living at a particular place for a period of time.</rdfs:comment>
+        <rdfs:label xml:lang="en">Residence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#SocialEvent -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#SocialEvent">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">Events with social significance: births, deaths, marriages, coronations.</rdfs:comment>
+        <rdfs:label xml:lang="en">Social event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#State -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#State">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#Event"/>
+        <rdfs:comment xml:lang="en">An ongoing state of affairs: a residence, captivity, or reign.</rdfs:comment>
+        <rdfs:label xml:lang="en">State</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Vehicle -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Vehicle">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#Item"/>
+        <owl:disjointWith rdf:resource="https://example.org/story/event#Weapon"/>
+        <rdfs:comment xml:lang="en">A means of transport used in a journey.</rdfs:comment>
+        <rdfs:label xml:lang="en">Vehicle</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#War -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#War">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#PhysicalEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasSubEvent"/>
+                <owl:someValuesFrom rdf:resource="https://example.org/story/event#Battle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/event#hasSubEvent"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://example.org/story/event#Battle"/>
+                            <rdf:Description rdf:about="https://example.org/story/event#War"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A prolonged conflict made up of multiple battles.</rdfs:comment>
+        <rdfs:label xml:lang="en">War</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Weapon -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Weapon">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/event#Item"/>
+        <rdfs:comment xml:lang="en">An object designed or used for combat. Example: Gurthang (Túrin&apos;s sword).</rdfs:comment>
+        <rdfs:label xml:lang="en">Weapon</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Building -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Building">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">A structure with walls and a roof.</rdfs:comment>
+        <rdfs:label xml:lang="en">Building</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#City -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#City">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Settlement"/>
+        <rdfs:comment xml:lang="en">A large settlement with political importance.</rdfs:comment>
+        <rdfs:label xml:lang="en">City</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Forest -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Forest">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#WoodedArea"/>
+        <rdfs:comment xml:lang="en">A large wooded area. E.g. Brethil in the Narn.</rdfs:comment>
+        <rdfs:label xml:lang="en">Forest</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Fortress -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Fortress">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Settlement"/>
+        <rdfs:comment xml:lang="en">A fortified settlement or stronghold, like Nargothrond or Menegroth. Not disjoint with City since some fortresses are city-sized.</rdfs:comment>
+        <rdfs:label xml:lang="en">Fortress</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Hamlet -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Hamlet">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Settlement"/>
+        <rdfs:comment xml:lang="en">A very small settlement.</rdfs:comment>
+        <rdfs:label xml:lang="en">Hamlet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Lake -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Lake">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#WaterArea"/>
+        <rdfs:comment xml:lang="en">Standing water surrounded by land.</rdfs:comment>
+        <rdfs:label xml:lang="en">Lake</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#LandArea -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#LandArea">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">A place on land.</rdfs:comment>
+        <rdfs:label xml:lang="en">Land area</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#MountainRange -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#MountainRange">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#WildArea"/>
+        <rdfs:comment xml:lang="en">A chain of mountains.</rdfs:comment>
+        <rdfs:label xml:lang="en">Mountain range</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Place -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Place">
+        <rdfs:comment xml:lang="en">A named location in the story world.</rdfs:comment>
+        <rdfs:label xml:lang="en">Place</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Plain -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Plain">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#WildArea"/>
+        <rdfs:comment xml:lang="en">Flat open land.</rdfs:comment>
+        <rdfs:label xml:lang="en">Plain</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Realm -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Realm">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#LandArea"/>
+        <rdfs:comment xml:lang="en">A kingdom or administrative region containing settlements and wild areas.</rdfs:comment>
+        <rdfs:label xml:lang="en">Realm</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#River -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#River">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#WaterArea"/>
+        <rdfs:comment xml:lang="en">A flowing watercourse.</rdfs:comment>
+        <rdfs:label xml:lang="en">River</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Road -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Road">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">A path or route connecting places.</rdfs:comment>
+        <rdfs:label xml:lang="en">Road</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Room -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Room">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/place#partOf"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://example.org/story/place#Building"/>
+                            <rdf:Description rdf:about="https://example.org/story/place#Fortress"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A space inside a building or fortified complex.</rdfs:comment>
+        <rdfs:label xml:lang="en">Room</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Sea -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Sea">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#WaterArea"/>
+        <rdfs:comment xml:lang="en">A large body of salt water.</rdfs:comment>
+        <rdfs:label xml:lang="en">Sea</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Settlement -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Settlement">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#LandArea"/>
+        <rdfs:comment xml:lang="en">An inhabited place. Has a population.</rdfs:comment>
+        <rdfs:label xml:lang="en">Settlement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#Town -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#Town">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Settlement"/>
+        <rdfs:comment xml:lang="en">Bigger than a hamlet, smaller than a city.</rdfs:comment>
+        <rdfs:label xml:lang="en">Town</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#WaterArea -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#WaterArea">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#Place"/>
+        <rdfs:comment xml:lang="en">A body of water: river, lake, or sea.</rdfs:comment>
+        <rdfs:label xml:lang="en">Water area</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#WildArea -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#WildArea">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#LandArea"/>
+        <rdfs:comment xml:lang="en">Uninhabited natural area.</rdfs:comment>
+        <rdfs:label xml:lang="en">Wild area</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/place#WoodedArea -->
+
+
+    <owl:Class rdf:about="https://example.org/story/place#WoodedArea">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/place#WildArea"/>
+        <rdfs:comment xml:lang="en">Area covered mostly by trees.</rdfs:comment>
+        <rdfs:label xml:lang="en">Wooded area</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Author -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Author">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#Contributor"/>
+        <rdfs:comment xml:lang="en">A real-world person who originally wrote the work.</rdfs:comment>
+        <rdfs:label xml:lang="en">Author</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Chapter -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Chapter">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:comment xml:lang="en">A main division of the narrative.</rdfs:comment>
+        <rdfs:label xml:lang="en">Chapter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Contributor -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Contributor">
+        <owl:disjointWith rdf:resource="https://example.org/story/plot#Publisher"/>
+        <rdfs:comment xml:lang="en">A real-world person who contributes to the production of a narrative work.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contributor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Editor -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Editor">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#Contributor"/>
+        <rdfs:comment xml:lang="en">A real-world person who edited or compiled the published work.</rdfs:comment>
+        <rdfs:label xml:lang="en">Editor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Epilogue -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Epilogue">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:comment xml:lang="en">A concluding section that follows the main narrative.</rdfs:comment>
+        <rdfs:label xml:lang="en">Epilogue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#NarrativeContainer -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#NarrativeContainer">
+        <rdfs:comment xml:lang="en">A structural element that can contain other narrative parts.</rdfs:comment>
+        <rdfs:label xml:lang="en">Narrative container</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#NarrativeElement -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#NarrativeElement">
+        <rdfs:comment xml:lang="en">An atomic narrative element, like a single plot event.</rdfs:comment>
+        <rdfs:label xml:lang="en">Narrative element</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#NarrativeWork -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#NarrativeWork">
+        <rdfs:comment xml:lang="en">A real-world book, manuscript, or film script with authorship, editorial, and publication metadata.</rdfs:comment>
+        <rdfs:label xml:lang="en">Narrative work</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#PlotEvent -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#PlotEvent">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#NarrativeElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/plot#describesEvent"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://example.org/story/event#Event"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A narrative element describing an in-world event. Bridges the plot layer and the event layer via describesEvent.</rdfs:comment>
+        <rdfs:label xml:lang="en">Plot event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Prologue -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Prologue">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:comment xml:lang="en">An introductory section that precedes the main narrative.</rdfs:comment>
+        <rdfs:label xml:lang="en">Prologue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Publisher -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Publisher">
+        <rdfs:comment xml:lang="en">A real-world organization that publishes a narrative work.</rdfs:comment>
+        <rdfs:label xml:lang="en">Publisher</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#Story -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#Story">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#NarrativeContainer"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/plot#hasSection"/>
+                <owl:someValuesFrom rdf:resource="https://example.org/story/plot#StorySection"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:comment xml:lang="en">The fictional story as a whole.</rdfs:comment>
+        <rdfs:label xml:lang="en">Story</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/plot#StorySection -->
+
+
+    <owl:Class rdf:about="https://example.org/story/plot#StorySection">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/plot#NarrativeContainer"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/plot#containsPlotEvent"/>
+                <owl:someValuesFrom rdf:resource="https://example.org/story/plot#PlotEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/plot#sectionOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://example.org/story/plot#Story"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A structural part of a story: prologue, chapter, or epilogue.</rdfs:comment>
+        <rdfs:label xml:lang="en">Story section</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/time#EndingInterval -->
+
+
+    <owl:Class rdf:about="https://example.org/story/time#EndingInterval">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/time#endsAt"/>
+                <owl:someValuesFrom rdf:resource="https://example.org/story/time#Instant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An interval with a known end.</rdfs:comment>
+        <rdfs:label xml:lang="en">Ending interval</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/time#FiniteInterval -->
+
+
+    <owl:Class rdf:about="https://example.org/story/time#FiniteInterval">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://example.org/story/time#EndingInterval"/>
+                    <rdf:Description rdf:about="https://example.org/story/time#StartingInterval"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="https://example.org/story/time#InfiniteInterval"/>
+        <rdfs:comment xml:lang="en">An interval with both start and end. Defined as StartingInterval ⊓ EndingInterval.</rdfs:comment>
+        <rdfs:label xml:lang="en">Finite interval</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/time#InfiniteInterval -->
+
+
+    <owl:Class rdf:about="https://example.org/story/time#InfiniteInterval">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">An interval unbounded on at least one side.</rdfs:comment>
+        <rdfs:label xml:lang="en">Infinite interval</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/time#Instant -->
+
+
+    <owl:Class rdf:about="https://example.org/story/time#Instant">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/time#TemporalEntity"/>
+        <owl:disjointWith rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:comment xml:lang="en">A single point in time.</rdfs:comment>
+        <rdfs:label xml:lang="en">Instant</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/time#Interval -->
+
+
+    <owl:Class rdf:about="https://example.org/story/time#Interval">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">A stretch of time between two instants.</rdfs:comment>
+        <rdfs:label xml:lang="en">Interval</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/time#StartingInterval -->
+
+
+    <owl:Class rdf:about="https://example.org/story/time#StartingInterval">
+        <rdfs:subClassOf rdf:resource="https://example.org/story/time#Interval"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://example.org/story/time#startsAt"/>
+                <owl:someValuesFrom rdf:resource="https://example.org/story/time#Instant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An interval with a known start.</rdfs:comment>
+        <rdfs:label xml:lang="en">Starting interval</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/time#TemporalEntity -->
+
+
+    <owl:Class rdf:about="https://example.org/story/time#TemporalEntity">
+        <rdfs:comment xml:lang="en">Superclass of instants and intervals.</rdfs:comment>
+        <rdfs:label xml:lang="en">Temporal entity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://purl.org/region/rcc8/Region -->
+
+
+    <owl:Class rdf:about="https://purl.org/region/rcc8/Region">
+        <rdfs:comment xml:lang="en">A continuous extent of space. In story modelling, places occupy regions.</rdfs:comment>
+        <rdfs:label xml:lang="en">region</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/meo/eru -->
+
+
+    <owl:NamedIndividual rdf:about="http://purl.org/meo/eru">
+        <rdf:type rdf:resource="http://purl.org/meo/God"/>
+        <rdfs:comment xml:lang="en">The one God creator of everything.</rdfs:comment>
+        <rdfs:label xml:lang="qya">Eru</rdfs:label>
+        <rdfs:label xml:lang="en">The One</rdfs:label>
+        <skos:altLabel xml:lang="qya">Eru Ilúvatar</skos:altLabel>
+        <skos:altLabel xml:lang="en">God</skos:altLabel>
+        <skos:altLabel xml:lang="qya">Ilúvatar</skos:altLabel>
+        <skos:altLabel xml:lang="en">The Allfather</skos:altLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/meo/melkor -->
+
+
+    <owl:NamedIndividual rdf:about="http://purl.org/meo/melkor">
+        <rdf:type rdf:resource="http://purl.org/meo/Vala"/>
+        <owl:sameAs rdf:resource="http://purl.org/meo/morgoth"/>
+        <rdfs:comment xml:lang="en">The greatest of the Ainur.</rdfs:comment>
+        <rdfs:label xml:lang="en">He who arises in might</rdfs:label>
+        <rdfs:label xml:lang="qya">Melkor</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/meo/morgoth -->
+
+
+    <owl:NamedIndividual rdf:about="http://purl.org/meo/morgoth"/>
+    
+
+
+    <!-- http://purl.org/meo/morgoth -->
+
+
+    <owl:NamedIndividual rdf:about="http://purl.org/meo/morgoth">
+        <rdf:type rdf:resource="http://purl.org/meo/EvilBeing"/>
+        <rdfs:comment xml:lang="en">The only Vala who became evil. The enemy of all other Valar.</rdfs:comment>
+        <rdfs:label xml:lang="sjn">Morgoth</rdfs:label>
+        <rdfs:label xml:lang="en">The Black Enemy</rdfs:label>
+        <skos:altLabel xml:lang="sjn">Bauglir</skos:altLabel>
+        <skos:altLabel xml:lang="en">The Constrainer</skos:altLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/family/isAChildOf"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Adan"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/family/isAChildOf"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Elda"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Peredhel"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/family/isTheFatherOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Atan"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/family/isTheMotherOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Atan"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Atan"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/family/isTheFatherOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Elda"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/family/isTheMotherOf"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://purl.org/meo/Elda"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Elda"/>
+    </owl:Class>
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/family/isAChildOf"/>
+        <owl:allValuesFrom rdf:resource="http://purl.org/meo/Atan"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Atan"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/family/isAChildOf"/>
+        <owl:allValuesFrom rdf:resource="http://purl.org/meo/Elda"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/Elda"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/meo/served"/>
+        <owl:hasValue rdf:resource="http://purl.org/meo/morgoth"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/meo/EvilBeing"/>
+    </owl:Restriction>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#Battle"/>
+            <rdf:Description rdf:about="https://example.org/story/event#Journey"/>
+            <rdf:Description rdf:about="https://example.org/story/event#NaturalDisaster"/>
+            <rdf:Description rdf:about="https://example.org/story/event#War"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#Birth"/>
+            <rdf:Description rdf:about="https://example.org/story/event#Coronation"/>
+            <rdf:Description rdf:about="https://example.org/story/event#Death"/>
+            <rdf:Description rdf:about="https://example.org/story/event#Marriage"/>
+            <rdf:Description rdf:about="https://example.org/story/event#Meeting"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#Captivity"/>
+            <rdf:Description rdf:about="https://example.org/story/event#Reign"/>
+            <rdf:Description rdf:about="https://example.org/story/event#Residence"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/event#PhysicalEvent"/>
+            <rdf:Description rdf:about="https://example.org/story/event#SocialEvent"/>
+            <rdf:Description rdf:about="https://example.org/story/event#State"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/place#Building"/>
+            <rdf:Description rdf:about="https://example.org/story/place#LandArea"/>
+            <rdf:Description rdf:about="https://example.org/story/place#Road"/>
+            <rdf:Description rdf:about="https://example.org/story/place#Room"/>
+            <rdf:Description rdf:about="https://example.org/story/place#WaterArea"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/place#City"/>
+            <rdf:Description rdf:about="https://example.org/story/place#Hamlet"/>
+            <rdf:Description rdf:about="https://example.org/story/place#Town"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/place#Lake"/>
+            <rdf:Description rdf:about="https://example.org/story/place#River"/>
+            <rdf:Description rdf:about="https://example.org/story/place#Sea"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/place#Realm"/>
+            <rdf:Description rdf:about="https://example.org/story/place#Settlement"/>
+            <rdf:Description rdf:about="https://example.org/story/place#WildArea"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/plot#Chapter"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#Epilogue"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#Prologue"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/plot#NarrativeContainer"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#NarrativeElement"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#NarrativeWork"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

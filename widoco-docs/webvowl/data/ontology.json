@@ -1,0 +1,5173 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "sjn", "qya", "en", "undefined" ],
+    "baseIris" : [ "https://example.org/story/social", "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://purl.org/family", "http://purl.org/meo", "https://example.org/story/action", "https://example.org/story/event", "https://example.org/story/time", "http://www.w3.org/2000/01/rdf-schema", "https://example.org/story/plot", "https://example.org/story/place", "http://www.w3.org/2001/XMLSchema", "https://purl.org/region/rcc8" ],
+    "title" : {
+      "en" : "Plot Structure Ontology"
+    },
+    "iri" : "http://purl.org/family/",
+    "version" : "1.0",
+    "author" : [ "https://w3id.org/people/az/me" ],
+    "labels" : {
+      "en" : "Time Ontology"
+    },
+    "comments" : {
+      "en" : "Events in story plots: occurrences involving characters, places, and time. Includes an event hierarchy, participant roles, and temporal relations."
+    },
+    "other" : {
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "https://w3id.org/people/az/me",
+        "type" : "iri"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2023-11-19T07:42:42+01:00",
+        "type" : "label"
+      }, {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2023-11-19T14:42:42+01:00",
+        "type" : "label"
+      }, {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2026-03-28T00:00:00+00:00",
+        "type" : "label"
+      } ],
+      "modified" : [ {
+        "identifier" : "modified",
+        "language" : "undefined",
+        "value" : "2026-01-23T13:42:42+01:00",
+        "type" : "label"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "undefined",
+        "value" : "1.0",
+        "type" : "label"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "Place Ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "Region Connection Calculus (RCC8) Ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "The Family Ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "Event Ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "Action Ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "The Middle-earth ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "Time Ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "Social Relations Ontology",
+        "type" : "label"
+      }, {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "Plot Structure Ontology",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "0",
+    "type" : "owl:Class"
+  }, {
+    "id" : "27",
+    "type" : "owl:Class"
+  }, {
+    "id" : "30",
+    "type" : "owl:intersectionOf"
+  }, {
+    "id" : "32",
+    "type" : "owl:Class"
+  }, {
+    "id" : "53",
+    "type" : "owl:Class"
+  }, {
+    "id" : "71",
+    "type" : "owl:Class"
+  }, {
+    "id" : "74",
+    "type" : "owl:Class"
+  }, {
+    "id" : "80",
+    "type" : "owl:Class"
+  }, {
+    "id" : "85",
+    "type" : "owl:Class"
+  }, {
+    "id" : "48",
+    "type" : "owl:Class"
+  }, {
+    "id" : "100",
+    "type" : "owl:Class"
+  }, {
+    "id" : "35",
+    "type" : "owl:Class"
+  }, {
+    "id" : "124",
+    "type" : "owl:Class"
+  }, {
+    "id" : "125",
+    "type" : "owl:Class"
+  }, {
+    "id" : "132",
+    "type" : "owl:Class"
+  }, {
+    "id" : "76",
+    "type" : "owl:Class"
+  }, {
+    "id" : "135",
+    "type" : "owl:Class"
+  }, {
+    "id" : "6",
+    "type" : "owl:Class"
+  }, {
+    "id" : "58",
+    "type" : "owl:Class"
+  }, {
+    "id" : "155",
+    "type" : "owl:Class"
+  }, {
+    "id" : "9",
+    "type" : "owl:Class"
+  }, {
+    "id" : "56",
+    "type" : "owl:Class"
+  }, {
+    "id" : "50",
+    "type" : "owl:Class"
+  }, {
+    "id" : "133",
+    "type" : "owl:Class"
+  }, {
+    "id" : "63",
+    "type" : "owl:Class"
+  }, {
+    "id" : "38",
+    "type" : "owl:Class"
+  }, {
+    "id" : "173",
+    "type" : "owl:Class"
+  }, {
+    "id" : "70",
+    "type" : "owl:Class"
+  }, {
+    "id" : "192",
+    "type" : "owl:Class"
+  }, {
+    "id" : "4",
+    "type" : "owl:Class"
+  }, {
+    "id" : "7",
+    "type" : "owl:Class"
+  }, {
+    "id" : "29",
+    "type" : "owl:Class"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "98",
+    "type" : "owl:Class"
+  }, {
+    "id" : "147",
+    "type" : "owl:Class"
+  }, {
+    "id" : "217",
+    "type" : "owl:Class"
+  }, {
+    "id" : "164",
+    "type" : "owl:Class"
+  }, {
+    "id" : "40",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "87",
+    "type" : "owl:Class"
+  }, {
+    "id" : "207",
+    "type" : "owl:Class"
+  }, {
+    "id" : "42",
+    "type" : "owl:Class"
+  }, {
+    "id" : "19",
+    "type" : "owl:intersectionOf"
+  }, {
+    "id" : "16",
+    "type" : "owl:Class"
+  }, {
+    "id" : "178",
+    "type" : "owl:Class"
+  }, {
+    "id" : "31",
+    "type" : "owl:Class"
+  }, {
+    "id" : "228",
+    "type" : "owl:Class"
+  }, {
+    "id" : "104",
+    "type" : "owl:Class"
+  }, {
+    "id" : "130",
+    "type" : "owl:Class"
+  }, {
+    "id" : "161",
+    "type" : "owl:Class"
+  }, {
+    "id" : "121",
+    "type" : "owl:Class"
+  }, {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
+    "id" : "198",
+    "type" : "owl:Class"
+  }, {
+    "id" : "190",
+    "type" : "owl:Class"
+  }, {
+    "id" : "34",
+    "type" : "owl:Class"
+  }, {
+    "id" : "211",
+    "type" : "owl:Class"
+  }, {
+    "id" : "166",
+    "type" : "owl:Class"
+  }, {
+    "id" : "37",
+    "type" : "owl:Class"
+  }, {
+    "id" : "28",
+    "type" : "owl:Class"
+  }, {
+    "id" : "223",
+    "type" : "owl:Class"
+  }, {
+    "id" : "62",
+    "type" : "owl:Class"
+  }, {
+    "id" : "231",
+    "type" : "owl:Class"
+  }, {
+    "id" : "90",
+    "type" : "owl:Class"
+  }, {
+    "id" : "68",
+    "type" : "owl:Class"
+  }, {
+    "id" : "213",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "304",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "221",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "202",
+    "type" : "owl:Class"
+  }, {
+    "id" : "94",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "154",
+    "type" : "owl:Class"
+  }, {
+    "id" : "305",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "209",
+    "type" : "owl:Class"
+  }, {
+    "id" : "11",
+    "type" : "owl:Class"
+  }, {
+    "id" : "52",
+    "type" : "owl:Class"
+  }, {
+    "id" : "188",
+    "type" : "owl:Class"
+  }, {
+    "id" : "176",
+    "type" : "owl:Class"
+  }, {
+    "id" : "308",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "240",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "169",
+    "type" : "owl:Class"
+  }, {
+    "id" : "225",
+    "type" : "owl:Class"
+  }, {
+    "id" : "84",
+    "type" : "owl:Class"
+  }, {
+    "id" : "44",
+    "type" : "owl:Class"
+  }, {
+    "id" : "175",
+    "type" : "owl:Class"
+  }, {
+    "id" : "325",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "18",
+    "type" : "owl:Class"
+  }, {
+    "id" : "214",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "347",
+    "type" : "owl:intersectionOf"
+  }, {
+    "id" : "216",
+    "type" : "owl:Class"
+  }, {
+    "id" : "73",
+    "type" : "owl:Class"
+  }, {
+    "id" : "319",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "140",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "323",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "183",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "96",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "265",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "131",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "280",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "93",
+    "type" : "owl:Class"
+  }, {
+    "id" : "55",
+    "type" : "owl:Class"
+  }, {
+    "id" : "99",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "45",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "162",
+    "type" : "owl:Class"
+  }, {
+    "id" : "14",
+    "type" : "owl:Class"
+  }, {
+    "id" : "158",
+    "type" : "owl:Class"
+  }, {
+    "id" : "82",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "144",
+    "type" : "owl:Class"
+  }, {
+    "id" : "205",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "22",
+    "type" : "owl:Thing"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://example.org/story/place#River",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "River",
+      "en" : "River"
+    },
+    "comment" : {
+      "en" : "A flowing watercourse."
+    },
+    "attributes" : [ "external" ],
+    "id" : "0",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://purl.org/meo/Mortal",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Mortal",
+      "en" : "mortal"
+    },
+    "subClasses" : [ "28", "29" ],
+    "comment" : {
+      "en" : "Mortal living being, such as Men and Dwarces."
+    },
+    "attributes" : [ "external" ],
+    "id" : "27"
+  }, {
+    "iri" : "https://example.org/story/time#FiniteInterval",
+    "baseIri" : "https://example.org/story/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "FiniteInterval",
+      "en" : "Finite interval"
+    },
+    "intersection" : [ "31", "32" ],
+    "comment" : {
+      "en" : "An interval with both start and end. Defined as StartingInterval ⊓ EndingInterval."
+    },
+    "attributes" : [ "external", "intersection" ],
+    "id" : "30"
+  }, {
+    "iri" : "https://example.org/story/time#EndingInterval",
+    "baseIri" : "https://example.org/story/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "EndingInterval",
+      "en" : "Ending interval"
+    },
+    "comment" : {
+      "en" : "An interval with a known end."
+    },
+    "attributes" : [ "external" ],
+    "id" : "32",
+    "superClasses" : [ "34" ]
+  }, {
+    "iri" : "https://example.org/story/event#Coronation",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Coronation",
+      "en" : "Coronation"
+    },
+    "comment" : {
+      "en" : "An event in which a character is crowned or given authority."
+    },
+    "attributes" : [ "external" ],
+    "id" : "53",
+    "superClasses" : [ "9" ]
+  }, {
+    "iri" : "https://example.org/story/time#InfiniteInterval",
+    "baseIri" : "https://example.org/story/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "InfiniteInterval",
+      "en" : "Infinite interval"
+    },
+    "comment" : {
+      "en" : "An interval unbounded on at least one side."
+    },
+    "attributes" : [ "external" ],
+    "id" : "71",
+    "superClasses" : [ "34" ]
+  }, {
+    "iri" : "https://example.org/story/event#NaturalDisaster",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NaturalDisaster",
+      "en" : "Natural disaster"
+    },
+    "comment" : {
+      "en" : "A catastrophic natural event such as a flood, earthquake, or volcanic eruption."
+    },
+    "attributes" : [ "external" ],
+    "id" : "74",
+    "superClasses" : [ "6" ]
+  }, {
+    "iri" : "https://example.org/story/place#City",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "City",
+      "en" : "City"
+    },
+    "comment" : {
+      "en" : "A large settlement with political importance."
+    },
+    "attributes" : [ "external" ],
+    "id" : "80",
+    "superClasses" : [ "37" ]
+  }, {
+    "iri" : "https://example.org/story/action#AttackAction",
+    "baseIri" : "https://example.org/story/action",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "AttackAction",
+      "en" : "Attack action"
+    },
+    "comment" : {
+      "en" : "A hostile action directed at a patient. Left as a conservative subclass rather than a defined class, because patienthood alone would wrongly classify non-violent actions such as curses as attacks."
+    },
+    "attributes" : [ "external" ],
+    "id" : "85",
+    "superClasses" : [ "19" ]
+  }, {
+    "iri" : "https://example.org/story/event#Marriage",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Marriage",
+      "en" : "Marriage"
+    },
+    "comment" : {
+      "en" : "A marriage event with husband, wife, and officiant roles."
+    },
+    "attributes" : [ "external" ],
+    "id" : "48",
+    "superClasses" : [ "9" ]
+  }, {
+    "iri" : "https://example.org/story/action#MoveAction",
+    "baseIri" : "https://example.org/story/action",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MoveAction",
+      "en" : "Move action"
+    },
+    "comment" : {
+      "en" : "Moving from one place to another."
+    },
+    "attributes" : [ "external" ],
+    "id" : "100",
+    "superClasses" : [ "19" ]
+  }, {
+    "iri" : "https://example.org/story/time#Instant",
+    "baseIri" : "https://example.org/story/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Instant",
+      "en" : "Instant"
+    },
+    "comment" : {
+      "en" : "A single point in time."
+    },
+    "attributes" : [ "external" ],
+    "id" : "35",
+    "superClasses" : [ "121" ]
+  }, {
+    "iri" : "https://example.org/story/place#Plain",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Plain",
+      "en" : "Plain"
+    },
+    "comment" : {
+      "en" : "Flat open land."
+    },
+    "attributes" : [ "external" ],
+    "id" : "124",
+    "superClasses" : [ "68" ]
+  }, {
+    "iri" : "https://example.org/story/place#MountainRange",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MountainRange",
+      "en" : "Mountain range"
+    },
+    "comment" : {
+      "en" : "A chain of mountains."
+    },
+    "attributes" : [ "external" ],
+    "id" : "125",
+    "superClasses" : [ "68" ]
+  }, {
+    "iri" : "https://example.org/story/place#Road",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Road",
+      "en" : "Road"
+    },
+    "comment" : {
+      "en" : "A path or route connecting places."
+    },
+    "attributes" : [ "external" ],
+    "id" : "132",
+    "superClasses" : [ "104" ]
+  }, {
+    "iri" : "https://example.org/story/plot#NarrativeContainer",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NarrativeContainer",
+      "en" : "Narrative container"
+    },
+    "subClasses" : [ "133", "73" ],
+    "comment" : {
+      "en" : "A structural element that can contain other narrative parts."
+    },
+    "attributes" : [ "external" ],
+    "id" : "76"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/Region",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Region",
+      "en" : "region"
+    },
+    "comment" : {
+      "en" : "A continuous extent of space. In story modelling, places occupy regions."
+    },
+    "attributes" : [ "external" ],
+    "id" : "135"
+  }, {
+    "iri" : "https://example.org/story/event#PhysicalEvent",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PhysicalEvent",
+      "en" : "Physical event"
+    },
+    "subClasses" : [ "74", "87", "84", "90" ],
+    "comment" : {
+      "en" : "Events with physical consequences: battles, journeys, disasters."
+    },
+    "attributes" : [ "external" ],
+    "id" : "6",
+    "superClasses" : [ "7" ]
+  }, {
+    "iri" : "http://purl.org/meo/Torog",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Torog",
+      "sjn" : "torog",
+      "en" : "troll"
+    },
+    "comment" : {
+      "en" : "The *Teryg (probably the plural form of Torog in Sindarin) are the Trolls, large humanoid monsters of great physical strength and weak intellect."
+    },
+    "attributes" : [ "external" ],
+    "id" : "58",
+    "superClasses" : [ "56" ]
+  }, {
+    "iri" : "https://example.org/story/plot#Chapter",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Chapter",
+      "en" : "Chapter"
+    },
+    "comment" : {
+      "en" : "A main division of the narrative."
+    },
+    "attributes" : [ "external" ],
+    "id" : "155",
+    "superClasses" : [ "73" ]
+  }, {
+    "iri" : "https://example.org/story/event#SocialEvent",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SocialEvent",
+      "en" : "Social event"
+    },
+    "subClasses" : [ "53", "42", "48", "50", "52" ],
+    "comment" : {
+      "en" : "Events with social significance: births, deaths, marriages, coronations."
+    },
+    "attributes" : [ "external" ],
+    "id" : "9",
+    "superClasses" : [ "7" ]
+  }, {
+    "iri" : "http://purl.org/meo/EvilBeing",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "EvilBeing",
+      "en" : "evil being"
+    },
+    "individuals" : [ {
+      "iri" : "http://purl.org/meo/morgoth",
+      "baseIri" : "http://purl.org/meo",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "The Constrainer",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "sjn",
+          "value" : "Bauglir",
+          "type" : "label"
+        } ]
+      },
+      "comment" : {
+        "en" : "The only Vala who became evil. The enemy of all other Valar."
+      },
+      "labels" : {
+        "IRI-based" : "morgoth",
+        "sjn" : "Morgoth",
+        "en" : "The Black Enemy"
+      }
+    } ],
+    "subClasses" : [ "55", "58" ],
+    "comment" : {
+      "en" : "The evil beings are sentient agents that have chosen to do bad things, behave badly for the sake of doing bad, or became corrupted into doing evil. Some things are raised and bred to be evil. Some things are led to become evil by other evil beings by subversion. Some choose to become evil due to greed or as a way to overcome hardships of their lives."
+    },
+    "attributes" : [ "external" ],
+    "id" : "56"
+  }, {
+    "iri" : "https://example.org/story/event#Birth",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Birth",
+      "en" : "Birth"
+    },
+    "comment" : {
+      "en" : "The birth of a character."
+    },
+    "attributes" : [ "external" ],
+    "id" : "50",
+    "superClasses" : [ "9" ]
+  }, {
+    "iri" : "https://example.org/story/plot#Story",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Story",
+      "en" : "Story"
+    },
+    "comment" : {
+      "en" : "The fictional story as a whole."
+    },
+    "attributes" : [ "external" ],
+    "id" : "133",
+    "superClasses" : [ "76" ]
+  }, {
+    "iri" : "https://example.org/story/plot#NarrativeElement",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NarrativeElement",
+      "en" : "Narrative element"
+    },
+    "subClasses" : [ "62" ],
+    "comment" : {
+      "en" : "An atomic narrative element, like a single plot event."
+    },
+    "attributes" : [ "external" ],
+    "id" : "63"
+  }, {
+    "iri" : "https://example.org/story/place#LandArea",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "LandArea",
+      "en" : "Land area"
+    },
+    "subClasses" : [ "68", "70", "37" ],
+    "comment" : {
+      "en" : "A place on land."
+    },
+    "attributes" : [ "external" ],
+    "id" : "38",
+    "superClasses" : [ "104" ]
+  }, {
+    "iri" : "https://example.org/story/event#Conversation",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Conversation",
+      "en" : "Conversation"
+    },
+    "comment" : {
+      "en" : "A meeting involving verbal exchange."
+    },
+    "attributes" : [ "external" ],
+    "id" : "173",
+    "superClasses" : [ "52" ]
+  }, {
+    "iri" : "https://example.org/story/place#Realm",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Realm",
+      "en" : "Realm"
+    },
+    "comment" : {
+      "en" : "A kingdom or administrative region containing settlements and wild areas."
+    },
+    "attributes" : [ "external" ],
+    "id" : "70",
+    "superClasses" : [ "38" ]
+  }, {
+    "iri" : "https://example.org/story/place#Room",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Room",
+      "en" : "Room"
+    },
+    "comment" : {
+      "en" : "A space inside a building or fortified complex."
+    },
+    "attributes" : [ "external" ],
+    "id" : "192",
+    "superClasses" : [ "104" ]
+  }, {
+    "iri" : "http://purl.org/meo/Immortal",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Immortal",
+      "en" : "immortal"
+    },
+    "subClasses" : [ "40", "3" ],
+    "comment" : {
+      "en" : "An individual that does not die of natural death. Some immortals may die from wounds inflicted to them by violence or accident (like Elves), but some are truly eternal, like the Ainur)."
+    },
+    "attributes" : [ "external" ],
+    "id" : "4"
+  }, {
+    "iri" : "https://example.org/story/event#Event",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Event",
+      "en" : "Event"
+    },
+    "subClasses" : [ "6", "9", "11" ],
+    "comment" : {
+      "en" : "Something that happens in the story world, with a time, place, and participants."
+    },
+    "attributes" : [ "external" ],
+    "id" : "7"
+  }, {
+    "iri" : "http://purl.org/meo/Casar",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Child of Aulë",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "qya",
+        "value" : "Aulëonna",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Casar",
+      "sjn" : "Naug",
+      "qya" : "Casar",
+      "en" : "Dwarf"
+    },
+    "comment" : {
+      "en" : "The Casari (plural form of Casar in Quenya), more often called with the Sindarin variant Naugrim (plural of Naug in Sindarin), are the Dwarves created by the Vala Aulë."
+    },
+    "attributes" : [ "external" ],
+    "id" : "29",
+    "superClasses" : [ "27" ]
+  }, {
+    "iri" : "https://example.org/story/place#WaterArea",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "WaterArea",
+      "en" : "Water area"
+    },
+    "subClasses" : [ "0", "14", "16" ],
+    "comment" : {
+      "en" : "A body of water: river, lake, or sea."
+    },
+    "attributes" : [ "external" ],
+    "id" : "1",
+    "superClasses" : [ "104" ]
+  }, {
+    "iri" : "http://purl.org/family/Female",
+    "baseIri" : "http://purl.org/family",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Female",
+      "en" : "female"
+    },
+    "comment" : {
+      "en" : "A female individual. The gender may be a 'natural' one, attributed at birth, or a given one by social conventions."
+    },
+    "id" : "98"
+  }, {
+    "iri" : "http://purl.org/meo/Peredhel",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Peredhel",
+      "sjn" : "Peredhel",
+      "en" : "Half-elf"
+    },
+    "comment" : {
+      "en" : "Peredhil are descendent of both elves and humans."
+    },
+    "attributes" : [ "external" ],
+    "id" : "147",
+    "superClasses" : [ "144" ]
+  }, {
+    "iri" : "http://purl.org/meo/God",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "God",
+      "en" : "God"
+    },
+    "individuals" : [ {
+      "iri" : "http://purl.org/meo/eru",
+      "baseIri" : "http://purl.org/meo",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "qya",
+          "value" : "Ilúvatar",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "The Allfather",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "qya",
+          "value" : "Eru Ilúvatar",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "God",
+          "type" : "label"
+        } ]
+      },
+      "comment" : {
+        "en" : "The one God creator of everything."
+      },
+      "labels" : {
+        "IRI-based" : "eru",
+        "qya" : "Eru",
+        "en" : "The One"
+      }
+    } ],
+    "comment" : {
+      "en" : "A sperior entity. A singleton class that only contains Eru Ilúvatar, the One Allfather."
+    },
+    "attributes" : [ "external" ],
+    "id" : "217"
+  }, {
+    "iri" : "https://example.org/story/event#Weapon",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Weapon",
+      "en" : "Weapon"
+    },
+    "comment" : {
+      "en" : "An object designed or used for combat. Example: Gurthang (Túrin's sword)."
+    },
+    "attributes" : [ "external" ],
+    "id" : "164",
+    "superClasses" : [ "162" ]
+  }, {
+    "iri" : "http://purl.org/meo/Quendë",
+    "equivalent" : [ "240" ],
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "one that speaks",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Firstborn",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "qya",
+        "value" : "Elda",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Quendë",
+      "qya" : "Quendë",
+      "en" : "Elf"
+    },
+    "comment" : {
+      "en" : "The Quendi (plural form of Quendë) are the first born of the Children of Ilúvatar, the Elves. They are named thus because they were the only ones who spoke when they first appeared, before Men and Dwarves came to be. They are more often called the Eldar."
+    },
+    "attributes" : [ "external", "equivalent" ],
+    "id" : "40",
+    "superClasses" : [ "4", "144" ]
+  }, {
+    "iri" : "https://example.org/story/event#Journey",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Journey",
+      "en" : "Journey"
+    },
+    "comment" : {
+      "en" : "Moving from one place to another."
+    },
+    "attributes" : [ "external" ],
+    "id" : "87",
+    "superClasses" : [ "6" ]
+  }, {
+    "iri" : "https://example.org/story/place#Town",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Town",
+      "en" : "Town"
+    },
+    "comment" : {
+      "en" : "Bigger than a hamlet, smaller than a city."
+    },
+    "attributes" : [ "external" ],
+    "id" : "207",
+    "superClasses" : [ "37" ]
+  }, {
+    "iri" : "https://example.org/story/event#Death",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Death",
+      "en" : "Death"
+    },
+    "comment" : {
+      "en" : "The death of a character."
+    },
+    "attributes" : [ "external" ],
+    "id" : "42",
+    "superClasses" : [ "9" ]
+  }, {
+    "iri" : "https://example.org/story/action#Action",
+    "baseIri" : "https://example.org/story/action",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Action",
+      "en" : "Action"
+    },
+    "subClasses" : [ "18", "100", "85" ],
+    "intersection" : [ "7" ],
+    "comment" : {
+      "en" : "An event with a deliberate agent. Defined as Action ≡ Event ⊓ ∃evt:hasAgent.⊤, so any event that has an agent gets classified as an action automatically."
+    },
+    "attributes" : [ "external", "intersection" ],
+    "id" : "19"
+  }, {
+    "iri" : "https://example.org/story/place#Sea",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Sea",
+      "en" : "Sea"
+    },
+    "comment" : {
+      "en" : "A large body of salt water."
+    },
+    "attributes" : [ "external" ],
+    "id" : "16",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "https://example.org/story/action#CurseAction",
+    "baseIri" : "https://example.org/story/action",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "CurseAction",
+      "en" : "Curse action"
+    },
+    "comment" : {
+      "en" : "Placing a curse on someone. In the Narn, Morgoth curses the children of Húrin."
+    },
+    "attributes" : [ "external" ],
+    "id" : "178",
+    "superClasses" : [ "18" ]
+  }, {
+    "iri" : "https://example.org/story/time#StartingInterval",
+    "baseIri" : "https://example.org/story/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "StartingInterval",
+      "en" : "Starting interval"
+    },
+    "comment" : {
+      "en" : "An interval with a known start."
+    },
+    "attributes" : [ "external" ],
+    "id" : "31",
+    "superClasses" : [ "34" ]
+  }, {
+    "iri" : "https://example.org/story/plot#Contributor",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Contributor",
+      "en" : "Contributor"
+    },
+    "subClasses" : [ "211", "216" ],
+    "comment" : {
+      "en" : "A real-world person who contributes to the production of a narrative work."
+    },
+    "attributes" : [ "external" ],
+    "id" : "228"
+  }, {
+    "iri" : "https://example.org/story/place#Place",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Place",
+      "en" : "Place"
+    },
+    "subClasses" : [ "132", "231", "1", "38", "192" ],
+    "comment" : {
+      "en" : "A named location in the story world."
+    },
+    "attributes" : [ "external" ],
+    "id" : "104"
+  }, {
+    "iri" : "http://purl.org/family/Male",
+    "baseIri" : "http://purl.org/family",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Male",
+      "en" : "male"
+    },
+    "comment" : {
+      "en" : "A male individual. The gender may be a 'natural' one, attributed at birth, or a given one by social conventions."
+    },
+    "id" : "130"
+  }, {
+    "iri" : "https://example.org/story/event#Artifact",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Artifact",
+      "en" : "Artifact"
+    },
+    "comment" : {
+      "en" : "A crafted object of special significance, such as a jewel, ring, or magical item."
+    },
+    "attributes" : [ "external" ],
+    "id" : "161",
+    "superClasses" : [ "162" ]
+  }, {
+    "iri" : "https://example.org/story/time#TemporalEntity",
+    "baseIri" : "https://example.org/story/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "TemporalEntity",
+      "en" : "Temporal entity"
+    },
+    "subClasses" : [ "35", "34" ],
+    "comment" : {
+      "en" : "Superclass of instants and intervals."
+    },
+    "attributes" : [ "external" ],
+    "id" : "121"
+  }, {
+    "iri" : "http://purl.org/meo/Ainu",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Ainu",
+      "qya" : "Ainu",
+      "en" : "Holy one"
+    },
+    "subClasses" : [ "223", "225" ],
+    "comment" : {
+      "en" : "The Ainur (plural form of Ainu) are the spirits created by Eru Ilúvatar before time existed"
+    },
+    "attributes" : [ "external" ],
+    "id" : "3",
+    "superClasses" : [ "4" ]
+  }, {
+    "iri" : "https://example.org/story/event#Reign",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Reign",
+      "en" : "Reign"
+    },
+    "comment" : {
+      "en" : "A state of ruling over a realm or people."
+    },
+    "attributes" : [ "external" ],
+    "id" : "198",
+    "superClasses" : [ "11" ]
+  }, {
+    "iri" : "https://example.org/story/plot#Publisher",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Publisher",
+      "en" : "Publisher"
+    },
+    "comment" : {
+      "en" : "A real-world organization that publishes a narrative work."
+    },
+    "attributes" : [ "external" ],
+    "id" : "190"
+  }, {
+    "iri" : "https://example.org/story/time#Interval",
+    "baseIri" : "https://example.org/story/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Interval",
+      "en" : "Interval"
+    },
+    "subClasses" : [ "31", "71", "32" ],
+    "comment" : {
+      "en" : "A stretch of time between two instants."
+    },
+    "attributes" : [ "external" ],
+    "id" : "34",
+    "superClasses" : [ "121" ]
+  }, {
+    "iri" : "https://example.org/story/plot#Author",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Author",
+      "en" : "Author"
+    },
+    "comment" : {
+      "en" : "A real-world person who originally wrote the work."
+    },
+    "attributes" : [ "external" ],
+    "id" : "211",
+    "superClasses" : [ "228" ]
+  }, {
+    "iri" : "https://example.org/story/event#Vehicle",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Vehicle",
+      "en" : "Vehicle"
+    },
+    "comment" : {
+      "en" : "A means of transport used in a journey."
+    },
+    "attributes" : [ "external" ],
+    "id" : "166",
+    "superClasses" : [ "162" ]
+  }, {
+    "iri" : "https://example.org/story/place#Settlement",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Settlement",
+      "en" : "Settlement"
+    },
+    "subClasses" : [ "202", "80", "207", "209" ],
+    "comment" : {
+      "en" : "An inhabited place. Has a population."
+    },
+    "attributes" : [ "external" ],
+    "id" : "37",
+    "superClasses" : [ "38" ]
+  }, {
+    "iri" : "http://purl.org/meo/Atan",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "qya",
+        "value" : "Apanóna",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "qya",
+        "value" : "Engwa",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "qya",
+        "value" : "Hildo",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "After-born",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "qya",
+        "value" : "Fírima",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Sickly",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Secondborn",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "After-comer",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Mortal",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Follower",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Human",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Atan",
+      "sjn" : "Adan",
+      "qya" : "Atan",
+      "en" : "Man"
+    },
+    "subClasses" : [ "188" ],
+    "comment" : {
+      "en" : "The Atani (plural form of Atan) are the second born of the Children of Ilúvatar, the Men (i.e. Humans, not male people). They were given many names also by the Eldar."
+    },
+    "attributes" : [ "external" ],
+    "id" : "28",
+    "superClasses" : [ "27", "144" ]
+  }, {
+    "iri" : "http://purl.org/meo/Maia",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Maia",
+      "qya" : "Maia",
+      "en" : "Beautiful"
+    },
+    "comment" : {
+      "en" : "The Maiar (plural form of Maia) are Ainur who entered Arda and serve the Valar."
+    },
+    "attributes" : [ "external" ],
+    "id" : "223",
+    "superClasses" : [ "3" ]
+  }, {
+    "iri" : "https://example.org/story/plot#PlotEvent",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PlotEvent",
+      "en" : "Plot event"
+    },
+    "comment" : {
+      "en" : "A narrative element describing an in-world event. Bridges the plot layer and the event layer via describesEvent."
+    },
+    "attributes" : [ "external" ],
+    "id" : "62",
+    "superClasses" : [ "63" ]
+  }, {
+    "iri" : "https://example.org/story/place#Building",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Building",
+      "en" : "Building"
+    },
+    "comment" : {
+      "en" : "A structure with walls and a roof."
+    },
+    "attributes" : [ "external" ],
+    "id" : "231",
+    "superClasses" : [ "104" ]
+  }, {
+    "iri" : "https://example.org/story/event#War",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "War",
+      "en" : "War"
+    },
+    "comment" : {
+      "en" : "A prolonged conflict made up of multiple battles."
+    },
+    "attributes" : [ "external" ],
+    "id" : "90",
+    "superClasses" : [ "6" ]
+  }, {
+    "iri" : "https://example.org/story/place#WildArea",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "WildArea",
+      "en" : "Wild area"
+    },
+    "subClasses" : [ "176", "124", "125" ],
+    "comment" : {
+      "en" : "Uninhabited natural area."
+    },
+    "attributes" : [ "external" ],
+    "id" : "68",
+    "superClasses" : [ "38" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#positiveInteger",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "213",
+    "label" : {
+      "IRI-based" : "positiveInteger"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "304",
+    "label" : {
+      "IRI-based" : "nonNegativeInteger"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "221",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://example.org/story/place#Fortress",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Fortress",
+      "en" : "Fortress"
+    },
+    "comment" : {
+      "en" : "A fortified settlement or stronghold, like Nargothrond or Menegroth. Not disjoint with City since some fortresses are city-sized."
+    },
+    "attributes" : [ "external" ],
+    "id" : "202",
+    "superClasses" : [ "37" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "94",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "https://example.org/story/plot#Epilogue",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Epilogue",
+      "en" : "Epilogue"
+    },
+    "comment" : {
+      "en" : "A concluding section that follows the main narrative."
+    },
+    "attributes" : [ "external" ],
+    "id" : "154",
+    "superClasses" : [ "73" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "305",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://example.org/story/place#Hamlet",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Hamlet",
+      "en" : "Hamlet"
+    },
+    "comment" : {
+      "en" : "A very small settlement."
+    },
+    "attributes" : [ "external" ],
+    "id" : "209",
+    "superClasses" : [ "37" ]
+  }, {
+    "iri" : "https://example.org/story/event#State",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "State",
+      "en" : "State"
+    },
+    "subClasses" : [ "198", "169", "44" ],
+    "comment" : {
+      "en" : "An ongoing state of affairs: a residence, captivity, or reign."
+    },
+    "attributes" : [ "external" ],
+    "id" : "11",
+    "superClasses" : [ "7" ]
+  }, {
+    "iri" : "https://example.org/story/event#Meeting",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Meeting",
+      "en" : "Meeting"
+    },
+    "subClasses" : [ "173" ],
+    "comment" : {
+      "en" : "Two or more characters encounter each other."
+    },
+    "attributes" : [ "external" ],
+    "id" : "52",
+    "superClasses" : [ "9" ]
+  }, {
+    "iri" : "http://purl.org/meo/Adan",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Adan",
+      "sjn" : "Adan",
+      "en" : "Man"
+    },
+    "comment" : {
+      "en" : "The Edain (plural form of Adan) are the Men that belong to the Three Houses of Men that came to Beleriand in the elder days. Originally, “Adan” (plural “Edain”) is the Sindarin equivalent of Quenya “Atan” (plural “Atani”) but eventually came to mean this narrow subgroup."
+    },
+    "attributes" : [ "external" ],
+    "id" : "188",
+    "superClasses" : [ "28" ]
+  }, {
+    "iri" : "https://example.org/story/place#WoodedArea",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "WoodedArea",
+      "en" : "Wooded area"
+    },
+    "subClasses" : [ "175" ],
+    "comment" : {
+      "en" : "Area covered mostly by trees."
+    },
+    "attributes" : [ "external" ],
+    "id" : "176",
+    "superClasses" : [ "68" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "308",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://purl.org/meo/Elda",
+    "equivalent" : [ "40" ],
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "person of the stars",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Firstborn",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "of the stars",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Elda",
+      "sjn" : "Eledh",
+      "qya" : "Elda",
+      "en" : "Elf"
+    },
+    "comment" : {
+      "en" : "The Eldar (plural form of Elda) are the Elves. They initially called themselves the Quendi, but the Vala Oromë, who met them at lake Cuiviénen under the stars, called them the Eldar. Now only the Quendi who followed Oromë to the West call themselves Eldar."
+    },
+    "attributes" : [ "external", "equivalent" ],
+    "id" : "240"
+  }, {
+    "iri" : "https://example.org/story/event#Residence",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Residence",
+      "en" : "Residence"
+    },
+    "comment" : {
+      "en" : "A state of living at a particular place for a period of time."
+    },
+    "attributes" : [ "external" ],
+    "id" : "169",
+    "superClasses" : [ "11" ]
+  }, {
+    "iri" : "http://purl.org/meo/Vala",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Vala",
+      "qya" : "Vala",
+      "en" : "angelic power"
+    },
+    "individuals" : [ {
+      "iri" : "http://purl.org/meo/melkor",
+      "baseIri" : "http://purl.org/meo",
+      "comment" : {
+        "en" : "The greatest of the Ainur."
+      },
+      "labels" : {
+        "IRI-based" : "melkor",
+        "qya" : "Melkor",
+        "en" : "He who arises in might"
+      }
+    } ],
+    "comment" : {
+      "en" : "The Valar (plural form of Vala) are the most powerful Ainur who entered Arda, the world."
+    },
+    "attributes" : [ "external" ],
+    "id" : "225",
+    "superClasses" : [ "3" ]
+  }, {
+    "iri" : "https://example.org/story/event#Battle",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Battle",
+      "en" : "Battle"
+    },
+    "comment" : {
+      "en" : "A violent confrontation."
+    },
+    "attributes" : [ "external" ],
+    "id" : "84",
+    "superClasses" : [ "6" ]
+  }, {
+    "iri" : "https://example.org/story/event#Captivity",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Captivity",
+      "en" : "Captivity"
+    },
+    "comment" : {
+      "en" : "Being held prisoner."
+    },
+    "attributes" : [ "external" ],
+    "id" : "44",
+    "superClasses" : [ "11" ]
+  }, {
+    "iri" : "https://example.org/story/place#Forest",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Forest",
+      "en" : "Forest"
+    },
+    "comment" : {
+      "en" : "A large wooded area. E.g. Brethil in the Narn."
+    },
+    "attributes" : [ "external" ],
+    "id" : "175",
+    "superClasses" : [ "176" ]
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "325",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "https://example.org/story/action#SpeechAction",
+    "baseIri" : "https://example.org/story/action",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SpeechAction",
+      "en" : "Speech action"
+    },
+    "subClasses" : [ "178" ],
+    "comment" : {
+      "en" : "Deliberate speech: commands, declarations, curses, prophecies."
+    },
+    "attributes" : [ "external" ],
+    "id" : "18",
+    "superClasses" : [ "19" ]
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "214",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "https://example.org/story/action#UseItemAction",
+    "baseIri" : "https://example.org/story/action",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "UseItemAction",
+      "en" : "Use-item action"
+    },
+    "intersection" : [ "19" ],
+    "comment" : {
+      "en" : "An action that involves an item. Any action with usesItem is classified here."
+    },
+    "attributes" : [ "external", "intersection" ],
+    "id" : "347"
+  }, {
+    "iri" : "https://example.org/story/plot#Editor",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Editor",
+      "en" : "Editor"
+    },
+    "comment" : {
+      "en" : "A real-world person who edited or compiled the published work."
+    },
+    "attributes" : [ "external" ],
+    "id" : "216",
+    "superClasses" : [ "228" ]
+  }, {
+    "iri" : "https://example.org/story/plot#StorySection",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "StorySection",
+      "en" : "Story section"
+    },
+    "subClasses" : [ "154", "155", "158" ],
+    "comment" : {
+      "en" : "A structural part of a story: prologue, chapter, or epilogue."
+    },
+    "attributes" : [ "external" ],
+    "id" : "73",
+    "superClasses" : [ "76" ]
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "319",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "140",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "323",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "183",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "96",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "265",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "131",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "280",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "https://example.org/story/plot#NarrativeWork",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NarrativeWork",
+      "en" : "Narrative work"
+    },
+    "comment" : {
+      "en" : "A real-world book, manuscript, or film script with authorship, editorial, and publication metadata."
+    },
+    "attributes" : [ "external" ],
+    "id" : "93"
+  }, {
+    "iri" : "http://purl.org/meo/Lócë",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Lócë",
+      "qya" : "Lócë",
+      "en" : "Dragon"
+    },
+    "comment" : {
+      "en" : "Evil and powerful monster."
+    },
+    "attributes" : [ "external" ],
+    "id" : "55",
+    "superClasses" : [ "56" ]
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "99",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "45",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "https://example.org/story/event#Item",
+    "baseIri" : "https://example.org/story/event",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Item",
+      "en" : "Item"
+    },
+    "subClasses" : [ "161", "164", "166" ],
+    "comment" : {
+      "en" : "A significant object that can be used in events. Items include weapons, vehicles, and artifacts."
+    },
+    "attributes" : [ "external" ],
+    "id" : "162"
+  }, {
+    "iri" : "https://example.org/story/place#Lake",
+    "baseIri" : "https://example.org/story/place",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Lake",
+      "en" : "Lake"
+    },
+    "comment" : {
+      "en" : "Standing water surrounded by land."
+    },
+    "attributes" : [ "external" ],
+    "id" : "14",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "https://example.org/story/plot#Prologue",
+    "baseIri" : "https://example.org/story/plot",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Prologue",
+      "en" : "Prologue"
+    },
+    "comment" : {
+      "en" : "An introductory section that precedes the main narrative."
+    },
+    "attributes" : [ "external" ],
+    "id" : "158",
+    "superClasses" : [ "73" ]
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "82",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://purl.org/meo/Eruhin",
+    "baseIri" : "http://purl.org/meo",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Child of Eru",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Eruhin",
+      "qya" : "Eruhin",
+      "en" : "Child of Ilúvatar"
+    },
+    "subClasses" : [ "28", "40", "147" ],
+    "comment" : {
+      "en" : "The Eruhíni (plural form of Eruhin), literally “the Children of Eru”, are usually called the “Children of Ilúvatar”. They are the Elves and Men. “Children of Ilúvatar” is used to collectively refer to the two races of Men and Elves, and the singular form is rarely used."
+    },
+    "attributes" : [ "external" ],
+    "id" : "144"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "205",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "22",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  } ],
+  "property" : [ {
+    "id" : "2",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "5",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "8",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "10",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "12",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "13",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "15",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "17",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "20",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "21",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "33",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "36",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "39",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "41",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "43",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "47",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "49",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "51",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "54",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "57",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "59",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "61",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "64",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "67",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "69",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "72",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "75",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "77",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "78",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "81",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "83",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "86",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "88",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "89",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "91",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "92",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "95",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "97",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "101",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "103",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "106",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "46",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "122",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "126",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "127",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "128",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "129",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "134",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "137",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "138",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "118",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "139",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "141",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "142",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "143",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "145",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "146",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "102",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "148",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "149",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "66",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "152",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "120",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "153",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "156",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "157",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "159",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "160",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "163",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "165",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "167",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "168",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "170",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "171",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "172",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "174",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "177",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "179",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "180",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "181",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "112",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "184",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "185",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "186",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "187",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "189",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "191",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "193",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "194",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "196",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "197",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "199",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "200",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "201",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "203",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "204",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "206",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "208",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "210",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "212",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "115",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "215",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "218",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "219",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "220",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "222",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "224",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "226",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "227",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "123",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "229",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "230",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "232",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "233",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "234",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "236",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "237",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "238",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "239",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "241",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "242",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "243",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "244",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "245",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "246",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "113",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "247",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "150",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "248",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "249",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "251",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "252",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "254",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "255",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "257",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "258",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "259",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "260",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "261",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "107",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "264",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "26",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "114",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "266",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "267",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "268",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "269",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "270",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "271",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "272",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "273",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "274",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "65",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "275",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "276",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "277",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "151",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "278",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "279",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "117",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "281",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "282",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "182",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "283",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "284",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "285",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "286",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "60",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "287",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "288",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "289",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "195",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "290",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "291",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "292",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "293",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "294",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "235",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "295",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "296",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "297",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "298",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "299",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "301",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "302",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "303",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "109",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "306",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "25",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "79",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "307",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "309",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "310",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "311",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "312",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "313",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "314",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "315",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "316",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "317",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "318",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "110",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "320",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "262",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "321",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "322",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "263",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "324",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "326",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "327",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "328",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "329",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "330",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "331",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "332",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "333",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "136",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "334",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "335",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "336",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "337",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "338",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "339",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "340",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "341",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "105",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "111",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "342",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "343",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "346",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "348",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "349",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "350",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "119",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "351",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "352",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "353",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "354",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "355",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "108",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "23",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "356",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "116",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "357",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "358",
+    "type" : "owl:allValuesFrom"
+  }, {
+    "id" : "359",
+    "type" : "owl:allValuesFrom"
+  } ],
+  "propertyAttribute" : [ {
+    "range" : "4",
+    "domain" : "3",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "2"
+  }, {
+    "range" : "7",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "5"
+  }, {
+    "range" : "7",
+    "domain" : "9",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "8"
+  }, {
+    "range" : "7",
+    "domain" : "11",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "10"
+  }, {
+    "range" : "1",
+    "domain" : "0",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "12"
+  }, {
+    "range" : "1",
+    "domain" : "14",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "13"
+  }, {
+    "range" : "1",
+    "domain" : "16",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "15"
+  }, {
+    "range" : "19",
+    "domain" : "18",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "17"
+  }, {
+    "iri" : "https://example.org/story/event#meetsEvent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "meetsEvent",
+      "en" : "meets event"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Event E1 ends exactly when event E2 starts."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "20"
+  }, {
+    "iri" : "http://purl.org/family/isAChildOf",
+    "inverse" : "23",
+    "baseIri" : "http://purl.org/family",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "isAChildOf",
+      "en" : "is a child of"
+    },
+    "superproperty" : [ "24" ],
+    "domain" : "22",
+    "subproperty" : [ "25", "26" ],
+    "comment" : {
+      "en" : "A relation between someone and their parent"
+    },
+    "attributes" : [ "object" ],
+    "id" : "21"
+  }, {
+    "iri" : "https://example.org/story/time#startsAt",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "startsAt",
+      "en" : "starts at"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "When an interval begins."
+    },
+    "attributes" : [ "external", "object", "functional" ],
+    "id" : "33"
+  }, {
+    "range" : "38",
+    "domain" : "37",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "36"
+  }, {
+    "range" : "4",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "39"
+  }, {
+    "range" : "9",
+    "domain" : "42",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "41"
+  }, {
+    "iri" : "https://example.org/story/event#hasCaptor",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "45",
+    "label" : {
+      "IRI-based" : "hasCaptor",
+      "en" : "has captor"
+    },
+    "superproperty" : [ "46" ],
+    "domain" : "44",
+    "comment" : {
+      "en" : "The character or entity holding the captive."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "43"
+  }, {
+    "range" : "9",
+    "domain" : "48",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "47"
+  }, {
+    "range" : "9",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "49"
+  }, {
+    "range" : "9",
+    "domain" : "52",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "51"
+  }, {
+    "range" : "56",
+    "domain" : "55",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "54"
+  }, {
+    "range" : "56",
+    "domain" : "58",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "57"
+  }, {
+    "iri" : "https://example.org/story/event#partOfEvent",
+    "inverse" : "60",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "partOfEvent",
+      "en" : "part of event"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Inverse of hasSubEvent."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "59"
+  }, {
+    "range" : "63",
+    "domain" : "62",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "61"
+  }, {
+    "iri" : "https://example.org/story/social#fosteredBy",
+    "inverse" : "65",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "fosteredBy",
+      "en" : "fostered by"
+    },
+    "superproperty" : [ "66" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "Inverse of fostersChild."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "64"
+  }, {
+    "range" : "38",
+    "domain" : "68",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "67"
+  }, {
+    "range" : "38",
+    "domain" : "70",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "69"
+  }, {
+    "iri" : "https://example.org/story/plot#containsPlotEvent",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "containsPlotEvent",
+      "en" : "contains plot event"
+    },
+    "domain" : "73",
+    "comment" : {
+      "en" : "A story section contains plot events."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "72"
+  }, {
+    "iri" : "https://example.org/story/plot#startsWith",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "startsWith",
+      "en" : "starts with"
+    },
+    "domain" : "76",
+    "comment" : {
+      "en" : "The first plot event in a story or section."
+    },
+    "attributes" : [ "external", "object", "functional" ],
+    "id" : "75"
+  }, {
+    "iri" : "https://example.org/story/time#startsInterval",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "startsInterval",
+      "en" : "starts"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'starts': same start time, first ends before second."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "77"
+  }, {
+    "iri" : "http://purl.org/meo/served",
+    "equivalent" : [ "79" ],
+    "baseIri" : "http://purl.org/meo",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "served",
+      "en" : "serves"
+    },
+    "domain" : "22",
+    "comment" : {
+      "en" : "Relates someone to someone else that they serve. Relation servant-master."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "78"
+  }, {
+    "iri" : "https://example.org/story/event#participatesIn",
+    "inverse" : "46",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "participatesIn",
+      "en" : "participates in"
+    },
+    "domain" : "82",
+    "comment" : {
+      "en" : "Inverse of hasParticipant."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "81"
+  }, {
+    "range" : "6",
+    "domain" : "84",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "83"
+  }, {
+    "range" : "6",
+    "domain" : "87",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "86"
+  }, {
+    "iri" : "https://example.org/story/time#intervalEquals",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "intervalEquals",
+      "en" : "equals"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'equals': same start and end."
+    },
+    "attributes" : [ "external", "symmetric", "transitive", "object" ],
+    "id" : "88"
+  }, {
+    "range" : "6",
+    "domain" : "90",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "89"
+  }, {
+    "range" : "9",
+    "domain" : "53",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "91"
+  }, {
+    "iri" : "https://example.org/story/plot#hasPublicationDate",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "94",
+    "label" : {
+      "IRI-based" : "hasPublicationDate",
+      "en" : "has publication date"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "The real-world date the narrative work was published."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "92"
+  }, {
+    "iri" : "https://example.org/story/event#hasOfficiant",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "96",
+    "label" : {
+      "IRI-based" : "hasOfficiant",
+      "en" : "has officiant"
+    },
+    "superproperty" : [ "46" ],
+    "maxCardinality" : "1",
+    "domain" : "48",
+    "comment" : {
+      "en" : "The authority who validates the marriage (priest, king, etc.)."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "95"
+  }, {
+    "iri" : "http://purl.org/family/isTheMotherOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "99",
+    "label" : {
+      "IRI-based" : "isTheMotherOf",
+      "en" : "is the mother of"
+    },
+    "superproperty" : [ "23" ],
+    "domain" : "98",
+    "comment" : {
+      "en" : "A relation between a mother and his child."
+    },
+    "attributes" : [ "object" ],
+    "id" : "97"
+  }, {
+    "iri" : "http://purl.org/family/isASisterOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "99",
+    "label" : {
+      "IRI-based" : "isASisterOf",
+      "en" : "is a sister of"
+    },
+    "superproperty" : [ "102" ],
+    "domain" : "98",
+    "comment" : {
+      "en" : "A female sibling of someone."
+    },
+    "attributes" : [ "object" ],
+    "id" : "101"
+  }, {
+    "iri" : "https://example.org/story/place#tangentialPartOf",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "tangentialPartOf",
+      "en" : "tangential part of"
+    },
+    "superproperty" : [ "105" ],
+    "domain" : "104",
+    "comment" : {
+      "en" : "Proper part relation where the subject touches the boundary of the larger place, corresponding to RCC8 TPP at region level."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "103"
+  }, {
+    "iri" : "https://example.org/story/time#occursBefore",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "occursBefore",
+      "en" : "occurs before"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "Strict ordering between instants."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "106"
+  }, {
+    "iri" : "https://example.org/story/event#hasParticipant",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "82",
+    "label" : {
+      "IRI-based" : "hasParticipant",
+      "en" : "has participant"
+    },
+    "minCardinality" : "2",
+    "domain" : "7",
+    "subproperty" : [ "107", "108", "43", "109", "95", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120" ],
+    "comment" : {
+      "en" : "A character involved in the event."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "46"
+  }, {
+    "iri" : "https://example.org/story/place#hasCapital",
+    "inverse" : "123",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "37",
+    "label" : {
+      "IRI-based" : "hasCapital",
+      "en" : "has capital"
+    },
+    "domain" : "70",
+    "comment" : {
+      "en" : "Inverse of isCapitalOf."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "122"
+  }, {
+    "iri" : "https://example.org/story/social#enemyOf",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "enemyOf",
+      "en" : "enemy of"
+    },
+    "superproperty" : [ "66" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "Enmity between two characters."
+    },
+    "attributes" : [ "external", "symmetric", "object" ],
+    "id" : "126"
+  }, {
+    "iri" : "https://example.org/story/event#hasDestination",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "hasDestination",
+      "en" : "has destination"
+    },
+    "domain" : "87",
+    "comment" : {
+      "en" : "The destination place of a journey."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "127"
+  }, {
+    "iri" : "https://example.org/story/time#occursAfter",
+    "inverse" : "106",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "occursAfter",
+      "en" : "occurs after"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "Inverse of occursBefore."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "128"
+  }, {
+    "iri" : "http://purl.org/family/isABrotherOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "131",
+    "label" : {
+      "IRI-based" : "isABrotherOf",
+      "en" : "is a brother of"
+    },
+    "superproperty" : [ "102" ],
+    "domain" : "130",
+    "comment" : {
+      "en" : "A male sibling of someone."
+    },
+    "attributes" : [ "object" ],
+    "id" : "129"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/tppi",
+    "inverse" : "136",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "tppi",
+      "en" : "tangential proper part inverse"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "Inverse of TPP. First region contains the second, boundaries touching."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "134"
+  }, {
+    "iri" : "https://example.org/story/social#companionOf",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "companionOf",
+      "en" : "companion of"
+    },
+    "superproperty" : [ "66" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "Characters who travel together or spend significant time together in the story."
+    },
+    "attributes" : [ "external", "symmetric", "irreflexive", "object" ],
+    "id" : "137"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/eq",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "eq",
+      "en" : "equal"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "Same spatial extent. Symmetric and transitive. Reflexivity is part of the intended RCC8 semantics but is not declared in OWL because ReflexiveProperty without domain/range would apply to all individuals, and with domain/range would force everything to be a Region."
+    },
+    "attributes" : [ "external", "symmetric", "transitive", "object" ],
+    "id" : "138"
+  }, {
+    "iri" : "https://example.org/story/event#hasCaptive",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "45",
+    "label" : {
+      "IRI-based" : "hasCaptive",
+      "en" : "has captive"
+    },
+    "superproperty" : [ "46" ],
+    "domain" : "44",
+    "comment" : {
+      "en" : "The character held prisoner."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "118"
+  }, {
+    "iri" : "https://example.org/story/event#hasVictor",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "140",
+    "label" : {
+      "IRI-based" : "hasVictor",
+      "en" : "has victor"
+    },
+    "superproperty" : [ "120" ],
+    "domain" : "84",
+    "comment" : {
+      "en" : "The winning side of a battle."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "139"
+  }, {
+    "iri" : "https://example.org/story/time#duringInterval",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "duringInterval",
+      "en" : "during"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'during': first interval is entirely within the second."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "141"
+  }, {
+    "iri" : "https://example.org/story/time#containsInterval",
+    "inverse" : "141",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "containsInterval",
+      "en" : "contains"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'contains': inverse of during."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "142"
+  }, {
+    "range" : "144",
+    "domain" : "28",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "143"
+  }, {
+    "range" : "144",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "145"
+  }, {
+    "range" : "144",
+    "domain" : "147",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "146"
+  }, {
+    "iri" : "http://purl.org/family/isASiblingOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "isASiblingOf",
+      "en" : "is a sibling of"
+    },
+    "domain" : "22",
+    "subproperty" : [ "129", "101" ],
+    "comment" : {
+      "en" : "Two individuals who share the same parent."
+    },
+    "attributes" : [ "symmetric", "irreflexive", "object" ],
+    "id" : "102"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/ec",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "ec",
+      "en" : "externally connected"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "Boundaries touch but interiors don't overlap."
+    },
+    "attributes" : [ "external", "symmetric", "object" ],
+    "id" : "148"
+  }, {
+    "iri" : "http://purl.org/family/isAnAncestorOf",
+    "inverse" : "24",
+    "baseIri" : "http://purl.org/family",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "isAnAncestorOf",
+      "en" : "is an ancestor of"
+    },
+    "domain" : "22",
+    "subproperty" : [ "23" ],
+    "comment" : {
+      "en" : "A relation between someone and one their of descendants."
+    },
+    "attributes" : [ "transitive", "object" ],
+    "id" : "149"
+  }, {
+    "iri" : "https://example.org/story/social#sociallyRelatedTo",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "sociallyRelatedTo",
+      "en" : "socially related to"
+    },
+    "domain" : "22",
+    "subproperty" : [ "137", "150", "151", "152", "79", "64", "126", "65" ],
+    "comment" : {
+      "en" : "Top-level property grouping all social relations."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "66"
+  }, {
+    "iri" : "https://example.org/story/social#allyOf",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "allyOf",
+      "en" : "ally of"
+    },
+    "superproperty" : [ "66" ],
+    "domain" : "22",
+    "subproperty" : [ "150" ],
+    "comment" : {
+      "en" : "Alliance, cooperating towards a common goal. Not necessarily friends."
+    },
+    "attributes" : [ "external", "symmetric", "irreflexive", "object" ],
+    "id" : "152"
+  }, {
+    "iri" : "https://example.org/story/event#hasCombatant",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "140",
+    "label" : {
+      "IRI-based" : "hasCombatant",
+      "en" : "has combatant"
+    },
+    "superproperty" : [ "46" ],
+    "minCardinality" : "2",
+    "domain" : "84",
+    "subproperty" : [ "139" ],
+    "comment" : {
+      "en" : "A character fighting in the battle."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "120"
+  }, {
+    "range" : "73",
+    "domain" : "154",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "153"
+  }, {
+    "range" : "73",
+    "domain" : "155",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "156"
+  }, {
+    "range" : "73",
+    "domain" : "158",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "157"
+  }, {
+    "iri" : "https://example.org/story/time#occursSimultaneouslyWith",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "occursSimultaneouslyWith",
+      "en" : "occurs simultaneously with"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "Two distinct instants at the same point in time. Used when different IRIs represent the same moment."
+    },
+    "attributes" : [ "external", "symmetric", "object" ],
+    "id" : "159"
+  }, {
+    "range" : "162",
+    "domain" : "161",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "160"
+  }, {
+    "range" : "162",
+    "domain" : "164",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "163"
+  }, {
+    "range" : "162",
+    "domain" : "166",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "165"
+  }, {
+    "iri" : "https://example.org/story/time#occursDuring",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "occursDuring",
+      "en" : "occurs during"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "An instant that falls within an interval."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "167"
+  }, {
+    "range" : "11",
+    "domain" : "169",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "168"
+  }, {
+    "iri" : "https://example.org/story/time#startedByInterval",
+    "inverse" : "77",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "startedByInterval",
+      "en" : "started by"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'started by': inverse of starts."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "170"
+  }, {
+    "range" : "11",
+    "domain" : "44",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "171"
+  }, {
+    "range" : "52",
+    "domain" : "173",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "172"
+  }, {
+    "range" : "176",
+    "domain" : "175",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "174"
+  }, {
+    "range" : "18",
+    "domain" : "178",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "177"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/dc",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "dc",
+      "en" : "disconnected"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "The two regions share no points at all."
+    },
+    "attributes" : [ "external", "symmetric", "irreflexive", "object" ],
+    "id" : "179"
+  }, {
+    "iri" : "https://example.org/story/place#occupiesRegion",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "occupiesRegion",
+      "en" : "occupies region"
+    },
+    "domain" : "104",
+    "comment" : {
+      "en" : "Links a place to its spatial region. Functional (one region per place). Enables RCC8 reasoning on places."
+    },
+    "attributes" : [ "external", "object", "functional" ],
+    "id" : "180"
+  }, {
+    "iri" : "https://example.org/story/event#afterEvent",
+    "inverse" : "182",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "afterEvent",
+      "en" : "after event"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Inverse of beforeEvent."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "181"
+  }, {
+    "iri" : "https://example.org/story/event#hasNewborn",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "183",
+    "label" : {
+      "IRI-based" : "hasNewborn",
+      "en" : "has newborn"
+    },
+    "superproperty" : [ "46" ],
+    "cardinality" : "1",
+    "domain" : "50",
+    "comment" : {
+      "en" : "The character born."
+    },
+    "attributes" : [ "key", "external", "object" ],
+    "id" : "112"
+  }, {
+    "iri" : "https://example.org/story/event#hasTemporalExtent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "hasTemporalExtent",
+      "en" : "has temporal extent"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "When the event occurs (as an interval)."
+    },
+    "attributes" : [ "external", "object", "functional" ],
+    "id" : "184"
+  }, {
+    "iri" : "https://example.org/story/plot#describesEvent",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "describesEvent",
+      "en" : "describes event"
+    },
+    "domain" : "62",
+    "comment" : {
+      "en" : "Links a plot event to the in-world event it describes."
+    },
+    "attributes" : [ "external", "object", "functional" ],
+    "id" : "185"
+  }, {
+    "iri" : "https://example.org/story/place#adjacentTo",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "adjacentTo",
+      "en" : "adjacent to"
+    },
+    "domain" : "104",
+    "comment" : {
+      "en" : "Two places that share a boundary or are next to each other."
+    },
+    "attributes" : [ "external", "symmetric", "irreflexive", "object" ],
+    "id" : "186"
+  }, {
+    "range" : "28",
+    "domain" : "188",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "187"
+  }, {
+    "iri" : "https://example.org/story/plot#hasPublisher",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "190",
+    "label" : {
+      "IRI-based" : "hasPublisher",
+      "en" : "has publisher"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "The publishing organization of the narrative work."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "189"
+  }, {
+    "range" : "68",
+    "domain" : "176",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "191"
+  }, {
+    "range" : "68",
+    "domain" : "124",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "193"
+  }, {
+    "iri" : "https://example.org/story/time#overlappedByInterval",
+    "inverse" : "195",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "overlappedByInterval",
+      "en" : "overlapped by"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'overlapped by': inverse of overlaps."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "194"
+  }, {
+    "range" : "68",
+    "domain" : "125",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "196"
+  }, {
+    "range" : "11",
+    "domain" : "198",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "197"
+  }, {
+    "range" : "34",
+    "domain" : "71",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "199"
+  }, {
+    "range" : "34",
+    "domain" : "32",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "200"
+  }, {
+    "range" : "37",
+    "domain" : "202",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "201"
+  }, {
+    "range" : "37",
+    "domain" : "80",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "203"
+  }, {
+    "iri" : "https://example.org/story/plot#hasTitle",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "205",
+    "label" : {
+      "IRI-based" : "hasTitle",
+      "en" : "has title"
+    },
+    "domain" : "22",
+    "comment" : {
+      "en" : "The title of a story, section, or narrative work. No domain restriction because both NarrativeContainer and NarrativeWork can have titles."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "204"
+  }, {
+    "range" : "37",
+    "domain" : "207",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "206"
+  }, {
+    "range" : "37",
+    "domain" : "209",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "208"
+  }, {
+    "iri" : "https://example.org/story/plot#hasAuthor",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "211",
+    "label" : {
+      "IRI-based" : "hasAuthor",
+      "en" : "has author"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "The original author of the narrative work."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "210"
+  }, {
+    "iri" : "https://example.org/story/plot#hasChapterNumber",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "213",
+    "label" : {
+      "IRI-based" : "hasChapterNumber",
+      "en" : "has chapter number"
+    },
+    "domain" : "155",
+    "comment" : {
+      "en" : "The ordinal number of a chapter within the story."
+    },
+    "attributes" : [ "external", "datatype", "functional" ],
+    "id" : "212"
+  }, {
+    "iri" : "https://example.org/story/event#hasTraveler",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "214",
+    "label" : {
+      "IRI-based" : "hasTraveler",
+      "en" : "has traveler"
+    },
+    "superproperty" : [ "46" ],
+    "domain" : "87",
+    "comment" : {
+      "en" : "A character undertaking the journey."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "115"
+  }, {
+    "iri" : "https://example.org/story/plot#hasEditor",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "216",
+    "label" : {
+      "IRI-based" : "hasEditor",
+      "en" : "has editor"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "An editor or compiler responsible for the published work."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "215"
+  }, {
+    "iri" : "https://example.org/story/time#endsAt",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "endsAt",
+      "en" : "ends at"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "When an interval ends."
+    },
+    "attributes" : [ "external", "object", "functional" ],
+    "id" : "218"
+  }, {
+    "range" : "121",
+    "domain" : "34",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "219"
+  }, {
+    "iri" : "https://example.org/story/plot#hasTextSummary",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "221",
+    "label" : {
+      "IRI-based" : "hasTextSummary",
+      "en" : "has text summary"
+    },
+    "domain" : "22",
+    "comment" : {
+      "en" : "A textual summary. No domain restriction for the same reason as hasTitle."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "220"
+  }, {
+    "range" : "3",
+    "domain" : "223",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "222"
+  }, {
+    "range" : "3",
+    "domain" : "225",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "224"
+  }, {
+    "range" : "34",
+    "domain" : "31",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "226"
+  }, {
+    "range" : "228",
+    "domain" : "216",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "227"
+  }, {
+    "iri" : "https://example.org/story/place#isCapitalOf",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "isCapitalOf",
+      "en" : "is capital of"
+    },
+    "superproperty" : [ "105" ],
+    "domain" : "37",
+    "comment" : {
+      "en" : "The settlement is the capital of this realm. Functional and inverse-functional (one capital per realm, one realm per capital)."
+    },
+    "attributes" : [ "inverse functional", "external", "object", "functional" ],
+    "id" : "123"
+  }, {
+    "range" : "104",
+    "domain" : "132",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "229"
+  }, {
+    "range" : "104",
+    "domain" : "231",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "230"
+  }, {
+    "range" : "104",
+    "domain" : "1",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "232"
+  }, {
+    "range" : "104",
+    "domain" : "38",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "233"
+  }, {
+    "iri" : "https://example.org/story/time#afterInterval",
+    "inverse" : "235",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "afterInterval",
+      "en" : "after"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'after': inverse of before."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "234"
+  }, {
+    "range" : "104",
+    "domain" : "192",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "236"
+  }, {
+    "iri" : "https://example.org/story/plot#endsWith",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "endsWith",
+      "en" : "ends with"
+    },
+    "domain" : "76",
+    "comment" : {
+      "en" : "The last plot event in a story or section."
+    },
+    "attributes" : [ "external", "object", "functional" ],
+    "id" : "237"
+  }, {
+    "range" : "121",
+    "domain" : "35",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "238"
+  }, {
+    "iri" : "http://purl.org/family/isACousinOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "isACousinOf",
+      "en" : "is a cousin of"
+    },
+    "domain" : "22",
+    "comment" : {
+      "en" : "One that is the child of a sibling of the parent of someone else."
+    },
+    "attributes" : [ "symmetric", "object" ],
+    "id" : "239"
+  }, {
+    "range" : "19",
+    "domain" : "100",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "241"
+  }, {
+    "iri" : "https://example.org/story/event#duringEvent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "duringEvent",
+      "en" : "during event"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Event E1 occurs entirely within the time span of event E2."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "242"
+  }, {
+    "range" : "19",
+    "domain" : "85",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "243"
+  }, {
+    "range" : "228",
+    "domain" : "211",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "244"
+  }, {
+    "range" : "11",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "245"
+  }, {
+    "iri" : "https://example.org/story/time#finishesInterval",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "finishesInterval",
+      "en" : "finishes"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'finishes': same end time, first starts after second."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "246"
+  }, {
+    "iri" : "https://example.org/story/event#hasWife",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "98",
+    "label" : {
+      "IRI-based" : "hasWife",
+      "en" : "has wife"
+    },
+    "superproperty" : [ "46" ],
+    "cardinality" : "1",
+    "domain" : "48",
+    "comment" : {
+      "en" : "The wife in the marriage."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "113"
+  }, {
+    "iri" : "https://example.org/story/plot#hasSection",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "73",
+    "label" : {
+      "IRI-based" : "hasSection",
+      "en" : "has section"
+    },
+    "domain" : "133",
+    "comment" : {
+      "en" : "A story is divided into sections."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "247"
+  }, {
+    "iri" : "https://example.org/story/social#friendOf",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "friendOf",
+      "en" : "friend of"
+    },
+    "superproperty" : [ "66", "152" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "Friendship between two characters."
+    },
+    "attributes" : [ "external", "symmetric", "irreflexive", "object" ],
+    "id" : "150"
+  }, {
+    "range" : "9",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "248"
+  }, {
+    "iri" : "https://example.org/story/place#hasPart",
+    "inverse" : "105",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "hasPart",
+      "en" : "has part"
+    },
+    "domain" : "104",
+    "comment" : {
+      "en" : "Inverse of partOf."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "249"
+  }, {
+    "iri" : "https://example.org/story/plot#nextSection",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "73",
+    "label" : {
+      "IRI-based" : "nextSection",
+      "en" : "next section"
+    },
+    "domain" : "73",
+    "comment" : {
+      "en" : "The next section in the narrative. Derived from plot event ordering via property chain."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "251"
+  }, {
+    "iri" : "https://example.org/story/time#meetsInterval",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "meetsInterval",
+      "en" : "meets"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'meets': first interval ends exactly when second starts."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "252"
+  }, {
+    "range" : "169",
+    "domain" : "198",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "254"
+  }, {
+    "iri" : "https://example.org/story/event#hasTemporalExtent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "hasTemporalExtent",
+      "en" : "has temporal extent"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "When the event occurs (as an interval)."
+    },
+    "attributes" : [ "external", "someValues", "object", "functional" ],
+    "id" : "255"
+  }, {
+    "range" : "52",
+    "domain" : "48",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "257"
+  }, {
+    "range" : "52",
+    "domain" : "42",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "258"
+  }, {
+    "range" : "169",
+    "domain" : "44",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "259"
+  }, {
+    "range" : "198",
+    "domain" : "44",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "260"
+  }, {
+    "iri" : "https://example.org/story/plot#nextPlotEvent",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "nextPlotEvent",
+      "en" : "next plot event"
+    },
+    "superproperty" : [ "262" ],
+    "domain" : "62",
+    "comment" : {
+      "en" : "The next plot event in the narrative."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "261"
+  }, {
+    "iri" : "https://example.org/story/event#hasPatient",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "82",
+    "label" : {
+      "IRI-based" : "hasPatient",
+      "en" : "has patient"
+    },
+    "superproperty" : [ "46" ],
+    "domain" : "7",
+    "subproperty" : [ "263" ],
+    "comment" : {
+      "en" : "The character affected by the event."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "107"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/po",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "po",
+      "en" : "partially overlapping"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "The regions partially overlap. Each has parts not in the other."
+    },
+    "attributes" : [ "external", "symmetric", "irreflexive", "object" ],
+    "id" : "264"
+  }, {
+    "iri" : "http://purl.org/family/isADaughterOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "99",
+    "label" : {
+      "IRI-based" : "isADaughterOf",
+      "en" : "is a daughter of"
+    },
+    "superproperty" : [ "21" ],
+    "domain" : "98",
+    "comment" : {
+      "en" : "A relation between a female child and his parent."
+    },
+    "attributes" : [ "object" ],
+    "id" : "26"
+  }, {
+    "iri" : "https://example.org/story/event#hasDeceased",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "265",
+    "label" : {
+      "IRI-based" : "hasDeceased",
+      "en" : "has deceased"
+    },
+    "superproperty" : [ "46" ],
+    "cardinality" : "1",
+    "domain" : "42",
+    "comment" : {
+      "en" : "The character who dies."
+    },
+    "attributes" : [ "key", "external", "object" ],
+    "id" : "114"
+  }, {
+    "range" : "52",
+    "domain" : "53",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "266"
+  }, {
+    "range" : "48",
+    "domain" : "53",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "267"
+  }, {
+    "range" : "48",
+    "domain" : "42",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "268"
+  }, {
+    "range" : "48",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "269"
+  }, {
+    "range" : "42",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "270"
+  }, {
+    "range" : "42",
+    "domain" : "53",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "271"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/ntpp",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "ntpp",
+      "en" : "non-tangential proper part"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "First region is completely inside the second, boundaries don't touch."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "272"
+  }, {
+    "range" : "52",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "273"
+  }, {
+    "range" : "90",
+    "domain" : "87",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "274"
+  }, {
+    "iri" : "https://example.org/story/social#fostersChild",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "fostersChild",
+      "en" : "fosters child"
+    },
+    "superproperty" : [ "66" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "Raising someone as a foster-child. E.g. Thingol fosters Túrin."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "65"
+  }, {
+    "range" : "53",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "275"
+  }, {
+    "range" : "90",
+    "domain" : "74",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "276"
+  }, {
+    "range" : "16",
+    "domain" : "14",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "277"
+  }, {
+    "iri" : "https://example.org/story/social#rulesOver",
+    "inverse" : "79",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "rulesOver",
+      "en" : "rules over"
+    },
+    "superproperty" : [ "66" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "Inverse of serves. The subject has authority over the object."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "151"
+  }, {
+    "range" : "37",
+    "domain" : "70",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "278"
+  }, {
+    "range" : "16",
+    "domain" : "0",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "279"
+  }, {
+    "iri" : "https://example.org/story/event#hasResident",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "280",
+    "label" : {
+      "IRI-based" : "hasResident",
+      "en" : "has resident"
+    },
+    "superproperty" : [ "46" ],
+    "domain" : "169",
+    "comment" : {
+      "en" : "The character residing at a place."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "117"
+  }, {
+    "iri" : "https://example.org/story/plot#sectionOf",
+    "inverse" : "247",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "133",
+    "label" : {
+      "IRI-based" : "sectionOf",
+      "en" : "section of"
+    },
+    "domain" : "73",
+    "comment" : {
+      "en" : "Inverse of hasSection."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "281"
+  }, {
+    "range" : "207",
+    "domain" : "80",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "282"
+  }, {
+    "iri" : "https://example.org/story/event#beforeEvent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "beforeEvent",
+      "en" : "before event"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "E1 happens entirely before E2."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "182"
+  }, {
+    "range" : "209",
+    "domain" : "80",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "283"
+  }, {
+    "range" : "0",
+    "domain" : "14",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "284"
+  }, {
+    "range" : "207",
+    "domain" : "209",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "285"
+  }, {
+    "range" : "192",
+    "domain" : "132",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "286"
+  }, {
+    "iri" : "https://example.org/story/event#hasSubEvent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "hasSubEvent",
+      "en" : "has sub-event"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "An event contains another as a sub-event. Transitive."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "60"
+  }, {
+    "range" : "1",
+    "domain" : "38",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "287"
+  }, {
+    "range" : "1",
+    "domain" : "192",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "288"
+  }, {
+    "range" : "1",
+    "domain" : "132",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "289"
+  }, {
+    "iri" : "https://example.org/story/time#overlapsInterval",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "overlapsInterval",
+      "en" : "overlaps"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'overlaps': first starts before second and ends during it."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "195"
+  }, {
+    "range" : "192",
+    "domain" : "38",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "290"
+  }, {
+    "range" : "132",
+    "domain" : "38",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "291"
+  }, {
+    "iri" : "https://example.org/story/event#overlapsEvent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "overlapsEvent",
+      "en" : "overlaps event"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Event E1 starts before and partially overlaps event E2."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "292"
+  }, {
+    "iri" : "https://example.org/story/action#hasAgent",
+    "baseIri" : "https://example.org/story/action",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "hasAgent",
+      "en" : "has agent"
+    },
+    "superproperty" : [ "108" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "Who deliberately performs the action. Sub-property of evt:hasAgent."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "293"
+  }, {
+    "iri" : "https://example.org/story/action#resultsIn",
+    "baseIri" : "https://example.org/story/action",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "resultsIn",
+      "en" : "results in"
+    },
+    "domain" : "19",
+    "comment" : {
+      "en" : "What happens as a consequence of the action, e.g. an attack results in a death."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "294"
+  }, {
+    "iri" : "https://example.org/story/time#beforeInterval",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "beforeInterval",
+      "en" : "before"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'before': first interval ends before second starts."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "235"
+  }, {
+    "range" : "1",
+    "domain" : "231",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "295"
+  }, {
+    "range" : "38",
+    "domain" : "231",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "296"
+  }, {
+    "iri" : "https://example.org/story/event#hasSubEvent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "84",
+    "label" : {
+      "IRI-based" : "hasSubEvent",
+      "en" : "has sub-event"
+    },
+    "domain" : "90",
+    "comment" : {
+      "en" : "An event contains another as a sub-event. Transitive."
+    },
+    "attributes" : [ "external", "transitive", "someValues", "object" ],
+    "id" : "297"
+  }, {
+    "range" : "192",
+    "domain" : "231",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "298"
+  }, {
+    "range" : "132",
+    "domain" : "231",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "299"
+  }, {
+    "range" : "11",
+    "domain" : "9",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "301"
+  }, {
+    "range" : "164",
+    "domain" : "166",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "302"
+  }, {
+    "iri" : "https://example.org/story/event#hasLocation",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "hasLocation",
+      "en" : "has location"
+    },
+    "domain" : "169",
+    "comment" : {
+      "en" : "The place where an event occurs."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "303"
+  }, {
+    "iri" : "https://example.org/story/event#hasMother",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "98",
+    "label" : {
+      "IRI-based" : "hasMother",
+      "en" : "has mother"
+    },
+    "superproperty" : [ "46" ],
+    "cardinality" : "1",
+    "domain" : "50",
+    "comment" : {
+      "en" : "The mother. Range fo:Female."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "109"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/ntppi",
+    "inverse" : "272",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "ntppi",
+      "en" : "non-tangential proper part inverse"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "Inverse of NTPP. First region completely contains the second."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "306"
+  }, {
+    "iri" : "http://purl.org/family/isASonOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "131",
+    "label" : {
+      "IRI-based" : "isASonOf",
+      "en" : "is a son of"
+    },
+    "superproperty" : [ "21" ],
+    "domain" : "130",
+    "comment" : {
+      "en" : "A relation between a male child and his parent."
+    },
+    "attributes" : [ "object" ],
+    "id" : "25"
+  }, {
+    "iri" : "https://example.org/story/social#serves",
+    "equivalent" : [ "78" ],
+    "baseIri" : "https://example.org/story/social",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "serves",
+      "en" : "serves"
+    },
+    "superproperty" : [ "66" ],
+    "domain" : "22",
+    "comment" : {
+      "en" : "A vassal/servant relation. Linked to meo:served so facts work with both properties."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "79"
+  }, {
+    "iri" : "https://example.org/story/time#metByInterval",
+    "inverse" : "252",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "metByInterval",
+      "en" : "met by"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'met by': inverse of meets."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "307"
+  }, {
+    "iri" : "https://example.org/story/time#startsAt",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "startsAt",
+      "en" : "starts at"
+    },
+    "domain" : "31",
+    "comment" : {
+      "en" : "When an interval begins."
+    },
+    "attributes" : [ "external", "someValues", "object", "functional" ],
+    "id" : "309"
+  }, {
+    "iri" : "https://example.org/story/time#endsAt",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "endsAt",
+      "en" : "ends at"
+    },
+    "domain" : "32",
+    "comment" : {
+      "en" : "When an interval ends."
+    },
+    "attributes" : [ "external", "someValues", "object", "functional" ],
+    "id" : "310"
+  }, {
+    "iri" : "https://example.org/story/plot#containsPlotEvent",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "containsPlotEvent",
+      "en" : "contains plot event"
+    },
+    "domain" : "73",
+    "comment" : {
+      "en" : "A story section contains plot events."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "311"
+  }, {
+    "range" : "34",
+    "domain" : "35",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "312"
+  }, {
+    "range" : "71",
+    "domain" : "30",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "313"
+  }, {
+    "iri" : "https://example.org/story/action#hasPurpose",
+    "baseIri" : "https://example.org/story/action",
+    "range" : "308",
+    "label" : {
+      "IRI-based" : "hasPurpose",
+      "en" : "has purpose"
+    },
+    "domain" : "19",
+    "comment" : {
+      "en" : "Why the agent performed the action (textual description)."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "314"
+  }, {
+    "range" : "93",
+    "domain" : "63",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "315"
+  }, {
+    "range" : "93",
+    "domain" : "76",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "316"
+  }, {
+    "range" : "73",
+    "domain" : "133",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "317"
+  }, {
+    "iri" : "https://example.org/story/plot#hasSection",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "73",
+    "label" : {
+      "IRI-based" : "hasSection",
+      "en" : "has section"
+    },
+    "domain" : "133",
+    "comment" : {
+      "en" : "A story is divided into sections."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "318"
+  }, {
+    "iri" : "https://example.org/story/event#hasSpeaker",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "319",
+    "label" : {
+      "IRI-based" : "hasSpeaker",
+      "en" : "has speaker"
+    },
+    "superproperty" : [ "46" ],
+    "minCardinality" : "2",
+    "domain" : "173",
+    "comment" : {
+      "en" : "A character who speaks during the conversation."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "110"
+  }, {
+    "iri" : "https://example.org/story/event#hasLocation",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "hasLocation",
+      "en" : "has location"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "The place where an event occurs."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "320"
+  }, {
+    "iri" : "https://example.org/story/plot#precedesPlotEvent",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "precedesPlotEvent",
+      "en" : "precedes plot event"
+    },
+    "domain" : "62",
+    "subproperty" : [ "261" ],
+    "comment" : {
+      "en" : "A plot event earlier in the narrative. Transitive."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "262"
+  }, {
+    "iri" : "https://example.org/story/time#finishedByInterval",
+    "inverse" : "246",
+    "baseIri" : "https://example.org/story/time",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "finishedByInterval",
+      "en" : "finished by"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Allen's 'finished by': inverse of finishes."
+    },
+    "attributes" : [ "external", "irreflexive", "asymmetric", "object" ],
+    "id" : "321"
+  }, {
+    "iri" : "http://purl.org/family/isMarriedTo",
+    "baseIri" : "http://purl.org/family",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "isMarriedTo",
+      "en" : "is married to"
+    },
+    "domain" : "22",
+    "comment" : {
+      "en" : "People united through marriage."
+    },
+    "attributes" : [ "symmetric", "object" ],
+    "id" : "322"
+  }, {
+    "iri" : "https://example.org/story/action#hasPatient",
+    "baseIri" : "https://example.org/story/action",
+    "range" : "323",
+    "label" : {
+      "IRI-based" : "hasPatient",
+      "en" : "has patient"
+    },
+    "superproperty" : [ "107" ],
+    "domain" : "19",
+    "comment" : {
+      "en" : "Who is affected by the action."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "263"
+  }, {
+    "iri" : "https://example.org/story/social#livedIn",
+    "baseIri" : "https://example.org/story/social",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "livedIn",
+      "en" : "lived in"
+    },
+    "domain" : "325",
+    "comment" : {
+      "en" : "Where a character has resided. No rdfs:domain declared because characters, peoples, and other agents could all live somewhere. Range is Place."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "324"
+  }, {
+    "iri" : "https://example.org/story/place#hasFoundationDate",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "305",
+    "label" : {
+      "IRI-based" : "hasFoundationDate",
+      "en" : "has foundation date"
+    },
+    "domain" : "104",
+    "comment" : {
+      "en" : "When the place was established. String because fictional dates don't always fit xsd:date."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "326"
+  }, {
+    "range" : "190",
+    "domain" : "228",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "327"
+  }, {
+    "range" : "158",
+    "domain" : "154",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "328"
+  }, {
+    "iri" : "https://example.org/story/event#killed",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "killed",
+      "en" : "killed"
+    },
+    "domain" : "22",
+    "comment" : {
+      "en" : "X killed Y. Inferred from Death events."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "329"
+  }, {
+    "range" : "63",
+    "domain" : "76",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "330"
+  }, {
+    "range" : "68",
+    "domain" : "37",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "331"
+  }, {
+    "range" : "68",
+    "domain" : "70",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "332"
+  }, {
+    "range" : "158",
+    "domain" : "155",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "333"
+  }, {
+    "iri" : "https://purl.org/region/rcc8/tpp",
+    "baseIri" : "https://purl.org/region/rcc8",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "tpp",
+      "en" : "tangential proper part"
+    },
+    "domain" : "135",
+    "comment" : {
+      "en" : "First region is inside the second and their boundaries touch."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "136"
+  }, {
+    "range" : "154",
+    "domain" : "155",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "334"
+  }, {
+    "range" : "76",
+    "domain" : "133",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "335"
+  }, {
+    "range" : "27",
+    "domain" : "29",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "336"
+  }, {
+    "range" : "6",
+    "domain" : "74",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "337"
+  }, {
+    "range" : "76",
+    "domain" : "73",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "338"
+  }, {
+    "iri" : "https://example.org/story/event#isTemporalExtentOf",
+    "inverse" : "184",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "isTemporalExtentOf",
+      "en" : "is temporal extent of"
+    },
+    "domain" : "34",
+    "comment" : {
+      "en" : "Inverse of hasTemporalExtent."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "339"
+  }, {
+    "iri" : "https://example.org/story/place#interiorPartOf",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "interiorPartOf",
+      "en" : "interior part of"
+    },
+    "superproperty" : [ "105" ],
+    "domain" : "104",
+    "comment" : {
+      "en" : "Proper part relation where the subject lies wholly inside the larger place, corresponding to RCC8 NTPP at region level."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "340"
+  }, {
+    "range" : "27",
+    "domain" : "28",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "341"
+  }, {
+    "iri" : "https://example.org/story/place#partOf",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "partOf",
+      "en" : "part of"
+    },
+    "domain" : "104",
+    "subproperty" : [ "123", "340", "103" ],
+    "comment" : {
+      "en" : "Spatial containment between places. E.g. Menegroth is part of Doriath."
+    },
+    "attributes" : [ "external", "transitive", "object" ],
+    "id" : "105"
+  }, {
+    "iri" : "https://example.org/story/event#hasHusband",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "130",
+    "label" : {
+      "IRI-based" : "hasHusband",
+      "en" : "has husband"
+    },
+    "superproperty" : [ "46" ],
+    "cardinality" : "1",
+    "domain" : "48",
+    "comment" : {
+      "en" : "The husband in the marriage."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "111"
+  }, {
+    "iri" : "http://purl.org/family/isADescendentOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "28",
+    "label" : {
+      "IRI-based" : "isADescendentOf",
+      "en" : "is a descendent of"
+    },
+    "domain" : "147",
+    "subproperty" : [ "21" ],
+    "comment" : {
+      "en" : "A relation between someone and one of their ancestors."
+    },
+    "attributes" : [ "transitive", "someValues", "object" ],
+    "id" : "342"
+  }, {
+    "iri" : "http://purl.org/family/isADescendentOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "240",
+    "label" : {
+      "IRI-based" : "isADescendentOf",
+      "en" : "is a descendent of"
+    },
+    "domain" : "147",
+    "subproperty" : [ "21" ],
+    "comment" : {
+      "en" : "A relation between someone and one of their ancestors."
+    },
+    "attributes" : [ "transitive", "someValues", "object" ],
+    "id" : "343"
+  }, {
+    "range" : "87",
+    "domain" : "84",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "346"
+  }, {
+    "range" : "74",
+    "domain" : "84",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "348"
+  }, {
+    "range" : "90",
+    "domain" : "84",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "349"
+  }, {
+    "range" : "74",
+    "domain" : "87",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "350"
+  }, {
+    "iri" : "https://example.org/story/event#hasFather",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "130",
+    "label" : {
+      "IRI-based" : "hasFather",
+      "en" : "has father"
+    },
+    "superproperty" : [ "46" ],
+    "maxCardinality" : "1",
+    "domain" : "50",
+    "comment" : {
+      "en" : "The father. Range fo:Male."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "119"
+  }, {
+    "range" : "130",
+    "domain" : "98",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "351"
+  }, {
+    "range" : "27",
+    "domain" : "4",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "352"
+  }, {
+    "iri" : "https://example.org/story/event#usesItem",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "162",
+    "label" : {
+      "IRI-based" : "usesItem",
+      "en" : "uses item"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "An item used in the event."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "353"
+  }, {
+    "iri" : "https://example.org/story/place#hasPopulation",
+    "baseIri" : "https://example.org/story/place",
+    "range" : "304",
+    "label" : {
+      "IRI-based" : "hasPopulation",
+      "en" : "has population"
+    },
+    "domain" : "37",
+    "comment" : {
+      "en" : "Number of inhabitants. Only makes sense for settlements."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "354"
+  }, {
+    "iri" : "http://purl.org/family/isTheFatherOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "131",
+    "label" : {
+      "IRI-based" : "isTheFatherOf",
+      "en" : "is the father of"
+    },
+    "superproperty" : [ "23" ],
+    "domain" : "130",
+    "comment" : {
+      "en" : "A relation between a father and his child."
+    },
+    "attributes" : [ "object" ],
+    "id" : "355"
+  }, {
+    "iri" : "https://example.org/story/event#hasAgent",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "82",
+    "label" : {
+      "IRI-based" : "hasAgent",
+      "en" : "has agent"
+    },
+    "superproperty" : [ "46" ],
+    "domain" : "7",
+    "subproperty" : [ "293" ],
+    "comment" : {
+      "en" : "The active performer of the event."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "108"
+  }, {
+    "iri" : "http://purl.org/family/isAParentOf",
+    "baseIri" : "http://purl.org/family",
+    "range" : "22",
+    "label" : {
+      "IRI-based" : "isAParentOf",
+      "en" : "is a parent of"
+    },
+    "superproperty" : [ "149" ],
+    "domain" : "22",
+    "subproperty" : [ "97", "355" ],
+    "comment" : {
+      "en" : "A relation between a parent and their child"
+    },
+    "attributes" : [ "object" ],
+    "id" : "23"
+  }, {
+    "iri" : "https://example.org/story/event#hasOrigin",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "104",
+    "label" : {
+      "IRI-based" : "hasOrigin",
+      "en" : "has origin"
+    },
+    "domain" : "87",
+    "comment" : {
+      "en" : "The starting place of a journey."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "356"
+  }, {
+    "iri" : "https://example.org/story/event#hasKiller",
+    "baseIri" : "https://example.org/story/event",
+    "range" : "265",
+    "label" : {
+      "IRI-based" : "hasKiller",
+      "en" : "has killer"
+    },
+    "superproperty" : [ "46" ],
+    "maxCardinality" : "1",
+    "domain" : "42",
+    "comment" : {
+      "en" : "Who caused the death, if anyone."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "116"
+  }, {
+    "iri" : "https://example.org/story/plot#narrates",
+    "baseIri" : "https://example.org/story/plot",
+    "range" : "133",
+    "label" : {
+      "IRI-based" : "narrates",
+      "en" : "narrates"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "Links the real-world work to the fictional story it tells."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "357"
+  }, {
+    "iri" : "http://purl.org/family/isAChildOf",
+    "inverse" : "23",
+    "baseIri" : "http://purl.org/family",
+    "range" : "28",
+    "label" : {
+      "IRI-based" : "isAChildOf",
+      "en" : "is a child of"
+    },
+    "superproperty" : [ "24" ],
+    "domain" : "28",
+    "subproperty" : [ "25", "26" ],
+    "comment" : {
+      "en" : "A relation between someone and their parent"
+    },
+    "attributes" : [ "allValues", "object" ],
+    "id" : "358"
+  }, {
+    "iri" : "http://purl.org/family/isAChildOf",
+    "inverse" : "23",
+    "baseIri" : "http://purl.org/family",
+    "range" : "240",
+    "label" : {
+      "IRI-based" : "isAChildOf",
+      "en" : "is a child of"
+    },
+    "superproperty" : [ "24" ],
+    "domain" : "240",
+    "subproperty" : [ "25", "26" ],
+    "comment" : {
+      "en" : "A relation between someone and their parent"
+    },
+    "attributes" : [ "allValues", "object" ],
+    "id" : "359"
+  } ]
+}

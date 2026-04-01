@@ -164,11 +164,27 @@
 
 <h3>Key design decisions</h3>
 <ul>
-    <li><strong>Starting from existing ontologies:</strong> Three ontologies were given as starting points: <code>meo.ttl</code> (Middle-earth), <code>fo.ttl</code> (family relations), and <code>rcc.ttl</code> (RCC8 base). They are used as the starting point of the project, with minimal repairs where necessary to correct broken or disconnected axioms. On top of them, <code>rcc.ttl</code> was enriched with full axioms, and the social, place, time, event, action, and plot modules were created from scratch.</li>
-    <li><strong>Place vs. Region separation:</strong> A <em>Place</em> is a meaningful named location (Menegroth, Brethil); a <em>Region</em> is its abstract spatial extent. Places are linked to regions via <code>loc:occupiesRegion</code>, enabling RCC8 reasoning on the spatial properties of places.</li>
-    <li><strong>Event vs. PlotEvent:</strong> An <em>Event</em> is something that happens in the fictional world (a battle, a birth). A <em>PlotEvent</em> is a narrative element that describes an event from the story-telling perspective. This cleanly separates the in-world layer from the literary layer.</li>
-    <li><strong>Dual reality:</strong> The plot module distinguishes the real world (authors, publication dates) from the fictional world (characters, in-world events). A <em>NarrativeWork</em> belongs to the real world; a <em>Story</em> belongs to the fictional world.</li>
-    <li><strong>Rich axioms over broad coverage:</strong> The focus is on a moderate number of terms enriched with complex OWL axioms (cardinality restrictions, property chains, equivalence definitions, property disjointness) rather than a very large flat vocabulary.</li>
+    <li><strong>Starting from existing ontologies:</strong> Three ontologies were given as starting points: <code>meo.ttl</code> (Middle-earth), <code>fo.ttl</code> (family relations), and <code>rcc.ttl</code> (RCC8 base). They are used as the base, with minimal repairs where needed (broken subPropertyOf links, misspelled OWL predicates, missing subClassOf declarations). The social, place, time, event, action, and plot modules were created from scratch.</li>
+
+    <li><strong>Place vs. Region separation:</strong> A <em>Place</em> is a meaningful named location (Menegroth, Brethil); a <em>Region</em> is its abstract spatial extent. Places are linked to regions via <code>loc:occupiesRegion</code>, enabling RCC8 reasoning on places without conflating the two concepts.</li>
+
+    <li><strong>Interior vs. tangential containment:</strong> Instead of a single <code>partOf</code> mapping to <code>ntpp</code>, the place module distinguishes <code>interiorPartOf</code> (maps to <code>ntpp</code>) and <code>tangentialPartOf</code> (maps to <code>tpp</code>) via separate property chains. This prevents places on the edge of a region (like Anfauglith on the border of Beleriand) from being forced into the wrong RCC8 relation.</li>
+
+    <li><strong>Event vs. PlotEvent:</strong> An <em>Event</em> is something that happens in the fictional world (a battle, a birth). A <em>PlotEvent</em> is a narrative element that describes an event from the story-telling perspective. <code>plot:describesEvent</code> bridges the two layers.</li>
+
+    <li><strong>Dual reality:</strong> The plot module distinguishes the real world (authors, editors, publishers, publication dates) from the fictional world (characters, in-world events). A <em>NarrativeWork</em> belongs to the real world; a <em>Story</em> belongs to the fictional world. <code>plot:narrates</code> is the bridge. This makes it impossible to accidentally compare real-world publication time with fictional story time.</li>
+
+    <li><strong>Marriage with differentiated roles:</strong> Marriage events use <code>hasHusband</code>, <code>hasWife</code>, and <code>hasOfficiant</code> rather than generic <code>hasSpouse1</code>/<code>hasSpouse2</code>. The husband and wife roles carry <code>rdfs:range fo:Male</code> and <code>fo:Female</code>, so the reasoner infers gender from event participation. <code>hasHusband</code> and <code>hasWife</code> are declared <code>owl:propertyDisjointWith</code> each other.</li>
+
+    <li><strong>Action as a defined class:</strong> <code>Action ≡ Event ⊓ ∃hasAgent.⊤</code>. Any event with an agent is automatically classified as an action. <code>UseItemAction</code> is also defined by equivalence (<code>Action ⊓ ∃usesItem.Item</code>), so the slaying of Glaurung is auto-classified as a UseItemAction because it uses Gurthang. <code>AttackAction</code> is kept as a conservative subclass because defining it purely by <code>hasPatient</code> would wrongly classify non-violent actions like curses as attacks.</li>
+
+    <li><strong>Cross-module property chains:</strong> Property chains connect the event layer to the family and social layers. Birth events derive <code>isAChildOf</code>, death events derive <code>killed</code>, marriage events derive <code>isMarriedTo</code>, and residence events derive <code>livedIn</code>. The reasoner can discover family relations, social facts, and temporal ordering from event assertions alone.</li>
+
+    <li><strong>Derived section ordering:</strong> <code>plot:nextSection</code> is inferred from <code>endsWith ∘ nextPlotEvent ∘ startsWith⁻¹</code>. Section adjacency follows from plot-event ordering rather than being asserted separately.</li>
+
+    <li><strong>OWL 2 DL compatibility:</strong> Several axioms were constrained to stay within OWL 2 DL. Reflexive properties (<code>rcc:eq</code>, <code>occursSimultaneouslyWith</code>) cannot carry domain/range declarations without forcing every individual into a single class. Transitive and chain-derived properties cannot appear in <code>propertyDisjointWith</code>, <code>AsymmetricProperty</code>, or <code>IrreflexiveProperty</code>. Pairwise disjointness is declared only for simple properties. These tradeoffs are documented in the source file comments.</li>
+
+    <li><strong>Rich axioms over broad coverage:</strong> The focus is on complex OWL axioms (cardinality restrictions, property chains, equivalence definitions, property disjointness, <code>owl:hasKey</code>, <code>owl:AllDifferent</code>, <code>owl:AllDisjointClasses</code>, <code>owl:allValuesFrom</code> with <code>owl:unionOf</code>) rather than a very large flat vocabulary.</li>
 </ul>
 
 <h2 id="modules">2. Ontology Modules</h2>
