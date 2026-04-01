@@ -82,18 +82,53 @@ Manual load order:
 
 ## Competency Questions
 
-1. Who is parent of X?
-2. Who is married to X?
-3. Where did character X live or travel?
-4. Who was involved in event E?
-5. Did event E1 happen before event E2?
-6. Where did event E occur?
-7. What event ends story S?
-8. What item was used in event E or action A?
-9. Who killed whom?
-10. Who authored, edited, and published the narrative work?
+These are questions the ontology can answer, either directly from assertions or through reasoner inferences.
 
-For the location-conflict question ("can someone be in L1 and L2 at the same time?"), the ontology provides the spatial and temporal vocabulary, but the answer comes from query patterns combining temporal overlap with RCC8 disconnection.
+**Family and social (fo, soc):**
+
+- Who is parent of X? Who are X's children?
+- Who is married to X?
+- Is X a descendant of Y? (transitive ancestry across generations)
+- Who is a sibling of X?
+- Who fostered character X?
+- Who are the friends/allies/enemies of X?
+- Who serves whom? Who rules over whom?
+
+**Places and space (place, rcc):**
+
+- Is place P inside place Q? (via `partOf`, transitive)
+- What is the capital of realm R?
+- Are two places spatially disconnected? Adjacent? (via RCC8 on their regions)
+- Can someone be in L1 and L2 at the same time? (if regions are `rcc:dc`, no)
+
+**Time (time):**
+
+- Did event E1 happen before event E2? (via Allen `beforeInterval` chain)
+- Did event E1 happen during event E2? (via Allen `duringInterval`)
+- What events overlap in time?
+
+**Events and actions (event, action):**
+
+- Who was involved in event E? In what role?
+- Where did event E occur?
+- What item was used in event E?
+- Who killed whom? (inferred from Death events)
+- Where did character X live? (inferred from Residence events)
+- What are the consequences of action A?
+- What events are sub-events of a war?
+
+**Plot structure (plot):**
+
+- What event starts/ends story S?
+- What section does plot event PE belong to?
+- What is the next section after section S? (inferred via chain)
+- Who authored, edited, and published the narrative work?
+
+**Cross-module inferences:**
+
+- From a Birth event, who is a child of whom?
+- From a Marriage event, who is married to whom?
+- If A serves B and B is enemy of C, is A enemy of C?
 
 ## Documentation
 

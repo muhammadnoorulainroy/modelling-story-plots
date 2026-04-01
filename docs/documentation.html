@@ -572,6 +572,27 @@ narn:pe1 plot:nextPlotEvent narn:pe1b .
 <div class="cq"><strong>CQ13 (custom):</strong> Who contributes to the narrative work in the real-world layer?<br>
 → Via <code>plot:hasAuthor</code>, <code>plot:hasEditor</code>, and <code>plot:hasPublisher</code> on a NarrativeWork.</div>
 
+<div class="cq"><strong>CQ14 (custom):</strong> Is X a descendant of Y? (across multiple generations)<br>
+→ Via <code>fo:isADescendentOf</code> (transitive). E.g. Turin is a descendant of Galdor through Hurin.</div>
+
+<div class="cq"><strong>CQ15 (custom):</strong> Who are the enemies of X? (including inferred ones)<br>
+→ Via <code>soc:enemyOf</code>. The property chain <code>serves . enemyOf</code> infers that Glaurung is an enemy of Thingol because Glaurung serves Morgoth and Morgoth is an enemy of Thingol.</div>
+
+<div class="cq"><strong>CQ16 (custom):</strong> What is the capital of realm R?<br>
+→ Via <code>loc:hasCapital</code> (inverse of <code>loc:isCapitalOf</code>).</div>
+
+<div class="cq"><strong>CQ17 (custom):</strong> What events are sub-events of a war?<br>
+→ Via <code>evt:hasSubEvent</code>. E.g. the Nirnaeth Arnoediad is a sub-event of the War of the Jewels.</div>
+
+<div class="cq"><strong>CQ18 (custom):</strong> What is the next section after section S?<br>
+→ Via <code>plot:nextSection</code>, inferred from the property chain <code>endsWith . nextPlotEvent . startsWith⁻¹</code>.</div>
+
+<div class="cq"><strong>CQ19 (custom):</strong> From a birth event, who is a child of whom?<br>
+→ Inferred via property chain: <code>hasNewborn⁻¹ . hasFather</code> and <code>hasNewborn⁻¹ . hasMother</code> derive <code>fo:isAChildOf</code>.</div>
+
+<div class="cq"><strong>CQ20 (custom):</strong> Did an event happen during another event?<br>
+→ Via <code>evt:duringEvent</code>, derived from Allen's <code>tm:duringInterval</code> through the event temporal chain.</div>
+
 <h2 id="axioms">6. Notable Axioms</h2>
 
 <p>The goal was a small ontology with rich and complex axioms rather than broad but shallow coverage. Here are the most significant axioms across all modules:</p>
