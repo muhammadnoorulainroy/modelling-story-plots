@@ -616,9 +616,9 @@ narn:pe1 plot:nextPlotEvent narn:pe1b .
 
 <h2 id="ai">7. AI Tool Usage</h2>
 
-<p>AI assistants (Claude, by Anthropic, and Codex) were used as discussion and review partners at different stages of the project. This section documents what was tried, what was rejected, and what design decisions came out of it.</p>
+<p>AI assistants (Claude and GitHub Copilot) were used as discussion and review partners at different stages of the project. This section documents what was tried, what was rejected, and what design decisions came out of it.</p>
 
-<h3>6.1 The event/action distinction</h3>
+<h3>7.1 The event/action distinction</h3>
 
 <p>The most substantive interaction was about the boundary between <em>events</em> and <em>actions</em>. The event/action distinction is quite conceptual, so using a chatbot as a sounding board seemed like a good approach.</p>
 
@@ -642,7 +642,7 @@ narn:pe1 plot:nextPlotEvent narn:pe1b .
 <h4>What was adopted and what was modified</h4>
 <p>The <code>equivalentClass</code> pattern was adopted directly. It is elegant and leverages OWL 2 DL classification. However, the chatbot also suggested adding a <code>hasIntention</code> property (pointing to a <code>MentalState</code> class) to model the BDI aspect. This was <strong>rejected as over-engineering</strong>: modelling mental states would require a full philosophy-of-mind ontology that is far beyond the scope of story plot modelling. Instead, the simpler <code>act:hasPurpose</code> (a datatype property with a textual description) was used as a pragmatic alternative. The chatbot's suggestion of <code>act:resultsIn</code> as the second differentia of actions (actions have observable consequences) was adopted.</p>
 
-<h3>6.2 Plot structure and dual reality</h3>
+<h3>7.2 Plot structure and dual reality</h3>
 
 <p>A second interaction explored how to model the distinction between the real world (authors, publication) and the fictional world (characters, events). The chatbot was asked: <em>"How should an ontology handle the fact that a story has both a real-world existence (a book written by an author) and an internal fictional reality (characters doing things)?"</em></p>
 
@@ -653,28 +653,28 @@ narn:pe1 plot:nextPlotEvent narn:pe1b .
 </ol>
 <p>The final design uses the class-based pattern with <code>plot:narrates</code> and <code>plot:describesEvent</code> as bridge properties. The chatbot confirmed that bridge properties (connecting the two layers without merging them) are a standard pattern in narrative ontologies.</p>
 
-<h3>6.3 Property chain design</h3>
+<h3>7.3 Property chain design</h3>
 
 <p>The chatbot was consulted on whether the 3-hop property chain <code>hasTemporalExtent ∘ beforeInterval ∘ isTemporalExtentOf ⊑ evt:beforeEvent</code> would be valid in OWL 2 DL. It confirmed that OWL 2 supports property chains of arbitrary length in <code>owl:propertyChainAxiom</code>, subject to regularity constraints (the super-property must not appear in the chain). This was verified independently by checking the <a href="https://www.w3.org/TR/owl2-syntax/#Object_Subproperties">OWL 2 specification §9.2.1</a>.</p>
 
-<h3>6.4 Repairs to the provided files</h3>
+<h3>7.4 Repairs to the provided files</h3>
 
 <p>The provided ontologies were kept as the foundation of the project, but a few minimal repairs were necessary so that the combined ontology would remain loadable and semantically connected:</p>
 <ul>
     <li><code>fo.ttl</code> was repaired so that <code>fo:isASonOf</code> and <code>fo:isADaughterOf</code> correctly specialise <code>fo:isAChildOf</code>.</li>
-    <li><code>fo.ttl</code> was also normalised around the sibling relation: <code>fo:isASiblingOf</code> is now the canonical property, while the misspelled <code>fo:isASibingOf</code> is preserved only as a deprecated backward-compatibility alias.</li>
+    <li><code>fo.ttl</code> was also fixed around the sibling relation: the misspelled <code>fo:isASibingOf</code> was replaced with the correctly spelled <code>fo:isASiblingOf</code>.</li>
     <li><code>meo.ttl</code> was minimally repaired by restoring missing subclass links for <code>meo:Atan</code> and correcting malformed OWL vocabulary such as <code>owl:inverseOf</code>.</li>
     <li>These repairs are deliberately narrow: they preserve the teacher-provided modules as the basis of the work while making them usable in a coherent OWL 2 ontology.</li>
 </ul>
 <p>The goal of these edits was not to replace the provided ontologies, but to keep them usable as course material inside a reasoner-ready modular project.</p>
 
-<p>Later consistency review and debugging were assisted by Codex. Its role was adversarial rather than generative: challenge OWL 2 DL legality, look for unintended inferences, spot stale documentation claims, and rerun parsing and HermiT checks after each repair. Suggestions were kept only when they matched the source ontology and reasoner behaviour.</p>
+<p>Later consistency review and debugging were assisted by GitHub Copilot. Its role was adversarial rather than generative: challenge OWL 2 DL legality, look for unintended inferences, spot stale documentation claims, and rerun parsing and HermiT checks after each repair. Suggestions were kept only when they matched the source ontology and reasoner behaviour.</p>
 
-<h3>6.5 Summary of AI usage</h3>
+<h3>7.5 Summary of AI usage</h3>
 
 <table>
     <tr><th>Topic</th><th>AI suggestion</th><th>What I did</th></tr>
-    <tr><td>OWL 2 DL consistency review</td><td>Codex challenged axioms and documentation against parser and HermiT behaviour</td><td>Used as a critical reviewer; changes were kept only after source-level checks passed</td></tr>
+    <tr><td>OWL 2 DL consistency review</td><td>GitHub Copilot challenged axioms and documentation against parser and HermiT behaviour</td><td>Used as a critical reviewer; changes were kept only after source-level checks passed</td></tr>
     <tr><td>Action ≡ Event ⊓ ∃hasAgent</td><td>Proposed equivalentClass pattern after initial flat taxonomy was rejected</td><td>Adopted, clean and leverages DL classification</td></tr>
     <tr><td>hasIntention / MentalState</td><td>Suggested BDI-inspired intention modelling</td><td>Rejected as over-engineering; replaced with hasPurpose (datatype)</td></tr>
     <tr><td>resultsIn property</td><td>Suggested consequence modelling for actions</td><td>Adopted, key differentia of actions vs passive events</td></tr>
