@@ -1,6 +1,6 @@
 # Story Plot Ontology
 
-A modular OWL ontology for representing story plots, developed for the Knowledge Representation and Reasoning course (CPS2 M1, EMSE). The main use case is the *Narn i Chîn Húrin* by J.R.R. Tolkien.
+A modular OWL ontology for representing story plots, developed for the Knowledge Representation and Reasoning course (CPS2 M1, EMSE). The main use case is the *Narn i Chin Hurin* by J.R.R. Tolkien.
 
 ## Scope
 
@@ -19,19 +19,19 @@ The project is split into reusable modules for:
 
 The model separates the fictional layer (characters, places, events, plot events) from the real-world layer (book, author, editor, publisher).
 
-## Teacher Modules
+## Provided Modules
 
-`fo.ttl`, `meo.ttl`, and `rcc.ttl` are the teacher-provided starting points used by the project. They were kept as the base vocabularies and minimally repaired/enriched where needed so the ontology remains loadable and semantically usable:
+`fo.ttl`, `meo.ttl`, and `rcc.ttl` were given as starting points. They were kept as the base vocabularies and minimally repaired where needed:
 
-- `fo.ttl`: repaired broken child/sibling links and kept the misspelled `fo:isASibingOf` as a deprecated backward-compatibility alias.
-- `meo.ttl`: repaired dead OWL predicates (`owl:equivalentClass`, `rdfs:subClassOf`, `owl:inverseOf`) and restored the intended ancestry axioms.
-- `rcc.ttl`: keeps the teacher RCC8 vocabulary and adds the expected OWL characteristics, inverses, and property disjointness.
+- `fo.ttl`: fixed broken `subPropertyOf` links on `isASonOf`/`isADaughterOf`, renamed the misspelled `isASibingOf` to `isASiblingOf`, added `Male`/`Female` disjointness.
+- `meo.ttl`: fixed `owl:inverseOf` typos, added missing `Atan rdfs:subClassOf Eruhin, Mortal`, restored Peredhel restrictions.
+- `rcc.ttl`: added symmetry, transitivity, inverses, irreflexivity, and partial pairwise disjointness to the 8 RCC8 relations.
 
 ## Loading
 
-All `owl:imports` are local file imports now, so loading [narn-instances.ttl](C:/Projects/Personal/CPS2/Semester%202/KGR/story_plot_ontology/narn-instances.ttl) in Protégé should resolve the rest of the project from the same folder.
+All `owl:imports` use local file references, so loading `narn-instances.ttl` in Protege resolves the rest of the project from the same folder.
 
-If you prefer to load manually, use this order:
+Manual load order:
 
 1. `fo.ttl`
 2. `meo.ttl`
@@ -48,19 +48,23 @@ If you prefer to load manually, use this order:
 
 **Place vs Region.** A `loc:Place` is a named story-world location. A `rcc:Region` is its spatial extent. `loc:occupiesRegion` links the two.
 
-**Interior vs tangential containment.** The place module does not equate every `loc:partOf` relation with RCC8 `ntpp`. Instead it distinguishes `loc:interiorPartOf` and `loc:tangentialPartOf`, which bridge respectively to `rcc:ntpp` and `rcc:tpp`. This avoids false inferences such as forcing Anfauglith to be both `tpp` and `ntpp` of Beleriand.
+**Interior vs tangential containment.** `loc:interiorPartOf` maps to `rcc:ntpp` and `loc:tangentialPartOf` maps to `rcc:tpp` via separate property chains. This prevents edge-of-region places from getting the wrong RCC8 relation.
 
-**Event vs PlotEvent.** An `evt:Event` is an in-world occurrence. A `plot:PlotEvent` is a narrative element describing such an event. `plot:describesEvent` bridges the two.
+**Event vs PlotEvent.** An `evt:Event` is an in-world occurrence. A `plot:PlotEvent` is a narrative element. `plot:describesEvent` bridges the two.
 
-**Action typing.** `act:Action ≡ evt:Event ⊓ ∃evt:hasAgent.Thing`, so any event with an agent is automatically classified as an action. `act:UseItemAction` is also defined from `evt:usesItem`, while `act:AttackAction` is kept as a conservative subclass to avoid classifying every patient-bearing action as an attack.
+**Action typing.** `act:Action = Event AND hasAgent some Thing`, so any event with an agent is automatically classified as an action. `act:UseItemAction` is also defined by equivalence. `act:AttackAction` is kept as a subclass to avoid classifying curses as attacks.
 
-**Dual reality.** `plot:NarrativeWork`, `plot:Author`, `plot:Editor`, and `plot:Publisher` stay in the real world. `plot:Story`, `plot:StorySection`, and `plot:PlotEvent` stay in the fictional narrative layer.
+**Dual reality.** `plot:NarrativeWork`, `plot:Author`, `plot:Editor`, and `plot:Publisher` stay in the real world. `plot:Story`, `plot:StorySection`, and `plot:PlotEvent` stay in the fictional layer.
 
-**Derived section order.** `plot:nextSection` is inferred from `plot:endsWith`, `plot:nextPlotEvent`, and the inverse of `plot:startsWith`, so section adjacency follows from plot-event ordering instead of being duplicated manually.
+**Marriage with differentiated roles.** `hasHusband`, `hasWife`, `hasOfficiant` with `rdfs:range fo:Male`/`fo:Female` and `propertyDisjointWith` between husband and wife.
+
+**Cross-module property chains.** Birth events derive `isAChildOf`, death events derive `killed`, marriage events derive `isMarriedTo`, residence events derive `livedIn`.
+
+**Derived section order.** `plot:nextSection` is inferred from `endsWith`, `nextPlotEvent`, and `startsWith` inverse.
+
+**OWL 2 DL compatibility.** Reflexive properties have no domain/range (to avoid universal classification). Pairwise disjointness is limited to simple properties. These tradeoffs are documented in the source files.
 
 ## Key Inferences
-
-The ontology uses property chains across modules:
 
 | Asserted pattern | Inferred fact |
 |---|---|
@@ -78,8 +82,6 @@ The ontology uses property chains across modules:
 
 ## Competency Questions
 
-The ontology supports these questions:
-
 1. Who is parent of X?
 2. Who is married to X?
 3. Where did character X live or travel?
@@ -91,8 +93,10 @@ The ontology supports these questions:
 9. Who killed whom?
 10. Who authored, edited, and published the narrative work?
 
-For the location-conflict question ("can someone be in L1 and L2 at the same time?"), the ontology provides the needed spatial and temporal vocabulary, but the answer is obtained by query patterns combining temporal overlap with RCC8 disconnection; it is not reduced to a single closed-world OWL inconsistency axiom.
+For the location-conflict question ("can someone be in L1 and L2 at the same time?"), the ontology provides the spatial and temporal vocabulary, but the answer comes from query patterns combining temporal overlap with RCC8 disconnection.
 
 ## Documentation
 
-[docs/documentation.html](docs/documentation.html) is the main human-readable documentation. The source `.ttl` files are the authoritative version of the ontology.
+- `docs/documentation.html` has design decisions, usage examples with Turtle snippets, competency questions, axiom summary, and AI tool usage.
+- `widoco-docs/index-en.html` is auto-generated from the ontology using WIDOCO. It lists every class, property, and individual with their `rdfs:label` and `rdfs:comment`. Includes a WebVOWL visualization at `widoco-docs/webvowl/index.html`.
+- The source `.ttl` files are the authoritative version of the ontology. Every class and property has `rdfs:label` and `rdfs:comment`.
