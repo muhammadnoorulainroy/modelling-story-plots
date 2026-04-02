@@ -529,6 +529,45 @@ narn:pe1 plot:nextPlotEvent narn:pe1b .
 # Inferred: narn:Prologue1 plot:nextSection narn:Chapter1  (property chain)
 </pre>
 
+<h3>SPARQL Examples</h3>
+
+<p>These queries can be run in Protege's SPARQL tab after starting a reasoner, or in any SPARQL endpoint loaded with the ontology and instance data.</p>
+
+<pre>
+# Who killed whom?
+PREFIX evt: &lt;https://example.org/story/event#&gt;
+SELECT ?killer ?victim WHERE {
+  ?killer evt:killed ?victim .
+}
+</pre>
+
+<pre>
+# What events happened before the death of Turin?
+PREFIX evt: &lt;https://example.org/story/event#&gt;
+PREFIX narn: &lt;https://example.org/story/narn#&gt;
+SELECT ?event WHERE {
+  ?event evt:beforeEvent narn:deathTurin .
+}
+</pre>
+
+<pre>
+# Who is a descendant of Galdor? (3-generation transitivity)
+PREFIX fo: &lt;http://purl.org/family/&gt;
+PREFIX narn: &lt;https://example.org/story/narn#&gt;
+SELECT ?descendant WHERE {
+  ?descendant fo:isADescendentOf narn:Galdor .
+}
+</pre>
+
+<pre>
+# What in-world event ends the story?
+PREFIX plot: &lt;https://example.org/story/plot#&gt;
+PREFIX narn: &lt;https://example.org/story/narn#&gt;
+SELECT ?event WHERE {
+  narn:NarnStory plot:endsWithEvent ?event .
+}
+</pre>
+
 <h2 id="cq">5. Competency Questions</h2>
 
 <p>The ontology supports the following competency questions:</p>

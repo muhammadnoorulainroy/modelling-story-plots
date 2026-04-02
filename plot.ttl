@@ -56,13 +56,21 @@ plot:Publisher a owl:Class ;
     rdfs:label "Publisher"@en ;
     rdfs:comment "A real-world organization that publishes a narrative work."@en .
 
+plot:hasContributor a owl:ObjectProperty ;
+    rdfs:domain plot:NarrativeWork ;
+    rdfs:range plot:Contributor ;
+    rdfs:label "has contributor"@en ;
+    rdfs:comment "A person who contributed to the narrative work in any role."@en .
+
 plot:hasAuthor a owl:ObjectProperty ;
+    rdfs:subPropertyOf plot:hasContributor ;
     rdfs:domain plot:NarrativeWork ;
     rdfs:range plot:Author ;
     rdfs:label "has author"@en ;
     rdfs:comment "The original author of the narrative work."@en .
 
 plot:hasEditor a owl:ObjectProperty ;
+    rdfs:subPropertyOf plot:hasContributor ;
     rdfs:domain plot:NarrativeWork ;
     rdfs:range plot:Editor ;
     rdfs:label "has editor"@en ;

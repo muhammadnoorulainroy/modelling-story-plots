@@ -189,7 +189,7 @@ evt:Faction a owl:Class ;
 evt:hasParticipant a owl:ObjectProperty ;
     rdfs:domain evt:Event ;
     rdfs:label "has participant"@en ;
-    rdfs:comment "A character involved in the event."@en .
+    rdfs:comment "A character or collective actor involved in the event."@en .
 
 evt:participatesIn a owl:ObjectProperty ;
     owl:inverseOf evt:hasParticipant ;
@@ -278,7 +278,7 @@ evt:hasTraveler a owl:ObjectProperty ;
     rdfs:subPropertyOf evt:hasParticipant ;
     rdfs:domain evt:Journey ;
     rdfs:label "has traveler"@en ;
-    rdfs:comment "A character undertaking the journey."@en .
+    rdfs:comment "A character or group undertaking the journey."@en .
 
 evt:hasOrigin a owl:ObjectProperty ;
     rdfs:domain evt:Journey ;
