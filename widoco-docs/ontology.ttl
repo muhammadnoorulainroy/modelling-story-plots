@@ -281,7 +281,7 @@
 <https://example.org/story/event#hasCombatant> rdf:type owl:ObjectProperty ;
                                                rdfs:subPropertyOf <https://example.org/story/event#hasParticipant> ;
                                                rdfs:domain <https://example.org/story/event#Battle> ;
-                                               rdfs:comment "A character fighting in the battle."@en ;
+                                               rdfs:comment "A combatant side or individual fighting in the battle."@en ;
                                                rdfs:label "has combatant"@en .
 
 
@@ -373,7 +373,7 @@
 ###  https://example.org/story/event#hasParticipant
 <https://example.org/story/event#hasParticipant> rdf:type owl:ObjectProperty ;
                                                  rdfs:domain <https://example.org/story/event#Event> ;
-                                                 rdfs:comment "A character involved in the event."@en ;
+                                                 rdfs:comment "A character or collective actor involved in the event."@en ;
                                                  rdfs:label "has participant"@en .
 
 
@@ -423,7 +423,7 @@
 <https://example.org/story/event#hasTraveler> rdf:type owl:ObjectProperty ;
                                               rdfs:subPropertyOf <https://example.org/story/event#hasParticipant> ;
                                               rdfs:domain <https://example.org/story/event#Journey> ;
-                                              rdfs:comment "A character undertaking the journey."@en ;
+                                              rdfs:comment "A character or group undertaking the journey."@en ;
                                               rdfs:label "has traveler"@en .
 
 
@@ -581,6 +581,17 @@
                                                    rdfs:label "tangential part of"@en .
 
 
+###  https://example.org/story/plot#containsEvent
+<https://example.org/story/plot#containsEvent> rdf:type owl:ObjectProperty ;
+                                               rdfs:domain <https://example.org/story/plot#StorySection> ;
+                                               rdfs:range <https://example.org/story/event#Event> ;
+                                               owl:propertyChainAxiom ( <https://example.org/story/plot#containsPlotEvent>
+                                                                        <https://example.org/story/plot#describesEvent>
+                                                                      ) ;
+                                               rdfs:comment "A section contains an in-world event. Inferred from containsPlotEvent and describesEvent."@en ;
+                                               rdfs:label "contains event"@en .
+
+
 ###  https://example.org/story/plot#containsPlotEvent
 <https://example.org/story/plot#containsPlotEvent> rdf:type owl:ObjectProperty ;
                                                    rdfs:domain <https://example.org/story/plot#StorySection> ;
@@ -607,16 +618,37 @@
                                           rdfs:label "ends with"@en .
 
 
+###  https://example.org/story/plot#endsWithEvent
+<https://example.org/story/plot#endsWithEvent> rdf:type owl:ObjectProperty ;
+                                               rdfs:domain <https://example.org/story/plot#NarrativeContainer> ;
+                                               rdfs:range <https://example.org/story/event#Event> ;
+                                               owl:propertyChainAxiom ( <https://example.org/story/plot#endsWith>
+                                                                        <https://example.org/story/plot#describesEvent>
+                                                                      ) ;
+                                               rdfs:comment "The in-world event that ends a story or section. Inferred from endsWith and describesEvent."@en ;
+                                               rdfs:label "ends with event"@en .
+
+
 ###  https://example.org/story/plot#hasAuthor
 <https://example.org/story/plot#hasAuthor> rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf <https://example.org/story/plot#hasContributor> ;
                                            rdfs:domain <https://example.org/story/plot#NarrativeWork> ;
                                            rdfs:range <https://example.org/story/plot#Author> ;
                                            rdfs:comment "The original author of the narrative work."@en ;
                                            rdfs:label "has author"@en .
 
 
+###  https://example.org/story/plot#hasContributor
+<https://example.org/story/plot#hasContributor> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain <https://example.org/story/plot#NarrativeWork> ;
+                                                rdfs:range <https://example.org/story/plot#Contributor> ;
+                                                rdfs:comment "A person who contributed to the narrative work in any role."@en ;
+                                                rdfs:label "has contributor"@en .
+
+
 ###  https://example.org/story/plot#hasEditor
 <https://example.org/story/plot#hasEditor> rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf <https://example.org/story/plot#hasContributor> ;
                                            rdfs:domain <https://example.org/story/plot#NarrativeWork> ;
                                            rdfs:range <https://example.org/story/plot#Editor> ;
                                            rdfs:comment "An editor or compiler responsible for the published work."@en ;
@@ -637,6 +669,13 @@
                                             rdfs:range <https://example.org/story/plot#StorySection> ;
                                             rdfs:comment "A story is divided into sections."@en ;
                                             rdfs:label "has section"@en .
+
+
+###  https://example.org/story/plot#isDescribedBy
+<https://example.org/story/plot#isDescribedBy> rdf:type owl:ObjectProperty ;
+                                               owl:inverseOf <https://example.org/story/plot#describesEvent> ;
+                                               rdfs:comment "Inverse of describesEvent. Links an in-world event back to the plot event that narrates it."@en ;
+                                               rdfs:label "is described by"@en .
 
 
 ###  https://example.org/story/plot#narrates
@@ -694,6 +733,17 @@
                                             rdfs:range <https://example.org/story/plot#PlotEvent> ;
                                             rdfs:comment "The first plot event in a story or section."@en ;
                                             rdfs:label "starts with"@en .
+
+
+###  https://example.org/story/plot#startsWithEvent
+<https://example.org/story/plot#startsWithEvent> rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain <https://example.org/story/plot#NarrativeContainer> ;
+                                                 rdfs:range <https://example.org/story/event#Event> ;
+                                                 owl:propertyChainAxiom ( <https://example.org/story/plot#startsWith>
+                                                                          <https://example.org/story/plot#describesEvent>
+                                                                        ) ;
+                                                 rdfs:comment "The in-world event that starts a story or section. Inferred from startsWith and describesEvent."@en ;
+                                                 rdfs:label "starts with event"@en .
 
 
 ###  https://example.org/story/social#allyOf
@@ -787,6 +837,28 @@
 <https://example.org/story/social#sociallyRelatedTo> rdf:type owl:ObjectProperty ;
                                                      rdfs:comment "Top-level property grouping all social relations."@en ;
                                                      rdfs:label "socially related to"@en .
+
+
+###  https://example.org/story/social#travelledFrom
+<https://example.org/story/social#travelledFrom> rdf:type owl:ObjectProperty ;
+                                                 rdfs:range <https://example.org/story/place#Place> ;
+                                                 owl:propertyChainAxiom ( [ owl:inverseOf <https://example.org/story/event#hasTraveler>
+                                                                          ]
+                                                                          <https://example.org/story/event#hasOrigin>
+                                                                        ) ;
+                                                 rdfs:comment "Inferred from Journey events via hasTraveler and hasOrigin."@en ;
+                                                 rdfs:label "travelled from"@en .
+
+
+###  https://example.org/story/social#travelledTo
+<https://example.org/story/social#travelledTo> rdf:type owl:ObjectProperty ;
+                                               rdfs:range <https://example.org/story/place#Place> ;
+                                               owl:propertyChainAxiom ( [ owl:inverseOf <https://example.org/story/event#hasTraveler>
+                                                                        ]
+                                                                        <https://example.org/story/event#hasDestination>
+                                                                      ) ;
+                                               rdfs:comment "Inferred from Journey events via hasTraveler and hasDestination."@en ;
+                                               rdfs:label "travelled to"@en .
 
 
 ###  https://example.org/story/time#afterInterval

@@ -290,7 +290,7 @@ _:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/event#hasCombatant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/event#hasCombatant> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://example.org/story/event#hasParticipant> .
 <https://example.org/story/event#hasCombatant> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/event#Battle> .
-<https://example.org/story/event#hasCombatant> <http://www.w3.org/2000/01/rdf-schema#comment> "A character fighting in the battle."@en .
+<https://example.org/story/event#hasCombatant> <http://www.w3.org/2000/01/rdf-schema#comment> "A combatant side or individual fighting in the battle."@en .
 <https://example.org/story/event#hasCombatant> <http://www.w3.org/2000/01/rdf-schema#label> "has combatant"@en .
 # 
 # https://example.org/story/event#hasDeceased
@@ -371,7 +371,7 @@ _:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 # https://example.org/story/event#hasParticipant
 <https://example.org/story/event#hasParticipant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/event#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/event#Event> .
-<https://example.org/story/event#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#comment> "A character involved in the event."@en .
+<https://example.org/story/event#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#comment> "A character or collective actor involved in the event."@en .
 <https://example.org/story/event#hasParticipant> <http://www.w3.org/2000/01/rdf-schema#label> "has participant"@en .
 # 
 # https://example.org/story/event#hasPatient
@@ -415,7 +415,7 @@ _:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/event#hasTraveler> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/event#hasTraveler> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://example.org/story/event#hasParticipant> .
 <https://example.org/story/event#hasTraveler> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/event#Journey> .
-<https://example.org/story/event#hasTraveler> <http://www.w3.org/2000/01/rdf-schema#comment> "A character undertaking the journey."@en .
+<https://example.org/story/event#hasTraveler> <http://www.w3.org/2000/01/rdf-schema#comment> "A character or group undertaking the journey."@en .
 <https://example.org/story/event#hasTraveler> <http://www.w3.org/2000/01/rdf-schema#label> "has traveler"@en .
 # 
 # https://example.org/story/event#hasVictor
@@ -571,6 +571,20 @@ _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/place#tangentialPartOf> <http://www.w3.org/2000/01/rdf-schema#comment> "Proper part relation where the subject touches the boundary of the larger place, corresponding to RCC8 TPP at region level."@en .
 <https://example.org/story/place#tangentialPartOf> <http://www.w3.org/2000/01/rdf-schema#label> "tangential part of"@en .
 # 
+# https://example.org/story/plot#containsEvent
+<https://example.org/story/plot#containsEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/plot#containsEvent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#StorySection> .
+<https://example.org/story/plot#containsEvent> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/event#Event> .
+<https://example.org/story/plot#containsEvent> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid32 .
+_:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid31 .
+_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#describesEvent> .
+_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#containsPlotEvent> .
+_:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/plot#containsEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "A section contains an in-world event. Inferred from containsPlotEvent and describesEvent."@en .
+<https://example.org/story/plot#containsEvent> <http://www.w3.org/2000/01/rdf-schema#label> "contains event"@en .
+# 
 # https://example.org/story/plot#containsPlotEvent
 <https://example.org/story/plot#containsPlotEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/plot#containsPlotEvent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#StorySection> .
@@ -594,15 +608,38 @@ _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/plot#endsWith> <http://www.w3.org/2000/01/rdf-schema#comment> "The last plot event in a story or section."@en .
 <https://example.org/story/plot#endsWith> <http://www.w3.org/2000/01/rdf-schema#label> "ends with"@en .
 # 
+# https://example.org/story/plot#endsWithEvent
+<https://example.org/story/plot#endsWithEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/plot#endsWithEvent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#NarrativeContainer> .
+<https://example.org/story/plot#endsWithEvent> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/event#Event> .
+<https://example.org/story/plot#endsWithEvent> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid34 .
+_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid33 .
+_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#describesEvent> .
+_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#endsWith> .
+_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/plot#endsWithEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "The in-world event that ends a story or section. Inferred from endsWith and describesEvent."@en .
+<https://example.org/story/plot#endsWithEvent> <http://www.w3.org/2000/01/rdf-schema#label> "ends with event"@en .
+# 
 # https://example.org/story/plot#hasAuthor
 <https://example.org/story/plot#hasAuthor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/plot#hasAuthor> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://example.org/story/plot#hasContributor> .
 <https://example.org/story/plot#hasAuthor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#NarrativeWork> .
 <https://example.org/story/plot#hasAuthor> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/plot#Author> .
 <https://example.org/story/plot#hasAuthor> <http://www.w3.org/2000/01/rdf-schema#comment> "The original author of the narrative work."@en .
 <https://example.org/story/plot#hasAuthor> <http://www.w3.org/2000/01/rdf-schema#label> "has author"@en .
 # 
+# https://example.org/story/plot#hasContributor
+<https://example.org/story/plot#hasContributor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/plot#hasContributor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#NarrativeWork> .
+<https://example.org/story/plot#hasContributor> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/plot#Contributor> .
+<https://example.org/story/plot#hasContributor> <http://www.w3.org/2000/01/rdf-schema#comment> "A person who contributed to the narrative work in any role."@en .
+<https://example.org/story/plot#hasContributor> <http://www.w3.org/2000/01/rdf-schema#label> "has contributor"@en .
+# 
 # https://example.org/story/plot#hasEditor
 <https://example.org/story/plot#hasEditor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/plot#hasEditor> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://example.org/story/plot#hasContributor> .
 <https://example.org/story/plot#hasEditor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#NarrativeWork> .
 <https://example.org/story/plot#hasEditor> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/plot#Editor> .
 <https://example.org/story/plot#hasEditor> <http://www.w3.org/2000/01/rdf-schema#comment> "An editor or compiler responsible for the published work."@en .
@@ -621,6 +658,12 @@ _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/plot#hasSection> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/plot#StorySection> .
 <https://example.org/story/plot#hasSection> <http://www.w3.org/2000/01/rdf-schema#comment> "A story is divided into sections."@en .
 <https://example.org/story/plot#hasSection> <http://www.w3.org/2000/01/rdf-schema#label> "has section"@en .
+# 
+# https://example.org/story/plot#isDescribedBy
+<https://example.org/story/plot#isDescribedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/plot#isDescribedBy> <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/plot#describesEvent> .
+<https://example.org/story/plot#isDescribedBy> <http://www.w3.org/2000/01/rdf-schema#comment> "Inverse of describesEvent. Links an in-world event back to the plot event that narrates it."@en .
+<https://example.org/story/plot#isDescribedBy> <http://www.w3.org/2000/01/rdf-schema#label> "is described by"@en .
 # 
 # https://example.org/story/plot#narrates
 <https://example.org/story/plot#narrates> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
@@ -643,17 +686,17 @@ _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/plot#nextSection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/plot#nextSection> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#StorySection> .
 <https://example.org/story/plot#nextSection> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/plot#StorySection> .
-<https://example.org/story/plot#nextSection> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid34 .
-_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid33 .
-_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid31 .
-_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid32 .
-_:genid32 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/plot#startsWith> .
-_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#nextPlotEvent> .
-_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#endsWith> .
-_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/plot#nextSection> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid38 .
+_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid37 .
+_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid35 .
+_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid36 .
+_:genid36 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/plot#startsWith> .
+_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#nextPlotEvent> .
+_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#endsWith> .
+_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/plot#nextSection> <http://www.w3.org/2000/01/rdf-schema#comment> "The next section in the narrative. Derived from plot event ordering via property chain."@en .
 <https://example.org/story/plot#nextSection> <http://www.w3.org/2000/01/rdf-schema#label> "next section"@en .
 # 
@@ -679,6 +722,20 @@ _:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/plot#startsWith> <http://www.w3.org/2000/01/rdf-schema#comment> "The first plot event in a story or section."@en .
 <https://example.org/story/plot#startsWith> <http://www.w3.org/2000/01/rdf-schema#label> "starts with"@en .
 # 
+# https://example.org/story/plot#startsWithEvent
+<https://example.org/story/plot#startsWithEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/plot#startsWithEvent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/plot#NarrativeContainer> .
+<https://example.org/story/plot#startsWithEvent> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/event#Event> .
+<https://example.org/story/plot#startsWithEvent> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid40 .
+_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid39 .
+_:genid39 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid39 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#describesEvent> .
+_:genid39 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#startsWith> .
+_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/plot#startsWithEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "The in-world event that starts a story or section. Inferred from startsWith and describesEvent."@en .
+<https://example.org/story/plot#startsWithEvent> <http://www.w3.org/2000/01/rdf-schema#label> "starts with event"@en .
+# 
 # https://example.org/story/social#allyOf
 <https://example.org/story/social#allyOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/social#allyOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://example.org/story/social#sociallyRelatedTo> .
@@ -699,13 +756,13 @@ _:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/social#enemyOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/social#enemyOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://example.org/story/social#sociallyRelatedTo> .
 <https://example.org/story/social#enemyOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#SymmetricProperty> .
-<https://example.org/story/social#enemyOf> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid36 .
-_:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid35 .
-_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/social#enemyOf> .
-_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/social#serves> .
-_:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/social#enemyOf> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid42 .
+_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid41 .
+_:genid41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/social#enemyOf> .
+_:genid41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/social#serves> .
+_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/social#enemyOf> <http://www.w3.org/2000/01/rdf-schema#comment> "Enmity between two characters."@en .
 <https://example.org/story/social#enemyOf> <http://www.w3.org/2000/01/rdf-schema#label> "enemy of"@en .
 # 
@@ -737,14 +794,14 @@ _:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 # https://example.org/story/social#livedIn
 <https://example.org/story/social#livedIn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/social#livedIn> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/place#Place> .
-<https://example.org/story/social#livedIn> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid38 .
-_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid37 .
-_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasLocation> .
-_:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid39 .
-_:genid39 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/event#hasResident> .
-_:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/social#livedIn> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid44 .
+_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid43 .
+_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasLocation> .
+_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid45 .
+_:genid45 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/event#hasResident> .
+_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/social#livedIn> <http://www.w3.org/2000/01/rdf-schema#comment> "Where a character has resided. No rdfs:domain declared because characters, peoples, and other agents could all live somewhere. Range is Place."@en .
 <https://example.org/story/social#livedIn> <http://www.w3.org/2000/01/rdf-schema#label> "lived in"@en .
 # 
@@ -770,6 +827,34 @@ _:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/social#sociallyRelatedTo> <http://www.w3.org/2000/01/rdf-schema#comment> "Top-level property grouping all social relations."@en .
 <https://example.org/story/social#sociallyRelatedTo> <http://www.w3.org/2000/01/rdf-schema#label> "socially related to"@en .
 # 
+# https://example.org/story/social#travelledFrom
+<https://example.org/story/social#travelledFrom> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/social#travelledFrom> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/place#Place> .
+<https://example.org/story/social#travelledFrom> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid47 .
+_:genid47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid46 .
+_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasOrigin> .
+_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid48 .
+_:genid48 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/event#hasTraveler> .
+_:genid47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/social#travelledFrom> <http://www.w3.org/2000/01/rdf-schema#comment> "Inferred from Journey events via hasTraveler and hasOrigin."@en .
+<https://example.org/story/social#travelledFrom> <http://www.w3.org/2000/01/rdf-schema#label> "travelled from"@en .
+# 
+# https://example.org/story/social#travelledTo
+<https://example.org/story/social#travelledTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://example.org/story/social#travelledTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/place#Place> .
+<https://example.org/story/social#travelledTo> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid50 .
+_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid49 .
+_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasDestination> .
+_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid51 .
+_:genid51 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/event#hasTraveler> .
+_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/social#travelledTo> <http://www.w3.org/2000/01/rdf-schema#comment> "Inferred from Journey events via hasTraveler and hasDestination."@en .
+<https://example.org/story/social#travelledTo> <http://www.w3.org/2000/01/rdf-schema#label> "travelled to"@en .
+# 
 # https://example.org/story/time#afterInterval
 <https://example.org/story/time#afterInterval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <https://example.org/story/time#afterInterval> <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/time#beforeInterval> .
@@ -784,17 +869,17 @@ _:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://example.org/story/time#beforeInterval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
 <https://example.org/story/time#beforeInterval> <http://www.w3.org/2000/01/rdf-schema#domain> <https://example.org/story/time#Interval> .
 <https://example.org/story/time#beforeInterval> <http://www.w3.org/2000/01/rdf-schema#range> <https://example.org/story/time#Interval> .
-<https://example.org/story/time#beforeInterval> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid43 .
-_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid42 .
-_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid40 .
-_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid41 .
-_:genid41 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/time#startsAt> .
-_:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#occursBefore> .
-_:genid42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#endsAt> .
-_:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/time#beforeInterval> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid55 .
+_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid54 .
+_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid52 .
+_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid53 .
+_:genid53 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/time#startsAt> .
+_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#occursBefore> .
+_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#endsAt> .
+_:genid55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/time#beforeInterval> <http://www.w3.org/2000/01/rdf-schema#comment> "Allen's 'before': first interval ends before second starts."@en .
 <https://example.org/story/time#beforeInterval> <http://www.w3.org/2000/01/rdf-schema#label> "before"@en .
 # 
@@ -965,17 +1050,17 @@ _:genid43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://purl.org/region/rcc8/ec> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#SymmetricProperty> .
 <https://purl.org/region/rcc8/ec> <http://www.w3.org/2000/01/rdf-schema#domain> <https://purl.org/region/rcc8/Region> .
 <https://purl.org/region/rcc8/ec> <http://www.w3.org/2000/01/rdf-schema#range> <https://purl.org/region/rcc8/Region> .
-<https://purl.org/region/rcc8/ec> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid46 .
-_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid45 .
-_:genid45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid44 .
-_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#occupiesRegion> .
-_:genid44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#adjacentTo> .
-_:genid45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid47 .
-_:genid47 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/place#occupiesRegion> .
-_:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://purl.org/region/rcc8/ec> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid58 .
+_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid57 .
+_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid56 .
+_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#occupiesRegion> .
+_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#adjacentTo> .
+_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid59 .
+_:genid59 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/place#occupiesRegion> .
+_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://purl.org/region/rcc8/ec> <http://www.w3.org/2000/01/rdf-schema#comment> "Boundaries touch but interiors don't overlap."@en .
 <https://purl.org/region/rcc8/ec> <http://www.w3.org/2000/01/rdf-schema#label> "externally connected"@en .
 # 
@@ -993,17 +1078,17 @@ _:genid46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://purl.org/region/rcc8/ntpp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
 <https://purl.org/region/rcc8/ntpp> <http://www.w3.org/2000/01/rdf-schema#domain> <https://purl.org/region/rcc8/Region> .
 <https://purl.org/region/rcc8/ntpp> <http://www.w3.org/2000/01/rdf-schema#range> <https://purl.org/region/rcc8/Region> .
-<https://purl.org/region/rcc8/ntpp> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid50 .
-_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid49 .
-_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid48 .
-_:genid48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#occupiesRegion> .
-_:genid48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#interiorPartOf> .
-_:genid49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid51 .
-_:genid51 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/place#occupiesRegion> .
-_:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://purl.org/region/rcc8/ntpp> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid62 .
+_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid61 .
+_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid60 .
+_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#occupiesRegion> .
+_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#interiorPartOf> .
+_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid63 .
+_:genid63 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/place#occupiesRegion> .
+_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://purl.org/region/rcc8/ntpp> <http://www.w3.org/2000/01/rdf-schema#comment> "First region is completely inside the second, boundaries don't touch."@en .
 <https://purl.org/region/rcc8/ntpp> <http://www.w3.org/2000/01/rdf-schema#label> "non-tangential proper part"@en .
 # 
@@ -1030,17 +1115,17 @@ _:genid50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <https://purl.org/region/rcc8/tpp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
 <https://purl.org/region/rcc8/tpp> <http://www.w3.org/2000/01/rdf-schema#domain> <https://purl.org/region/rcc8/Region> .
 <https://purl.org/region/rcc8/tpp> <http://www.w3.org/2000/01/rdf-schema#range> <https://purl.org/region/rcc8/Region> .
-<https://purl.org/region/rcc8/tpp> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid54 .
-_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid53 .
-_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid52 .
-_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#occupiesRegion> .
-_:genid52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#tangentialPartOf> .
-_:genid53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid55 .
-_:genid55 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/place#occupiesRegion> .
-_:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://purl.org/region/rcc8/tpp> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:genid66 .
+_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid65 .
+_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid64 .
+_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#occupiesRegion> .
+_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#tangentialPartOf> .
+_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid67 .
+_:genid67 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/place#occupiesRegion> .
+_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://purl.org/region/rcc8/tpp> <http://www.w3.org/2000/01/rdf-schema#comment> "First region is inside the second and their boundaries touch."@en .
 <https://purl.org/region/rcc8/tpp> <http://www.w3.org/2000/01/rdf-schema#label> "tangential proper part"@en .
 # 
@@ -1199,13 +1284,13 @@ _:genid54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 # 
 # http://purl.org/meo/God
 <http://purl.org/meo/God> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://purl.org/meo/God> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid56 .
-_:genid56 <http://www.w3.org/2002/07/owl#oneOf> _:genid57 .
-_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/meo/eru> .
+<http://purl.org/meo/God> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid68 .
+_:genid68 <http://www.w3.org/2002/07/owl#oneOf> _:genid69 .
+_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.org/meo/eru> .
 <http://purl.org/meo/eru> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-_:genid57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://purl.org/meo/God> <http://www.w3.org/2000/01/rdf-schema#comment> "A sperior entity. A singleton class that only contains Eru Ilúvatar, the One Allfather."@en .
 <http://purl.org/meo/God> <http://www.w3.org/2000/01/rdf-schema#label> "God"@en .
 # 
@@ -1237,14 +1322,14 @@ _:genid56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # http://purl.org/meo/Peredhel
 <http://purl.org/meo/Peredhel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Eruhin> .
-<http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid58 .
-_:genid58 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Atan> .
-_:genid58 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isADescendentOf> .
-_:genid58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid59 .
-_:genid59 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Elda> .
-_:genid59 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isADescendentOf> .
-_:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid70 .
+_:genid70 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Atan> .
+_:genid70 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isADescendentOf> .
+_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid71 .
+_:genid71 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Elda> .
+_:genid71 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isADescendentOf> .
+_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#comment> "Peredhil are descendent of both elves and humans."@en .
 <http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#label> "Half-elf"@en .
 <http://purl.org/meo/Peredhel> <http://www.w3.org/2000/01/rdf-schema#label> "Peredhel"@sjn .
@@ -1276,54 +1361,54 @@ _:genid59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # 
 # https://example.org/story/action#Action
 <https://example.org/story/action#Action> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://example.org/story/action#Action> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid60 .
-_:genid60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid60 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid63 .
-_:genid63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid61 .
-_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid62 .
-_:genid62 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
-_:genid62 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasAgent> .
-_:genid62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Event> .
-_:genid63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/action#Action> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid72 .
+_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid72 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid75 .
+_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid73 .
+_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid74 .
+_:genid74 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
+_:genid74 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasAgent> .
+_:genid74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Event> .
+_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/action#Action> <http://www.w3.org/2000/01/rdf-schema#comment> "An event with a deliberate agent. Defined as Action ≡ Event ⊓ ∃evt:hasAgent.⊤, so any event that has an agent gets classified as an action automatically."@en .
 <https://example.org/story/action#Action> <http://www.w3.org/2000/01/rdf-schema#label> "Action"@en .
 # 
 # https://example.org/story/action#AttackAction
 <https://example.org/story/action#AttackAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/action#AttackAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/action#Action> .
-<https://example.org/story/action#AttackAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid64 .
-_:genid64 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
-_:genid64 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/action#hasPatient> .
-_:genid64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/action#AttackAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid76 .
+_:genid76 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
+_:genid76 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/action#hasPatient> .
+_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/action#AttackAction> <http://www.w3.org/2000/01/rdf-schema#comment> "A hostile action directed at a patient. Left as a conservative subclass rather than a defined class, because patienthood alone would wrongly classify non-violent actions such as curses as attacks."@en .
 <https://example.org/story/action#AttackAction> <http://www.w3.org/2000/01/rdf-schema#label> "Attack action"@en .
 # 
 # https://example.org/story/action#CurseAction
 <https://example.org/story/action#CurseAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/action#CurseAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/action#SpeechAction> .
-<https://example.org/story/action#CurseAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid65 .
-_:genid65 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
-_:genid65 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/action#hasPatient> .
-_:genid65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/action#CurseAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid77 .
+_:genid77 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
+_:genid77 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/action#hasPatient> .
+_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/action#CurseAction> <http://www.w3.org/2000/01/rdf-schema#comment> "Placing a curse on someone. In the Narn, Morgoth curses the children of Húrin."@en .
 <https://example.org/story/action#CurseAction> <http://www.w3.org/2000/01/rdf-schema#label> "Curse action"@en .
 # 
 # https://example.org/story/action#MoveAction
 <https://example.org/story/action#MoveAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/action#MoveAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/action#Action> .
-<https://example.org/story/action#MoveAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid66 .
-_:genid66 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
-_:genid66 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid66 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasDestination> .
-_:genid66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/action#MoveAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid67 .
-_:genid67 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
-_:genid67 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid67 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasOrigin> .
-_:genid67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/action#MoveAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid78 .
+_:genid78 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
+_:genid78 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid78 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasDestination> .
+_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/action#MoveAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid79 .
+_:genid79 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
+_:genid79 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid79 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasOrigin> .
+_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/action#MoveAction> <http://www.w3.org/2000/01/rdf-schema#comment> "Moving from one place to another."@en .
 <https://example.org/story/action#MoveAction> <http://www.w3.org/2000/01/rdf-schema#label> "Move action"@en .
 # 
@@ -1335,18 +1420,18 @@ _:genid67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # 
 # https://example.org/story/action#UseItemAction
 <https://example.org/story/action#UseItemAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://example.org/story/action#UseItemAction> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid68 .
-_:genid68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid68 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid71 .
-_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid69 .
-_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid70 .
-_:genid70 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/event#Item> .
-_:genid70 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#usesItem> .
-_:genid70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/action#Action> .
-_:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/action#UseItemAction> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid80 .
+_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid80 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid83 .
+_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid81 .
+_:genid81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid82 .
+_:genid82 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/event#Item> .
+_:genid82 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#usesItem> .
+_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/action#Action> .
+_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/action#UseItemAction> <http://www.w3.org/2000/01/rdf-schema#comment> "An action that involves an item. Any action with usesItem is classified here."@en .
 <https://example.org/story/action#UseItemAction> <http://www.w3.org/2000/01/rdf-schema#label> "Use-item action"@en .
 # 
@@ -1359,56 +1444,56 @@ _:genid71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 # https://example.org/story/event#Battle
 <https://example.org/story/event#Battle> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Battle> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#PhysicalEvent> .
-<https://example.org/story/event#Battle> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid72 .
-_:genid72 <http://www.w3.org/2002/07/owl#minCardinality> "2"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid72 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasCombatant> .
-_:genid72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Battle> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid84 .
+_:genid84 <http://www.w3.org/2002/07/owl#minCardinality> "2"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid84 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasCombatant> .
+_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Battle> <http://www.w3.org/2000/01/rdf-schema#comment> "A violent confrontation."@en .
 <https://example.org/story/event#Battle> <http://www.w3.org/2000/01/rdf-schema#label> "Battle"@en .
 # 
 # https://example.org/story/event#Birth
 <https://example.org/story/event#Birth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#SocialEvent> .
-<https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid73 .
-_:genid73 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid73 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasMother> .
-_:genid73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid74 .
-_:genid74 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid74 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasNewborn> .
-_:genid74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid75 .
-_:genid75 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid75 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasFather> .
-_:genid75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Birth> <http://www.w3.org/2002/07/owl#hasKey> _:genid76 .
-_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasNewborn> .
-_:genid76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid85 .
+_:genid85 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid85 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasMother> .
+_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid86 .
+_:genid86 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid86 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasNewborn> .
+_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid87 .
+_:genid87 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid87 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasFather> .
+_:genid87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Birth> <http://www.w3.org/2002/07/owl#hasKey> _:genid88 .
+_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasNewborn> .
+_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#comment> "The birth of a character."@en .
 <https://example.org/story/event#Birth> <http://www.w3.org/2000/01/rdf-schema#label> "Birth"@en .
 # 
 # https://example.org/story/event#Captivity
 <https://example.org/story/event#Captivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Captivity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#State> .
-<https://example.org/story/event#Captivity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid77 .
-_:genid77 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
-_:genid77 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasCaptive> .
-_:genid77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Captivity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid78 .
-_:genid78 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
-_:genid78 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasCaptor> .
-_:genid78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Captivity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid89 .
+_:genid89 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
+_:genid89 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasCaptive> .
+_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Captivity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid90 .
+_:genid90 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
+_:genid90 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasCaptor> .
+_:genid90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Captivity> <http://www.w3.org/2000/01/rdf-schema#comment> "Being held prisoner."@en .
 <https://example.org/story/event#Captivity> <http://www.w3.org/2000/01/rdf-schema#label> "Captivity"@en .
 # 
 # https://example.org/story/event#Conversation
 <https://example.org/story/event#Conversation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Conversation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#Meeting> .
-<https://example.org/story/event#Conversation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid79 .
-_:genid79 <http://www.w3.org/2002/07/owl#minCardinality> "2"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid79 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasSpeaker> .
-_:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Conversation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid91 .
+_:genid91 <http://www.w3.org/2002/07/owl#minCardinality> "2"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid91 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasSpeaker> .
+_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Conversation> <http://www.w3.org/2000/01/rdf-schema#comment> "A meeting involving verbal exchange."@en .
 <https://example.org/story/event#Conversation> <http://www.w3.org/2000/01/rdf-schema#label> "Conversation"@en .
 # 
@@ -1421,27 +1506,27 @@ _:genid79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # https://example.org/story/event#Death
 <https://example.org/story/event#Death> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Death> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#SocialEvent> .
-<https://example.org/story/event#Death> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid80 .
-_:genid80 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid80 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasDeceased> .
-_:genid80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Death> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid81 .
-_:genid81 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid81 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasKiller> .
-_:genid81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Death> <http://www.w3.org/2002/07/owl#hasKey> _:genid82 .
-_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasDeceased> .
-_:genid82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/event#Death> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid92 .
+_:genid92 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid92 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasDeceased> .
+_:genid92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Death> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid93 .
+_:genid93 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid93 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasKiller> .
+_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Death> <http://www.w3.org/2002/07/owl#hasKey> _:genid94 .
+_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#hasDeceased> .
+_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/event#Death> <http://www.w3.org/2000/01/rdf-schema#comment> "The death of a character."@en .
 <https://example.org/story/event#Death> <http://www.w3.org/2000/01/rdf-schema#label> "Death"@en .
 # 
 # https://example.org/story/event#Event
 <https://example.org/story/event#Event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid83 .
-_:genid83 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/time#Interval> .
-_:genid83 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasTemporalExtent> .
-_:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid95 .
+_:genid95 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/time#Interval> .
+_:genid95 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasTemporalExtent> .
+_:genid95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#comment> "Something that happens in the story world, with a time, place, and participants."@en .
 <https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#label> "Event"@en .
 <https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://purl.org/NET/c4dm/event.owl#Event> .
@@ -1460,48 +1545,48 @@ _:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # https://example.org/story/event#Journey
 <https://example.org/story/event#Journey> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#PhysicalEvent> .
-<https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid84 .
-_:genid84 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
-_:genid84 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasTraveler> .
-_:genid84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid85 .
-_:genid85 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
-_:genid85 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid85 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasDestination> .
-_:genid85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid86 .
-_:genid86 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
-_:genid86 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid86 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasOrigin> .
-_:genid86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid96 .
+_:genid96 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
+_:genid96 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasTraveler> .
+_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid97 .
+_:genid97 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
+_:genid97 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid97 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasDestination> .
+_:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid98 .
+_:genid98 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/place#Place> .
+_:genid98 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid98 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasOrigin> .
+_:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#comment> "Moving from one place to another."@en .
 <https://example.org/story/event#Journey> <http://www.w3.org/2000/01/rdf-schema#label> "Journey"@en .
 # 
 # https://example.org/story/event#Marriage
 <https://example.org/story/event#Marriage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#SocialEvent> .
-<https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid87 .
-_:genid87 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid87 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasHusband> .
-_:genid87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid88 .
-_:genid88 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid88 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasWife> .
-_:genid88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid89 .
-_:genid89 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid89 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasOfficiant> .
-_:genid89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid99 .
+_:genid99 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid99 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasHusband> .
+_:genid99 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid100 .
+_:genid100 <http://www.w3.org/2002/07/owl#cardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid100 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasWife> .
+_:genid100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid101 .
+_:genid101 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid101 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasOfficiant> .
+_:genid101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#comment> "A marriage event with husband, wife, and officiant roles."@en .
 <https://example.org/story/event#Marriage> <http://www.w3.org/2000/01/rdf-schema#label> "Marriage"@en .
 # 
 # https://example.org/story/event#Meeting
 <https://example.org/story/event#Meeting> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Meeting> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#SocialEvent> .
-<https://example.org/story/event#Meeting> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid90 .
-_:genid90 <http://www.w3.org/2002/07/owl#minCardinality> "2"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid90 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasParticipant> .
-_:genid90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Meeting> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid102 .
+_:genid102 <http://www.w3.org/2002/07/owl#minCardinality> "2"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid102 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasParticipant> .
+_:genid102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Meeting> <http://www.w3.org/2000/01/rdf-schema#comment> "Two or more characters encounter each other."@en .
 <https://example.org/story/event#Meeting> <http://www.w3.org/2000/01/rdf-schema#label> "Meeting"@en .
 # 
@@ -1526,14 +1611,14 @@ _:genid90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # https://example.org/story/event#Residence
 <https://example.org/story/event#Residence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#Residence> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#State> .
-<https://example.org/story/event#Residence> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid91 .
-_:genid91 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/place#Place> .
-_:genid91 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasLocation> .
-_:genid91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#Residence> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid92 .
-_:genid92 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
-_:genid92 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasResident> .
-_:genid92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Residence> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid103 .
+_:genid103 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/place#Place> .
+_:genid103 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasLocation> .
+_:genid103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#Residence> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid104 .
+_:genid104 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> .
+_:genid104 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasResident> .
+_:genid104 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Residence> <http://www.w3.org/2000/01/rdf-schema#comment> "A state of living at a particular place for a period of time."@en .
 <https://example.org/story/event#Residence> <http://www.w3.org/2000/01/rdf-schema#label> "Residence"@en .
 # 
@@ -1559,22 +1644,22 @@ _:genid92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # https://example.org/story/event#War
 <https://example.org/story/event#War> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/event#War> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/event#PhysicalEvent> .
-<https://example.org/story/event#War> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid93 .
-_:genid93 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/event#Battle> .
-_:genid93 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasSubEvent> .
-_:genid93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/event#War> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid94 .
-_:genid94 <http://www.w3.org/2002/07/owl#allValuesFrom> _:genid95 .
-_:genid95 <http://www.w3.org/2002/07/owl#unionOf> _:genid97 .
-_:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid96 .
-_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#War> .
-_:genid96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Battle> .
-_:genid97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid94 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasSubEvent> .
-_:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#War> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid105 .
+_:genid105 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/event#Battle> .
+_:genid105 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasSubEvent> .
+_:genid105 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/event#War> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid106 .
+_:genid106 <http://www.w3.org/2002/07/owl#allValuesFrom> _:genid107 .
+_:genid107 <http://www.w3.org/2002/07/owl#unionOf> _:genid109 .
+_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid108 .
+_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#War> .
+_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Battle> .
+_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid107 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid106 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/event#hasSubEvent> .
+_:genid106 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#War> <http://www.w3.org/2000/01/rdf-schema#comment> "A prolonged conflict made up of multiple battles."@en .
 <https://example.org/story/event#War> <http://www.w3.org/2000/01/rdf-schema#label> "War"@en .
 # 
@@ -1664,18 +1749,18 @@ _:genid94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # https://example.org/story/place#Room
 <https://example.org/story/place#Room> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/place#Room> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/place#Place> .
-<https://example.org/story/place#Room> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid98 .
-_:genid98 <http://www.w3.org/2002/07/owl#someValuesFrom> _:genid99 .
-_:genid99 <http://www.w3.org/2002/07/owl#unionOf> _:genid101 .
-_:genid101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid100 .
-_:genid100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Fortress> .
-_:genid100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Building> .
-_:genid101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid99 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid98 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/place#partOf> .
-_:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/place#Room> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid110 .
+_:genid110 <http://www.w3.org/2002/07/owl#someValuesFrom> _:genid111 .
+_:genid111 <http://www.w3.org/2002/07/owl#unionOf> _:genid113 .
+_:genid113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid112 .
+_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Fortress> .
+_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Building> .
+_:genid113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid110 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/place#partOf> .
+_:genid110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/place#Room> <http://www.w3.org/2000/01/rdf-schema#comment> "A space inside a building or fortified complex."@en .
 <https://example.org/story/place#Room> <http://www.w3.org/2000/01/rdf-schema#label> "Room"@en .
 # 
@@ -1766,11 +1851,11 @@ _:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 # https://example.org/story/plot#PlotEvent
 <https://example.org/story/plot#PlotEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/plot#PlotEvent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/plot#NarrativeElement> .
-<https://example.org/story/plot#PlotEvent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid102 .
-_:genid102 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/event#Event> .
-_:genid102 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid102 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#describesEvent> .
-_:genid102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/plot#PlotEvent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid114 .
+_:genid114 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/event#Event> .
+_:genid114 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid114 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#describesEvent> .
+_:genid114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/plot#PlotEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "A narrative element describing an in-world event. Bridges the plot layer and the event layer via describesEvent."@en .
 <https://example.org/story/plot#PlotEvent> <http://www.w3.org/2000/01/rdf-schema#label> "Plot event"@en .
 # 
@@ -1788,10 +1873,10 @@ _:genid102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/
 # https://example.org/story/plot#Story
 <https://example.org/story/plot#Story> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/plot#Story> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/plot#NarrativeContainer> .
-<https://example.org/story/plot#Story> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid103 .
-_:genid103 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/plot#StorySection> .
-_:genid103 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#hasSection> .
-_:genid103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/plot#Story> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid115 .
+_:genid115 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/plot#StorySection> .
+_:genid115 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#hasSection> .
+_:genid115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/plot#Story> <http://www.w3.org/2002/07/owl#disjointWith> <https://example.org/story/plot#StorySection> .
 <https://example.org/story/plot#Story> <http://www.w3.org/2000/01/rdf-schema#comment> "The fictional story as a whole."@en .
 <https://example.org/story/plot#Story> <http://www.w3.org/2000/01/rdf-schema#label> "Story"@en .
@@ -1799,39 +1884,39 @@ _:genid103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/
 # https://example.org/story/plot#StorySection
 <https://example.org/story/plot#StorySection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/plot#StorySection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/plot#NarrativeContainer> .
-<https://example.org/story/plot#StorySection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid104 .
-_:genid104 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/plot#PlotEvent> .
-_:genid104 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#containsPlotEvent> .
-_:genid104 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-<https://example.org/story/plot#StorySection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid105 .
-_:genid105 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/plot#Story> .
-_:genid105 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
-_:genid105 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#sectionOf> .
-_:genid105 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/plot#StorySection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid116 .
+_:genid116 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/plot#PlotEvent> .
+_:genid116 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#containsPlotEvent> .
+_:genid116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/plot#StorySection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid117 .
+_:genid117 <http://www.w3.org/2002/07/owl#onClass> <https://example.org/story/plot#Story> .
+_:genid117 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid117 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/plot#sectionOf> .
+_:genid117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/plot#StorySection> <http://www.w3.org/2000/01/rdf-schema#comment> "A structural part of a story: prologue, chapter, or epilogue."@en .
 <https://example.org/story/plot#StorySection> <http://www.w3.org/2000/01/rdf-schema#label> "Story section"@en .
 # 
 # https://example.org/story/time#EndingInterval
 <https://example.org/story/time#EndingInterval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/time#EndingInterval> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/time#Interval> .
-<https://example.org/story/time#EndingInterval> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid106 .
-_:genid106 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/time#Instant> .
-_:genid106 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/time#endsAt> .
-_:genid106 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/time#EndingInterval> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid118 .
+_:genid118 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/time#Instant> .
+_:genid118 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/time#endsAt> .
+_:genid118 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/time#EndingInterval> <http://www.w3.org/2000/01/rdf-schema#comment> "An interval with a known end."@en .
 <https://example.org/story/time#EndingInterval> <http://www.w3.org/2000/01/rdf-schema#label> "Ending interval"@en .
 # 
 # https://example.org/story/time#FiniteInterval
 <https://example.org/story/time#FiniteInterval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://example.org/story/time#FiniteInterval> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid107 .
-_:genid107 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid107 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid109 .
-_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid108 .
-_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#StartingInterval> .
-_:genid108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#EndingInterval> .
-_:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://example.org/story/time#FiniteInterval> <http://www.w3.org/2002/07/owl#equivalentClass> _:genid119 .
+_:genid119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid119 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid121 .
+_:genid121 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid120 .
+_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#StartingInterval> .
+_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid121 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/time#EndingInterval> .
+_:genid121 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 <https://example.org/story/time#FiniteInterval> <http://www.w3.org/2002/07/owl#disjointWith> <https://example.org/story/time#InfiniteInterval> .
 <https://example.org/story/time#FiniteInterval> <http://www.w3.org/2000/01/rdf-schema#comment> "An interval with both start and end. Defined as StartingInterval ⊓ EndingInterval."@en .
 <https://example.org/story/time#FiniteInterval> <http://www.w3.org/2000/01/rdf-schema#label> "Finite interval"@en .
@@ -1860,10 +1945,10 @@ _:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/
 # https://example.org/story/time#StartingInterval
 <https://example.org/story/time#StartingInterval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/time#StartingInterval> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/time#Interval> .
-<https://example.org/story/time#StartingInterval> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid110 .
-_:genid110 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/time#Instant> .
-_:genid110 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/time#startsAt> .
-_:genid110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://example.org/story/time#StartingInterval> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid122 .
+_:genid122 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://example.org/story/time#Instant> .
+_:genid122 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/time#startsAt> .
+_:genid122 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/time#StartingInterval> <http://www.w3.org/2000/01/rdf-schema#comment> "An interval with a known start."@en .
 <https://example.org/story/time#StartingInterval> <http://www.w3.org/2000/01/rdf-schema#label> "Starting interval"@en .
 # 
@@ -1924,182 +2009,146 @@ _:genid110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/
 # #################################################################
 # 
 # 
-_:genid111 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid114 .
-_:genid114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid112 .
-_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid113 .
-_:genid113 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Elda> .
-_:genid113 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
-_:genid113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid115 .
-_:genid115 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Adan> .
-_:genid115 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
-_:genid115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid111 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Peredhel> .
-# 
-_:genid116 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid120 .
-_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid117 .
-_:genid117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid118 .
-_:genid118 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Atan> .
-_:genid118 <http://www.w3.org/2002/07/owl#onProperty> _:genid119 .
-_:genid119 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheMotherOf> .
-_:genid118 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid121 .
-_:genid121 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Atan> .
-_:genid121 <http://www.w3.org/2002/07/owl#onProperty> _:genid122 .
-_:genid122 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheFatherOf> .
-_:genid121 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid116 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Atan> .
-# 
-_:genid123 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid127 .
-_:genid127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid124 .
+_:genid123 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid126 .
+_:genid126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid124 .
 _:genid124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:genid124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid125 .
 _:genid125 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Elda> .
-_:genid125 <http://www.w3.org/2002/07/owl#onProperty> _:genid126 .
-_:genid126 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheMotherOf> .
+_:genid125 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
 _:genid125 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:genid124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid128 .
-_:genid128 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Elda> .
-_:genid128 <http://www.w3.org/2002/07/owl#onProperty> _:genid129 .
-_:genid129 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheFatherOf> .
-_:genid128 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid127 .
+_:genid127 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Adan> .
+_:genid127 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
+_:genid127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 _:genid123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:genid123 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Elda> .
+_:genid123 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Peredhel> .
 # 
+_:genid128 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid132 .
+_:genid132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid129 .
+_:genid129 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid129 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid130 .
+_:genid130 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Atan> .
+_:genid130 <http://www.w3.org/2002/07/owl#onProperty> _:genid131 .
+_:genid131 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheMotherOf> .
 _:genid130 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid130 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
-_:genid130 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://purl.org/meo/Atan> .
-_:genid130 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Atan> .
+_:genid129 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid133 .
+_:genid133 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Atan> .
+_:genid133 <http://www.w3.org/2002/07/owl#onProperty> _:genid134 .
+_:genid134 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheFatherOf> .
+_:genid133 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid128 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid128 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Atan> .
 # 
-_:genid131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid131 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
-_:genid131 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://purl.org/meo/Elda> .
-_:genid131 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Elda> .
-# 
-_:genid132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:genid132 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/meo/served> .
-_:genid132 <http://www.w3.org/2002/07/owl#hasValue> <http://purl.org/meo/morgoth> .
-_:genid132 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/EvilBeing> .
-# 
-_:genid133 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid133 <http://www.w3.org/2002/07/owl#members> _:genid137 .
-_:genid137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid136 .
-_:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid135 .
-_:genid135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid134 .
-_:genid134 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid134 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#War> .
-_:genid134 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#NaturalDisaster> .
-_:genid135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Journey> .
+_:genid135 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid139 .
+_:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid136 .
+_:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid137 .
+_:genid137 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Elda> .
+_:genid137 <http://www.w3.org/2002/07/owl#onProperty> _:genid138 .
+_:genid138 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheMotherOf> .
+_:genid137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:genid136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Battle> .
-_:genid137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid138 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid138 <http://www.w3.org/2002/07/owl#members> _:genid143 .
-_:genid143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid142 .
-_:genid142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid141 .
-_:genid141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid140 .
-_:genid140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid139 .
-_:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Meeting> .
+_:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid140 .
+_:genid140 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/meo/Elda> .
+_:genid140 <http://www.w3.org/2002/07/owl#onProperty> _:genid141 .
+_:genid141 <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/family/isTheFatherOf> .
+_:genid140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:genid139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Marriage> .
-_:genid140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Death> .
-_:genid141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Coronation> .
-_:genid142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Birth> .
-_:genid143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid135 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Elda> .
 # 
-_:genid144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid144 <http://www.w3.org/2002/07/owl#members> _:genid147 .
+_:genid142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid142 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
+_:genid142 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://purl.org/meo/Atan> .
+_:genid142 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Atan> .
+# 
+_:genid143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid143 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/family/isAChildOf> .
+_:genid143 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://purl.org/meo/Elda> .
+_:genid143 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/Elda> .
+# 
+_:genid144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid144 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/meo/served> .
+_:genid144 <http://www.w3.org/2002/07/owl#hasValue> <http://purl.org/meo/morgoth> .
+_:genid144 <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/meo/EvilBeing> .
+# 
+_:genid145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid145 <http://www.w3.org/2002/07/owl#members> _:genid149 .
+_:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid148 .
+_:genid148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid147 .
 _:genid147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid146 .
-_:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid145 .
-_:genid145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Residence> .
-_:genid145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Reign> .
+_:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#War> .
 _:genid146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Captivity> .
+_:genid147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#NaturalDisaster> .
 _:genid147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid148 <http://www.w3.org/2002/07/owl#members> _:genid151 .
-_:genid151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid150 .
-_:genid150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid149 .
-_:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#State> .
+_:genid148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Journey> .
+_:genid148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Battle> .
 _:genid149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#SocialEvent> .
-_:genid150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#PhysicalEvent> .
-_:genid151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 # 
-_:genid152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid152 <http://www.w3.org/2002/07/owl#members> _:genid157 .
-_:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid156 .
-_:genid156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid155 .
+_:genid150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid150 <http://www.w3.org/2002/07/owl#members> _:genid155 .
 _:genid155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid154 .
 _:genid154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid153 .
-_:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#WaterArea> .
+_:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid152 .
+_:genid152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid151 .
+_:genid151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Meeting> .
+_:genid151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Marriage> .
+_:genid152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Death> .
 _:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Room> .
+_:genid154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Coronation> .
 _:genid154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Road> .
+_:genid155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Birth> .
 _:genid155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#LandArea> .
-_:genid156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Building> .
+# 
+_:genid156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid156 <http://www.w3.org/2002/07/owl#members> _:genid159 .
+_:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid158 .
+_:genid158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid157 .
+_:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Residence> .
 _:genid157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid158 <http://www.w3.org/2002/07/owl#members> _:genid161 .
-_:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid160 .
-_:genid160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid159 .
-_:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Town> .
+_:genid158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Reign> .
+_:genid158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#Captivity> .
 _:genid159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Hamlet> .
-_:genid160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#City> .
+# 
+_:genid160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid160 <http://www.w3.org/2002/07/owl#members> _:genid163 .
+_:genid163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid162 .
+_:genid162 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid161 .
+_:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#State> .
 _:genid161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-# 
-_:genid162 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid162 <http://www.w3.org/2002/07/owl#members> _:genid165 .
-_:genid165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid164 .
-_:genid164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid163 .
-_:genid163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Sea> .
+_:genid162 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#SocialEvent> .
+_:genid162 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/event#PhysicalEvent> .
 _:genid163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#River> .
-_:genid164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Lake> .
-_:genid165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 # 
-_:genid166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
-_:genid166 <http://www.w3.org/2002/07/owl#members> _:genid169 .
+_:genid164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid164 <http://www.w3.org/2002/07/owl#members> _:genid169 .
 _:genid169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid168 .
 _:genid168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid167 .
-_:genid167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#WildArea> .
+_:genid167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid166 .
+_:genid166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid165 .
+_:genid165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#WaterArea> .
+_:genid165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Room> .
+_:genid166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Road> .
 _:genid167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Settlement> .
+_:genid168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#LandArea> .
 _:genid168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Realm> .
+_:genid169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Building> .
 _:genid169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 # 
 _:genid170 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
@@ -2107,11 +2156,11 @@ _:genid170 <http://www.w3.org/2002/07/owl#members> _:genid173 .
 _:genid173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid172 .
 _:genid172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid171 .
 _:genid171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#Prologue> .
+_:genid171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Town> .
 _:genid171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#Epilogue> .
+_:genid172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Hamlet> .
 _:genid172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#Chapter> .
+_:genid173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#City> .
 _:genid173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 # 
 _:genid174 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
@@ -2119,11 +2168,47 @@ _:genid174 <http://www.w3.org/2002/07/owl#members> _:genid177 .
 _:genid177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid176 .
 _:genid176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid175 .
 _:genid175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#NarrativeWork> .
+_:genid175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Sea> .
 _:genid175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#NarrativeElement> .
+_:genid176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#River> .
 _:genid176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#NarrativeContainer> .
+_:genid177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Lake> .
 _:genid177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid178 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid178 <http://www.w3.org/2002/07/owl#members> _:genid181 .
+_:genid181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid180 .
+_:genid180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid179 .
+_:genid179 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid179 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#WildArea> .
+_:genid179 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Settlement> .
+_:genid180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/place#Realm> .
+_:genid181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid182 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid182 <http://www.w3.org/2002/07/owl#members> _:genid185 .
+_:genid185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid184 .
+_:genid184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid183 .
+_:genid183 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid183 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#Prologue> .
+_:genid183 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#Epilogue> .
+_:genid184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#Chapter> .
+_:genid185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+# 
+_:genid186 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AllDisjointClasses> .
+_:genid186 <http://www.w3.org/2002/07/owl#members> _:genid189 .
+_:genid189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid188 .
+_:genid188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid187 .
+_:genid187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#NarrativeWork> .
+_:genid187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#NarrativeElement> .
+_:genid188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/story/plot#NarrativeContainer> .
+_:genid189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 # 
 # Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

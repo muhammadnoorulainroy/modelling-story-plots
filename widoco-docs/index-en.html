@@ -77,8 +77,8 @@ $(function(){
 <dd>1.0</dd>
 <dt>Issued on:</dt>
 <dd>March 2026</dd>
-<dt>Author:</dt>
-<dd>Muhammad Noor Ul Ain<a href="https://www.emse.fr">Ecole des Mines de Saint-Etienne</a></dd>
+<dt>Authors:</dt>
+<dd>Muhammad Noor Ul Ain, <a href="https://www.emse.fr">Ecole des Mines de Saint-Etienne</a></dd>
 
 <dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="#" target="_blank"><img src="https://img.shields.io/badge/License-Course%20Project-blue.svg" alt="#" /></a>
 </dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
@@ -390,6 +390,9 @@ This ontology has the following classes and properties.</span>
       <a href="#https://example.org/story/time#containsInterval" title="https://example.org/story/time#containsInterval">contains</a>
    </li>
    <li>
+      <a href="#https://example.org/story/plot#containsEvent" title="https://example.org/story/plot#containsEvent">contains event</a>
+   </li>
+   <li>
       <a href="#https://example.org/story/plot#containsPlotEvent"
          title="https://example.org/story/plot#containsPlotEvent">contains plot event</a>
    </li>
@@ -410,6 +413,9 @@ This ontology has the following classes and properties.</span>
    </li>
    <li>
       <a href="#https://example.org/story/plot#endsWith" title="https://example.org/story/plot#endsWith">ends with</a>
+   </li>
+   <li>
+      <a href="#https://example.org/story/plot#endsWithEvent" title="https://example.org/story/plot#endsWithEvent">ends with event</a>
    </li>
    <li>
       <a href="#https://example.org/story/social#enemyOf" title="https://example.org/story/social#enemyOf">enemy of</a>
@@ -459,6 +465,9 @@ This ontology has the following classes and properties.</span>
    </li>
    <li>
       <a href="#https://example.org/story/event#hasCombatant" title="https://example.org/story/event#hasCombatant">has combatant</a>
+   </li>
+   <li>
+      <a href="#https://example.org/story/plot#hasContributor" title="https://example.org/story/plot#hasContributor">has contributor</a>
    </li>
    <li>
       <a href="#https://example.org/story/event#hasDeceased" title="https://example.org/story/event#hasDeceased">has deceased</a>
@@ -568,6 +577,9 @@ This ontology has the following classes and properties.</span>
    </li>
    <li>
       <a href="#https://example.org/story/place#isCapitalOf" title="https://example.org/story/place#isCapitalOf">is capital of</a>
+   </li>
+   <li>
+      <a href="#https://example.org/story/plot#isDescribedBy" title="https://example.org/story/plot#isDescribedBy">is described by</a>
    </li>
    <li>
       <a href="#http://purl.org/family/isMarriedTo" title="http://purl.org/family/isMarriedTo">is married to</a>
@@ -687,6 +699,9 @@ This ontology has the following classes and properties.</span>
       <a href="#https://example.org/story/plot#startsWith" title="https://example.org/story/plot#startsWith">starts with</a>
    </li>
    <li>
+      <a href="#https://example.org/story/plot#startsWithEvent" title="https://example.org/story/plot#startsWithEvent">starts with event</a>
+   </li>
+   <li>
       <a href="#https://example.org/story/place#tangentialPartOf"
          title="https://example.org/story/place#tangentialPartOf">tangential part of</a>
    </li>
@@ -695,6 +710,12 @@ This ontology has the following classes and properties.</span>
    </li>
    <li>
       <a href="#https://purl.org/region/rcc8/tppi" title="https://purl.org/region/rcc8/tppi">tangential proper part inverse</a>
+   </li>
+   <li>
+      <a href="#https://example.org/story/social#travelledFrom" title="https://example.org/story/social#travelledFrom">travelled from</a>
+   </li>
+   <li>
+      <a href="#https://example.org/story/social#travelledTo" title="https://example.org/story/social#travelledTo">travelled to</a>
    </li>
    <li>
       <a href="#https://example.org/story/event#usesItem" title="https://example.org/story/event#usesItem">uses item</a>
@@ -1134,6 +1155,12 @@ This section provides details for each class and property defined by null.
     <a href="#https://example.org/story/plot#Author" title="https://example.org/story/plot#Author">Author</a> <sup class="type-c" title="class">c</sup>, <a href="#https://example.org/story/plot#Editor" title="https://example.org/story/plot#Editor">Editor</a> <sup class="type-c" title="class">c</sup>
    </dd>
    <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#https://example.org/story/plot#hasContributor" title="https://example.org/story/plot#hasContributor">has contributor</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
     is disjoint with
    </dt>
    <dd>
@@ -1375,7 +1402,7 @@ This section provides details for each class and property defined by null.
     is in range of
    </dt>
    <dd>
-    <a href="#https://example.org/story/event#beforeEvent" title="https://example.org/story/event#beforeEvent">before event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#describesEvent" title="https://example.org/story/plot#describesEvent">describes event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#duringEvent" title="https://example.org/story/event#duringEvent">during event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasSubEvent" title="https://example.org/story/event#hasSubEvent">has sub-event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#meetsEvent" title="https://example.org/story/event#meetsEvent">meets event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#overlapsEvent" title="https://example.org/story/event#overlapsEvent">overlaps event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/action#resultsIn" title="https://example.org/story/action#resultsIn">results in</a> <sup class="type-op" title="object property">op</sup>
+    <a href="#https://example.org/story/event#beforeEvent" title="https://example.org/story/event#beforeEvent">before event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#containsEvent" title="https://example.org/story/plot#containsEvent">contains event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#describesEvent" title="https://example.org/story/plot#describesEvent">describes event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#duringEvent" title="https://example.org/story/event#duringEvent">during event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#endsWithEvent" title="https://example.org/story/plot#endsWithEvent">ends with event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasSubEvent" title="https://example.org/story/event#hasSubEvent">has sub-event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#meetsEvent" title="https://example.org/story/event#meetsEvent">meets event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#overlapsEvent" title="https://example.org/story/event#overlapsEvent">overlaps event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/action#resultsIn" title="https://example.org/story/action#resultsIn">results in</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#startsWithEvent" title="https://example.org/story/plot#startsWithEvent">starts with event</a> <sup class="type-op" title="object property">op</sup>
    </dd>
   </dl>
  </div>
@@ -1958,7 +1985,7 @@ This section provides details for each class and property defined by null.
     is in domain of
    </dt>
    <dd>
-    <a href="#https://example.org/story/plot#endsWith" title="https://example.org/story/plot#endsWith">ends with</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#startsWith" title="https://example.org/story/plot#startsWith">starts with</a> <sup class="type-op" title="object property">op</sup>
+    <a href="#https://example.org/story/plot#endsWith" title="https://example.org/story/plot#endsWith">ends with</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#endsWithEvent" title="https://example.org/story/plot#endsWithEvent">ends with event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#startsWith" title="https://example.org/story/plot#startsWith">starts with</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#startsWithEvent" title="https://example.org/story/plot#startsWithEvent">starts with event</a> <sup class="type-op" title="object property">op</sup>
    </dd>
    <dt>
     is disjoint with
@@ -2000,7 +2027,7 @@ This section provides details for each class and property defined by null.
     is in domain of
    </dt>
    <dd>
-    <a href="#https://example.org/story/plot#hasAuthor" title="https://example.org/story/plot#hasAuthor">has author</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#hasEditor" title="https://example.org/story/plot#hasEditor">has editor</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#hasPublicationDate" title="https://example.org/story/plot#hasPublicationDate">has publication date</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://example.org/story/plot#hasPublisher" title="https://example.org/story/plot#hasPublisher">has publisher</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#narrates" title="https://example.org/story/plot#narrates">narrates</a> <sup class="type-op" title="object property">op</sup>
+    <a href="#https://example.org/story/plot#hasAuthor" title="https://example.org/story/plot#hasAuthor">has author</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#hasContributor" title="https://example.org/story/plot#hasContributor">has contributor</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#hasEditor" title="https://example.org/story/plot#hasEditor">has editor</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#hasPublicationDate" title="https://example.org/story/plot#hasPublicationDate">has publication date</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://example.org/story/plot#hasPublisher" title="https://example.org/story/plot#hasPublisher">has publisher</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#narrates" title="https://example.org/story/plot#narrates">narrates</a> <sup class="type-op" title="object property">op</sup>
    </dd>
    <dt>
     is disjoint with
@@ -2081,7 +2108,7 @@ This section provides details for each class and property defined by null.
     is in range of
    </dt>
    <dd>
-    <a href="#https://example.org/story/place#adjacentTo" title="https://example.org/story/place#adjacentTo">adjacent to</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasDestination" title="https://example.org/story/event#hasDestination">has destination</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasLocation" title="https://example.org/story/event#hasLocation">has location</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasOrigin" title="https://example.org/story/event#hasOrigin">has origin</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/place#interiorPartOf" title="https://example.org/story/place#interiorPartOf">interior part of</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/social#livedIn" title="https://example.org/story/social#livedIn">lived in</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/place#partOf" title="https://example.org/story/place#partOf">part of</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/place#tangentialPartOf" title="https://example.org/story/place#tangentialPartOf">tangential part of</a> <sup class="type-op" title="object property">op</sup>
+    <a href="#https://example.org/story/place#adjacentTo" title="https://example.org/story/place#adjacentTo">adjacent to</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasDestination" title="https://example.org/story/event#hasDestination">has destination</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasLocation" title="https://example.org/story/event#hasLocation">has location</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/event#hasOrigin" title="https://example.org/story/event#hasOrigin">has origin</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/place#interiorPartOf" title="https://example.org/story/place#interiorPartOf">interior part of</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/social#livedIn" title="https://example.org/story/social#livedIn">lived in</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/place#partOf" title="https://example.org/story/place#partOf">part of</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/place#tangentialPartOf" title="https://example.org/story/place#tangentialPartOf">tangential part of</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/social#travelledFrom" title="https://example.org/story/social#travelledFrom">travelled from</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/social#travelledTo" title="https://example.org/story/social#travelledTo">travelled to</a> <sup class="type-op" title="object property">op</sup>
    </dd>
   </dl>
  </div>
@@ -2528,7 +2555,7 @@ This section provides details for each class and property defined by null.
     is in domain of
    </dt>
    <dd>
-    <a href="#https://example.org/story/plot#containsPlotEvent" title="https://example.org/story/plot#containsPlotEvent">contains plot event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#nextSection" title="https://example.org/story/plot#nextSection">next section</a> <sup class="type-op" title="object property">op</sup>
+    <a href="#https://example.org/story/plot#containsEvent" title="https://example.org/story/plot#containsEvent">contains event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#containsPlotEvent" title="https://example.org/story/plot#containsPlotEvent">contains plot event</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#nextSection" title="https://example.org/story/plot#nextSection">next section</a> <sup class="type-op" title="object property">op</sup>
    </dd>
    <dt>
     is in range of
@@ -2759,6 +2786,7 @@ This section provides details for each class and property defined by null.
   <li><a href="#https://example.org/story/event#beforeEvent" title="https://example.org/story/event#beforeEvent">before event</a></li>
   <li><a href="#https://example.org/story/social#companionOf" title="https://example.org/story/social#companionOf">companion of</a></li>
   <li><a href="#https://example.org/story/time#containsInterval" title="https://example.org/story/time#containsInterval">contains</a></li>
+  <li><a href="#https://example.org/story/plot#containsEvent" title="https://example.org/story/plot#containsEvent">contains event</a></li>
   <li><a href="#https://example.org/story/plot#containsPlotEvent" title="https://example.org/story/plot#containsPlotEvent">contains plot event</a></li>
   <li><a href="#https://example.org/story/plot#describesEvent" title="https://example.org/story/plot#describesEvent">describes event</a></li>
   <li><a href="#https://purl.org/region/rcc8/dc" title="https://purl.org/region/rcc8/dc">disconnected</a></li>
@@ -2766,6 +2794,7 @@ This section provides details for each class and property defined by null.
   <li><a href="#https://example.org/story/event#duringEvent" title="https://example.org/story/event#duringEvent">during event</a></li>
   <li><a href="#https://example.org/story/time#endsAt" title="https://example.org/story/time#endsAt">ends at</a></li>
   <li><a href="#https://example.org/story/plot#endsWith" title="https://example.org/story/plot#endsWith">ends with</a></li>
+  <li><a href="#https://example.org/story/plot#endsWithEvent" title="https://example.org/story/plot#endsWithEvent">ends with event</a></li>
   <li><a href="#https://example.org/story/social#enemyOf" title="https://example.org/story/social#enemyOf">enemy of</a></li>
   <li><a href="#https://purl.org/region/rcc8/eq" title="https://purl.org/region/rcc8/eq">equal</a></li>
   <li><a href="#https://example.org/story/time#intervalEquals" title="https://example.org/story/time#intervalEquals">equals</a></li>
@@ -2782,6 +2811,7 @@ This section provides details for each class and property defined by null.
   <li><a href="#https://example.org/story/event#hasCaptive" title="https://example.org/story/event#hasCaptive">has captive</a></li>
   <li><a href="#https://example.org/story/event#hasCaptor" title="https://example.org/story/event#hasCaptor">has captor</a></li>
   <li><a href="#https://example.org/story/event#hasCombatant" title="https://example.org/story/event#hasCombatant">has combatant</a></li>
+  <li><a href="#https://example.org/story/plot#hasContributor" title="https://example.org/story/plot#hasContributor">has contributor</a></li>
   <li><a href="#https://example.org/story/event#hasDeceased" title="https://example.org/story/event#hasDeceased">has deceased</a></li>
   <li><a href="#https://example.org/story/event#hasDestination" title="https://example.org/story/event#hasDestination">has destination</a></li>
   <li><a href="#https://example.org/story/plot#hasEditor" title="https://example.org/story/plot#hasEditor">has editor</a></li>
@@ -2818,6 +2848,7 @@ This section provides details for each class and property defined by null.
   <li><a href="#http://purl.org/family/isASonOf" title="http://purl.org/family/isASonOf">is a son of</a></li>
   <li><a href="#http://purl.org/family/isAnAncestorOf" title="http://purl.org/family/isAnAncestorOf">is an ancestor of</a></li>
   <li><a href="#https://example.org/story/place#isCapitalOf" title="https://example.org/story/place#isCapitalOf">is capital of</a></li>
+  <li><a href="#https://example.org/story/plot#isDescribedBy" title="https://example.org/story/plot#isDescribedBy">is described by</a></li>
   <li><a href="#http://purl.org/family/isMarriedTo" title="http://purl.org/family/isMarriedTo">is married to</a></li>
   <li><a href="#https://example.org/story/event#isTemporalExtentOf" title="https://example.org/story/event#isTemporalExtentOf">is temporal extent of</a></li>
   <li><a href="#http://purl.org/family/isTheFatherOf" title="http://purl.org/family/isTheFatherOf">is the father of</a></li>
@@ -2855,9 +2886,12 @@ This section provides details for each class and property defined by null.
   <li><a href="#https://example.org/story/time#startsInterval" title="https://example.org/story/time#startsInterval">starts</a></li>
   <li><a href="#https://example.org/story/time#startsAt" title="https://example.org/story/time#startsAt">starts at</a></li>
   <li><a href="#https://example.org/story/plot#startsWith" title="https://example.org/story/plot#startsWith">starts with</a></li>
+  <li><a href="#https://example.org/story/plot#startsWithEvent" title="https://example.org/story/plot#startsWithEvent">starts with event</a></li>
   <li><a href="#https://example.org/story/place#tangentialPartOf" title="https://example.org/story/place#tangentialPartOf">tangential part of</a></li>
   <li><a href="#https://purl.org/region/rcc8/tpp" title="https://purl.org/region/rcc8/tpp">tangential proper part</a></li>
   <li><a href="#https://purl.org/region/rcc8/tppi" title="https://purl.org/region/rcc8/tppi">tangential proper part inverse</a></li>
+  <li><a href="#https://example.org/story/social#travelledFrom" title="https://example.org/story/social#travelledFrom">travelled from</a></li>
+  <li><a href="#https://example.org/story/social#travelledTo" title="https://example.org/story/social#travelledTo">travelled to</a></li>
   <li><a href="#https://example.org/story/event#usesItem" title="https://example.org/story/event#usesItem">uses item</a></li>
  </ul>
  <div class="entity" id="https://example.org/story/place#adjacentTo">
@@ -3082,6 +3116,35 @@ This section provides details for each class and property defined by null.
    </dl>
   </div>
  </div>
+ <div class="entity" id="https://example.org/story/plot#containsEvent">
+  <h3>contains event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/plot#containsEvent</p>
+  <div class="comment">
+   <span class="markdown">A section contains an in-world event. Inferred from containsPlotEvent and describesEvent.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#StorySection" title="https://example.org/story/plot#StorySection">Story section</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/event#Event" title="https://example.org/story/event#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#containsPlotEvent" title="https://example.org/story/plot#containsPlotEvent">contains plot event</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#https://example.org/story/plot#describesEvent" title="https://example.org/story/plot#describesEvent">describes event</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
  <div class="entity" id="https://example.org/story/plot#containsPlotEvent">
   <h3>contains plot event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> https://example.org/story/plot#containsPlotEvent</p>
@@ -3125,6 +3188,12 @@ This section provides details for each class and property defined by null.
     </dt>
     <dd>
      <a href="#https://example.org/story/event#Event" title="https://example.org/story/event#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#isDescribedBy" title="https://example.org/story/plot#isDescribedBy">is described by</a> <sup class="type-op" title="object property">op</sup>
     </dd>
    </dl>
   </div>
@@ -3257,6 +3326,35 @@ This section provides details for each class and property defined by null.
     </dt>
     <dd>
      <a href="#https://example.org/story/plot#PlotEvent" title="https://example.org/story/plot#PlotEvent">Plot event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="https://example.org/story/plot#endsWithEvent">
+  <h3>ends with event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/plot#endsWithEvent</p>
+  <div class="comment">
+   <span class="markdown">The in-world event that ends a story or section. Inferred from endsWith and describesEvent.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#NarrativeContainer" title="https://example.org/story/plot#NarrativeContainer">Narrative container</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/event#Event" title="https://example.org/story/event#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#endsWith" title="https://example.org/story/plot#endsWith">ends with</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#https://example.org/story/plot#describesEvent" title="https://example.org/story/plot#describesEvent">describes event</a> <sup class="type-op" title="object property">op</sup>
     </dd>
    </dl>
   </div>
@@ -3543,6 +3641,12 @@ This section provides details for each class and property defined by null.
   <div class="description">
    <dl>
     <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#hasContributor" title="https://example.org/story/plot#hasContributor">has contributor</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
      has domain
     </dt>
     <dd>
@@ -3624,7 +3728,7 @@ This section provides details for each class and property defined by null.
   <h3>has combatant<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> https://example.org/story/event#hasCombatant</p>
   <div class="comment">
-   <span class="markdown">A character fighting in the battle.</span>
+   <span class="markdown">A combatant side or individual fighting in the battle.</span>
   </div>
   <div class="description">
    <dl>
@@ -3645,6 +3749,35 @@ This section provides details for each class and property defined by null.
     </dt>
     <dd>
      <a href="#https://example.org/story/event#Battle" title="https://example.org/story/event#Battle">Battle</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="https://example.org/story/plot#hasContributor">
+  <h3>has contributor<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/plot#hasContributor</p>
+  <div class="comment">
+   <span class="markdown">A person who contributed to the narrative work in any role.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#hasAuthor" title="https://example.org/story/plot#hasAuthor">has author</a> <sup class="type-op" title="object property">op</sup>, <a href="#https://example.org/story/plot#hasEditor" title="https://example.org/story/plot#hasEditor">has editor</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#NarrativeWork" title="https://example.org/story/plot#NarrativeWork">Narrative work</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#Contributor" title="https://example.org/story/plot#Contributor">Contributor</a> <sup class="type-c" title="class">c</sup>
     </dd>
    </dl>
   </div>
@@ -3703,6 +3836,12 @@ This section provides details for each class and property defined by null.
   </div>
   <div class="description">
    <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#hasContributor" title="https://example.org/story/plot#hasContributor">has contributor</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
     <dt>
      has domain
     </dt>
@@ -3941,7 +4080,7 @@ This section provides details for each class and property defined by null.
   <h3>has participant<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> https://example.org/story/event#hasParticipant</p>
   <div class="comment">
-   <span class="markdown">A character involved in the event.</span>
+   <span class="markdown">A character or collective actor involved in the event.</span>
   </div>
   <div class="description">
    <dl>
@@ -4180,7 +4319,7 @@ This section provides details for each class and property defined by null.
   <h3>has traveler<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> https://example.org/story/event#hasTraveler</p>
   <div class="comment">
-   <span class="markdown">A character undertaking the journey.</span>
+   <span class="markdown">A character or group undertaking the journey.</span>
   </div>
   <div class="description">
    <dl>
@@ -4556,6 +4695,23 @@ This section provides details for each class and property defined by null.
     </dt>
     <dd>
      <a href="#https://example.org/story/place#hasCapital" title="https://example.org/story/place#hasCapital">has capital</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="https://example.org/story/plot#isDescribedBy">
+  <h3>is described by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/plot#isDescribedBy</p>
+  <div class="comment">
+   <span class="markdown">Inverse of describesEvent. Links an in-world event back to the plot event that narrates it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#describesEvent" title="https://example.org/story/plot#describesEvent">describes event</a> <sup class="type-op" title="object property">op</sup>
     </dd>
    </dl>
   </div>
@@ -5497,6 +5653,35 @@ This section provides details for each class and property defined by null.
    </dl>
   </div>
  </div>
+ <div class="entity" id="https://example.org/story/plot#startsWithEvent">
+  <h3>starts with event<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/plot#startsWithEvent</p>
+  <div class="comment">
+   <span class="markdown">The in-world event that starts a story or section. Inferred from startsWith and describesEvent.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#NarrativeContainer" title="https://example.org/story/plot#NarrativeContainer">Narrative container</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/event#Event" title="https://example.org/story/event#Event">Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/plot#startsWith" title="https://example.org/story/plot#startsWith">starts with</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#https://example.org/story/plot#describesEvent" title="https://example.org/story/plot#describesEvent">describes event</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
  <div class="entity" id="https://example.org/story/place#tangentialPartOf">
   <h3>tangential part of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> https://example.org/story/place#tangentialPartOf</p>
@@ -5589,6 +5774,52 @@ This section provides details for each class and property defined by null.
     </dt>
     <dd>
      <a href="#https://purl.org/region/rcc8/tpp" title="https://purl.org/region/rcc8/tpp">tangential proper part</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="https://example.org/story/social#travelledFrom">
+  <h3>travelled from<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/social#travelledFrom</p>
+  <div class="comment">
+   <span class="markdown">Inferred from Journey events via hasTraveler and hasOrigin.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/place#Place" title="https://example.org/story/place#Place">Place</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <span class="logic">o</span> <a href="#https://example.org/story/event#hasOrigin" title="https://example.org/story/event#hasOrigin">has origin</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="https://example.org/story/social#travelledTo">
+  <h3>travelled to<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/social#travelledTo</p>
+  <div class="comment">
+   <span class="markdown">Inferred from Journey events via hasTraveler and hasDestination.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://example.org/story/place#Place" title="https://example.org/story/place#Place">Place</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <span class="logic">o</span> <a href="#https://example.org/story/event#hasDestination" title="https://example.org/story/event#hasDestination">has destination</a> <sup class="type-op" title="object property">op</sup>
     </dd>
    </dl>
   </div>

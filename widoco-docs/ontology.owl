@@ -421,7 +421,7 @@
     <owl:ObjectProperty rdf:about="https://example.org/story/event#hasCombatant">
         <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
         <rdfs:domain rdf:resource="https://example.org/story/event#Battle"/>
-        <rdfs:comment xml:lang="en">A character fighting in the battle.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A combatant side or individual fighting in the battle.</rdfs:comment>
         <rdfs:label xml:lang="en">has combatant</rdfs:label>
     </owl:ObjectProperty>
     
@@ -557,7 +557,7 @@
 
     <owl:ObjectProperty rdf:about="https://example.org/story/event#hasParticipant">
         <rdfs:domain rdf:resource="https://example.org/story/event#Event"/>
-        <rdfs:comment xml:lang="en">A character involved in the event.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A character or collective actor involved in the event.</rdfs:comment>
         <rdfs:label xml:lang="en">has participant</rdfs:label>
     </owl:ObjectProperty>
     
@@ -631,7 +631,7 @@
     <owl:ObjectProperty rdf:about="https://example.org/story/event#hasTraveler">
         <rdfs:subPropertyOf rdf:resource="https://example.org/story/event#hasParticipant"/>
         <rdfs:domain rdf:resource="https://example.org/story/event#Journey"/>
-        <rdfs:comment xml:lang="en">A character undertaking the journey.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A character or group undertaking the journey.</rdfs:comment>
         <rdfs:label xml:lang="en">has traveler</rdfs:label>
     </owl:ObjectProperty>
     
@@ -863,6 +863,22 @@
     
 
 
+    <!-- https://example.org/story/plot#containsEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#containsEvent">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#StorySection"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/plot#containsPlotEvent"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#describesEvent"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">A section contains an in-world event. Inferred from containsPlotEvent and describesEvent.</rdfs:comment>
+        <rdfs:label xml:lang="en">contains event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://example.org/story/plot#containsPlotEvent -->
 
 
@@ -901,10 +917,27 @@
     
 
 
+    <!-- https://example.org/story/plot#endsWithEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#endsWithEvent">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeContainer"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/plot#endsWith"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#describesEvent"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">The in-world event that ends a story or section. Inferred from endsWith and describesEvent.</rdfs:comment>
+        <rdfs:label xml:lang="en">ends with event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://example.org/story/plot#hasAuthor -->
 
 
     <owl:ObjectProperty rdf:about="https://example.org/story/plot#hasAuthor">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/plot#hasContributor"/>
         <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
         <rdfs:range rdf:resource="https://example.org/story/plot#Author"/>
         <rdfs:comment xml:lang="en">The original author of the narrative work.</rdfs:comment>
@@ -913,10 +946,23 @@
     
 
 
+    <!-- https://example.org/story/plot#hasContributor -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#hasContributor">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
+        <rdfs:range rdf:resource="https://example.org/story/plot#Contributor"/>
+        <rdfs:comment xml:lang="en">A person who contributed to the narrative work in any role.</rdfs:comment>
+        <rdfs:label xml:lang="en">has contributor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://example.org/story/plot#hasEditor -->
 
 
     <owl:ObjectProperty rdf:about="https://example.org/story/plot#hasEditor">
+        <rdfs:subPropertyOf rdf:resource="https://example.org/story/plot#hasContributor"/>
         <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeWork"/>
         <rdfs:range rdf:resource="https://example.org/story/plot#Editor"/>
         <rdfs:comment xml:lang="en">An editor or compiler responsible for the published work.</rdfs:comment>
@@ -945,6 +991,17 @@
         <rdfs:range rdf:resource="https://example.org/story/plot#StorySection"/>
         <rdfs:comment xml:lang="en">A story is divided into sections.</rdfs:comment>
         <rdfs:label xml:lang="en">has section</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#isDescribedBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#isDescribedBy">
+        <owl:inverseOf rdf:resource="https://example.org/story/plot#describesEvent"/>
+        <rdfs:comment xml:lang="en">Inverse of describesEvent. Links an in-world event back to the plot event that narrates it.</rdfs:comment>
+        <rdfs:label xml:lang="en">is described by</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -1028,6 +1085,22 @@
         <rdfs:range rdf:resource="https://example.org/story/plot#PlotEvent"/>
         <rdfs:comment xml:lang="en">The first plot event in a story or section.</rdfs:comment>
         <rdfs:label xml:lang="en">starts with</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/plot#startsWithEvent -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/plot#startsWithEvent">
+        <rdfs:domain rdf:resource="https://example.org/story/plot#NarrativeContainer"/>
+        <rdfs:range rdf:resource="https://example.org/story/event#Event"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://example.org/story/plot#startsWith"/>
+            <rdf:Description rdf:about="https://example.org/story/plot#describesEvent"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">The in-world event that starts a story or section. Inferred from startsWith and describesEvent.</rdfs:comment>
+        <rdfs:label xml:lang="en">starts with event</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -1164,6 +1237,40 @@
     <owl:ObjectProperty rdf:about="https://example.org/story/social#sociallyRelatedTo">
         <rdfs:comment xml:lang="en">Top-level property grouping all social relations.</rdfs:comment>
         <rdfs:label xml:lang="en">socially related to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#travelledFrom -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#travelledFrom">
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/event#hasTraveler"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/event#hasOrigin"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Inferred from Journey events via hasTraveler and hasOrigin.</rdfs:comment>
+        <rdfs:label xml:lang="en">travelled from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://example.org/story/social#travelledTo -->
+
+
+    <owl:ObjectProperty rdf:about="https://example.org/story/social#travelledTo">
+        <rdfs:range rdf:resource="https://example.org/story/place#Place"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://example.org/story/event#hasTraveler"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="https://example.org/story/event#hasDestination"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="en">Inferred from Journey events via hasTraveler and hasDestination.</rdfs:comment>
+        <rdfs:label xml:lang="en">travelled to</rdfs:label>
     </owl:ObjectProperty>
     
 
