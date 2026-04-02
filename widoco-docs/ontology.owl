@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.org/family/"
-     xml:base="http://purl.org/family/"
+<rdf:RDF xmlns="https://example.org/story/ontology#"
+     xml:base="https://example.org/story/ontology#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -11,50 +11,18 @@
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="https://example.org/story/ontology#">
         <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-28</terms:created>
-        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-19T07:42:42+01:00</terms:created>
-        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-19T14:42:42+01:00</terms:created>
-        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-28T00:00:00+00:00</terms:created>
-        <terms:creator rdf:resource="https://w3id.org/people/az/me"/>
         <terms:creator>Muhammad Noor Ul Ain</terms:creator>
         <terms:description xml:lang="en">A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien).</terms:description>
-        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-23T13:42:42+01:00</terms:modified>
-        <terms:title xml:lang="en">Action Ontology</terms:title>
-        <terms:title xml:lang="en">Event Ontology</terms:title>
-        <terms:title xml:lang="en">Place Ontology</terms:title>
-        <terms:title xml:lang="en">Plot Structure Ontology</terms:title>
-        <terms:title xml:lang="en">Region Connection Calculus (RCC8) Ontology</terms:title>
-        <terms:title xml:lang="en">Social Relations Ontology</terms:title>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-04-03</terms:modified>
         <terms:title xml:lang="en">Story Plot Ontology</terms:title>
-        <terms:title xml:lang="en">The Family Ontology</terms:title>
-        <terms:title xml:lang="en">The Middle-earth ontology</terms:title>
-        <terms:title xml:lang="en">Time Ontology</terms:title>
         <vann:preferredNamespacePrefix>spo</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri>https://example.org/story/ontology#</vann:preferredNamespaceUri>
         <rdfs:comment xml:lang="en">A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien).</rdfs:comment>
-        <rdfs:comment xml:lang="en">Actions as a subclass of events, defined by having an intentional agent.</rdfs:comment>
-        <rdfs:comment xml:lang="en">An ontology for J.R.R. Tolkienʼs legendarium.</rdfs:comment>
-        <rdfs:comment xml:lang="en">An ontology for family relationships.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Events in story plots: occurrences involving characters, places, and time. Includes an event hierarchy, participant roles, and temporal relations.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Instants, intervals, and Allen&apos;s 13 temporal relations.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Narrative and literary structure of stories, with a real-world layer (authors, books) and a fictional layer (sections, plot events).</rdfs:comment>
-        <rdfs:comment xml:lang="en">Non-familial social relations between characters: friendship, enmity, alliance, service, etc.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Place categories and spatial relations for story plots.</rdfs:comment>
-        <rdfs:comment xml:lang="en">RCC8 spatial relations between regions, encoded with DL-safe OWL axioms.</rdfs:comment>
-        <rdfs:label xml:lang="en">Action Ontology</rdfs:label>
-        <rdfs:label xml:lang="en">Event Ontology</rdfs:label>
-        <rdfs:label xml:lang="en">Place Ontology</rdfs:label>
-        <rdfs:label xml:lang="en">Plot Structure Ontology</rdfs:label>
-        <rdfs:label xml:lang="en">Social Relations Ontology</rdfs:label>
         <rdfs:label xml:lang="en">Story Plot Ontology</rdfs:label>
-        <rdfs:label xml:lang="en">The Middle-earth ontology</rdfs:label>
-        <rdfs:label xml:lang="en">The RCC8 ontology</rdfs:label>
-        <rdfs:label xml:lang="en">The family ontology</rdfs:label>
-        <rdfs:label xml:lang="en">Time Ontology</rdfs:label>
         <owl:versionInfo>1.0</owl:versionInfo>
     </owl:Ontology>
     
-
-
+    
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -1215,7 +1183,7 @@
         <rdfs:subPropertyOf rdf:resource="https://example.org/story/social#sociallyRelatedTo"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-        <rdfs:comment xml:lang="en">Raising someone as a foster-child. E.g. Thingol fosters Túrin.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Raising someone as a foster-child. E.g. Thingol fosters TÃºrin.</rdfs:comment>
         <rdfs:label xml:lang="en">fosters child</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1859,7 +1827,7 @@
 
     <owl:Class rdf:about="http://purl.org/meo/Adan">
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/Atan"/>
-        <rdfs:comment xml:lang="en">The Edain (plural form of Adan) are the Men that belong to the Three Houses of Men that came to Beleriand in the elder days. Originally, “Adan” (plural “Edain”) is the Sindarin equivalent of Quenya “Atan” (plural “Atani”) but eventually came to mean this narrow subgroup.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The Edain (plural form of Adan) are the Men that belong to the Three Houses of Men that came to Beleriand in the elder days. Originally, â€œAdanâ€ (plural â€œEdainâ€) is the Sindarin equivalent of Quenya â€œAtanâ€ (plural â€œAtaniâ€) but eventually came to mean this narrow subgroup.</rdfs:comment>
         <rdfs:label xml:lang="sjn">Adan</rdfs:label>
         <rdfs:label xml:lang="en">Man</rdfs:label>
     </owl:Class>
@@ -1871,7 +1839,7 @@
 
     <owl:Class rdf:about="http://purl.org/meo/Ainu">
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/Immortal"/>
-        <rdfs:comment xml:lang="en">The Ainur (plural form of Ainu) are the spirits created by Eru Ilúvatar before time existed</rdfs:comment>
+        <rdfs:comment xml:lang="en">The Ainur (plural form of Ainu) are the spirits created by Eru IlÃºvatar before time existed</rdfs:comment>
         <rdfs:label xml:lang="qya">Ainu</rdfs:label>
         <rdfs:label xml:lang="en">Holy one</rdfs:label>
     </owl:Class>
@@ -1884,16 +1852,16 @@
     <owl:Class rdf:about="http://purl.org/meo/Atan">
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/Eruhin"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/Mortal"/>
-        <rdfs:comment xml:lang="en">The Atani (plural form of Atan) are the second born of the Children of Ilúvatar, the Men (i.e. Humans, not male people). They were given many names also by the Eldar.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The Atani (plural form of Atan) are the second born of the Children of IlÃºvatar, the Men (i.e. Humans, not male people). They were given many names also by the Eldar.</rdfs:comment>
         <rdfs:label xml:lang="sjn">Adan</rdfs:label>
         <rdfs:label xml:lang="qya">Atan</rdfs:label>
         <rdfs:label xml:lang="en">Man</rdfs:label>
         <skos:altLabel xml:lang="en">After-born</skos:altLabel>
         <skos:altLabel xml:lang="en">After-comer</skos:altLabel>
-        <skos:altLabel xml:lang="qya">Apanóna</skos:altLabel>
+        <skos:altLabel xml:lang="qya">ApanÃ³na</skos:altLabel>
         <skos:altLabel xml:lang="qya">Engwa</skos:altLabel>
         <skos:altLabel xml:lang="en">Follower</skos:altLabel>
-        <skos:altLabel xml:lang="qya">Fírima</skos:altLabel>
+        <skos:altLabel xml:lang="qya">FÃ­rima</skos:altLabel>
         <skos:altLabel xml:lang="qya">Hildo</skos:altLabel>
         <skos:altLabel xml:lang="en">Human</skos:altLabel>
         <skos:altLabel xml:lang="en">Mortal</skos:altLabel>
@@ -1908,12 +1876,12 @@
 
     <owl:Class rdf:about="http://purl.org/meo/Casar">
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/Mortal"/>
-        <rdfs:comment xml:lang="en">The Casari (plural form of Casar in Quenya), more often called with the Sindarin variant Naugrim (plural of Naug in Sindarin), are the Dwarves created by the Vala Aulë.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The Casari (plural form of Casar in Quenya), more often called with the Sindarin variant Naugrim (plural of Naug in Sindarin), are the Dwarves created by the Vala AulÃ«.</rdfs:comment>
         <rdfs:label xml:lang="qya">Casar</rdfs:label>
         <rdfs:label xml:lang="en">Dwarf</rdfs:label>
         <rdfs:label xml:lang="sjn">Naug</rdfs:label>
-        <skos:altLabel xml:lang="qya">Aulëonna</skos:altLabel>
-        <skos:altLabel xml:lang="en">Child of Aulë</skos:altLabel>
+        <skos:altLabel xml:lang="qya">AulÃ«onna</skos:altLabel>
+        <skos:altLabel xml:lang="en">Child of AulÃ«</skos:altLabel>
     </owl:Class>
     
 
@@ -1922,8 +1890,8 @@
 
 
     <owl:Class rdf:about="http://purl.org/meo/Elda">
-        <owl:equivalentClass rdf:resource="http://purl.org/meo/Quendë"/>
-        <rdfs:comment xml:lang="en">The Eldar (plural form of Elda) are the Elves. They initially called themselves the Quendi, but the Vala Oromë, who met them at lake Cuiviénen under the stars, called them the Eldar. Now only the Quendi who followed Oromë to the West call themselves Eldar.</rdfs:comment>
+        <owl:equivalentClass rdf:resource="http://purl.org/meo/QuendÃ«"/>
+        <rdfs:comment xml:lang="en">The Eldar (plural form of Elda) are the Elves. They initially called themselves the Quendi, but the Vala OromÃ«, who met them at lake CuiviÃ©nen under the stars, called them the Eldar. Now only the Quendi who followed OromÃ« to the West call themselves Eldar.</rdfs:comment>
         <rdfs:label xml:lang="qya">Elda</rdfs:label>
         <rdfs:label xml:lang="sjn">Eledh</rdfs:label>
         <rdfs:label xml:lang="en">Elf</rdfs:label>
@@ -1938,8 +1906,8 @@
 
 
     <owl:Class rdf:about="http://purl.org/meo/Eruhin">
-        <rdfs:comment xml:lang="en">The Eruhíni (plural form of Eruhin), literally “the Children of Eru”, are usually called the “Children of Ilúvatar”. They are the Elves and Men. “Children of Ilúvatar” is used to collectively refer to the two races of Men and Elves, and the singular form is rarely used.</rdfs:comment>
-        <rdfs:label xml:lang="en">Child of Ilúvatar</rdfs:label>
+        <rdfs:comment xml:lang="en">The EruhÃ­ni (plural form of Eruhin), literally â€œthe Children of Eruâ€, are usually called the â€œChildren of IlÃºvatarâ€. They are the Elves and Men. â€œChildren of IlÃºvatarâ€ is used to collectively refer to the two races of Men and Elves, and the singular form is rarely used.</rdfs:comment>
+        <rdfs:label xml:lang="en">Child of IlÃºvatar</rdfs:label>
         <rdfs:label xml:lang="qya">Eruhin</rdfs:label>
         <skos:altLabel xml:lang="en">Child of Eru</skos:altLabel>
     </owl:Class>
@@ -1967,7 +1935,7 @@
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:comment xml:lang="en">A sperior entity. A singleton class that only contains Eru Ilúvatar, the One Allfather.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A sperior entity. A singleton class that only contains Eru IlÃºvatar, the One Allfather.</rdfs:comment>
         <rdfs:label xml:lang="en">God</rdfs:label>
     </owl:Class>
     
@@ -1984,14 +1952,14 @@
     
 
 
-    <!-- http://purl.org/meo/Lócë -->
+    <!-- http://purl.org/meo/LÃ³cÃ« -->
 
 
-    <owl:Class rdf:about="http://purl.org/meo/Lócë">
+    <owl:Class rdf:about="http://purl.org/meo/LÃ³cÃ«">
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/EvilBeing"/>
         <rdfs:comment xml:lang="en">Evil and powerful monster.</rdfs:comment>
         <rdfs:label xml:lang="en">Dragon</rdfs:label>
-        <rdfs:label xml:lang="qya">Lócë</rdfs:label>
+        <rdfs:label xml:lang="qya">LÃ³cÃ«</rdfs:label>
     </owl:Class>
     
 
@@ -2042,15 +2010,15 @@
     
 
 
-    <!-- http://purl.org/meo/Quendë -->
+    <!-- http://purl.org/meo/QuendÃ« -->
 
 
-    <owl:Class rdf:about="http://purl.org/meo/Quendë">
+    <owl:Class rdf:about="http://purl.org/meo/QuendÃ«">
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/Eruhin"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/meo/Immortal"/>
-        <rdfs:comment xml:lang="en">The Quendi (plural form of Quendë) are the first born of the Children of Ilúvatar, the Elves. They are named thus because they were the only ones who spoke when they first appeared, before Men and Dwarves came to be. They are more often called the Eldar.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The Quendi (plural form of QuendÃ«) are the first born of the Children of IlÃºvatar, the Elves. They are named thus because they were the only ones who spoke when they first appeared, before Men and Dwarves came to be. They are more often called the Eldar.</rdfs:comment>
         <rdfs:label xml:lang="en">Elf</rdfs:label>
-        <rdfs:label xml:lang="qya">Quendë</rdfs:label>
+        <rdfs:label xml:lang="qya">QuendÃ«</rdfs:label>
         <skos:altLabel xml:lang="qya">Elda</skos:altLabel>
         <skos:altLabel xml:lang="en">Firstborn</skos:altLabel>
         <skos:altLabel xml:lang="en">one that speaks</skos:altLabel>
@@ -2097,7 +2065,7 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:comment xml:lang="en">An event with a deliberate agent. Defined as Action ≡ Event ⊓ ∃evt:hasAgent.⊤, so any event that has an agent gets classified as an action automatically.</rdfs:comment>
+        <rdfs:comment xml:lang="en">An event with a deliberate agent. Defined as Action â‰¡ Event âŠ“ âˆƒevt:hasAgent.âŠ¤, so any event that has an agent gets classified as an action automatically.</rdfs:comment>
         <rdfs:label xml:lang="en">Action</rdfs:label>
     </owl:Class>
     
@@ -2131,7 +2099,7 @@
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Placing a curse on someone. In the Narn, Morgoth curses the children of Húrin.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Placing a curse on someone. In the Narn, Morgoth curses the children of HÃºrin.</rdfs:comment>
         <rdfs:label xml:lang="en">Curse action</rdfs:label>
     </owl:Class>
     
@@ -2571,7 +2539,7 @@
 
     <owl:Class rdf:about="https://example.org/story/event#Weapon">
         <rdfs:subClassOf rdf:resource="https://example.org/story/event#Item"/>
-        <rdfs:comment xml:lang="en">An object designed or used for combat. Example: Gurthang (Túrin&apos;s sword).</rdfs:comment>
+        <rdfs:comment xml:lang="en">An object designed or used for combat. Example: Gurthang (TÃºrin&apos;s sword).</rdfs:comment>
         <rdfs:label xml:lang="en">Weapon</rdfs:label>
     </owl:Class>
     
@@ -3008,7 +2976,7 @@
             </owl:Class>
         </owl:equivalentClass>
         <owl:disjointWith rdf:resource="https://example.org/story/time#InfiniteInterval"/>
-        <rdfs:comment xml:lang="en">An interval with both start and end. Defined as StartingInterval ⊓ EndingInterval.</rdfs:comment>
+        <rdfs:comment xml:lang="en">An interval with both start and end. Defined as StartingInterval âŠ“ EndingInterval.</rdfs:comment>
         <rdfs:label xml:lang="en">Finite interval</rdfs:label>
     </owl:Class>
     
@@ -3107,9 +3075,9 @@
         <rdfs:comment xml:lang="en">The one God creator of everything.</rdfs:comment>
         <rdfs:label xml:lang="qya">Eru</rdfs:label>
         <rdfs:label xml:lang="en">The One</rdfs:label>
-        <skos:altLabel xml:lang="qya">Eru Ilúvatar</skos:altLabel>
+        <skos:altLabel xml:lang="qya">Eru IlÃºvatar</skos:altLabel>
         <skos:altLabel xml:lang="en">God</skos:altLabel>
-        <skos:altLabel xml:lang="qya">Ilúvatar</skos:altLabel>
+        <skos:altLabel xml:lang="qya">IlÃºvatar</skos:altLabel>
         <skos:altLabel xml:lang="en">The Allfather</skos:altLabel>
     </owl:NamedIndividual>
     

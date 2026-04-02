@@ -27,17 +27,16 @@
     "iri": "https://example.org/story/ontology#",
     "version": "1.0",
     "author": [
-      "Muhammad Noor Ul Ain",
-      "https://w3id.org/people/az/me"
+      "Muhammad Noor Ul Ain"
     ],
     "description": {
-      "en": "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure."
+      "en": "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."
     },
     "labels": {
-      "en": "Event Ontology"
+      "en": "Story Plot Ontology"
     },
     "comments": {
-      "en": "Events in story plots: occurrences involving characters, places, and time. Includes an event hierarchy, participant roles, and temporal relations."
+      "en": "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."
     },
     "other": {
       "creator": [
@@ -46,37 +45,13 @@
           "language": "undefined",
           "value": "Muhammad Noor Ul Ain",
           "type": "label"
-        },
-        {
-          "identifier": "creator",
-          "language": "undefined",
-          "value": "https://w3id.org/people/az/me",
-          "type": "iri"
         }
       ],
       "created": [
         {
           "identifier": "created",
           "language": "undefined",
-          "value": "2026-03-28T00:00:00+00:00",
-          "type": "label"
-        },
-        {
-          "identifier": "created",
-          "language": "undefined",
           "value": "2026-03-28",
-          "type": "label"
-        },
-        {
-          "identifier": "created",
-          "language": "undefined",
-          "value": "2023-11-19T07:42:42+01:00",
-          "type": "label"
-        },
-        {
-          "identifier": "created",
-          "language": "undefined",
-          "value": "2023-11-19T14:42:42+01:00",
           "type": "label"
         }
       ],
@@ -92,7 +67,7 @@
         {
           "identifier": "modified",
           "language": "undefined",
-          "value": "2026-01-23T13:42:42+01:00",
+          "value": "2026-04-03",
           "type": "label"
         }
       ],
@@ -116,61 +91,7 @@
         {
           "identifier": "title",
           "language": "en",
-          "value": "Action Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "Region Connection Calculus (RCC8) Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "Time Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "Event Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "The Middle-earth ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "Place Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
           "value": "Story Plot Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "The Family Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "Plot Structure Ontology",
-          "type": "label"
-        },
-        {
-          "identifier": "title",
-          "language": "en",
-          "value": "Social Relations Ontology",
           "type": "label"
         }
       ]
@@ -664,7 +585,7 @@
         "32"
       ],
       "comment": {
-        "en": "An interval with both start and end. Defined as StartingInterval ⊓ EndingInterval."
+        "en": "An interval with both start and end. Defined as StartingInterval âŠ“ EndingInterval."
       },
       "attributes": [
         "external",
@@ -1306,13 +1227,13 @@
           {
             "identifier": "altLabel",
             "language": "en",
-            "value": "Child of Aulë",
+            "value": "Child of AulÃ«",
             "type": "label"
           },
           {
             "identifier": "altLabel",
             "language": "qya",
-            "value": "Aulëonna",
+            "value": "AulÃ«onna",
             "type": "label"
           }
         ]
@@ -1324,7 +1245,7 @@
         "en": "Dwarf"
       },
       "comment": {
-        "en": "The Casari (plural form of Casar in Quenya), more often called with the Sindarin variant Naugrim (plural of Naug in Sindarin), are the Dwarves created by the Vala Aulë."
+        "en": "The Casari (plural form of Casar in Quenya), more often called with the Sindarin variant Naugrim (plural of Naug in Sindarin), are the Dwarves created by the Vala AulÃ«."
       },
       "attributes": [
         "external"
@@ -1408,7 +1329,7 @@
               {
                 "identifier": "altLabel",
                 "language": "qya",
-                "value": "Eru Ilúvatar",
+                "value": "Eru IlÃºvatar",
                 "type": "label"
               },
               {
@@ -1426,7 +1347,7 @@
               {
                 "identifier": "altLabel",
                 "language": "qya",
-                "value": "Ilúvatar",
+                "value": "IlÃºvatar",
                 "type": "label"
               }
             ]
@@ -1442,7 +1363,7 @@
         }
       ],
       "comment": {
-        "en": "A sperior entity. A singleton class that only contains Eru Ilúvatar, the One Allfather."
+        "en": "A sperior entity. A singleton class that only contains Eru IlÃºvatar, the One Allfather."
       },
       "attributes": [
         "external"
@@ -1458,7 +1379,7 @@
         "en": "Weapon"
       },
       "comment": {
-        "en": "An object designed or used for combat. Example: Gurthang (Túrin's sword)."
+        "en": "An object designed or used for combat. Example: Gurthang (TÃºrin's sword)."
       },
       "attributes": [
         "external"
@@ -1469,7 +1390,7 @@
       ]
     },
     {
-      "iri": "http://purl.org/meo/Quendë",
+      "iri": "http://purl.org/meo/QuendÃ«",
       "equivalent": [
         "244"
       ],
@@ -1498,12 +1419,12 @@
         ]
       },
       "label": {
-        "IRI-based": "Quendë",
-        "qya": "Quendë",
+        "IRI-based": "QuendÃ«",
+        "qya": "QuendÃ«",
         "en": "Elf"
       },
       "comment": {
-        "en": "The Quendi (plural form of Quendë) are the first born of the Children of Ilúvatar, the Elves. They are named thus because they were the only ones who spoke when they first appeared, before Men and Dwarves came to be. They are more often called the Eldar."
+        "en": "The Quendi (plural form of QuendÃ«) are the first born of the Children of IlÃºvatar, the Elves. They are named thus because they were the only ones who spoke when they first appeared, before Men and Dwarves came to be. They are more often called the Eldar."
       },
       "attributes": [
         "equivalent",
@@ -1589,7 +1510,7 @@
         "7"
       ],
       "comment": {
-        "en": "An event with a deliberate agent. Defined as Action ≡ Event ⊓ ∃evt:hasAgent.⊤, so any event that has an agent gets classified as an action automatically."
+        "en": "An event with a deliberate agent. Defined as Action â‰¡ Event âŠ“ âˆƒevt:hasAgent.âŠ¤, so any event that has an agent gets classified as an action automatically."
       },
       "attributes": [
         "external",
@@ -1625,7 +1546,7 @@
         "en": "Curse action"
       },
       "comment": {
-        "en": "Placing a curse on someone. In the Narn, Morgoth curses the children of Húrin."
+        "en": "Placing a curse on someone. In the Narn, Morgoth curses the children of HÃºrin."
       },
       "attributes": [
         "external"
@@ -1763,7 +1684,7 @@
         "229"
       ],
       "comment": {
-        "en": "The Ainur (plural form of Ainu) are the spirits created by Eru Ilúvatar before time existed"
+        "en": "The Ainur (plural form of Ainu) are the spirits created by Eru IlÃºvatar before time existed"
       },
       "attributes": [
         "external"
@@ -1936,7 +1857,7 @@
           {
             "identifier": "altLabel",
             "language": "qya",
-            "value": "Fírima",
+            "value": "FÃ­rima",
             "type": "label"
           },
           {
@@ -1984,7 +1905,7 @@
           {
             "identifier": "altLabel",
             "language": "qya",
-            "value": "Apanóna",
+            "value": "ApanÃ³na",
             "type": "label"
           }
         ]
@@ -1999,7 +1920,7 @@
         "191"
       ],
       "comment": {
-        "en": "The Atani (plural form of Atan) are the second born of the Children of Ilúvatar, the Men (i.e. Humans, not male people). They were given many names also by the Eldar."
+        "en": "The Atani (plural form of Atan) are the second born of the Children of IlÃºvatar, the Men (i.e. Humans, not male people). They were given many names also by the Eldar."
       },
       "attributes": [
         "external"
@@ -2264,7 +2185,7 @@
         "en": "Man"
       },
       "comment": {
-        "en": "The Edain (plural form of Adan) are the Men that belong to the Three Houses of Men that came to Beleriand in the elder days. Originally, “Adan” (plural “Edain”) is the Sindarin equivalent of Quenya “Atan” (plural “Atani”) but eventually came to mean this narrow subgroup."
+        "en": "The Edain (plural form of Adan) are the Men that belong to the Three Houses of Men that came to Beleriand in the elder days. Originally, â€œAdanâ€ (plural â€œEdainâ€) is the Sindarin equivalent of Quenya â€œAtanâ€ (plural â€œAtaniâ€) but eventually came to mean this narrow subgroup."
       },
       "attributes": [
         "external"
@@ -2340,7 +2261,7 @@
         "en": "Elf"
       },
       "comment": {
-        "en": "The Eldar (plural form of Elda) are the Elves. They initially called themselves the Quendi, but the Vala Oromë, who met them at lake Cuiviénen under the stars, called them the Eldar. Now only the Quendi who followed Oromë to the West call themselves Eldar."
+        "en": "The Eldar (plural form of Elda) are the Elves. They initially called themselves the Quendi, but the Vala OromÃ«, who met them at lake CuiviÃ©nen under the stars, called them the Eldar. Now only the Quendi who followed OromÃ« to the West call themselves Eldar."
       },
       "attributes": [
         "equivalent",
@@ -2656,12 +2577,12 @@
       "id": "95"
     },
     {
-      "iri": "http://purl.org/meo/Lócë",
+      "iri": "http://purl.org/meo/LÃ³cÃ«",
       "baseIri": "http://purl.org/meo",
       "instances": 0,
       "label": {
-        "IRI-based": "Lócë",
-        "qya": "Lócë",
+        "IRI-based": "LÃ³cÃ«",
+        "qya": "LÃ³cÃ«",
         "en": "Dragon"
       },
       "comment": {
@@ -2775,7 +2696,7 @@
       "label": {
         "IRI-based": "Eruhin",
         "qya": "Eruhin",
-        "en": "Child of Ilúvatar"
+        "en": "Child of IlÃºvatar"
       },
       "subClasses": [
         "28",
@@ -2783,7 +2704,7 @@
         "150"
       ],
       "comment": {
-        "en": "The Eruhíni (plural form of Eruhin), literally “the Children of Eru”, are usually called the “Children of Ilúvatar”. They are the Elves and Men. “Children of Ilúvatar” is used to collectively refer to the two races of Men and Elves, and the singular form is rarely used."
+        "en": "The EruhÃ­ni (plural form of Eruhin), literally â€œthe Children of Eruâ€, are usually called the â€œChildren of IlÃºvatarâ€. They are the Elves and Men. â€œChildren of IlÃºvatarâ€ is used to collectively refer to the two races of Men and Elves, and the singular form is rarely used."
       },
       "attributes": [
         "external"
@@ -6166,7 +6087,7 @@
       ],
       "domain": "22",
       "comment": {
-        "en": "Raising someone as a foster-child. E.g. Thingol fosters Túrin."
+        "en": "Raising someone as a foster-child. E.g. Thingol fosters TÃºrin."
       },
       "attributes": [
         "asymmetric",

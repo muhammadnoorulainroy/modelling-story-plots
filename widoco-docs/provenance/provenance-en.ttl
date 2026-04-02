@@ -3,9 +3,9 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <> .
 <https://example.org/story/ontology/1.0> a prov:Entity;
-	 dc:title "Story Plot Ontology";
-	 prov:wasAttributedTo :agent0;
-	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
-	 prov:wasGeneratedAt "2026-03-04";
+     dc:title "Story Plot Ontology";
+     prov:wasAttributedTo :agent0;
+     prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>, <http://www.essepuntato.it/lode/>;
+     prov:wasGeneratedAt "2026-04-03";
 .
 :agent0 a prov:Agent; foaf:name "Muhammad Noor Ul Ain".
