@@ -424,11 +424,11 @@ narn:intReignThingol tm:containsInterval narn:intResidenceMenegroth .
 # EVENTS (evt:)
 ###############################################################
 
-narn:HostOfTheWest a owl:NamedIndividual ;
+narn:HostOfTheWest a evt:Faction ;
     rdfs:label "Host of the West"@en ;
     rdfs:comment "The coalition of Elves and Men led against Angband at the Nirnaeth Arnoediad."@en .
 
-narn:HostOfAngband a owl:NamedIndividual ;
+narn:HostOfAngband a evt:Faction ;
     rdfs:label "Host of Angband"@en ;
     rdfs:comment "The forces of Morgoth that fought at the Nirnaeth Arnoediad."@en .
 

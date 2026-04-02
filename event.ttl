@@ -173,6 +173,14 @@ evt:Artifact a owl:Class ;
 evt:Weapon owl:disjointWith evt:Vehicle .
 
 ###############################################################
+# Faction class (collective actors in battles)
+###############################################################
+
+evt:Faction a owl:Class ;
+    rdfs:label "Faction"@en ;
+    rdfs:comment "A collective side in a conflict. Used as combatant in battles instead of individual characters when the conflict involves armies rather than individuals."@en .
+
+###############################################################
 # Participant properties
 ###############################################################
 
@@ -480,7 +488,7 @@ evt:War rdfs:subClassOf
 # if Death D has killer X and deceased Y, then X killed Y.
 evt:killed a owl:ObjectProperty ;
     rdfs:label "killed"@en ;
-    rdfs:comment "X killed Y. Inferred from Death events."@en .
+    rdfs:comment "X killed Y. Inferred from Death events via hasKiller and hasDeceased."@en .
 
 evt:killed owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasKiller ]
