@@ -1,4 +1,4 @@
-@prefix : <http://purl.org/family/> .
+@prefix : <https://example.org/story/ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -7,10 +7,13 @@
 @base <http://purl.org/family/> .
 
 <http://purl.org/family/> rdf:type owl:Ontology ;
-                           <http://purl.org/dc/terms/created> "2023-11-19T07:42:42+01:00"^^xsd:dateTime ,
+                           <http://purl.org/dc/terms/created> "2026-03-28"^^xsd:date ,
+                                                              "2023-11-19T07:42:42+01:00"^^xsd:dateTime ,
                                                               "2023-11-19T14:42:42+01:00"^^xsd:dateTime ,
                                                               "2026-03-28T00:00:00+00:00"^^xsd:dateTime ;
-                           <http://purl.org/dc/terms/creator> <https://w3id.org/people/az/me> ;
+                           <http://purl.org/dc/terms/creator> <https://w3id.org/people/az/me> ,
+                                                              "Muhammad Noor Ul Ain" ;
+                           <http://purl.org/dc/terms/description> "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."@en ;
                            <http://purl.org/dc/terms/modified> "2026-01-23T13:42:42+01:00"^^xsd:dateTime ;
                            <http://purl.org/dc/terms/title> "Action Ontology"@en ,
                                                             "Event Ontology"@en ,
@@ -18,10 +21,14 @@
                                                             "Plot Structure Ontology"@en ,
                                                             "Region Connection Calculus (RCC8) Ontology"@en ,
                                                             "Social Relations Ontology"@en ,
+                                                            "Story Plot Ontology"@en ,
                                                             "The Family Ontology"@en ,
                                                             "The Middle-earth ontology"@en ,
                                                             "Time Ontology"@en ;
-                           rdfs:comment "Actions as a subclass of events, defined by having an intentional agent."@en ,
+                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "spo" ;
+                           <http://purl.org/vocab/vann/preferredNamespaceUri> "https://example.org/story/ontology#" ;
+                           rdfs:comment "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."@en ,
+                                        "Actions as a subclass of events, defined by having an intentional agent."@en ,
                                         "An ontology for J.R.R. Tolkienʼs legendarium."@en ,
                                         "An ontology for family relationships."@en ,
                                         "Events in story plots: occurrences involving characters, places, and time. Includes an event hierarchy, participant roles, and temporal relations."@en ,
@@ -35,6 +42,7 @@
                                       "Place Ontology"@en ,
                                       "Plot Structure Ontology"@en ,
                                       "Social Relations Ontology"@en ,
+                                      "Story Plot Ontology"@en ,
                                       "The Middle-earth ontology"@en ,
                                       "The RCC8 ontology"@en ,
                                       "The family ontology"@en ,
@@ -53,6 +61,10 @@
 <http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/modified
 <http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
 
@@ -61,8 +73,24 @@
 <http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#altLabel
 <http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
 
 
 #################################################################

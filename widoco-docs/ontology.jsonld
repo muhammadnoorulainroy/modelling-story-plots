@@ -761,6 +761,9 @@
   "@id" : "http://purl.org/dc/terms/creator",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
+  "@id" : "http://purl.org/dc/terms/description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
   "@id" : "http://purl.org/dc/terms/modified",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
@@ -770,6 +773,9 @@
   "@id" : "http://purl.org/family/",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://purl.org/dc/terms/created" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2026-03-28"
+  }, {
     "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
     "@value" : "2023-11-19T07:42:42+01:00"
   }, {
@@ -781,6 +787,12 @@
   } ],
   "http://purl.org/dc/terms/creator" : [ {
     "@id" : "https://w3id.org/people/az/me"
+  }, {
+    "@value" : "Muhammad Noor Ul Ain"
+  } ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."
   } ],
   "http://purl.org/dc/terms/modified" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
@@ -806,6 +818,9 @@
     "@value" : "Social Relations Ontology"
   }, {
     "@language" : "en",
+    "@value" : "Story Plot Ontology"
+  }, {
+    "@language" : "en",
     "@value" : "The Family Ontology"
   }, {
     "@language" : "en",
@@ -814,7 +829,16 @@
     "@language" : "en",
     "@value" : "Time Ontology"
   } ],
+  "http://purl.org/vocab/vann/preferredNamespacePrefix" : [ {
+    "@value" : "spo"
+  } ],
+  "http://purl.org/vocab/vann/preferredNamespaceUri" : [ {
+    "@value" : "https://example.org/story/ontology#"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."
+  }, {
     "@language" : "en",
     "@value" : "Actions as a subclass of events, defined by having an intentional agent."
   }, {
@@ -857,6 +881,9 @@
   }, {
     "@language" : "en",
     "@value" : "Social Relations Ontology"
+  }, {
+    "@language" : "en",
+    "@value" : "Story Plot Ontology"
   }, {
     "@language" : "en",
     "@value" : "The Middle-earth ontology"
@@ -1539,6 +1566,15 @@
   "http://www.w3.org/2002/07/owl#equivalentProperty" : [ {
     "@id" : "https://example.org/story/social#serves"
   } ]
+}, {
+  "@id" : "http://purl.org/vocab/vann/preferredNamespacePrefix",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/vocab/vann/preferredNamespaceUri",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2001/XMLSchema#date",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
 }, {
   "@id" : "http://www.w3.org/2004/02/skos/core#altLabel",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]

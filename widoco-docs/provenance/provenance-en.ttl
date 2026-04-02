@@ -6,6 +6,6 @@
 	 dc:title "Story Plot Ontology";
 	 prov:wasAttributedTo :agent0;
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
-	 prov:wasGeneratedAt "March 2026";
+	 prov:wasGeneratedAt "2026-03-04";
 .
 :agent0 a prov:Agent; foaf:name "Muhammad Noor Ul Ain".

@@ -1,8 +1,11 @@
 <http://purl.org/family/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<http://purl.org/family/> <http://purl.org/dc/terms/created> "2026-03-28"^^<http://www.w3.org/2001/XMLSchema#date> .
 <http://purl.org/family/> <http://purl.org/dc/terms/created> "2023-11-19T07:42:42+01:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
 <http://purl.org/family/> <http://purl.org/dc/terms/created> "2023-11-19T14:42:42+01:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
 <http://purl.org/family/> <http://purl.org/dc/terms/created> "2026-03-28T00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
 <http://purl.org/family/> <http://purl.org/dc/terms/creator> <https://w3id.org/people/az/me> .
+<http://purl.org/family/> <http://purl.org/dc/terms/creator> "Muhammad Noor Ul Ain" .
+<http://purl.org/family/> <http://purl.org/dc/terms/description> "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."@en .
 <http://purl.org/family/> <http://purl.org/dc/terms/modified> "2026-01-23T13:42:42+01:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "Action Ontology"@en .
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "Event Ontology"@en .
@@ -10,9 +13,13 @@
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "Plot Structure Ontology"@en .
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "Region Connection Calculus (RCC8) Ontology"@en .
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "Social Relations Ontology"@en .
+<http://purl.org/family/> <http://purl.org/dc/terms/title> "Story Plot Ontology"@en .
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "The Family Ontology"@en .
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "The Middle-earth ontology"@en .
 <http://purl.org/family/> <http://purl.org/dc/terms/title> "Time Ontology"@en .
+<http://purl.org/family/> <http://purl.org/vocab/vann/preferredNamespacePrefix> "spo" .
+<http://purl.org/family/> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://example.org/story/ontology#" .
+<http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#comment> "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien)."@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#comment> "Actions as a subclass of events, defined by having an intentional agent."@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#comment> "An ontology for J.R.R. Tolkienʼs legendarium."@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#comment> "An ontology for family relationships."@en .
@@ -27,6 +34,7 @@
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#label> "Place Ontology"@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#label> "Plot Structure Ontology"@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#label> "Social Relations Ontology"@en .
+<http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#label> "Story Plot Ontology"@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#label> "The Middle-earth ontology"@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#label> "The RCC8 ontology"@en .
 <http://purl.org/family/> <http://www.w3.org/2000/01/rdf-schema#label> "The family ontology"@en .
@@ -47,14 +55,35 @@
 # http://purl.org/dc/terms/creator
 <http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
 # 
+# http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
 # http://purl.org/dc/terms/modified
 <http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
 # 
 # http://purl.org/dc/terms/title
 <http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
 # 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
 # http://www.w3.org/2004/02/skos/core#altLabel
 <http://www.w3.org/2004/02/skos/core#altLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2001/XMLSchema#date
+<http://www.w3.org/2001/XMLSchema#date> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Datatype> .
 # 
 # 
 # 

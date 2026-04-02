@@ -7,12 +7,16 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:terms="http://purl.org/dc/terms/">
-    <owl:Ontology rdf:about="http://purl.org/family/">
+    <owl:Ontology rdf:about="https://example.org/story/ontology#">
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-28</terms:created>
         <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-19T07:42:42+01:00</terms:created>
         <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-19T14:42:42+01:00</terms:created>
         <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-28T00:00:00+00:00</terms:created>
         <terms:creator rdf:resource="https://w3id.org/people/az/me"/>
+        <terms:creator>Muhammad Noor Ul Ain</terms:creator>
+        <terms:description xml:lang="en">A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien).</terms:description>
         <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-23T13:42:42+01:00</terms:modified>
         <terms:title xml:lang="en">Action Ontology</terms:title>
         <terms:title xml:lang="en">Event Ontology</terms:title>
@@ -20,9 +24,13 @@
         <terms:title xml:lang="en">Plot Structure Ontology</terms:title>
         <terms:title xml:lang="en">Region Connection Calculus (RCC8) Ontology</terms:title>
         <terms:title xml:lang="en">Social Relations Ontology</terms:title>
+        <terms:title xml:lang="en">Story Plot Ontology</terms:title>
         <terms:title xml:lang="en">The Family Ontology</terms:title>
         <terms:title xml:lang="en">The Middle-earth ontology</terms:title>
         <terms:title xml:lang="en">Time Ontology</terms:title>
+        <vann:preferredNamespacePrefix>spo</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://example.org/story/ontology#</vann:preferredNamespaceUri>
+        <rdfs:comment xml:lang="en">A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Use case: Narn i Chin Hurin (J.R.R. Tolkien).</rdfs:comment>
         <rdfs:comment xml:lang="en">Actions as a subclass of events, defined by having an intentional agent.</rdfs:comment>
         <rdfs:comment xml:lang="en">An ontology for J.R.R. Tolkienʼs legendarium.</rdfs:comment>
         <rdfs:comment xml:lang="en">An ontology for family relationships.</rdfs:comment>
@@ -37,6 +45,7 @@
         <rdfs:label xml:lang="en">Place Ontology</rdfs:label>
         <rdfs:label xml:lang="en">Plot Structure Ontology</rdfs:label>
         <rdfs:label xml:lang="en">Social Relations Ontology</rdfs:label>
+        <rdfs:label xml:lang="en">Story Plot Ontology</rdfs:label>
         <rdfs:label xml:lang="en">The Middle-earth ontology</rdfs:label>
         <rdfs:label xml:lang="en">The RCC8 ontology</rdfs:label>
         <rdfs:label xml:lang="en">The family ontology</rdfs:label>
@@ -72,6 +81,13 @@
     
 
 
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
     <!-- http://purl.org/dc/terms/modified -->
 
 
@@ -86,10 +102,43 @@
     
 
 
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
     <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
 
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
     
 
 
