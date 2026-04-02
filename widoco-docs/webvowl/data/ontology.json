@@ -4,16 +4,16 @@
     "languages" : [ "sjn", "qya", "en", "undefined" ],
     "baseIris" : [ "https://example.org/story/social", "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://purl.org/family", "http://purl.org/meo", "https://example.org/story/action", "https://example.org/story/event", "https://example.org/story/time", "http://www.w3.org/2000/01/rdf-schema", "https://example.org/story/plot", "https://example.org/story/place", "http://www.w3.org/2001/XMLSchema", "https://purl.org/region/rcc8" ],
     "title" : {
-      "en" : "The Family Ontology"
+      "en" : "Story Plot Ontology"
     },
-    "iri" : "http://purl.org/family/",
+    "iri" : "https://example.org/story/ontology#",
     "version" : "1.0",
     "author" : [ "https://w3id.org/people/az/me" ],
     "labels" : {
       "en" : "The family ontology"
     },
     "comments" : {
-      "en" : "Instants, intervals, and Allen's 13 temporal relations."
+      "en" : "A modular OWL ontology for representing story plots, characters, events, places, and narrative structure."
     },
     "other" : {
       "creator" : [ {
@@ -93,7 +93,7 @@
       }, {
         "identifier" : "title",
         "language" : "en",
-        "value" : "The Family Ontology",
+        "value" : "Story Plot Ontology",
         "type" : "label"
       } ]
     }
@@ -965,7 +965,7 @@
     "id" : "1",
     "superClasses" : [ "106" ]
   }, {
-    "iri" : "http://purl.org/family/Female",
+    "iri" : "https://example.org/story/ontology#Female",
     "baseIri" : "http://purl.org/family",
     "instances" : 0,
     "label" : {
@@ -1215,7 +1215,7 @@
     "attributes" : [ "external" ],
     "id" : "106"
   }, {
-    "iri" : "http://purl.org/family/Male",
+    "iri" : "https://example.org/story/ontology#Male",
     "baseIri" : "http://purl.org/family",
     "instances" : 0,
     "label" : {
@@ -2864,7 +2864,7 @@
     "attributes" : [ "external", "object" ],
     "id" : "20"
   }, {
-    "iri" : "http://purl.org/family/isAChildOf",
+    "iri" : "https://example.org/story/ontology#isAChildOf",
     "inverse" : "23",
     "baseIri" : "http://purl.org/family",
     "range" : "22",
@@ -3147,7 +3147,7 @@
     "attributes" : [ "external", "object" ],
     "id" : "97"
   }, {
-    "iri" : "http://purl.org/family/isTheMotherOf",
+    "iri" : "https://example.org/story/ontology#isTheMotherOf",
     "baseIri" : "http://purl.org/family",
     "range" : "101",
     "label" : {
@@ -3162,7 +3162,7 @@
     "attributes" : [ "object" ],
     "id" : "99"
   }, {
-    "iri" : "http://purl.org/family/isASisterOf",
+    "iri" : "https://example.org/story/ontology#isASisterOf",
     "baseIri" : "http://purl.org/family",
     "range" : "101",
     "label" : {
@@ -3295,7 +3295,7 @@
     "attributes" : [ "external", "object", "transitive" ],
     "id" : "131"
   }, {
-    "iri" : "http://purl.org/family/isABrotherOf",
+    "iri" : "https://example.org/story/ontology#isABrotherOf",
     "baseIri" : "http://purl.org/family",
     "range" : "134",
     "label" : {
@@ -3428,7 +3428,7 @@
     "attributes" : [ "object", "anonymous" ],
     "id" : "149"
   }, {
-    "iri" : "http://purl.org/family/isASiblingOf",
+    "iri" : "https://example.org/story/ontology#isASiblingOf",
     "baseIri" : "http://purl.org/family",
     "range" : "22",
     "label" : {
@@ -3457,7 +3457,7 @@
     "attributes" : [ "external", "object", "symmetric" ],
     "id" : "151"
   }, {
-    "iri" : "http://purl.org/family/isAnAncestorOf",
+    "iri" : "https://example.org/story/ontology#isAnAncestorOf",
     "inverse" : "24",
     "baseIri" : "http://purl.org/family",
     "range" : "22",
@@ -4004,7 +4004,7 @@
     "attributes" : [ "object", "anonymous" ],
     "id" : "242"
   }, {
-    "iri" : "http://purl.org/family/isACousinOf",
+    "iri" : "https://example.org/story/ontology#isACousinOf",
     "baseIri" : "http://purl.org/family",
     "range" : "22",
     "label" : {
@@ -4271,7 +4271,7 @@
     "attributes" : [ "irreflexive", "external", "object", "symmetric" ],
     "id" : "271"
   }, {
-    "iri" : "http://purl.org/family/isADaughterOf",
+    "iri" : "https://example.org/story/ontology#isADaughterOf",
     "baseIri" : "http://purl.org/family",
     "range" : "101",
     "label" : {
@@ -4723,7 +4723,7 @@
     "attributes" : [ "external", "object" ],
     "id" : "215"
   }, {
-    "iri" : "http://purl.org/family/isASonOf",
+    "iri" : "https://example.org/story/ontology#isASonOf",
     "baseIri" : "http://purl.org/family",
     "range" : "134",
     "label" : {
@@ -4924,7 +4924,7 @@
     "attributes" : [ "irreflexive", "external", "object", "asymmetric" ],
     "id" : "330"
   }, {
-    "iri" : "http://purl.org/family/isMarriedTo",
+    "iri" : "https://example.org/story/ontology#isMarriedTo",
     "baseIri" : "http://purl.org/family",
     "range" : "22",
     "label" : {
@@ -5130,7 +5130,7 @@
     "attributes" : [ "external", "object", "transitive" ],
     "id" : "107"
   }, {
-    "iri" : "http://purl.org/family/isADescendentOf",
+    "iri" : "https://example.org/story/ontology#isADescendentOf",
     "baseIri" : "http://purl.org/family",
     "range" : "244",
     "label" : {
@@ -5145,7 +5145,7 @@
     "attributes" : [ "someValues", "object", "transitive" ],
     "id" : "350"
   }, {
-    "iri" : "http://purl.org/family/isADescendentOf",
+    "iri" : "https://example.org/story/ontology#isADescendentOf",
     "baseIri" : "http://purl.org/family",
     "range" : "28",
     "label" : {
@@ -5234,7 +5234,7 @@
     "attributes" : [ "external", "datatype" ],
     "id" : "362"
   }, {
-    "iri" : "http://purl.org/family/isTheFatherOf",
+    "iri" : "https://example.org/story/ontology#isTheFatherOf",
     "baseIri" : "http://purl.org/family",
     "range" : "134",
     "label" : {
@@ -5265,7 +5265,7 @@
     "attributes" : [ "external", "object" ],
     "id" : "110"
   }, {
-    "iri" : "http://purl.org/family/isAParentOf",
+    "iri" : "https://example.org/story/ontology#isAParentOf",
     "baseIri" : "http://purl.org/family",
     "range" : "22",
     "label" : {
@@ -5325,7 +5325,7 @@
     "attributes" : [ "external", "object" ],
     "id" : "365"
   }, {
-    "iri" : "http://purl.org/family/isAChildOf",
+    "iri" : "https://example.org/story/ontology#isAChildOf",
     "inverse" : "23",
     "baseIri" : "http://purl.org/family",
     "range" : "28",
@@ -5342,7 +5342,7 @@
     "attributes" : [ "object", "allValues" ],
     "id" : "366"
   }, {
-    "iri" : "http://purl.org/family/isAChildOf",
+    "iri" : "https://example.org/story/ontology#isAChildOf",
     "inverse" : "23",
     "baseIri" : "http://purl.org/family",
     "range" : "244",
