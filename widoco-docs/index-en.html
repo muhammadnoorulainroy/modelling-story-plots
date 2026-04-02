@@ -17,7 +17,7 @@
 
 
 <!-- SCHEMA.ORG METADATA -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://example.org/story/ontology#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://example.org/story/ontology#","name":"Story Plot Ontology", "headline":"A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Developed for the Knowledge Representation and Reasoning course. Use case: Narn i Chîn Húrin (J.R.R. Tolkien).", "dateReleased":"2026-03", "dateModified":"2026-04", "version":"1.0", "author":[{"@type":"Person","name":"Student (CPS2 M1, EMSE)"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://example.org/story/ontology#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://example.org/story/ontology#","name":"Story Plot Ontology", "headline":"A modular OWL ontology for representing story plots, characters, events, places, and narrative structure. Developed for the Knowledge Representation and Reasoning course. Use case: Narn i Chîn Húrin (J.R.R. Tolkien).", "dateReleased":"2026-03", "dateModified":"2026-04", "version":"1.0", "author":[{"@type":"Person","name":"Muhammad Noor Ul Ain"}]}</script>
 
 <script src="resources/jquery.js"></script> 
 <script src="resources/marked.min.js"></script> 
@@ -77,8 +77,8 @@ $(function(){
 <dd>1.0</dd>
 <dt>Issued on:</dt>
 <dd>March 2026</dd>
-<dt>Authors:</dt>
-<dd>Student (CPS2 M1, EMSE), <a href="https://www.emse.fr">Ecole des Mines de Saint-Etienne</a></dd>
+<dt>Author:</dt>
+<dd>Muhammad Noor Ul Ain<a href="https://www.emse.fr">Ecole des Mines de Saint-Etienne</a></dd>
 
 <dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="#" target="_blank"><img src="https://img.shields.io/badge/License-Course%20Project-blue.svg" alt="#" /></a>
 </dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
@@ -180,6 +180,9 @@ This ontology has the following classes and properties.</span>
    </li>
    <li>
       <a href="#http://purl.org/meo/EvilBeing" title="http://purl.org/meo/EvilBeing">evil being</a>
+   </li>
+   <li>
+      <a href="#https://example.org/story/event#Faction" title="https://example.org/story/event#Faction">Faction</a>
    </li>
    <li>
       <a href="#http://purl.org/family/Female" title="http://purl.org/family/Female">female</a>
@@ -771,6 +774,7 @@ This section provides details for each class and property defined by null.
   <li><a href="#https://example.org/story/plot#Epilogue" title="https://example.org/story/plot#Epilogue">Epilogue</a></li>
   <li><a href="#https://example.org/story/event#Event" title="https://example.org/story/event#Event">Event</a></li>
   <li><a href="#http://purl.org/meo/EvilBeing" title="http://purl.org/meo/EvilBeing">evil being</a></li>
+  <li><a href="#https://example.org/story/event#Faction" title="https://example.org/story/event#Faction">Faction</a></li>
   <li><a href="#http://purl.org/family/Female" title="http://purl.org/family/Female">female</a></li>
   <li><a href="#https://example.org/story/time#FiniteInterval" title="https://example.org/story/time#FiniteInterval">Finite interval</a></li>
   <li><a href="#https://example.org/story/place#Forest" title="https://example.org/story/place#Forest">Forest</a></li>
@@ -1395,6 +1399,13 @@ This section provides details for each class and property defined by null.
     <a href="#http://purl.org/meo/morgoth" title="http://purl.org/meo/morgoth">The Black Enemy</a> <sup class="type-ni" title="named individual">ni</sup>
    </dd>
   </dl>
+ </div>
+ <div class="entity" id="https://example.org/story/event#Faction">
+  <h3>Faction<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://example.org/story/event#Faction</p>
+  <div class="comment">
+   <span class="markdown">A collective side in a conflict. Used as combatant in battles instead of individual characters when the conflict involves armies rather than individuals.</span>
+  </div>
  </div>
  <div class="entity" id="http://purl.org/family/Female">
   <h3>female<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
@@ -4634,7 +4645,7 @@ This section provides details for each class and property defined by null.
   <h3>killed<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> https://example.org/story/event#killed</p>
   <div class="comment">
-   <span class="markdown">X killed Y. Inferred from Death events.</span>
+   <span class="markdown">X killed Y. Inferred from Death events via hasKiller and hasDeceased.</span>
   </div>
   <div class="description">
    <dl>

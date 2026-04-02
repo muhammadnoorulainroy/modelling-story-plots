@@ -8,4 +8,4 @@
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
 	 prov:wasGeneratedAt "Date created";
 .
-:agent0 a prov:Agent; foaf:name "Student (CPS2 M1, EMSE)".
+:agent0 a prov:Agent; foaf:name "Muhammad Noor Ul Ain".

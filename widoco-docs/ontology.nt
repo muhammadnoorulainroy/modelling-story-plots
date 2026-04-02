@@ -449,7 +449,7 @@ _:genid22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 _:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid24 .
 _:genid24 <http://www.w3.org/2002/07/owl#inverseOf> <https://example.org/story/event#hasKiller> .
 _:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-<https://example.org/story/event#killed> <http://www.w3.org/2000/01/rdf-schema#comment> "X killed Y. Inferred from Death events."@en .
+<https://example.org/story/event#killed> <http://www.w3.org/2000/01/rdf-schema#comment> "X killed Y. Inferred from Death events via hasKiller and hasDeceased."@en .
 <https://example.org/story/event#killed> <http://www.w3.org/2000/01/rdf-schema#label> "killed"@en .
 # 
 # https://example.org/story/event#meetsEvent
@@ -1444,6 +1444,13 @@ _:genid83 <http://www.w3.org/2002/07/owl#onProperty> <https://example.org/story/
 _:genid83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#comment> "Something that happens in the story world, with a time, place, and participants."@en .
 <https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#label> "Event"@en .
+<https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://purl.org/NET/c4dm/event.owl#Event> .
+<https://example.org/story/event#Event> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://schema.org/Event> .
+# 
+# https://example.org/story/event#Faction
+<https://example.org/story/event#Faction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://example.org/story/event#Faction> <http://www.w3.org/2000/01/rdf-schema#comment> "A collective side in a conflict. Used as combatant in battles instead of individual characters when the conflict involves armies rather than individuals."@en .
+<https://example.org/story/event#Faction> <http://www.w3.org/2000/01/rdf-schema#label> "Faction"@en .
 # 
 # https://example.org/story/event#Item
 <https://example.org/story/event#Item> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
@@ -1713,6 +1720,7 @@ _:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <https://example.org/story/plot#Author> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/plot#Contributor> .
 <https://example.org/story/plot#Author> <http://www.w3.org/2000/01/rdf-schema#comment> "A real-world person who originally wrote the work."@en .
 <https://example.org/story/plot#Author> <http://www.w3.org/2000/01/rdf-schema#label> "Author"@en .
+<https://example.org/story/plot#Author> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://xmlns.com/foaf/0.1/Person> .
 # 
 # https://example.org/story/plot#Chapter
 <https://example.org/story/plot#Chapter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
@@ -1752,6 +1760,8 @@ _:genid98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <https://example.org/story/plot#NarrativeWork> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/plot#NarrativeWork> <http://www.w3.org/2000/01/rdf-schema#comment> "A real-world book, manuscript, or film script with authorship, editorial, and publication metadata."@en .
 <https://example.org/story/plot#NarrativeWork> <http://www.w3.org/2000/01/rdf-schema#label> "Narrative work"@en .
+<https://example.org/story/plot#NarrativeWork> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://purl.org/ontology/bibo/Document> .
+<https://example.org/story/plot#NarrativeWork> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://schema.org/Book> .
 # 
 # https://example.org/story/plot#PlotEvent
 <https://example.org/story/plot#PlotEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
@@ -1838,12 +1848,14 @@ _:genid109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/
 <https://example.org/story/time#Instant> <http://www.w3.org/2002/07/owl#disjointWith> <https://example.org/story/time#Interval> .
 <https://example.org/story/time#Instant> <http://www.w3.org/2000/01/rdf-schema#comment> "A single point in time."@en .
 <https://example.org/story/time#Instant> <http://www.w3.org/2000/01/rdf-schema#label> "Instant"@en .
+<https://example.org/story/time#Instant> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://www.w3.org/2006/time#Instant> .
 # 
 # https://example.org/story/time#Interval
 <https://example.org/story/time#Interval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://example.org/story/time#Interval> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://example.org/story/time#TemporalEntity> .
 <https://example.org/story/time#Interval> <http://www.w3.org/2000/01/rdf-schema#comment> "A stretch of time between two instants."@en .
 <https://example.org/story/time#Interval> <http://www.w3.org/2000/01/rdf-schema#label> "Interval"@en .
+<https://example.org/story/time#Interval> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://www.w3.org/2006/time#Interval> .
 # 
 # https://example.org/story/time#StartingInterval
 <https://example.org/story/time#StartingInterval> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .

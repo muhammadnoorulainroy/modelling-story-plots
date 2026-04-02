@@ -457,7 +457,7 @@
                                                                   ]
                                                                   <https://example.org/story/event#hasDeceased>
                                                                 ) ;
-                                         rdfs:comment "X killed Y. Inferred from Death events."@en ;
+                                         rdfs:comment "X killed Y. Inferred from Death events via hasKiller and hasDeceased."@en ;
                                          rdfs:label "killed"@en .
 
 
@@ -1478,7 +1478,15 @@
                                                           owl:someValuesFrom <https://example.org/story/time#Interval>
                                                         ] ;
                                         rdfs:comment "Something that happens in the story world, with a time, place, and participants."@en ;
-                                        rdfs:label "Event"@en .
+                                        rdfs:label "Event"@en ;
+                                        rdfs:seeAlso <http://purl.org/NET/c4dm/event.owl#Event> ,
+                                                     <http://schema.org/Event> .
+
+
+###  https://example.org/story/event#Faction
+<https://example.org/story/event#Faction> rdf:type owl:Class ;
+                                          rdfs:comment "A collective side in a conflict. Used as combatant in battles instead of individual characters when the conflict involves armies rather than individuals."@en ;
+                                          rdfs:label "Faction"@en .
 
 
 ###  https://example.org/story/event#Item
@@ -1773,7 +1781,8 @@
 <https://example.org/story/plot#Author> rdf:type owl:Class ;
                                         rdfs:subClassOf <https://example.org/story/plot#Contributor> ;
                                         rdfs:comment "A real-world person who originally wrote the work."@en ;
-                                        rdfs:label "Author"@en .
+                                        rdfs:label "Author"@en ;
+                                        rdfs:seeAlso <http://xmlns.com/foaf/0.1/Person> .
 
 
 ###  https://example.org/story/plot#Chapter
@@ -1819,7 +1828,9 @@
 ###  https://example.org/story/plot#NarrativeWork
 <https://example.org/story/plot#NarrativeWork> rdf:type owl:Class ;
                                                rdfs:comment "A real-world book, manuscript, or film script with authorship, editorial, and publication metadata."@en ;
-                                               rdfs:label "Narrative work"@en .
+                                               rdfs:label "Narrative work"@en ;
+                                               rdfs:seeAlso <http://purl.org/ontology/bibo/Document> ,
+                                                            <http://schema.org/Book> .
 
 
 ###  https://example.org/story/plot#PlotEvent
@@ -1910,14 +1921,16 @@
                                          rdfs:subClassOf <https://example.org/story/time#TemporalEntity> ;
                                          owl:disjointWith <https://example.org/story/time#Interval> ;
                                          rdfs:comment "A single point in time."@en ;
-                                         rdfs:label "Instant"@en .
+                                         rdfs:label "Instant"@en ;
+                                         rdfs:seeAlso <http://www.w3.org/2006/time#Instant> .
 
 
 ###  https://example.org/story/time#Interval
 <https://example.org/story/time#Interval> rdf:type owl:Class ;
                                           rdfs:subClassOf <https://example.org/story/time#TemporalEntity> ;
                                           rdfs:comment "A stretch of time between two instants."@en ;
-                                          rdfs:label "Interval"@en .
+                                          rdfs:label "Interval"@en ;
+                                          rdfs:seeAlso <http://www.w3.org/2006/time#Interval> .
 
 
 ###  https://example.org/story/time#StartingInterval

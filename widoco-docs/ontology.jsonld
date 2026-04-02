@@ -1826,8 +1826,24 @@
     "@language" : "en",
     "@value" : "Event"
   } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://purl.org/NET/c4dm/event.owl#Event"
+  }, {
+    "@id" : "http://schema.org/Event"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "_:genid83"
+  } ]
+}, {
+  "@id" : "https://example.org/story/event#Faction",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A collective side in a conflict. Used as combatant in battles instead of individual characters when the conflict involves armies rather than individuals."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Faction"
   } ]
 }, {
   "@id" : "https://example.org/story/event#Item",
@@ -2533,7 +2549,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "X killed Y. Inferred from Death events."
+    "@value" : "X killed Y. Inferred from Death events via hasKiller and hasDeceased."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -3106,6 +3122,9 @@
     "@language" : "en",
     "@value" : "Author"
   } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://xmlns.com/foaf/0.1/Person"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://example.org/story/plot#Contributor"
   } ]
@@ -3197,6 +3216,11 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Narrative work"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://purl.org/ontology/bibo/Document"
+  }, {
+    "@id" : "http://schema.org/Book"
   } ]
 }, {
   "@id" : "https://example.org/story/plot#PlotEvent",
@@ -3788,6 +3812,9 @@
     "@language" : "en",
     "@value" : "Instant"
   } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.w3.org/2006/time#Instant"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://example.org/story/time#TemporalEntity"
   } ],
@@ -3804,6 +3831,9 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Interval"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.w3.org/2006/time#Interval"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://example.org/story/time#TemporalEntity"

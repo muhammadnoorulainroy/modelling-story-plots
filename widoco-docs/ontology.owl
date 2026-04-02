@@ -683,7 +683,7 @@
             </rdf:Description>
             <rdf:Description rdf:about="https://example.org/story/event#hasDeceased"/>
         </owl:propertyChainAxiom>
-        <rdfs:comment xml:lang="en">X killed Y. Inferred from Death events.</rdfs:comment>
+        <rdfs:comment xml:lang="en">X killed Y. Inferred from Death events via hasKiller and hasDeceased.</rdfs:comment>
         <rdfs:label xml:lang="en">killed</rdfs:label>
     </owl:ObjectProperty>
     
@@ -2187,6 +2187,18 @@
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Something that happens in the story world, with a time, place, and participants.</rdfs:comment>
         <rdfs:label xml:lang="en">Event</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+        <rdfs:seeAlso rdf:resource="http://schema.org/Event"/>
+    </owl:Class>
+    
+
+
+    <!-- https://example.org/story/event#Faction -->
+
+
+    <owl:Class rdf:about="https://example.org/story/event#Faction">
+        <rdfs:comment xml:lang="en">A collective side in a conflict. Used as combatant in battles instead of individual characters when the conflict involves armies rather than individuals.</rdfs:comment>
+        <rdfs:label xml:lang="en">Faction</rdfs:label>
     </owl:Class>
     
 
@@ -2648,6 +2660,7 @@
         <rdfs:subClassOf rdf:resource="https://example.org/story/plot#Contributor"/>
         <rdfs:comment xml:lang="en">A real-world person who originally wrote the work.</rdfs:comment>
         <rdfs:label xml:lang="en">Author</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     </owl:Class>
     
 
@@ -2722,6 +2735,8 @@
     <owl:Class rdf:about="https://example.org/story/plot#NarrativeWork">
         <rdfs:comment xml:lang="en">A real-world book, manuscript, or film script with authorship, editorial, and publication metadata.</rdfs:comment>
         <rdfs:label xml:lang="en">Narrative work</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:seeAlso rdf:resource="http://schema.org/Book"/>
     </owl:Class>
     
 
@@ -2862,6 +2877,7 @@
         <owl:disjointWith rdf:resource="https://example.org/story/time#Interval"/>
         <rdfs:comment xml:lang="en">A single point in time.</rdfs:comment>
         <rdfs:label xml:lang="en">Instant</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#Instant"/>
     </owl:Class>
     
 
@@ -2873,6 +2889,7 @@
         <rdfs:subClassOf rdf:resource="https://example.org/story/time#TemporalEntity"/>
         <rdfs:comment xml:lang="en">A stretch of time between two instants.</rdfs:comment>
         <rdfs:label xml:lang="en">Interval</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#Interval"/>
     </owl:Class>
     
 
