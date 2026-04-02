@@ -39,7 +39,9 @@ evt: a owl:Ontology ;
 
 evt:Event a owl:Class ;
     rdfs:label "Event"@en ;
-    rdfs:comment "Something that happens in the story world, with a time, place, and participants."@en .
+    rdfs:comment "Something that happens in the story world, with a time, place, and participants."@en ;
+    rdfs:seeAlso <http://purl.org/NET/c4dm/event.owl#Event>,
+                 <http://schema.org/Event> .
 
 ###############################################################
 # Event hierarchy

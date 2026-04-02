@@ -37,12 +37,15 @@ plot:Contributor a owl:Class ;
 
 plot:NarrativeWork a owl:Class ;
     rdfs:label "Narrative work"@en ;
-    rdfs:comment "A real-world book, manuscript, or film script with authorship, editorial, and publication metadata."@en .
+    rdfs:comment "A real-world book, manuscript, or film script with authorship, editorial, and publication metadata."@en ;
+    rdfs:seeAlso <http://schema.org/Book>,
+                 <http://purl.org/ontology/bibo/Document> .
 
 plot:Author a owl:Class ;
     rdfs:subClassOf plot:Contributor ;
     rdfs:label "Author"@en ;
-    rdfs:comment "A real-world person who originally wrote the work."@en .
+    rdfs:comment "A real-world person who originally wrote the work."@en ;
+    rdfs:seeAlso <http://xmlns.com/foaf/0.1/Person> .
 
 plot:Editor a owl:Class ;
     rdfs:subClassOf plot:Contributor ;

@@ -36,12 +36,14 @@ tm:TemporalEntity a owl:Class ;
 tm:Instant a owl:Class ;
     rdfs:subClassOf tm:TemporalEntity ;
     rdfs:label "Instant"@en ;
-    rdfs:comment "A single point in time."@en .
+    rdfs:comment "A single point in time."@en ;
+    rdfs:seeAlso <http://www.w3.org/2006/time#Instant> .
 
 tm:Interval a owl:Class ;
     rdfs:subClassOf tm:TemporalEntity ;
     rdfs:label "Interval"@en ;
-    rdfs:comment "A stretch of time between two instants."@en .
+    rdfs:comment "A stretch of time between two instants."@en ;
+    rdfs:seeAlso <http://www.w3.org/2006/time#Interval> .
 
 tm:StartingInterval a owl:Class ;
     rdfs:subClassOf tm:Interval,

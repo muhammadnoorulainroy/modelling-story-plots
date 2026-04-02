@@ -39,7 +39,8 @@ narn: a owl:Ontology ;
 
 narn:Turin a meo:Adan, fo:Male ;
     rdfs:label "Túrin"@en ;
-    rdfs:comment "Túrin Turambar, son of Húrin and Morwen. The tragic hero of the Narn."@en .
+    rdfs:comment "Túrin Turambar, son of Húrin and Morwen. The tragic hero of the Narn."@en ;
+    owl:sameAs <https://www.wikidata.org/entity/Q728646> .
 
 narn:Morwen a meo:Adan, fo:Female ;
     rdfs:label "Morwen"@en ;
@@ -59,7 +60,8 @@ narn:Thingol a meo:Elda, fo:Male ;
 
 narn:Glaurung a meo:Lócë ;
     rdfs:label "Glaurung"@en ;
-    rdfs:comment "Glaurung, the Father of Dragons, a great worm of Morgoth."@en .
+    rdfs:comment "Glaurung, the Father of Dragons, a great worm of Morgoth."@en ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1429498> .
 
 narn:Mablung a meo:Elda, fo:Male ;
     rdfs:label "Mablung"@en ;
@@ -72,7 +74,8 @@ narn:Beleg a meo:Elda, fo:Male ;
 narn:Morgoth a meo:Vala, meo:EvilBeing ;
     owl:sameAs meo:morgoth ;
     rdfs:label "Morgoth"@en ;
-    rdfs:comment "The Dark Lord, the great enemy."@en .
+    rdfs:comment "The Dark Lord, the great enemy."@en ;
+    owl:sameAs <https://www.wikidata.org/entity/Q189088> .
 
 narn:Finduilas a meo:Elda, fo:Female ;
     rdfs:label "Finduilas"@en ;
@@ -632,12 +635,14 @@ narn:slayingGlaurung a act:AttackAction ;
 narn:NarnBook a plot:NarrativeWork ;
     rdfs:label "The Children of Húrin (book)"@en ;
     rdfs:comment "The 2007 standalone edition of The Children of Húrin, edited by Christopher Tolkien from J.R.R. Tolkien's manuscripts."@en ;
+    owl:sameAs <https://www.wikidata.org/entity/Q473287> ;
     plot:hasPublicationDate "2007-04-17T00:00:00Z"^^xsd:dateTime ;
     plot:narrates narn:NarnStory .
 
 narn:Tolkien a plot:Author ;
     rdfs:label "J.R.R. Tolkien"@en ;
-    rdfs:comment "The original author of the tale, published posthumously in standalone form."@en .
+    rdfs:comment "The original author of the tale, published posthumously in standalone form."@en ;
+    owl:sameAs <https://www.wikidata.org/entity/Q892> .
 
 narn:ChristopherTolkien a plot:Editor ;
     rdfs:label "Christopher Tolkien"@en ;
