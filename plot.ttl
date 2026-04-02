@@ -213,6 +213,47 @@ plot:describesEvent a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "describes event"@en ;
     rdfs:comment "Links a plot event to the in-world event it describes."@en .
 
+plot:isDescribedBy a owl:ObjectProperty ;
+    owl:inverseOf plot:describesEvent ;
+    rdfs:label "is described by"@en ;
+    rdfs:comment "Inverse of describesEvent. Links an in-world event back to the plot event that narrates it."@en .
+
+# Derived bridge: a section contains an in-world event
+# if it contains a plot event that describes that event
+plot:containsEvent a owl:ObjectProperty ;
+    rdfs:domain plot:StorySection ;
+    rdfs:range evt:Event ;
+    rdfs:label "contains event"@en ;
+    rdfs:comment "A section contains an in-world event. Inferred from containsPlotEvent and describesEvent."@en .
+
+plot:containsEvent owl:propertyChainAxiom (
+    plot:containsPlotEvent
+    plot:describesEvent
+) .
+
+# Derived bridge: a story starts/ends with an in-world event
+plot:startsWithEvent a owl:ObjectProperty ;
+    rdfs:domain plot:NarrativeContainer ;
+    rdfs:range evt:Event ;
+    rdfs:label "starts with event"@en ;
+    rdfs:comment "The in-world event that starts a story or section. Inferred from startsWith and describesEvent."@en .
+
+plot:startsWithEvent owl:propertyChainAxiom (
+    plot:startsWith
+    plot:describesEvent
+) .
+
+plot:endsWithEvent a owl:ObjectProperty ;
+    rdfs:domain plot:NarrativeContainer ;
+    rdfs:range evt:Event ;
+    rdfs:label "ends with event"@en ;
+    rdfs:comment "The in-world event that ends a story or section. Inferred from endsWith and describesEvent."@en .
+
+plot:endsWithEvent owl:propertyChainAxiom (
+    plot:endsWith
+    plot:describesEvent
+) .
+
 ###############################################################
 # Metadata properties
 ###############################################################

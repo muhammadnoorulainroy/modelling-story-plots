@@ -298,7 +298,7 @@ evt:hasCombatant a owl:ObjectProperty ;
     rdfs:subPropertyOf evt:hasParticipant ;
     rdfs:domain evt:Battle ;
     rdfs:label "has combatant"@en ;
-    rdfs:comment "A character fighting in the battle."@en .
+    rdfs:comment "A combatant side or individual fighting in the battle."@en .
 
 evt:hasVictor a owl:ObjectProperty ;
     rdfs:subPropertyOf evt:hasCombatant ;
@@ -523,6 +523,27 @@ fo:isAChildOf owl:propertyChainAxiom (
 soc:livedIn owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasResident ]
     evt:hasLocation
+) .
+
+# From a Journey event, infer where a character travelled to/from
+soc:travelledTo a owl:ObjectProperty ;
+    rdfs:range loc:Place ;
+    rdfs:label "travelled to"@en ;
+    rdfs:comment "Inferred from Journey events via hasTraveler and hasDestination."@en .
+
+soc:travelledTo owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasTraveler ]
+    evt:hasDestination
+) .
+
+soc:travelledFrom a owl:ObjectProperty ;
+    rdfs:range loc:Place ;
+    rdfs:label "travelled from"@en ;
+    rdfs:comment "Inferred from Journey events via hasTraveler and hasOrigin."@en .
+
+soc:travelledFrom owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasTraveler ]
+    evt:hasOrigin
 ) .
 
 ###############################################################

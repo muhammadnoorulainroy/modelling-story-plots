@@ -423,6 +423,18 @@ narn:intDeathTurin tm:finishesInterval narn:intCaptivityHurin .
 narn:intWarOfJewels tm:containsInterval narn:intNirnaeth .
 narn:intReignThingol tm:containsInterval narn:intResidenceMenegroth .
 
+# All events are distinct
+[] a owl:AllDifferent ;
+    owl:distinctMembers (
+        narn:marriageHurinMorwen narn:birthTurin narn:birthNienor
+        narn:nirnaeth narn:curseOfMorgoth narn:captivityHurin
+        narn:residenceMenegroth narn:meetingBeleg narn:tauntOfMorgoth
+        narn:deathBeleg narn:journeyToNargothrond narn:residenceNargothrond
+        narn:journeyToBrethil narn:warOfJewels narn:reignThingol
+        narn:deathNienor narn:deathGlaurung narn:deathTurin
+        narn:slayingGlaurung
+    ) .
+
 ###############################################################
 # EVENTS (evt:)
 ###############################################################
