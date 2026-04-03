@@ -217,6 +217,6 @@ This matrix distinguishes questions the current ontology answers well from quest
 
 ## Documentation
 
-- `docs/documentation.html` has design decisions, usage examples with Turtle snippets, competency questions, axiom summary, and AI tool usage.
-- `widoco-docs/index-en.html` is auto-generated from the ontology using WIDOCO. It lists every class, property, and individual with their `rdfs:label` and `rdfs:comment`. Includes a WebVOWL visualization at `widoco-docs/webvowl/index.html`.
+- [`docs/documentation.html`](docs/documentation.html) has design decisions, usage examples with Turtle snippets, competency questions, axiom summary, and AI tool usage.
+- [`widoco-docs/index-en.html`](widoco-docs/index-en.html) is auto-generated from the ontology using WIDOCO. It lists every class, property, and individual with their `rdfs:label` and `rdfs:comment`. Includes a [WebVOWL visualization](widoco-docs/webvowl/index.html).
 - The source `.ttl` files are the authoritative version of the ontology. Every class and property has `rdfs:label` and `rdfs:comment`.
