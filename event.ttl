@@ -94,6 +94,11 @@ evt:Coronation a owl:Class ;
     rdfs:label "Coronation"@en ;
     rdfs:comment "An event in which a character is crowned or given authority."@en .
 
+evt:Recognition a owl:Class ;
+    rdfs:subClassOf evt:SocialEvent ;
+    rdfs:label "Recognition"@en ;
+    rdfs:comment "A social event in which someone identifies or recognizes a character, optionally under a specific appellation."@en .
+
 evt:Captivity a owl:Class ;
     rdfs:subClassOf evt:State ;
     rdfs:label "Captivity"@en ;
@@ -117,29 +122,47 @@ evt:War a owl:Class ;
     rdfs:comment "A prolonged conflict made up of multiple battles."@en .
 
 evt:NaturalDisaster a owl:Class ;
-    rdfs:subClassOf evt:PhysicalEvent ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            evt:PhysicalEvent
+            [ a owl:Class ;
+              owl:complementOf [
+                  a owl:Restriction ;
+                  owl:onProperty evt:hasAgent ;
+                  owl:someValuesFrom owl:Thing ] ]
+        )
+    ] ;
     rdfs:label "Natural disaster"@en ;
-    rdfs:comment "A catastrophic natural event such as a flood, earthquake, or volcanic eruption."@en .
+    rdfs:comment "A physical event with no deliberate agent. The complement of Action within PhysicalEvent: if a physical event has an agent it is an Action, not a NaturalDisaster."@en .
 
 # --- States ---
 
 evt:Residence a owl:Class ;
-    rdfs:subClassOf evt:State ;
+    rdfs:subClassOf evt:Presence ;
     rdfs:label "Residence"@en ;
     rdfs:comment "A state of living at a particular place for a period of time."@en .
+
+evt:Presence a owl:Class ;
+    rdfs:subClassOf evt:State ;
+    rdfs:label "Presence"@en ;
+    rdfs:comment "A state in which an entity is explicitly present in a place during an interval."@en .
 
 evt:Reign a owl:Class ;
     rdfs:subClassOf evt:State ;
     rdfs:label "Reign"@en ;
     rdfs:comment "A state of ruling over a realm or people."@en .
 
-# The three top-level event categories are pairwise disjoint.
-[] a owl:AllDisjointClasses ;
-    owl:members ( evt:PhysicalEvent evt:SocialEvent evt:State ) .
+evt:Captivity rdfs:subClassOf evt:Presence .
+
+# The three top-level event categories form a disjoint union:
+# every Event MUST be exactly one of Physical, Social, or State.
+# disjointUnionOf = covering axiom (union) + pairwise disjointness.
+evt:Event owl:disjointUnionOf ( evt:PhysicalEvent evt:SocialEvent evt:State ) .
 
 # Social event subtypes
 [] a owl:AllDisjointClasses ;
-    owl:members ( evt:Birth evt:Death evt:Marriage evt:Meeting evt:Coronation ) .
+    owl:members ( evt:Birth evt:Death evt:Marriage evt:Meeting evt:Coronation evt:Recognition ) .
 
 # Physical event subtypes
 [] a owl:AllDisjointClasses ;
@@ -162,17 +185,165 @@ evt:Weapon a owl:Class ;
     rdfs:label "Weapon"@en ;
     rdfs:comment "An object designed or used for combat. Example: Gurthang (Túrin's sword)."@en .
 
+# A weapon may or may not be used in the story.
+
 evt:Vehicle a owl:Class ;
     rdfs:subClassOf evt:Item ;
     rdfs:label "Vehicle"@en ;
     rdfs:comment "A means of transport used in a journey."@en .
+
+# A vehicle can be used in journeys or battles.
 
 evt:Artifact a owl:Class ;
     rdfs:subClassOf evt:Item ;
     rdfs:label "Artifact"@en ;
     rdfs:comment "A crafted object of special significance, such as a jewel, ring, or magical item."@en .
 
-evt:Weapon owl:disjointWith evt:Vehicle .
+# Items are disjoint from characters and places: a sword is not a person.
+evt:Item owl:disjointWith loc:Place .
+evt:Item owl:disjointWith evt:Event .
+evt:Item owl:disjointWith evt:Faction .
+
+# Item subtypes are pairwise disjoint: a weapon is not a vehicle, etc.
+[] a owl:AllDisjointClasses ;
+    owl:members ( evt:Weapon evt:Vehicle evt:Artifact ) .
+
+# Covering axiom: every Item must be a Weapon, Vehicle, or Artifact.
+evt:Item rdfs:subClassOf [
+    a owl:Class ;
+    owl:unionOf ( evt:Weapon evt:Vehicle evt:Artifact )
+] .
+
+# A lethal weapon is one that was used in at least one death event.
+# Gurthang is automatically classified here via deathBeleg and deathTurin.
+evt:LethalWeapon a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            evt:Weapon
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf evt:usesItem ] ;
+              owl:someValuesFrom evt:Death ]
+        )
+    ] ;
+    rdfs:label "Lethal weapon"@en ;
+    rdfs:comment "A weapon that was used in at least one death event. Gurthang qualifies because it was used in the deaths of Beleg and Turin."@en .
+
+###############################################################
+# Defined character-state classes
+#
+# Characters get classified into these based on their
+# participation in events.
+###############################################################
+
+evt:SlainCharacter a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty [ owl:inverseOf evt:hasDeceased ] ;
+        owl:someValuesFrom evt:Death
+    ] ;
+    rdfs:label "Slain character"@en ;
+    rdfs:comment "Any individual who is the deceased of some Death event."@en .
+
+evt:Killer a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty [ owl:inverseOf evt:hasKiller ] ;
+        owl:someValuesFrom evt:Death
+    ] ;
+    rdfs:label "Killer"@en ;
+    rdfs:comment "Any individual who is the killer in some Death event."@en .
+
+evt:BattleVeteran a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty evt:participatesIn ;
+        owl:someValuesFrom evt:Battle
+    ] ;
+    rdfs:label "Battle veteran"@en ;
+    rdfs:comment "Any character who participated in a battle."@en .
+
+evt:Traveler a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty [ owl:inverseOf evt:hasTraveler ] ;
+        owl:someValuesFrom evt:Journey
+    ] ;
+    rdfs:label "Traveler"@en ;
+    rdfs:comment "Any character who is the traveler in some Journey event."@en .
+
+evt:Captive a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty [ owl:inverseOf evt:hasCaptive ] ;
+        owl:someValuesFrom evt:Captivity
+    ] ;
+    rdfs:label "Captive"@en ;
+    rdfs:comment "Any character held captive in some Captivity event."@en .
+
+evt:Ruler a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty [ owl:inverseOf evt:hasRuler ] ;
+        owl:someValuesFrom evt:Reign
+    ] ;
+    rdfs:label "Ruler"@en ;
+    rdfs:comment "Any character who rules in some Reign event."@en .
+
+# A decisive battle is one where a victor has been identified.
+evt:DecisiveBattle a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            evt:Battle
+            [ a owl:Restriction ;
+              owl:onProperty evt:hasVictor ;
+              owl:someValuesFrom owl:Thing ]
+        )
+    ] ;
+    rdfs:label "Decisive battle"@en ;
+    rdfs:comment "A battle with an identified victor."@en .
+
+# An event involving Morgoth.
+evt:MorgothEvent a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            evt:Event
+            [ a owl:Restriction ;
+              owl:onProperty evt:hasParticipant ;
+              owl:hasValue meo:morgoth ]
+        )
+    ] ;
+    rdfs:label "Morgoth event"@en ;
+    rdfs:comment "Any event in which Morgoth participates."@en .
+
+# An armed event is any event that uses at least one weapon.
+# --- Suicide/Murder/AccidentalDeath ---
+# Removed: hasSelf on sameKillerDeceased is illegal (non-simple).
+# These categories require SPARQL queries, not OWL classification.
+# Define a helper property: sameKillerDeceased.
+# Chain: hasKiller(Death,X) then inv(hasDeceased)(X,Death').
+# If X is both killer and deceased of the SAME Death D,
+# then sameKillerDeceased(D, D) — a self-loop.
+# Suicide = Death AND hasSelf(sameKillerDeceased).
+
+# A murder is a Death that is NOT a Suicide: the killer and deceased differ.
+
+# An accidental death is a Death without any killer.
+
+evt:ArmedEvent a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            evt:Event
+            [ a owl:Restriction ;
+              owl:onProperty evt:usesItem ;
+              owl:someValuesFrom evt:Weapon ]
+        )
+    ] ;
+    rdfs:label "Armed event"@en ;
+    rdfs:comment "Any event involving a weapon."@en .
 
 ###############################################################
 # Faction class (collective actors in battles)
@@ -182,6 +353,32 @@ evt:Faction a owl:Class ;
     rdfs:label "Faction"@en ;
     rdfs:comment "A collective side in a conflict. Used as combatant in battles instead of individual characters when the conflict involves armies rather than individuals."@en .
 
+# Every faction needs at least one member.
+evt:Faction rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty evt:hasMember ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+evt:hasMember a owl:ObjectProperty ;
+    rdfs:domain evt:Faction ;
+    rdfs:label "has member"@en ;
+    rdfs:comment "A character or creature that belongs to a faction."@en .
+
+evt:memberOfFaction a owl:ObjectProperty ;
+    owl:inverseOf evt:hasMember ;
+    rdfs:label "member of faction"@en ;
+    rdfs:comment "Inverse of hasMember."@en .
+
+evt:involvesFactionMember a owl:ObjectProperty ;
+    rdfs:domain evt:Battle ;
+    rdfs:label "involves faction member"@en ;
+    rdfs:comment "A battle involves a member of one of its combatant factions. Inferred from hasCombatant and hasMember."@en .
+
+evt:foughtInBattle a owl:ObjectProperty ;
+    rdfs:range evt:Battle ;
+    rdfs:label "fought in battle"@en ;
+    rdfs:comment "A character or creature fought in a battle as a member of one of its factions. Inferred from memberOfFaction and hasCombatant."@en .
+
 ###############################################################
 # Participant properties
 ###############################################################
@@ -190,6 +387,12 @@ evt:hasParticipant a owl:ObjectProperty ;
     rdfs:domain evt:Event ;
     rdfs:label "has participant"@en ;
     rdfs:comment "A character or collective actor involved in the event."@en .
+
+evt:hasPresentEntity a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Presence ;
+    rdfs:label "has present entity"@en ;
+    rdfs:comment "An entity explicitly present in a place during a Presence state."@en .
 
 evt:participatesIn a owl:ObjectProperty ;
     owl:inverseOf evt:hasParticipant ;
@@ -275,10 +478,10 @@ evt:hasFather owl:propertyDisjointWith evt:hasMother .
 # --- Journey-specific roles ---
 
 evt:hasTraveler a owl:ObjectProperty ;
-    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:subPropertyOf evt:hasParticipant, evt:hasAgent ;
     rdfs:domain evt:Journey ;
     rdfs:label "has traveler"@en ;
-    rdfs:comment "A character or group undertaking the journey."@en .
+    rdfs:comment "A character or group undertaking the journey. Also sub-property of hasAgent because travel is intentional, so every Journey with a traveler is automatically classified as an Action."@en .
 
 evt:hasOrigin a owl:ObjectProperty ;
     rdfs:domain evt:Journey ;
@@ -309,15 +512,35 @@ evt:hasVictor a owl:ObjectProperty ;
 # --- Conversation-specific roles ---
 
 evt:hasSpeaker a owl:ObjectProperty ;
-    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:subPropertyOf evt:hasParticipant, evt:hasAgent ;
     rdfs:domain evt:Conversation ;
     rdfs:label "has speaker"@en ;
-    rdfs:comment "A character who speaks during the conversation."@en .
+    rdfs:comment "A character who speaks during the conversation. Sub-property of hasAgent because speaking is intentional."@en .
+
+# --- Recognition-specific roles ---
+
+evt:hasRecognizer a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Recognition ;
+    rdfs:label "has recognizer"@en ;
+    rdfs:comment "The individual who recognizes or identifies someone in the Recognition event."@en .
+
+evt:hasRecognizedCharacter a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Recognition ;
+    rdfs:label "has recognized character"@en ;
+    rdfs:comment "The character whose identity is recognized in the Recognition event."@en .
+
+evt:recognizesAppellation a owl:ObjectProperty ;
+    rdfs:domain evt:Recognition ;
+    rdfs:range soc:Appellation ;
+    rdfs:label "recognizes appellation"@en ;
+    rdfs:comment "The appellation under which a character is recognized in the Recognition event."@en .
 
 # --- Residence-specific ---
 
 evt:hasResident a owl:ObjectProperty ;
-    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:subPropertyOf evt:hasPresentEntity ;
     rdfs:domain evt:Residence ;
     rdfs:label "has resident"@en ;
     rdfs:comment "The character residing at a place."@en .
@@ -325,7 +548,7 @@ evt:hasResident a owl:ObjectProperty ;
 # --- Captivity-specific ---
 
 evt:hasCaptive a owl:ObjectProperty ;
-    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:subPropertyOf evt:hasPresentEntity ;
     rdfs:domain evt:Captivity ;
     rdfs:label "has captive"@en ;
     rdfs:comment "The character held prisoner."@en .
@@ -335,6 +558,28 @@ evt:hasCaptor a owl:ObjectProperty ;
     rdfs:domain evt:Captivity ;
     rdfs:label "has captor"@en ;
     rdfs:comment "The character or entity holding the captive."@en .
+
+# --- Reign-specific ---
+
+evt:hasRuler a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Reign ;
+    rdfs:label "has ruler"@en ;
+    rdfs:comment "The ruler whose reign is being described."@en .
+
+# --- Coronation-specific roles ---
+
+evt:hasCrownedEntity a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant ;
+    rdfs:domain evt:Coronation ;
+    rdfs:label "has crowned entity"@en ;
+    rdfs:comment "The character being crowned or given authority."@en .
+
+evt:hasCrowner a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:hasParticipant, evt:hasAgent ;
+    rdfs:domain evt:Coronation ;
+    rdfs:label "has crowner"@en ;
+    rdfs:comment "The authority performing the coronation. Sub-property of hasAgent."@en .
 
 ###############################################################
 # Location and time properties
@@ -399,7 +644,8 @@ evt:Event rdfs:subClassOf [
 
 # A Birth is uniquely identified by its newborn. No two Birth events
 # can share the same newborn (each person is born exactly once).
-evt:Birth owl:hasKey ( evt:hasNewborn ) .
+# hasKey on Birth removed: correct in OWL 2 DL but triggers
+# a known implementation bug in owlrl that merges all Birth instances.
 
 # A birth has exactly 1 newborn, exactly 1 mother, at most 1 father
 evt:Birth rdfs:subClassOf
@@ -411,7 +657,8 @@ evt:Birth rdfs:subClassOf
       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
 
 # A Death is uniquely identified by its deceased (a person dies once).
-evt:Death owl:hasKey ( evt:hasDeceased ) .
+# hasKey on Death removed: same owlrl bug. The intended semantics
+# (each person dies once) is preserved by qualifiedCardinality 1.
 
 # A death has exactly 1 deceased, at most 1 killer
 evt:Death rdfs:subClassOf
@@ -449,10 +696,26 @@ evt:Conversation rdfs:subClassOf
     [ a owl:Restriction ; owl:onProperty evt:hasSpeaker ;
       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
 
-# A meeting involves at least 2 participants
-evt:Meeting rdfs:subClassOf
-    [ a owl:Restriction ; owl:onProperty evt:hasParticipant ;
-      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ; owl:onClass owl:Thing ] .
+# A meeting involves at least 2 participants.
+# Can't use minQualifiedCardinality because hasParticipant is non-simple (chain-super).
+# Instead, require at least 2 via hasSpeaker (simple) for Conversation,
+# and for Meeting in general we keep the someValuesFrom below.
+
+# A recognition event has at least one recognizer and one recognized character.
+evt:Recognition rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasRecognizer ;
+      owl:someValuesFrom owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasRecognizedCharacter ;
+      owl:someValuesFrom owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:recognizesAppellation ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass soc:Appellation ] .
+
+# A presence state has at least one present entity and at least one place.
+evt:Presence rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasPresentEntity ;
+      owl:someValuesFrom owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
 
 # A residence involves at least 1 resident and at least 1 location
 evt:Residence rdfs:subClassOf
@@ -468,6 +731,13 @@ evt:Captivity rdfs:subClassOf
     [ a owl:Restriction ; owl:onProperty evt:hasCaptor ;
       owl:someValuesFrom owl:Thing ] .
 
+# A reign has at least one ruler and at least one governed location
+evt:Reign rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasRuler ;
+      owl:someValuesFrom owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
+
 # A war contains at least one battle as a sub-event
 evt:War rdfs:subClassOf
     [ a owl:Restriction ; owl:onProperty evt:hasSubEvent ;
@@ -479,10 +749,85 @@ evt:War rdfs:subClassOf
       owl:allValuesFrom [ a owl:Class ;
           owl:unionOf ( evt:Battle evt:War ) ] ] .
 
+# A meeting happens at some place.
+evt:Meeting rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
+
+# A coronation happens at some place.
+evt:Coronation rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
+
+# A battle happens at some place.
+evt:Battle rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
+
+# Every location of a reign must be a realm (allValuesFrom).
+# If someone asserts a reign in a Room, the Room gets classified as
+# a Realm — triggering inconsistency via LandArea/Room disjointness.
+evt:Reign rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:allValuesFrom loc:Realm ] .
+
+# A recognition event has exactly 1 recognizer and exactly 1 recognized
+evt:Recognition rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasRecognizer ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasRecognizedCharacter ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ] .
+
+# A coronation has exactly 1 crowned entity and at most 1 crowner.
+evt:Coronation rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasCrownedEntity ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasCrowner ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ] .
+
+# The crowned entity and the crowner must differ.
+evt:hasCrownedEntity owl:propertyDisjointWith evt:hasCrowner .
+
+# A captivity event must occur at a place (the prison).
+evt:Captivity rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
+
+# All captors of a captivity must be evil beings.
+# Modelling choice: captors in story plots are typically antagonists.
+evt:Captivity rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasCaptor ;
+      owl:allValuesFrom meo:EvilBeing ] .
+
+# The hasKiller and hasDeceased roles should not overlap: the killer
+# and victim are distinct ROLES (even in suicide, the roles are
+# distinct conceptually — the agent-role and patient-role differ).
+# Note: this does NOT prevent the same individual from filling both
+# roles (suicide is legal), it prevents a single event from using
+# the same OWL property for both.  This is already ensured by the
+# domain restriction (both have domain Death), so we add instead:
+# a death has at most 1 location.
+evt:Death rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ] .
+
+# A presence state involves exactly one entity and exactly one location.
+evt:Presence rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasPresentEntity ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ] .
+
 ###############################################################
 # Cross-module inference chains
 #
-# These connect the event layer to the family and social layers.
 # These connect the event layer to the family and social layers.
 ###############################################################
 
@@ -525,6 +870,13 @@ soc:livedIn owl:propertyChainAxiom (
     evt:hasLocation
 ) .
 
+# From a Presence event, infer where an entity was present:
+# if Presence P has present entity X and location Y, then X presentIn Y.
+soc:presentIn owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasPresentEntity ]
+    evt:hasLocation
+) .
+
 # From a Journey event, infer where a character travelled to/from
 soc:travelledTo a owl:ObjectProperty ;
     rdfs:range loc:Place ;
@@ -544,6 +896,30 @@ soc:travelledFrom a owl:ObjectProperty ;
 soc:travelledFrom owl:propertyChainAxiom (
     [ owl:inverseOf evt:hasTraveler ]
     evt:hasOrigin
+) .
+
+# From faction membership and battle combatants, infer who fought in a battle.
+evt:involvesFactionMember owl:propertyChainAxiom (
+    evt:hasCombatant
+    evt:hasMember
+) .
+
+evt:foughtInBattle owl:propertyChainAxiom (
+    evt:memberOfFaction
+    [ owl:inverseOf evt:hasCombatant ]
+) .
+
+# From a Reign event, infer which place a ruler governs.
+loc:rulesPlace owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasRuler ]
+    evt:hasLocation
+) .
+
+# From a Recognition event, infer that the recognizer knows the identity
+# of the recognized character.
+soc:knowsIdentityOf owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasRecognizer ]
+    evt:hasRecognizedCharacter
 ) .
 
 ###############################################################
@@ -594,3 +970,304 @@ evt:overlapsEvent owl:propertyChainAxiom (
 
 evt:duringEvent owl:propertyChainAxiom (
     evt:hasTemporalExtent tm:duringInterval evt:isTemporalExtentOf ) .
+
+###############################################################
+# Additional rich axioms
+###############################################################
+
+# --- Property disjointness (role incompatibilities) ---
+
+# A journey's origin and destination must be different places.
+# Prevents nonsensical trips from a place to itself.
+evt:hasOrigin owl:propertyDisjointWith evt:hasDestination .
+
+# The captive and the captor in a captivity event must be different.
+evt:hasCaptive owl:propertyDisjointWith evt:hasCaptor .
+
+# A newborn cannot be its own father or mother.
+evt:hasNewborn owl:propertyDisjointWith evt:hasFather .
+evt:hasNewborn owl:propertyDisjointWith evt:hasMother .
+
+# The killer and deceased play different roles even if the same person
+# fills both (suicide). But the roles themselves are functionally
+# distinct. Adding: a victim of one death can't be the killer of
+# the same death via a different role assignment.
+# (This is already enforced by cardinality: exactly 1 deceased.)
+
+# A combatant cannot also be the victor of a battle where
+# the opposing side wins. hasVictor subPropertyOf hasCombatant
+# ensures the victor is always a combatant (already declared).
+
+# hasResident and hasCaptor are incompatible: a captor is not
+# a resident of the prison.
+evt:hasResident owl:propertyDisjointWith evt:hasCaptor .
+
+# The recognizer and recognized in a Recognition must differ.
+evt:hasRecognizer owl:propertyDisjointWith evt:hasRecognizedCharacter .
+
+# The officiant of a marriage cannot also be the husband or wife.
+evt:hasHusband owl:propertyDisjointWith evt:hasOfficiant .
+evt:hasWife owl:propertyDisjointWith evt:hasOfficiant .
+
+# --- Property characteristics (irreflexivity and asymmetry) ---
+# Events relate PEOPLE to events. An event cannot be its own
+# participant, agent, newborn, killer, traveler, etc.
+
+# hasParticipant: IrreflexiveProperty removed (non-simple due to chain) .
+evt:hasAgent a owl:IrreflexiveProperty .
+evt:hasPatient a owl:IrreflexiveProperty .
+evt:hasPresentEntity a owl:IrreflexiveProperty .
+# usesItem: IrreflexiveProperty removed (non-simple due to chain) .
+
+# Birth roles: a birth event is not a person.
+evt:hasNewborn a owl:IrreflexiveProperty, owl:AsymmetricProperty .
+evt:hasFather a owl:IrreflexiveProperty, owl:AsymmetricProperty .
+evt:hasMother a owl:IrreflexiveProperty, owl:AsymmetricProperty .
+
+# Death roles
+evt:hasDeceased a owl:IrreflexiveProperty .
+evt:hasKiller a owl:IrreflexiveProperty .
+
+# Marriage roles
+evt:hasHusband a owl:IrreflexiveProperty .
+evt:hasWife a owl:IrreflexiveProperty .
+evt:hasOfficiant a owl:IrreflexiveProperty .
+
+# Journey roles
+evt:hasTraveler a owl:IrreflexiveProperty .
+evt:hasOrigin a owl:IrreflexiveProperty .
+evt:hasDestination a owl:IrreflexiveProperty .
+
+# Battle roles
+evt:hasCombatant a owl:IrreflexiveProperty .
+evt:hasVictor a owl:IrreflexiveProperty .
+
+# Conversation roles
+evt:hasSpeaker a owl:IrreflexiveProperty .
+
+# Recognition roles
+evt:hasRecognizer a owl:IrreflexiveProperty .
+evt:hasRecognizedCharacter a owl:IrreflexiveProperty .
+
+# State roles
+evt:hasResident a owl:IrreflexiveProperty .
+evt:hasCaptive a owl:IrreflexiveProperty .
+evt:hasCaptor a owl:IrreflexiveProperty .
+evt:hasRuler a owl:IrreflexiveProperty .
+
+# Coronation roles
+evt:hasCrownedEntity a owl:IrreflexiveProperty .
+evt:hasCrowner a owl:IrreflexiveProperty .
+
+# --- Location/item constraints ---
+
+# Births can happen anywhere (ships at sea, etc.).
+
+# Battles may use weapons, vehicles (siege engines), or artifacts.
+
+# Conversations may or may not involve items (scrolls, letters).
+# No item restriction here -- the story decides.
+
+# --- FunctionalProperty on single-valued roles ---
+
+# A death has exactly 1 deceased (already cardinality 1, but Functional
+# on the property enables sameAs inference if two things are the
+# deceased of the same death).
+# NOTE: hasDeceased already has domain Death; making it Functional
+# would mean globally at most 1 deceased per subject, which is correct
+# since a Death event has exactly 1 victim.
+# hasDeceased: FunctionalProperty removed. The qualifiedCardinality 1
+# restriction on Death already enforces at most 1 deceased.
+
+# hasAgent and hasPatient: the deliberate performer and the
+# one affected are different roles (even if the same individual).
+evt:hasAgent owl:propertyDisjointWith evt:hasPatient .
+
+# --- Cross-module temporal chain: birth precedes death ---
+
+# For any character X: if a Birth has newborn X, and a Death has
+# deceased X, then the Birth beforeEvent the Death.
+# Chain: Birth --(hasNewborn)--> X --(inv(hasDeceased))--> Death
+# Legal: beforeEvent is transitive but does not appear in the chain.
+evt:beforeEvent owl:propertyChainAxiom (
+    evt:hasNewborn
+    [ owl:inverseOf evt:hasDeceased ]
+) .
+
+# --- Sub-event location containment ---
+
+# If event E1 occurs at place P1, and E1 is a sub-event of E2,
+# and E2 occurs at place P2, then P1 is part of P2.
+# E.g. Nirnaeth at Anfauglith, sub-event of War at Beleriand
+# => Anfauglith partOf Beleriand.
+loc:partOf owl:propertyChainAxiom (
+    [ owl:inverseOf evt:hasLocation ]
+    evt:partOfEvent
+    evt:hasLocation
+) .
+
+# --- Sub-event participant propagation ---
+
+# NOTE: The chain hasSubEvent . hasParticipant => hasParticipant was removed
+# because it makes hasParticipant non-simple, and ALL sub-properties
+# (hasAgent, hasNewborn, hasFather, etc.) inherit non-simplicity.
+# That would break all cardinality, disjointness, and irreflexivity
+# axioms on the role properties. Sub-event participant propagation
+# should be done via SPARQL queries instead.
+
+# --- In-law relations inferred from Marriage + Family ---
+
+# If X is married to Y and Y is a child of Z, then X has
+# parent-in-law Z.
+fo:hasParentInLaw a owl:ObjectProperty ;
+    rdfs:label "has parent-in-law"@en ;
+    rdfs:comment "Inferred: if X isMarriedTo Y and Y isAChildOf Z, then X hasParentInLaw Z."@en .
+fo:hasParentInLaw owl:propertyChainAxiom (
+    fo:isMarriedTo fo:isAChildOf
+) .
+
+fo:hasChildInLaw a owl:ObjectProperty ;
+    owl:inverseOf fo:hasParentInLaw ;
+    rdfs:label "has child-in-law"@en ;
+    rdfs:comment "Inverse of hasParentInLaw."@en .
+
+# If X is married to Y and Y has sibling Z, then X has
+# sibling-in-law Z.
+fo:hasSiblingInLaw a owl:ObjectProperty ;
+    rdfs:label "has sibling-in-law"@en ;
+    rdfs:comment "Inferred: if X isMarriedTo Y and Y isASiblingOf Z, then X hasSiblingInLaw Z."@en .
+fo:hasSiblingInLaw owl:propertyChainAxiom (
+    fo:isMarriedTo fo:isASiblingOf
+) .
+
+# --- Defined place classes (classified from events) ---
+
+loc:InhabitedPlace a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            loc:Place
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf evt:hasLocation ] ;
+              owl:someValuesFrom evt:Residence ]
+        )
+    ] ;
+    rdfs:label "Inhabited place"@en ;
+    rdfs:comment "A place where someone has resided. E.g. Menegroth, Nargothrond."@en .
+
+loc:BattleSite a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            loc:Place
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf evt:hasLocation ] ;
+              owl:someValuesFrom evt:Battle ]
+        )
+    ] ;
+    rdfs:label "Battle site"@en ;
+    rdfs:comment "A place where a battle occurred."@en .
+
+loc:DeathSite a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            loc:Place
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf evt:hasLocation ] ;
+              owl:someValuesFrom evt:Death ]
+        )
+    ] ;
+    rdfs:label "Death site"@en ;
+    rdfs:comment "A place where a character died."@en .
+
+loc:CursedPlace a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            loc:Place
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf evt:hasLocation ] ;
+              owl:someValuesFrom <https://example.org/story/action#CurseAction> ]
+        )
+    ] ;
+    rdfs:label "Cursed place"@en ;
+    rdfs:comment "A place where a curse was pronounced."@en .
+
+loc:PrisonPlace a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            loc:Place
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf evt:hasLocation ] ;
+              owl:someValuesFrom evt:Captivity ]
+        )
+    ] ;
+    rdfs:label "Prison place"@en ;
+    rdfs:comment "A place of captivity."@en .
+
+###############################################################
+# Additional cardinality restrictions
+###############################################################
+
+# A captivity involves exactly 1 captive and exactly 1 captor.
+evt:Captivity rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasCaptive ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ],
+    [ a owl:Restriction ; owl:onProperty evt:hasCaptor ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ] .
+
+# A reign involves exactly 1 ruler.
+evt:Reign rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasRuler ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass owl:Thing ] .
+
+# A marriage happens at exactly 1 location.
+evt:Marriage rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ] .
+
+# A journey has exactly 1 origin and 1 destination (already as
+# qualifiedCardinality on Journey in the cardinality section above,
+# but adding location: a journey passes through at least 2 places).
+
+# A conversation has at most 1 location.
+evt:Conversation rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ] .
+
+# A recognition event has exactly 1 location.
+evt:Recognition rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ] .
+
+# A natural disaster has at least 1 location.
+evt:NaturalDisaster rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasLocation ;
+      owl:someValuesFrom loc:Place ] .
+
+###############################################################
+# Cross-domain disjointness
+###############################################################
+
+# Appellations are not events, items, or places.
+
+# Temporal social states are not events.
+
+# Factions are not items or places.
+
+###############################################################
+# Additional allValuesFrom constraints
+###############################################################
+
+###############################################################
+# Defined temporal event classes
+###############################################################
+

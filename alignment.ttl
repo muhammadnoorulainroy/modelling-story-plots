@@ -1,0 +1,252 @@
+#
+# Alignment Ontology
+#
+# Compatibility bridges between the legacy example vocabulary and the
+# final modular story-plot ontology.
+#
+
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+
+@prefix foh:  <https://purl.org/family/> .
+@prefix fo:   <http://purl.org/family/> .
+@prefix meoh: <https://purl.org/meo/> .
+@prefix meo:  <http://purl.org/meo/> .
+@prefix lloc: <https://purl.org/location/> .
+@prefix loc:  <https://example.org/story/place#> .
+@prefix lsoc: <https://purl.org/social/relations/> .
+@prefix soc:  <https://example.org/story/social#> .
+@prefix levt: <https://purl.org/event/> .
+@prefix evt:  <https://example.org/story/event#> .
+@prefix lplot: <https://purl.org/plot/> .
+@prefix plot: <https://example.org/story/plot#> .
+@prefix tm:   <https://example.org/story/time#> .
+@prefix narn: <https://purl.org/narn/> .
+
+<https://example.org/story/alignment> a owl:Ontology ;
+    owl:imports <fo.ttl>, <meo.ttl>, <place.ttl>, <soc.ttl>, <time.ttl>, <event.ttl>, <plot.ttl> ;
+    rdfs:label "Alignment Ontology"@en ;
+    dct:title "Alignment Ontology"@en ;
+    rdfs:comment "Compatibility bridges that connect the legacy Narn example vocabulary to the final modular ontology."@en ;
+    dct:created "2026-04-05T00:00:00Z"^^xsd:dateTime .
+
+###############################################################
+# Family and Middle-earth vocabularies
+###############################################################
+
+foh:Male a owl:Class ;
+    owl:equivalentClass fo:Male .
+
+foh:Female a owl:Class ;
+    owl:equivalentClass fo:Female .
+
+foh:isMarriedTo a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isMarriedTo .
+
+foh:isABrotherOf a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isABrotherOf .
+
+foh:isASisterOf a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isASisterOf .
+
+foh:isSisterOf a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isASisterOf .
+
+foh:isASonOf a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isASonOf .
+
+foh:isADaughterOf a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isADaughterOf .
+
+foh:isTheFatherOf a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isTheFatherOf .
+
+foh:isTheMotherOf a owl:ObjectProperty ;
+    owl:equivalentProperty fo:isTheMotherOf .
+
+meoh:Adan a owl:Class ;
+    owl:equivalentClass meo:Adan .
+
+meoh:Atan a owl:Class ;
+    owl:equivalentClass meo:Atan .
+
+meoh:Elda a owl:Class ;
+    owl:equivalentClass meo:Elda .
+
+meoh:Eruhin a owl:Class ;
+    owl:equivalentClass meo:Eruhin .
+
+meoh:Torog a owl:Class ;
+    owl:equivalentClass meo:Torog .
+
+meoh:morgoth owl:sameAs meo:morgoth .
+
+###############################################################
+# Place vocabulary
+###############################################################
+
+lloc:Place a owl:Class ;
+    owl:equivalentClass loc:Place .
+
+lloc:Realm a owl:Class ;
+    owl:equivalentClass loc:Realm .
+
+lloc:City a owl:Class ;
+    owl:equivalentClass loc:City .
+
+lloc:Forest a owl:Class ;
+    owl:equivalentClass loc:Forest .
+
+lloc:Hill a owl:Class ;
+    rdfs:subClassOf loc:WildArea .
+
+lloc:Valley a owl:Class ;
+    rdfs:subClassOf loc:LandArea .
+
+lloc:isAPartOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf loc:partOf .
+
+###############################################################
+# Social vocabulary
+###############################################################
+
+lsoc:hasFriend a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:friendOf .
+
+lsoc:wasTheBestFriendOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:friendOf, soc:companionOf .
+
+lsoc:hated a owl:ObjectProperty ;
+    owl:equivalentProperty soc:hated .
+
+lsoc:loved a owl:ObjectProperty ;
+    owl:equivalentProperty soc:loved .
+
+lsoc:served a owl:ObjectProperty ;
+    owl:equivalentProperty soc:serves .
+
+lsoc:livedIn a owl:ObjectProperty ;
+    owl:equivalentProperty soc:livedIn .
+
+lsoc:livedin a owl:ObjectProperty ;
+    owl:equivalentProperty soc:livedIn .
+
+lsoc:isMarriedTo a owl:ObjectProperty ;
+    rdfs:subPropertyOf fo:isMarriedTo .
+
+lsoc:wasTheKingOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:rulesOver .
+
+###############################################################
+# Event and time vocabulary
+###############################################################
+
+levt:Birth a owl:Class ;
+    owl:equivalentClass evt:Birth .
+
+levt:Battle a owl:Class ;
+    owl:equivalentClass evt:Battle .
+
+levt:Travel a owl:Class ;
+    owl:equivalentClass evt:Journey .
+
+levt:Instant a owl:Class ;
+    owl:equivalentClass tm:Instant .
+
+levt:begets a owl:ObjectProperty ;
+    owl:equivalentProperty evt:hasNewborn .
+
+levt:hasTraveller a owl:ObjectProperty ;
+    owl:equivalentProperty evt:hasTraveler .
+
+levt:precedes a owl:ObjectProperty ;
+    rdfs:subPropertyOf evt:beforeEvent .
+
+# levt:before is NOT mapped to tm:occursBefore because the teacher's
+# narn.ttl uses evnt:before to link an instant to an EVENT (e.g.
+# _:bnode evnt:before narn:NienorBirth). Since tm:occursBefore has
+# rdfs:range tm:Instant, mapping would force NienorBirth to be
+# classified as an Instant, which is semantically wrong.
+levt:before a owl:ObjectProperty ;
+    rdfs:label "before (legacy)"@en ;
+    rdfs:comment "Teacher's temporal ordering. Not aligned to tm:occursBefore because the teacher's usage mixes instant-to-event links."@en .
+
+###############################################################
+# Plot vocabulary
+###############################################################
+
+lplot:Story a owl:Class ;
+    owl:equivalentClass plot:Story .
+
+lplot:StorySection a owl:Class ;
+    owl:equivalentClass plot:StorySection .
+
+lplot:IntroductorySection a owl:Class ;
+    rdfs:subClassOf plot:Prologue .
+
+lplot:EpicTale a owl:Class ;
+    rdfs:subClassOf plot:Story .
+
+lplot:FantasyStory a owl:Class ;
+    rdfs:subClassOf plot:Story .
+
+lplot:PlotEvent a owl:Class ;
+    owl:equivalentClass plot:PlotEvent .
+
+lplot:Battle a owl:Class ;
+    rdfs:subClassOf plot:PlotEvent .
+
+lplot:Capture a owl:Class ;
+    rdfs:subClassOf plot:PlotEvent .
+
+lplot:Curse a owl:Class ;
+    rdfs:subClassOf plot:PlotEvent .
+
+lplot:Imprisonment a owl:Class ;
+    rdfs:subClassOf plot:PlotEvent .
+
+lplot:PlotLocation a owl:Class ;
+    rdfs:subClassOf loc:Place .
+
+lplot:hasStoryPart a owl:ObjectProperty ;
+    rdfs:subPropertyOf plot:hasSection .
+
+lplot:hasPlotEvent a owl:ObjectProperty ;
+    rdfs:subPropertyOf plot:containsPlotEvent .
+
+lplot:startsWith a owl:ObjectProperty ;
+    rdfs:subPropertyOf plot:startsWith .
+
+lplot:before a owl:ObjectProperty ;
+    rdfs:subPropertyOf plot:precedesPlotEvent .
+
+lplot:leadsTo a owl:ObjectProperty ;
+    rdfs:subPropertyOf plot:leadsTo .
+
+###############################################################
+# Temporal: evnt:starts (event -> starting instant)
+###############################################################
+
+# The teacher's narn.ttl uses evnt:starts to link an event to the
+# instant it begins. In the project ontology, this is modeled via
+# the two-step chain evt:hasTemporalExtent -> tm:startsAt.
+# The chain below makes this derivation explicit: for any event
+# with a hasTemporalExtent and startsAt, levt:starts is inferred.
+levt:starts a owl:ObjectProperty ;
+    rdfs:label "starts"@en ;
+    rdfs:comment "Links an event to the instant it starts at. Derived from hasTemporalExtent and startsAt."@en .
+
+levt:starts owl:propertyChainAxiom (
+    evt:hasTemporalExtent
+    tm:startsAt
+) .
+
+###############################################################
+# Story-specific legacy typing
+###############################################################
+
+narn:Lócë a owl:Class ;
+    rdfs:subClassOf meo:Lócë .

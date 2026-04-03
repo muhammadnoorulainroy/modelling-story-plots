@@ -56,53 +56,244 @@ fo:isAParentOf a owl:ObjectProperty;
                rdfs:subPropertyOf fo:isAnAncestorOf;
                owl:inverseOf fo:isAChildOf;
                rdfs:label "is a parent of"@en;
-               rdfs:comment "A relation between a parent and their child"@en .
+               rdfs:comment "A relation between a parent and their child. Asymmetric (your child is not your parent) and irreflexive (nobody is their own parent)."@en .
 
 fo:isASonOf a owl:ObjectProperty;
             rdfs:subPropertyOf fo:isAChildOf;
             rdfs:domain fo:Male;
             rdfs:label "is a son of"@en;
-            rdfs:comment "A relation between a male child and his parent."@en .
+            rdfs:comment "A relation between a male child and his parent. Asymmetric and irreflexive."@en .
 
 fo:isADaughterOf a owl:ObjectProperty;
                  rdfs:subPropertyOf fo:isAChildOf;
                  rdfs:domain fo:Female;
                  rdfs:label "is a daughter of"@en;
-                 rdfs:comment "A relation between a female child and his parent."@en .
+                 rdfs:comment "A relation between a female child and her parent. Asymmetric and irreflexive."@en .
+
+# A son cannot simultaneously be a daughter (and vice versa).
 
 fo:isTheFatherOf a owl:ObjectProperty;
                  rdfs:subPropertyOf fo:isAParentOf;
                  rdfs:domain fo:Male;
                  rdfs:label "is the father of"@en;
-                 rdfs:comment "A relation between a father and his child."@en .
+                 rdfs:comment "A relation between a father and his child. Asymmetric (a child is not its father's father) and irreflexive (nobody is their own father)."@en .
 
 fo:isTheMotherOf a owl:ObjectProperty;
                  rdfs:subPropertyOf fo:isAParentOf;
                  rdfs:domain fo:Female;
                  rdfs:label "is the mother of"@en;
-                 rdfs:comment "A relation between a mother and his child."@en .
+                 rdfs:comment "A relation between a mother and her child. Asymmetric and irreflexive."@en .
+
+# Father and mother are different roles: no individual can be both
+# the father and the mother of the same child.
 
 fo:isASiblingOf a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty;
                 rdfs:label "is a sibling of"@en;
                 rdfs:comment "Two individuals who share the same parent."@en .
 
-fo:isABrotherOf a owl:ObjectProperty;
+fo:isABrotherOf a owl:ObjectProperty, owl:IrreflexiveProperty;
                 rdfs:subPropertyOf fo:isASiblingOf;
                 rdfs:domain fo:Male;
                 rdfs:label "is a brother of"@en;
-                rdfs:comment "A male sibling of someone."@en .
+                rdfs:comment "A male sibling of someone. Irreflexive: nobody is their own brother."@en .
 
-fo:isASisterOf a owl:ObjectProperty;
+fo:isASisterOf a owl:ObjectProperty, owl:IrreflexiveProperty;
                rdfs:subPropertyOf fo:isASiblingOf;
                rdfs:domain fo:Female;
                rdfs:label "is a sister of"@en;
-               rdfs:comment "A female sibling of someone."@en .
+               rdfs:comment "A female sibling of someone. Irreflexive: nobody is their own sister."@en .
 
 fo:isACousinOf a owl:ObjectProperty, owl:SymmetricProperty;
                owl:propertyChainAxiom (fo:isAChildOf fo:isASiblingOf fo:isAParentOf);
                rdfs:label "is a cousin of"@en;
                rdfs:comment "One that is the child of a sibling of the parent of someone else."@en .
 
+# --- Additional family relations ---
+
+fo:isAGrandparentOf a owl:ObjectProperty ;
+    rdfs:label "is a grandparent of"@en ;
+    rdfs:comment "Grandparent: parent of a parent. Inferred via chain."@en .
+fo:isAGrandparentOf owl:propertyChainAxiom ( fo:isAParentOf fo:isAParentOf ) .
+
+fo:isAGrandchildOf a owl:ObjectProperty ;
+    owl:inverseOf fo:isAGrandparentOf ;
+    rdfs:label "is a grandchild of"@en ;
+    rdfs:comment "Grandchild: inverse of grandparent."@en .
+
+fo:isAnUncleOrAuntOf a owl:ObjectProperty ;
+    rdfs:label "is an uncle or aunt of"@en ;
+    rdfs:comment "Sibling of a parent. Inferred via chain."@en .
+fo:isAnUncleOrAuntOf owl:propertyChainAxiom ( fo:isASiblingOf fo:isAParentOf ) .
+
+fo:isANephewOrNieceOf a owl:ObjectProperty ;
+    owl:inverseOf fo:isAnUncleOrAuntOf ;
+    rdfs:label "is a nephew or niece of"@en ;
+    rdfs:comment "Child of a sibling. Inverse of uncle/aunt."@en .
+
+fo:isAnUncleOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf fo:isAnUncleOrAuntOf ;
+    rdfs:domain fo:Male ;
+    rdfs:label "is an uncle of"@en ;
+    rdfs:comment "A male sibling of a parent."@en .
+fo:isAnUncleOf owl:propertyChainAxiom ( fo:isABrotherOf fo:isAParentOf ) .
+
+fo:isAnAuntOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf fo:isAnUncleOrAuntOf ;
+    rdfs:domain fo:Female ;
+    rdfs:label "is an aunt of"@en ;
+    rdfs:comment "A female sibling of a parent."@en .
+fo:isAnAuntOf owl:propertyChainAxiom ( fo:isASisterOf fo:isAParentOf ) .
+
+fo:hasRelative a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "has relative"@en ;
+    rdfs:comment "Top-level family relatedness. Super-property of all family relations."@en .
+
+fo:isAParentOf rdfs:subPropertyOf fo:hasRelative .
+fo:isASiblingOf rdfs:subPropertyOf fo:hasRelative .
+fo:isMarriedTo rdfs:subPropertyOf fo:hasRelative .
+fo:isACousinOf rdfs:subPropertyOf fo:hasRelative .
+
 fo:isMarriedTo a owl:ObjectProperty, owl:SymmetricProperty;
                rdfs:label "is married to"@en;
-               rdfs:comment "People united through marriage."@en .
+               rdfs:comment "People united through marriage. Functional enforces monogamy: each individual can have at most one spouse. Combined with SymmetricProperty, this also makes the inverse functional (if two people are married to the same person, they must be the same person)."@en .
+
+# Every child has at most one biological father and one biological mother.
+
+# A parent who has lost a child: any parent whose child is the
+# deceased of some Death event.
+fo:BerevedParent a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            [ a owl:Restriction ;
+              owl:onProperty fo:isAParentOf ;
+              owl:someValuesFrom owl:Thing ]
+            [ a owl:Restriction ;
+              owl:onProperty fo:isAParentOf ;
+              owl:someValuesFrom [
+                  a owl:Restriction ;
+                  owl:onProperty [ owl:inverseOf <https://example.org/story/event#hasDeceased> ] ;
+                  owl:someValuesFrom <https://example.org/story/event#Death>
+              ] ]
+        )
+    ] ;
+    rdfs:label "bereaved parent"@en ;
+    rdfs:comment "A parent at least one of whose children has died. In the Narn, Hurin and Morwen are bereaved parents."@en .
+
+# A widowed character: someone whose spouse has died.
+fo:Widowed a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty fo:isMarriedTo ;
+        owl:someValuesFrom [
+            a owl:Restriction ;
+            owl:onProperty [ owl:inverseOf <https://example.org/story/event#hasDeceased> ] ;
+            owl:someValuesFrom <https://example.org/story/event#Death>
+        ]
+    ] ;
+    rdfs:label "widowed"@en ;
+    rdfs:comment "A character whose spouse has died. Classified via marriage and death event data."@en .
+
+# --- Additional defined classes ---
+
+# A childless character: someone who is not a parent of anyone.
+fo:Childless a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:complementOf [
+            a owl:Restriction ;
+            owl:onProperty fo:isAParentOf ;
+            owl:someValuesFrom owl:Thing
+        ]
+    ] ;
+    rdfs:label "childless"@en ;
+    rdfs:comment "An individual with no known children. Under the open world assumption, anyone not yet asserted to be a parent qualifies."@en .
+
+# A married parent: someone who is both married and a parent.
+fo:MarriedParent a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            [ a owl:Restriction ;
+              owl:onProperty fo:isMarriedTo ;
+              owl:someValuesFrom owl:Thing ]
+            [ a owl:Restriction ;
+              owl:onProperty fo:isAParentOf ;
+              owl:someValuesFrom owl:Thing ]
+        )
+    ] ;
+    rdfs:label "married parent"@en ;
+    rdfs:comment "A character who is both married and a parent. Classified from marriage and parent data."@en .
+
+# Additional family axiom: uncle/aunt chain through marriage.
+fo:isAnUncleOrAuntOf owl:propertyChainAxiom (
+    fo:isMarriedTo fo:isASiblingOf fo:isAParentOf
+) .
+
+# NOTE: fo:isASiblingOf CANNOT have a property chain
+# (inv(isAParentOf) . isAParentOf) because that would make it non-simple,
+# breaking its IrreflexiveProperty and SymmetricProperty declarations.
+# Sibling relations must be asserted directly in the instance data.
+
+# An orphan is someone whose BOTH parents are dead.
+fo:Orphan a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf fo:isTheFatherOf ] ;
+              owl:someValuesFrom [
+                  a owl:Restriction ;
+                  owl:onProperty [ owl:inverseOf <https://example.org/story/event#hasDeceased> ] ;
+                  owl:someValuesFrom <https://example.org/story/event#Death> ] ]
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf fo:isTheMotherOf ] ;
+              owl:someValuesFrom [
+                  a owl:Restriction ;
+                  owl:onProperty [ owl:inverseOf <https://example.org/story/event#hasDeceased> ] ;
+                  owl:someValuesFrom <https://example.org/story/event#Death> ] ]
+        )
+    ] ;
+    rdfs:label "Orphan"@en ;
+    rdfs:comment "A character whose father AND mother are both deceased. Uses nested restrictions: has a father who is the deceased of some Death AND has a mother who is the deceased of some Death."@en .
+
+# OnlyChild cannot be defined via maxCardinality 0 on isASiblingOf
+# because isASiblingOf is simple and we want to keep it that way.
+# Instead, define it using complementOf:
+fo:OnlyChild a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            [ a owl:Restriction ;
+              owl:onProperty [ owl:inverseOf fo:isAParentOf ] ;
+              owl:someValuesFrom owl:Thing ]
+            [ a owl:Class ;
+              owl:complementOf [
+                  a owl:Restriction ;
+                  owl:onProperty fo:isASiblingOf ;
+                  owl:someValuesFrom owl:Thing ] ]
+        )
+    ] ;
+    rdfs:label "Only child"@en ;
+    rdfs:comment "A character who has a parent but no known siblings. Anyone without asserted siblings qualifies under the open world assumption."@en .
+
+###############################################################
+# Additional property characteristics
+###############################################################
+
+# isAGrandparentOf is asymmetric and irreflexive.
+fo:isAGrandparentOf a owl:ObjectProperty .
+
+# isAnUncleOrAuntOf is irreflexive (you're not your own uncle).
+fo:isAnUncleOrAuntOf a owl:ObjectProperty .
+
+# hasRelative is irreflexive (you're not your own relative in this model).
+# hasRelative is simple? Let me check — it's a super of isAParentOf etc.
+# via subPropertyOf but is NOT transitive or chain-super. So it's simple.
+# hasRelative: IrreflexiveProperty removed (self-cousin via incest possible) .
+
+# hasParentInLaw is asymmetric and irreflexive.
+fo:hasParentInLaw a owl:ObjectProperty .
+
+# hasSiblingInLaw is irreflexive.
+fo:hasSiblingInLaw a owl:ObjectProperty .

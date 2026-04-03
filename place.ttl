@@ -62,20 +62,52 @@ loc:City a owl:Class ;
     rdfs:label "City"@en ;
     rdfs:comment "A large settlement with political importance."@en .
 
+# A city is the capital of at most one realm.
+loc:City rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:isCapitalOf ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Realm ] .
+
 loc:Town a owl:Class ;
     rdfs:subClassOf loc:Settlement ;
     rdfs:label "Town"@en ;
     rdfs:comment "Bigger than a hamlet, smaller than a city."@en .
+
+# A town is never the capital of a realm (only cities can be capitals).
+loc:Town rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:isCapitalOf ;
+      owl:allValuesFrom owl:Nothing ] .
 
 loc:Hamlet a owl:Class ;
     rdfs:subClassOf loc:Settlement ;
     rdfs:label "Hamlet"@en ;
     rdfs:comment "A very small settlement."@en .
 
+# A hamlet is never the capital of a realm.
+loc:Hamlet rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:isCapitalOf ;
+      owl:allValuesFrom owl:Nothing ] .
+
 loc:Fortress a owl:Class ;
     rdfs:subClassOf loc:Settlement ;
     rdfs:label "Fortress"@en ;
     rdfs:comment "A fortified settlement or stronghold, like Nargothrond or Menegroth. Not disjoint with City since some fortresses are city-sized."@en .
+
+# A fortress has at least one room (it's a fortified structure).
+loc:Fortress rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:hasPart ;
+      owl:someValuesFrom loc:Room ] .
+
+# A fortified city: both a Fortress and a City.
+# Menegroth is typed as Fortress and has isCapitalOf Doriath, so it
+# would fall into this class if it were also typed as City.
+loc:FortifiedCity a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf ( loc:Fortress loc:City )
+    ] ;
+    rdfs:label "Fortified city"@en ;
+    rdfs:comment "A settlement that is both a fortress and a city."@en .
 
 # --- Wild areas ---
 
@@ -94,15 +126,24 @@ loc:Forest a owl:Class ;
     rdfs:label "Forest"@en ;
     rdfs:comment "A large wooded area. E.g. Brethil in the Narn."@en .
 
+# A forest is never part of a building (forests are outdoor wild areas).
+loc:Forest rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:partOf ;
+      owl:allValuesFrom [ a owl:Class ; owl:complementOf loc:Building ] ] .
+
 loc:MountainRange a owl:Class ;
     rdfs:subClassOf loc:WildArea ;
     rdfs:label "Mountain range"@en ;
     rdfs:comment "A chain of mountains."@en .
 
+# Mountain ranges are wild areas (disjoint with Settlement via LandArea covering).
+
 loc:Plain a owl:Class ;
     rdfs:subClassOf loc:WildArea ;
     rdfs:label "Plain"@en ;
     rdfs:comment "Flat open land."@en .
+
+# Plains are open land.
 
 # --- Buildings ---
 
@@ -110,6 +151,16 @@ loc:Building a owl:Class ;
     rdfs:subClassOf loc:Place ;
     rdfs:label "Building"@en ;
     rdfs:comment "A structure with walls and a roof."@en .
+
+# A building has at least one room.
+loc:Building rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:hasPart ;
+      owl:someValuesFrom loc:Room ] .
+
+# A building must be part of some land area (not floating in water).
+loc:Building rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:partOf ;
+      owl:someValuesFrom loc:LandArea ] .
 
 loc:Room a owl:Class ;
     rdfs:subClassOf loc:Place ;
@@ -133,15 +184,31 @@ loc:River a owl:Class ;
     rdfs:label "River"@en ;
     rdfs:comment "A flowing watercourse."@en .
 
+# A river is adjacent to at least 2 land areas (its banks).
+loc:River rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:adjacentTo ;
+      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:LandArea ] .
+
 loc:Lake a owl:Class ;
     rdfs:subClassOf loc:WaterArea ;
     rdfs:label "Lake"@en ;
     rdfs:comment "Standing water surrounded by land."@en .
 
+# A lake is surrounded by land: all adjacent places are land areas.
+loc:Lake rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:adjacentTo ;
+      owl:allValuesFrom loc:LandArea ] .
+
 loc:Sea a owl:Class ;
     rdfs:subClassOf loc:WaterArea ;
     rdfs:label "Sea"@en ;
     rdfs:comment "A large body of salt water."@en .
+
+# A sea is adjacent to at least one land area (coastline).
+loc:Sea rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:adjacentTo ;
+      owl:someValuesFrom loc:LandArea ] .
 
 # --- Roads ---
 
@@ -165,17 +232,39 @@ loc:Realm a owl:Class ;
 [] a owl:AllDisjointClasses ;
     owl:members ( loc:LandArea loc:WaterArea loc:Building loc:Room loc:Road ) .
 
-# LandArea subtypes
-[] a owl:AllDisjointClasses ;
-    owl:members ( loc:Settlement loc:WildArea loc:Realm ) .
+# LandArea subtypes: disjoint union (covering + disjointness).
+# Every LandArea MUST be a Settlement, WildArea, or Realm.
+loc:LandArea owl:disjointUnionOf ( loc:Settlement loc:WildArea loc:Realm ) .
 
 # Settlement subtypes
 [] a owl:AllDisjointClasses ;
     owl:members ( loc:City loc:Town loc:Hamlet ) .
 
-# Water subtypes
+# WildArea subtypes
 [] a owl:AllDisjointClasses ;
-    owl:members ( loc:River loc:Lake loc:Sea ) .
+    owl:members ( loc:WoodedArea loc:MountainRange loc:Plain ) .
+
+# Water subtypes: disjoint union.
+loc:WaterArea owl:disjointUnionOf ( loc:River loc:Lake loc:Sea ) .
+
+# Every settlement lies within some realm (kingdoms contain settlements).
+loc:Settlement rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty loc:partOf ;
+      owl:someValuesFrom loc:Realm ] .
+
+# A realm should contain at least one settlement.
+loc:Realm rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty loc:hasPart ;
+      owl:someValuesFrom loc:Settlement ] .
+
+# A road connects two places: it must be adjacent to at least 2 places.
+loc:Road rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty loc:adjacentTo ;
+      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+      owl:onClass loc:Place ] .
 
 ###############################################################
 # Object Properties
@@ -212,25 +301,37 @@ loc:adjacentTo a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexivePrope
     rdfs:label "adjacent to"@en ;
     rdfs:comment "Two places that share a boundary or are next to each other."@en .
 
-loc:occupiesRegion a owl:ObjectProperty, owl:FunctionalProperty ;
+loc:occupiesRegion a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
     rdfs:domain loc:Place ;
     rdfs:range rcc:Region ;
     rdfs:label "occupies region"@en ;
-    rdfs:comment "Links a place to its spatial region. Functional (one region per place). Enables RCC8 reasoning on places."@en .
+    rdfs:comment "Links a place to its spatial region. Functional (one region per place) AND InverseFunctional (one place per region). Together these mean: if two places occupy the same region, they are the same place."@en .
 
-loc:isCapitalOf a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
+loc:isCapitalOf a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty,
+        owl:AsymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:domain loc:Settlement ;
     rdfs:range loc:Realm ;
     rdfs:label "is capital of"@en ;
-    rdfs:comment "The settlement is the capital of this realm. Functional and inverse-functional (one capital per realm, one realm per capital)."@en .
+    rdfs:comment "The settlement is the capital of this realm. Functional and inverse-functional (one capital per realm, one realm per capital). Asymmetric and irreflexive (a realm is not the capital of itself)."@en .
 
-# A capital must be part of its realm
-loc:isCapitalOf rdfs:subPropertyOf loc:partOf .
+# A capital is part of its realm (asserted directly, not via subPropertyOf
+# because partOf is transitive, making isCapitalOf non-simple).
 
 loc:hasCapital a owl:ObjectProperty ;
     owl:inverseOf loc:isCapitalOf ;
     rdfs:label "has capital"@en ;
     rdfs:comment "Inverse of isCapitalOf."@en .
+
+loc:rulesPlace a owl:ObjectProperty ;
+    rdfs:range loc:Place ;
+    rdfs:label "rules place"@en ;
+    rdfs:comment "A ruler governs a place. This can be inferred from Reign events."@en .
+
+loc:ruledBy a owl:ObjectProperty ;
+    owl:inverseOf loc:rulesPlace ;
+    rdfs:domain loc:Place ;
+    rdfs:label "ruled by"@en ;
+    rdfs:comment "Inverse of rulesPlace."@en .
 
 ###############################################################
 # Bridge axioms: Place mereology -> Region RCC8
@@ -281,3 +382,38 @@ loc:hasFoundationDate a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:label "has foundation date"@en ;
     rdfs:comment "When the place was established. String because fictional dates don't always fit xsd:date."@en .
+
+###############################################################
+# Additional property characteristics
+###############################################################
+
+# partOf is irreflexive: a place is not part of itself.
+# Wait - partOf is transitive, hence non-simple. Can't add IrreflexiveProperty.
+# Documented here for the record.
+
+# adjacentTo is already Symmetric + Irreflexive. Good.
+
+# occupiesRegion is irreflexive: a place is not a region.
+loc:occupiesRegion a owl:IrreflexiveProperty .
+
+# hasPopulation has max 1 value per settlement.
+loc:hasPopulation a owl:FunctionalProperty .
+
+# hasFoundationDate has max 1 value per place.
+loc:hasFoundationDate a owl:FunctionalProperty .
+
+###############################################################
+# Additional class restrictions
+###############################################################
+
+# A wild area has no population (populations belong to settlements).
+loc:WildArea rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty loc:hasPopulation ;
+      owl:maxCardinality "0"^^xsd:nonNegativeInteger ] .
+
+# WaterArea: population prevented by domain + disjointness.
+
+# Road: population prevented by domain(hasPopulation)=Settlement + disjointness.
+
+# Room: population prevented by domain(hasPopulation)=Settlement + disjointness.
+

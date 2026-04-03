@@ -17,10 +17,11 @@
 @prefix fo:   <http://purl.org/family/> .
 @prefix meo:  <http://purl.org/meo/> .
 @prefix loc:  <https://example.org/story/place#> .
+@prefix tm:   <https://example.org/story/time#> .
 @prefix soc:  <https://example.org/story/social#> .
 
 soc: a owl:Ontology ;
-    owl:imports <fo.ttl>, <meo.ttl>, <place.ttl> ;
+    owl:imports <fo.ttl>, <meo.ttl>, <place.ttl>, <time.ttl> ;
     rdfs:label "Social Relations Ontology"@en ;
     dct:title "Social Relations Ontology"@en ;
     rdfs:comment "Non-familial social relations between characters: friendship, enmity, alliance, service, etc."@en ;
@@ -28,8 +29,184 @@ soc: a owl:Ontology ;
     dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
 
 ###############################################################
+# Classes
+###############################################################
+
+soc:Appellation a owl:Class ;
+    rdfs:label "Appellation"@en ;
+    rdfs:comment "A name, epithet, or title by which a character can be known in the story world."@en .
+
+soc:AppellationUse a owl:Class ;
+    rdfs:label "Appellation use"@en ;
+    rdfs:comment "A temporally scoped use of an appellation for a character."@en ;
+    rdfs:subClassOf
+        [ a owl:Restriction ;
+          owl:onProperty soc:usesAppellation ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass soc:Appellation ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:namesCharacter ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:validDuring ;
+          owl:someValuesFrom tm:Interval ] .
+
+soc:LoveState a owl:Class ;
+    rdfs:label "Love state"@en ;
+    rdfs:comment "A temporally scoped state in which one character loves another."@en ;
+    rdfs:subClassOf
+        [ a owl:Restriction ;
+          owl:onProperty soc:hasLover ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:hasBeloved ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:loveHoldsDuring ;
+          owl:someValuesFrom tm:Interval ] .
+
+soc:ServiceState a owl:Class ;
+    rdfs:label "Service state"@en ;
+    rdfs:comment "A temporally scoped state in which one character serves another."@en ;
+    rdfs:subClassOf
+        [ a owl:Restriction ;
+          owl:onProperty soc:hasServant ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:hasLord ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:serviceHoldsDuring ;
+          owl:someValuesFrom tm:Interval ] .
+
+soc:IdentityKnowledgeState a owl:Class ;
+    rdfs:label "Identity knowledge state"@en ;
+    rdfs:comment "A temporally scoped state in which a knower identifies a character, optionally under a particular appellation, and possibly in a particular place."@en ;
+    rdfs:subClassOf
+        [ a owl:Restriction ;
+          owl:onProperty soc:hasKnower ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:hasKnownCharacter ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:hasKnownAppellation ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass soc:Appellation ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:knowledgeHoldsDuring ;
+          owl:someValuesFrom tm:Interval ],
+        [ a owl:Restriction ;
+          owl:onProperty soc:knowledgeInPlace ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass loc:Place ] .
+
+###############################################################
 # Properties
 ###############################################################
+
+soc:knownAs a owl:ObjectProperty ;
+    rdfs:label "known as"@en ;
+    rdfs:comment "A character is known by an appellation. Inferred from an AppellationUse."@en .
+
+soc:usesAppellation a owl:ObjectProperty ;
+    rdfs:domain soc:AppellationUse ;
+    rdfs:range soc:Appellation ;
+    rdfs:label "uses appellation"@en ;
+    rdfs:comment "Which appellation is in use."@en .
+
+soc:namesCharacter a owl:ObjectProperty ;
+    rdfs:domain soc:AppellationUse ;
+    rdfs:label "names character"@en ;
+    rdfs:comment "Which character is named by the appellation use."@en .
+
+soc:validDuring a owl:ObjectProperty ;
+    rdfs:domain soc:AppellationUse ;
+    rdfs:range tm:Interval ;
+    rdfs:label "valid during"@en ;
+    rdfs:comment "The interval during which an appellation is used for a character."@en .
+
+soc:usedInPlace a owl:ObjectProperty ;
+    rdfs:domain soc:AppellationUse ;
+    rdfs:range loc:Place ;
+    rdfs:label "used in place"@en ;
+    rdfs:comment "A place where the appellation is used in the story."@en .
+
+soc:hasLover a owl:ObjectProperty ;
+    rdfs:domain soc:LoveState ;
+    rdfs:label "has lover"@en ;
+    rdfs:comment "The character who loves in a LoveState."@en .
+
+soc:hasBeloved a owl:ObjectProperty ;
+    rdfs:domain soc:LoveState ;
+    rdfs:label "has beloved"@en ;
+    rdfs:comment "The character who is loved in a LoveState."@en .
+
+soc:loveHoldsDuring a owl:ObjectProperty ;
+    rdfs:domain soc:LoveState ;
+    rdfs:range tm:Interval ;
+    rdfs:label "love holds during"@en ;
+    rdfs:comment "The interval during which the LoveState holds."@en .
+
+soc:hasServant a owl:ObjectProperty ;
+    rdfs:domain soc:ServiceState ;
+    rdfs:label "has servant"@en ;
+    rdfs:comment "The character who serves in a ServiceState."@en .
+
+soc:hasLord a owl:ObjectProperty ;
+    rdfs:domain soc:ServiceState ;
+    rdfs:label "has lord"@en ;
+    rdfs:comment "The ruler or lord served in a ServiceState."@en .
+
+soc:serviceHoldsDuring a owl:ObjectProperty ;
+    rdfs:domain soc:ServiceState ;
+    rdfs:range tm:Interval ;
+    rdfs:label "service holds during"@en ;
+    rdfs:comment "The interval during which the ServiceState holds."@en .
+
+soc:hasKnower a owl:ObjectProperty ;
+    rdfs:domain soc:IdentityKnowledgeState ;
+    rdfs:label "has knower"@en ;
+    rdfs:comment "The individual who knows or recognizes the identity of another in an IdentityKnowledgeState."@en .
+
+soc:hasKnownCharacter a owl:ObjectProperty ;
+    rdfs:domain soc:IdentityKnowledgeState ;
+    rdfs:label "has known character"@en ;
+    rdfs:comment "The character whose identity is known in an IdentityKnowledgeState."@en .
+
+soc:hasKnownAppellation a owl:ObjectProperty ;
+    rdfs:domain soc:IdentityKnowledgeState ;
+    rdfs:range soc:Appellation ;
+    rdfs:label "has known appellation"@en ;
+    rdfs:comment "The appellation under which the character is known in an IdentityKnowledgeState."@en .
+
+soc:knowledgeHoldsDuring a owl:ObjectProperty ;
+    rdfs:domain soc:IdentityKnowledgeState ;
+    rdfs:range tm:Interval ;
+    rdfs:label "knowledge holds during"@en ;
+    rdfs:comment "The interval during which an IdentityKnowledgeState holds."@en .
+
+soc:knowledgeInPlace a owl:ObjectProperty ;
+    rdfs:domain soc:IdentityKnowledgeState ;
+    rdfs:range loc:Place ;
+    rdfs:label "knowledge in place"@en ;
+    rdfs:comment "The place in which an IdentityKnowledgeState is relevant or holds."@en .
+
+soc:knowsIdentityOf a owl:ObjectProperty ;
+    rdfs:label "knows identity of"@en ;
+    rdfs:comment "A knower identifies or recognizes a character. Inferred from an IdentityKnowledgeState."@en .
+
+soc:presentIn a owl:ObjectProperty ;
+    rdfs:range loc:Place ;
+    rdfs:label "present in"@en ;
+    rdfs:comment "An entity is present in a place during some modeled Presence state. Inferred from event-level Presence/Residence descriptions."@en .
 
 soc:sociallyRelatedTo a owl:ObjectProperty ;
     rdfs:label "socially related to"@en ;
@@ -54,6 +231,23 @@ soc:companionOf a owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProp
     rdfs:subPropertyOf soc:sociallyRelatedTo ;
     rdfs:label "companion of"@en ;
     rdfs:comment "Characters who travel together or spend significant time together in the story."@en .
+
+soc:loved a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "loved"@en ;
+    rdfs:comment "One character loved another. Not necessarily symmetric."@en .
+
+soc:hated a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:sociallyRelatedTo ;
+    rdfs:label "hated"@en ;
+    rdfs:comment "One character hated another."@en .
+
+# NOTE: hated/loved disjointness was removed because soc:loved is
+# non-simple (chain-super via LoveState). OWL 2 DL requires both
+# properties in propertyDisjointWith to be simple (Section 11.1).
+# The semantic intent (you cannot simultaneously love and hate the
+# same person) is preserved as a modelling guideline rather than
+# a formal axiom.
 
 soc:serves a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
     rdfs:subPropertyOf soc:sociallyRelatedTo ;
@@ -84,8 +278,51 @@ soc:fosteredBy a owl:ObjectProperty ;
     rdfs:comment "Inverse of fostersChild."@en .
 
 ###############################################################
-# Disjointness
+# Temporal state class restrictions
 ###############################################################
+
+# All appellations used by an AppellationUse must be Appellations (tautological
+# but enables allValuesFrom reasoning).
+soc:AppellationUse rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty soc:usesAppellation ;
+      owl:allValuesFrom soc:Appellation ] .
+
+# The validDuring of an AppellationUse must be a FiniteInterval
+# (not an infinite one — names are used for finite periods).
+soc:AppellationUse rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty soc:validDuring ;
+      owl:allValuesFrom tm:FiniteInterval ] .
+
+# The lover and beloved in a LoveState must be different.
+soc:hasLover owl:propertyDisjointWith soc:hasBeloved .
+
+# The servant and lord in a ServiceState must be different.
+soc:hasServant owl:propertyDisjointWith soc:hasLord .
+
+# The knower and known character in an IdentityKnowledgeState must differ.
+soc:hasKnower owl:propertyDisjointWith soc:hasKnownCharacter .
+
+# All places referenced by an AppellationUse must be Places.
+soc:AppellationUse rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty soc:usedInPlace ;
+      owl:allValuesFrom loc:Place ] .
+
+# An AppellationUse has at most one place of use.
+soc:AppellationUse rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty soc:usedInPlace ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+
+# A LoveState has at most one temporal extent.
+soc:LoveState rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty soc:loveHoldsDuring ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass tm:Interval ] .
+
+# An IdentityKnowledgeState's temporal extent must be a FiniteInterval
+# (knowledge is held for a bounded period in stories).
+soc:IdentityKnowledgeState rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty soc:knowledgeHoldsDuring ;
+      owl:allValuesFrom tm:FiniteInterval ] .
 
 ###############################################################
 # Extra axioms
@@ -93,6 +330,16 @@ soc:fosteredBy a owl:ObjectProperty ;
 
 # Friends are also allies (friendship implies alliance)
 soc:friendOf rdfs:subPropertyOf soc:allyOf .
+
+# Companions are also allies (travelling together implies cooperation).
+soc:companionOf rdfs:subPropertyOf soc:allyOf .
+
+# A foster relationship implies the child lives where the foster parent
+# lives. Chain: if X fostersChild Y and X livedIn Z, then Y livedIn Z.
+soc:livedIn owl:propertyChainAxiom (
+    [ owl:inverseOf soc:fostersChild ]
+    soc:livedIn
+) .
 
 # Fostering is a social relation too
 soc:fostersChild rdfs:subPropertyOf soc:sociallyRelatedTo .
@@ -102,6 +349,94 @@ soc:fostersChild rdfs:subPropertyOf soc:sociallyRelatedTo .
 # This is a deliberate modelling choice for the Narn's social world.
 soc:serves owl:propertyDisjointWith soc:friendOf .
 
+# A foster parent is not a biological parent of the same child.
+# E.g. Thingol fosters Túrin, but Thingol is not isAParentOf Túrin.
+
+# You cannot be friends with someone you hate.
+soc:hated owl:propertyDisjointWith soc:friendOf .
+
+# You cannot be allied with someone you hate.
+soc:hated owl:propertyDisjointWith soc:allyOf .
+
 # Property chain: if A serves B, and B is enemy of C, then A is enemy of C
 # ("the servant of my enemy is my enemy")
 soc:enemyOf owl:propertyChainAxiom ( soc:serves soc:enemyOf ) .
+
+# Property chain: if A is allied with B, and B is an enemy of C, then
+# A is an enemy of C ("the enemy of my ally is my enemy").
+soc:enemyOf owl:propertyChainAxiom ( soc:allyOf soc:enemyOf ) .
+
+# A character is known by an appellation if there is an AppellationUse that
+# names the character and uses that appellation.
+soc:knownAs owl:propertyChainAxiom (
+    [ owl:inverseOf soc:namesCharacter ]
+    soc:usesAppellation
+) .
+
+# A love state entails the corresponding binary loved relation.
+soc:loved owl:propertyChainAxiom (
+    [ owl:inverseOf soc:hasLover ]
+    soc:hasBeloved
+) .
+
+# An identity knowledge state entails the corresponding binary
+# knowsIdentityOf relation.
+soc:knowsIdentityOf owl:propertyChainAxiom (
+    [ owl:inverseOf soc:hasKnower ]
+    soc:hasKnownCharacter
+) .
+
+# ServiceState is separate from soc:serves so that serves stays simple
+# (needed for disjointness axioms). The binary property is for timeless
+# facts, the state reification is for temporal ones.
+
+# An AppellationUse is disjoint from all other state types.
+[] a owl:AllDisjointClasses ;
+    owl:members ( soc:AppellationUse soc:LoveState soc:ServiceState soc:IdentityKnowledgeState ) .
+
+# Enmity between served entities propagates symmetrically:
+# if A serves B and C serves D and B enemyOf D, then A enemyOf C?
+# Not standard. But: if A serves B, then A allyOf B (via subPropertyOf).
+# Already: friendOf subPropertyOf allyOf, so servants are allies too?
+# No — serves and friendOf are disjoint. Serves does NOT imply allyOf.
+# This is a deliberate design choice for the feudal world: service is
+# not alliance but obligation.
+
+# NOTE: soc:serves is intentionally NOT transitive. Making it
+# transitive (or adding a serves-serves chain) would make it
+# non-simple, breaking the serves-friendOf disjointness axiom
+# which requires simplicity. Service is direct, not inherited.
+
+###############################################################
+# Additional property characteristics
+###############################################################
+
+# All the state properties are irreflexive — a state is not its own
+# lover, servant, knower, etc.
+soc:hasLover a owl:IrreflexiveProperty .
+soc:hasBeloved a owl:IrreflexiveProperty .
+soc:hasServant a owl:IrreflexiveProperty .
+soc:hasLord a owl:IrreflexiveProperty .
+soc:hasKnower a owl:IrreflexiveProperty .
+soc:hasKnownCharacter a owl:IrreflexiveProperty .
+soc:hasKnownAppellation a owl:IrreflexiveProperty .
+soc:namesCharacter a owl:IrreflexiveProperty .
+soc:usesAppellation a owl:IrreflexiveProperty .
+soc:hasBearer a owl:IrreflexiveProperty .
+
+# usesAppellation and namesCharacter are asymmetric:
+# an appellation does not "use" the AppellationUse.
+soc:usesAppellation a owl:AsymmetricProperty .
+soc:namesCharacter a owl:AsymmetricProperty .
+
+# A ServiceState holds during exactly 1 interval.
+soc:ServiceState rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty soc:serviceHoldsDuring ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass tm:Interval ] .
+
+# A LoveState's beloved must differ from the lover (no self-love states).
+# Already have hasLover disjointWith hasBeloved.
+
+# An appellation is not a character, event, or place.
+# (Appellation disjointWith Event/Item/Place already in event.ttl.)

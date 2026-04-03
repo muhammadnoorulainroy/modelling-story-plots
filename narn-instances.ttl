@@ -1,4 +1,4 @@
-#
+﻿#
 # Instance File: Narn i Chîn Húrin
 #
 # Example data from the Children of Húrin, using all ontology modules.
@@ -23,30 +23,29 @@
 @prefix plot: <https://example.org/story/plot#> .
 
 # Instance namespace
-@prefix narn: <https://example.org/story/narn#> .
+@prefix narn: <https://purl.org/narn/> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 
-narn: a owl:Ontology ;
-    owl:imports <fo.ttl>, <meo.ttl>, <rcc.ttl>, <place.ttl>, <time.ttl>,
-        <soc.ttl>, <event.ttl>, <action.ttl>, <plot.ttl> ;
+<https://example.org/story/narn/instances> a owl:Ontology ;
+    owl:imports <narn.ttl>, <narn-plot.ttl>, <alignment.ttl>, <action.ttl>, <plot.ttl> ;
     rdfs:label "Narn i Chîn Húrin, Instance Data"@en ;
-    rdfs:comment "Example data from the Narn. Imports pull in all other modules."@en ;
+    rdfs:comment "Extended story graph for the Narn. Reuses the canonical purl.org/narn identifiers and adds richer time, place, action, and plot assertions."@en ;
     dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
 
 ###############################################################
 # CHARACTERS (meo: races + fo: gender)
 ###############################################################
 
-narn:Turin a meo:Adan, fo:Male ;
+narn:Túrin a meo:Adan, fo:Male ;
     rdfs:label "Túrin"@en ;
     rdfs:comment "Túrin Turambar, son of Húrin and Morwen. The tragic hero of the Narn."@en ;
-    owl:sameAs <https://www.wikidata.org/entity/Q728646> .
+    rdfs:seeAlso <https://www.wikidata.org/entity/Q728646> .
 
 narn:Morwen a meo:Adan, fo:Female ;
     rdfs:label "Morwen"@en ;
     rdfs:comment "Morwen Eledhwen, wife of Húrin, mother of Túrin and Niënor."@en .
 
-narn:Hurin a meo:Adan, fo:Male ;
+narn:Húrin a meo:Adan, fo:Male ;
     rdfs:label "Húrin"@en ;
     rdfs:comment "Húrin Thalion, lord of Dor-lómin, father of Túrin and Niënor."@en .
 
@@ -61,7 +60,7 @@ narn:Thingol a meo:Elda, fo:Male ;
 narn:Glaurung a meo:Lócë ;
     rdfs:label "Glaurung"@en ;
     rdfs:comment "Glaurung, the Father of Dragons, a great worm of Morgoth."@en ;
-    owl:sameAs <https://www.wikidata.org/entity/Q1429498> .
+    rdfs:seeAlso <https://www.wikidata.org/entity/Q1429498> .
 
 narn:Mablung a meo:Elda, fo:Male ;
     rdfs:label "Mablung"@en ;
@@ -75,7 +74,7 @@ narn:Morgoth a meo:Vala, meo:EvilBeing ;
     owl:sameAs meo:morgoth ;
     rdfs:label "Morgoth"@en ;
     rdfs:comment "The Dark Lord, the great enemy."@en ;
-    owl:sameAs <https://www.wikidata.org/entity/Q189088> .
+    rdfs:seeAlso <https://www.wikidata.org/entity/Q189088> .
 
 narn:Finduilas a meo:Elda, fo:Female ;
     rdfs:label "Finduilas"@en ;
@@ -89,26 +88,124 @@ narn:Galdor a meo:Adan, fo:Male ;
     rdfs:label "Galdor"@en ;
     rdfs:comment "Galdor the Tall, lord of Dor-lómin, father of Húrin."@en .
 
+# Characters inherited from the base Narn graph, enriched with module-specific types
+
+narn:Huor a meo:Adan, fo:Male ;
+    rdfs:label "Huor"@en ;
+    rdfs:comment "Brother of Húrin, married to Rían, father of Tuor."@en .
+
+narn:Rían a meo:Adan, fo:Female ;
+    rdfs:label "Rían"@en ;
+    rdfs:comment "Wife of Huor, mother of Tuor, sister of Morwen."@en .
+
+narn:Tuor a meo:Adan, fo:Male ;
+    rdfs:label "Tuor"@en ;
+    rdfs:comment "Son of Huor and Rían. Lived in Gondolin."@en .
+
+narn:Lalaith a meo:Adan, fo:Female ;
+    rdfs:label "Lalaith"@en ;
+    rdfs:comment "Urwen Lalaith, daughter of Húrin and Morwen. Died young in Dor-lómin."@en .
+
+narn:Sador a meo:Adan, fo:Male ;
+    rdfs:label "Sador"@en ;
+    rdfs:comment "A lame servant of Húrin and woodwright."@en .
+
+narn:LabadalAppellation a soc:Appellation ;
+    rdfs:label "Labadal"@en ;
+    rdfs:comment "An alternate name used for Sador."@en .
+
+narn:Nellas a meo:Elda, fo:Female ;
+    rdfs:label "Nellas"@en ;
+    rdfs:comment "An Elf-maiden of Doriath who secretly loved Túrin."@en .
+
+narn:Saeros a meo:Elda, fo:Male ;
+    rdfs:label "Saeros"@en ;
+    rdfs:comment "An Elf who served Thingol and hated Túrin."@en .
+
+narn:Gethron a meo:Adan, fo:Male ;
+    rdfs:label "Gethron"@en ;
+    rdfs:comment "A man of the House of Hador who accompanied Túrin to Doriath."@en .
+
+narn:Grithnir a meo:Adan, fo:Male ;
+    rdfs:label "Grithnir"@en ;
+    rdfs:comment "A man of the House of Hador who accompanied Túrin to Doriath."@en .
+
+narn:Brandir a meo:Adan, fo:Male ;
+    rdfs:label "Brandir"@en ;
+    rdfs:comment "Chieftain of Brethil before Turambar replaced him."@en .
+
+narn:Forweg a meo:Atan, fo:Male ;
+    rdfs:label "Forweg"@en ;
+    rdfs:comment "An outlaw leader killed by Túrin."@en .
+
+# Túrin's and Niënor's many identities are modeled as appellations used
+# during particular phases of the story, not as duplicate people.
+
+narn:Neithan a soc:Appellation ;
+    rdfs:label "Neithan"@en ;
+    rdfs:comment "The Wronged. A name used by Túrin among the outlaws."@en .
+
+narn:Gorthol a soc:Appellation ;
+    rdfs:label "Gorthol"@en ;
+    rdfs:comment "The Dread Helm. A name used by Túrin on Amon Rûdh."@en .
+
+narn:Agarwaen a soc:Appellation ;
+    rdfs:label "Agarwaen"@en ;
+    rdfs:comment "The Bloodstained. A name used by Túrin in Nargothrond."@en .
+
+narn:Adanedhel a soc:Appellation ;
+    rdfs:label "Adanedhel"@en ;
+    rdfs:comment "Man-Elf. A name others gave to Túrin because of his appearance."@en .
+
+narn:Mormegil a soc:Appellation ;
+    rdfs:label "Mormegil"@en ;
+    rdfs:comment "Black Sword. A title used for Túrin as bearer of Gurthang."@en .
+
+narn:Thurin a soc:Appellation ;
+    rdfs:label "Thurin"@en ;
+    rdfs:comment "Secret. What Finduilas called Túrin."@en .
+
+narn:Turambar a soc:Appellation ;
+    rdfs:label "Turambar"@en ;
+    rdfs:comment "Master of Doom. The name Túrin used in Brethil."@en .
+
+narn:DagnirGlaurunga a soc:Appellation ;
+    rdfs:label "Dagnir Glaurunga"@en ;
+    rdfs:comment "Bane of Glaurung. A legendary title for Túrin after slaying the dragon."@en .
+
+narn:Níniel a soc:Appellation ;
+    rdfs:label "Níniel"@en ;
+    rdfs:comment "Tear-maiden. The name given to the amnesiac Niënor."@en .
+
+narn:useLabadal a soc:AppellationUse ;
+    soc:hasBearer narn:Sador ;
+    soc:usesAppellation narn:LabadalAppellation ;
+    rdfs:label "Sador known as Labadal"@en ;
+    rdfs:comment "Sador is known by the alternate name Labadal."@en .
+
 ###############################################################
 # Unique Name Assumption guards.
 # OWL does not assume different IRIs denote different things.
 ###############################################################
 
-# Characters
+# Characters (appellations are modeled separately, not as duplicate people)
 [] a owl:AllDifferent ;
     owl:distinctMembers (
-        narn:Turin narn:Morwen narn:Hurin narn:Nienor narn:Thingol
+        narn:Túrin narn:Morwen narn:Húrin narn:Nienor narn:Thingol
         narn:Glaurung narn:Mablung narn:Beleg narn:Morgoth
         narn:Finduilas narn:Orodreth narn:Galdor
+        narn:Huor narn:Rían narn:Tuor narn:Lalaith
+        narn:Sador narn:Nellas narn:Saeros
+        narn:Gethron narn:Grithnir narn:Brandir narn:Forweg
         narn:HostOfTheWest narn:HostOfAngband
     ) .
 
 # Temporal instants (prevents timeline collapse)
 [] a owl:AllDifferent ;
     owl:distinctMembers (
-        narn:t1 narn:t2 narn:t10 narn:t10b narn:t10c narn:t2b
-        narn:t3 narn:t3b narn:t4 narn:t4b narn:t4c narn:t5
-        narn:t6 narn:t7 narn:t7b narn:t8 narn:t9
+        narn:t1 narn:t2 narn:t2c narn:t10 narn:t10b narn:t10c narn:t2b narn:t2d narn:t2e
+        narn:t3 narn:t3b narn:t4 narn:t4a narn:t4b narn:t4c narn:t5
+        narn:t6 narn:t7 narn:t7a narn:t7b narn:t8 narn:t8b narn:t9 narn:t9b
     ) .
 
 
@@ -116,27 +213,206 @@ narn:Galdor a meo:Adan, fo:Male ;
 # FAMILY RELATIONS (fo:)
 ###############################################################
 
-narn:Hurin fo:isMarriedTo narn:Morwen .
-narn:Hurin fo:isTheFatherOf narn:Turin, narn:Nienor .
-narn:Morwen fo:isTheMotherOf narn:Turin, narn:Nienor .
-narn:Turin fo:isASiblingOf narn:Nienor .
-narn:Galdor fo:isTheFatherOf narn:Hurin .
+narn:Húrin fo:isMarriedTo narn:Morwen .
+narn:Húrin fo:isTheFatherOf narn:Túrin, narn:Nienor .
+narn:Morwen fo:isTheMotherOf narn:Túrin, narn:Nienor .
+narn:Túrin fo:isASiblingOf narn:Nienor .
+narn:Húrin fo:isTheFatherOf narn:Lalaith .
+narn:Morwen fo:isTheMotherOf narn:Lalaith .
+narn:Galdor fo:isTheFatherOf narn:Húrin .
+narn:Húrin fo:isASiblingOf narn:Huor .
+narn:Morwen fo:isASiblingOf narn:Rían .
+narn:Huor fo:isMarriedTo narn:Rían .
+narn:Huor fo:isTheFatherOf narn:Tuor .
+narn:Rían fo:isTheMotherOf narn:Tuor .
 narn:Orodreth fo:isTheFatherOf narn:Finduilas .
 
 ###############################################################
 # SOCIAL RELATIONS (soc:)
 ###############################################################
 
-narn:Hurin soc:allyOf narn:Thingol .
-narn:Glaurung soc:enemyOf narn:Turin .
-narn:Mablung soc:companionOf narn:Turin .
-narn:Beleg soc:friendOf narn:Turin ;
-    soc:companionOf narn:Turin .
-narn:Thingol soc:fostersChild narn:Turin .
-narn:Turin soc:fosteredBy narn:Thingol .
+narn:Húrin soc:allyOf narn:Thingol .
+narn:Glaurung soc:enemyOf narn:Túrin .
+narn:Mablung soc:companionOf narn:Túrin .
+narn:Beleg soc:friendOf narn:Túrin ;
+    soc:companionOf narn:Túrin .
+narn:Thingol soc:fostersChild narn:Túrin .
+narn:Túrin soc:fosteredBy narn:Thingol .
 narn:Glaurung soc:serves narn:Morgoth .
-narn:Turin soc:livedIn narn:DorLomin, narn:Menegroth, narn:Nargothrond, narn:Brethil .
+narn:Túrin soc:livedIn narn:Dor-lómin, narn:Menegroth, narn:Nargothrond, narn:Brethil .
 narn:Morgoth soc:enemyOf narn:Thingol .
+narn:Sador soc:serves narn:Húrin .
+narn:Saeros soc:serves narn:Thingol .
+narn:Saeros soc:hated narn:Túrin .
+narn:Beleg soc:serves narn:Thingol .
+narn:Tuor soc:livedIn narn:Gondolin .
+
+# Love relations
+narn:Húrin soc:loved narn:Morwen .
+narn:Morwen soc:loved narn:Húrin .
+narn:Nellas soc:loved narn:Túrin .
+
+# Túrin's friend Sador/Labadal
+narn:Túrin soc:friendOf narn:Sador .
+
+# Túrin served Orodreth while living under the name Mormegil in Nargothrond.
+narn:Túrin soc:serves narn:Orodreth .
+
+# Temporalized love states
+narn:loveFinduilasForTurin a soc:LoveState ;
+    soc:hasLover narn:Finduilas ;
+    soc:hasBeloved narn:Túrin ;
+    soc:loveHoldsDuring narn:intResidenceNargothrond ;
+    rdfs:label "Finduilas loves Túrin"@en ;
+    rdfs:comment "Finduilas loved Túrin during his time in Nargothrond."@en .
+
+narn:loveBrandirForNienor a soc:LoveState ;
+    soc:hasLover narn:Brandir ;
+    soc:hasBeloved narn:Nienor ;
+    soc:loveHoldsDuring narn:intAsNíniel ;
+    rdfs:label "Brandir loves Niënor"@en ;
+    rdfs:comment "Brandir loved Niënor during her life in Brethil under the name Níniel."@en .
+
+narn:loveTurinForNienor a soc:LoveState ;
+    soc:hasLover narn:Túrin ;
+    soc:hasBeloved narn:Nienor ;
+    soc:loveHoldsDuring narn:intAsNíniel ;
+    rdfs:label "Túrin loves Niënor"@en ;
+    rdfs:comment "Túrin loved Niënor during the period in which she was known as Níniel."@en .
+
+# Temporalized service states
+narn:serviceGlaurungMorgoth a soc:ServiceState ;
+    soc:hasServant narn:Glaurung ;
+    soc:hasLord narn:Morgoth ;
+    soc:serviceHoldsDuring narn:intWarOfJewels ;
+    rdfs:label "Glaurung serves Morgoth"@en ;
+    rdfs:comment "Glaurung serves Morgoth during the War of the Jewels."@en .
+
+narn:serviceTurinOrodreth a soc:ServiceState ;
+    soc:hasServant narn:Túrin ;
+    soc:hasLord narn:Orodreth ;
+    soc:serviceHoldsDuring narn:intResidenceNargothrond ;
+    rdfs:label "Túrin serves Orodreth"@en ;
+    rdfs:comment "Túrin serves Orodreth during his residence in Nargothrond."@en .
+
+# Appellation uses
+narn:useNeithan a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:Neithan ;
+    soc:validDuring narn:intAsNeithan ;
+    soc:usedInPlace narn:AmonRûdh ;
+    rdfs:label "Use of Neithan"@en ;
+    rdfs:comment "Túrin is known as Neithan among the outlaws."@en .
+
+narn:useGorthol a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:Gorthol ;
+    soc:validDuring narn:intAsNeithan ;
+    soc:usedInPlace narn:AmonRûdh ;
+    rdfs:label "Use of Gorthol"@en ;
+    rdfs:comment "Túrin uses the name Gorthol on Amon Rûdh."@en .
+
+narn:useAgarwaen a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:Agarwaen ;
+    soc:validDuring narn:intResidenceNargothrond ;
+    soc:usedInPlace narn:Nargothrond ;
+    rdfs:label "Use of Agarwaen"@en ;
+    rdfs:comment "Túrin is known in Nargothrond as Agarwaen."@en .
+
+narn:useAdanedhel a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:Adanedhel ;
+    soc:validDuring narn:intResidenceNargothrond ;
+    soc:usedInPlace narn:Nargothrond ;
+    rdfs:label "Use of Adanedhel"@en ;
+    rdfs:comment "Others call Túrin Adanedhel in Nargothrond."@en .
+
+narn:useThurin a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:Thurin ;
+    soc:validDuring narn:intResidenceNargothrond ;
+    soc:usedInPlace narn:Nargothrond ;
+    rdfs:label "Use of Thurin"@en ;
+    rdfs:comment "Finduilas calls Túrin Thurin in Nargothrond."@en .
+
+narn:useMormegil a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:Mormegil ;
+    soc:validDuring narn:intResidenceNargothrond ;
+    soc:usedInPlace narn:Nargothrond ;
+    rdfs:label "Use of Mormegil"@en ;
+    rdfs:comment "Túrin is known as Mormegil while serving Orodreth."@en .
+
+narn:useNiniel a soc:AppellationUse ;
+    soc:namesCharacter narn:Nienor ;
+    soc:usesAppellation narn:Níniel ;
+    soc:validDuring narn:intAsNíniel ;
+    soc:usedInPlace narn:Brethil ;
+    rdfs:label "Use of Níniel"@en ;
+    rdfs:comment "Niënor lives in Brethil under the name Níniel."@en .
+
+narn:useTurambar a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:Turambar ;
+    soc:validDuring narn:intAsTurambar ;
+    soc:usedInPlace narn:Brethil ;
+    rdfs:label "Use of Turambar"@en ;
+    rdfs:comment "Túrin presents himself in Brethil as Turambar."@en .
+
+narn:useDagnirGlaurunga a soc:AppellationUse ;
+    soc:namesCharacter narn:Túrin ;
+    soc:usesAppellation narn:DagnirGlaurunga ;
+    soc:validDuring narn:intAsDagnirGlaurunga ;
+    soc:usedInPlace narn:Brethil ;
+    rdfs:label "Use of Dagnir Glaurunga"@en ;
+    rdfs:comment "After slaying Glaurung, Túrin is remembered as Dagnir Glaurunga."@en .
+
+# Identity knowledge states
+narn:knowledgeFinduilasThurin a soc:IdentityKnowledgeState ;
+    soc:hasKnower narn:Finduilas ;
+    soc:hasKnownCharacter narn:Túrin ;
+    soc:hasKnownAppellation narn:Thurin ;
+    soc:knowledgeHoldsDuring narn:intResidenceNargothrond ;
+    soc:knowledgeInPlace narn:Nargothrond ;
+    rdfs:label "Finduilas knows Túrin as Thurin"@en ;
+    rdfs:comment "Finduilas knows Túrin under the secret name Thurin during his residence in Nargothrond."@en .
+
+narn:knowledgeBrandirNiniel a soc:IdentityKnowledgeState ;
+    soc:hasKnower narn:Brandir ;
+    soc:hasKnownCharacter narn:Nienor ;
+    soc:hasKnownAppellation narn:Níniel ;
+    soc:knowledgeHoldsDuring narn:intAsNíniel ;
+    soc:knowledgeInPlace narn:Brethil ;
+    rdfs:label "Brandir knows Niënor as Níniel"@en ;
+    rdfs:comment "Brandir knows the amnesiac Niënor under the name Níniel during her life in Brethil."@en .
+
+narn:knowledgeTurinNiniel a soc:IdentityKnowledgeState ;
+    soc:hasKnower narn:Túrin ;
+    soc:hasKnownCharacter narn:Nienor ;
+    soc:hasKnownAppellation narn:Níniel ;
+    soc:knowledgeHoldsDuring narn:intAsNíniel ;
+    soc:knowledgeInPlace narn:Brethil ;
+    rdfs:label "Túrin knows Niënor as Níniel"@en ;
+    rdfs:comment "Túrin knows Niënor only under the name Níniel during their shared life in Brethil."@en .
+
+narn:knowledgeBrandirTurambar a soc:IdentityKnowledgeState ;
+    soc:hasKnower narn:Brandir ;
+    soc:hasKnownCharacter narn:Túrin ;
+    soc:hasKnownAppellation narn:Turambar ;
+    soc:knowledgeHoldsDuring narn:intAsTurambar ;
+    soc:knowledgeInPlace narn:Brethil ;
+    rdfs:label "Brandir knows Túrin as Turambar"@en ;
+    rdfs:comment "Brandir knows Túrin under the name Turambar in Brethil."@en .
+
+narn:knowledgeTurinNienorTruth a soc:IdentityKnowledgeState ;
+    soc:hasKnower narn:Túrin ;
+    soc:hasKnownCharacter narn:Nienor ;
+    soc:hasKnownAppellation narn:Níniel ;
+    soc:knowledgeHoldsDuring narn:intDeathTurin ;
+    soc:knowledgeInPlace narn:Brethil ;
+    rdfs:label "Túrin knows that Níniel was Niënor"@en ;
+    rdfs:comment "At the end of the story, Túrin understands that the woman known to him as Níniel was in fact his sister Niënor."@en .
 
 ###############################################################
 # PLACES (loc:)
@@ -144,12 +420,13 @@ narn:Morgoth soc:enemyOf narn:Thingol .
 
 narn:Beleriand a loc:Realm ;
     rdfs:label "Beleriand"@en ;
-    rdfs:comment "The great region of Middle-earth west of the Blue Mountains."@en .
+    rdfs:comment "The great region of Middle-earth west of the Blue Mountains."@en ;
+    loc:interiorPartOf narn:Endor .
 
-narn:DorLomin a loc:Realm ;
+narn:Dor-lómin a loc:Realm ;
     rdfs:label "Dor-lómin"@en ;
     rdfs:comment "A region in Hithlum, domain of the House of Hador."@en ;
-    loc:interiorPartOf narn:Beleriand .
+    loc:interiorPartOf narn:Hithlum .
 
 narn:Doriath a loc:Realm ;
     rdfs:label "Doriath"@en ;
@@ -186,6 +463,37 @@ narn:TaurNuFuin a loc:Forest ;
     rdfs:comment "The forest of dread north of Doriath, formerly Dorthonion."@en ;
     loc:interiorPartOf narn:Beleriand .
 
+# Places enriched with the project place hierarchy
+
+narn:Arda a loc:Realm ;
+    rdfs:label "Arda"@en ;
+    rdfs:comment "The World in Tolkien's legendarium."@en .
+
+narn:Endor a loc:Realm ;
+    rdfs:label "Middle-earth"@en ;
+    rdfs:comment "The central continent of Arda."@en ;
+    loc:interiorPartOf narn:Arda .
+
+narn:Hithlum a loc:Realm ;
+    rdfs:label "Hithlum"@en ;
+    rdfs:comment "A northern region surrounded by mountains, containing Dor-lómin."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:AmonRûdh a loc:WildArea ;
+    rdfs:label "Amon Rudh"@en ;
+    rdfs:comment "The Bald Hill south of Brethil, where Túrin lived as an outlaw."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:Tumladen a loc:LandArea ;
+    rdfs:label "Tumladen"@en ;
+    rdfs:comment "The hidden valley surrounded by mountains where Gondolin was built."@en ;
+    loc:interiorPartOf narn:Beleriand .
+
+narn:Gondolin a loc:City ;
+    rdfs:label "Gondolin"@en ;
+    rdfs:comment "The hidden city of King Turgon in the valley of Tumladen."@en ;
+    loc:interiorPartOf narn:Tumladen .
+
 narn:AnfauglithPlain a loc:Plain ;
     rdfs:label "Anfauglith"@en ;
     rdfs:comment "The desert plain before Angband where the Nirnaeth Arnoediad was fought."@en ;
@@ -195,9 +503,10 @@ narn:AnfauglithPlain a loc:Plain ;
 # All places are distinct individuals
 [] a owl:AllDifferent ;
     owl:distinctMembers (
-        narn:Beleriand narn:DorLomin narn:Doriath narn:Menegroth
-        narn:Nargothrond narn:Brethil narn:Angband narn:ThroneRoom
-        narn:TaurNuFuin narn:AnfauglithPlain
+        narn:Arda narn:Endor narn:Beleriand narn:Hithlum narn:Dor-lómin
+        narn:Doriath narn:Menegroth narn:Nargothrond narn:Brethil narn:Angband
+        narn:ThroneRoom narn:TaurNuFuin narn:AmonRûdh narn:Tumladen narn:Gondolin
+        narn:AnfauglithPlain
     ) .
 
 ###############################################################
@@ -227,7 +536,7 @@ narn:regAnfauglith a rcc:Region ; rdfs:label "Region of Anfauglith"@en ;
 
 # Places occupy regions
 narn:Beleriand loc:occupiesRegion narn:regBeleriand .
-narn:DorLomin loc:occupiesRegion narn:regDorLomin .
+narn:Dor-lómin loc:occupiesRegion narn:regDorLomin .
 narn:Doriath loc:occupiesRegion narn:regDoriath .
 narn:Menegroth loc:occupiesRegion narn:regMenegroth .
 narn:Nargothrond loc:occupiesRegion narn:regNargothrond .
@@ -269,35 +578,49 @@ narn:t2b a tm:Instant ; rdfs:label "t2b"@en ; rdfs:comment "Niënor's birth (aft
 narn:t10 a tm:Instant ; rdfs:label "t10"@en ; rdfs:comment "Start of the Nirnaeth Arnoediad."@en .
 narn:t10b a tm:Instant ; rdfs:label "t10b"@en ; rdfs:comment "End of the battle of Nirnaeth."@en .
 narn:t10c a tm:Instant ; rdfs:label "t10c"@en ; rdfs:comment "Morgoth taunts Húrin and pronounces the curse in Angband."@en .
+narn:t2c a tm:Instant ; rdfs:label "t2c"@en ; rdfs:comment "Lalaith's birth."@en .
+narn:t2d a tm:Instant ; rdfs:label "t2d"@en ; rdfs:comment "Túrin begins journey to Doriath."@en .
+narn:t2e a tm:Instant ; rdfs:label "t2e"@en ; rdfs:comment "Death of Saeros."@en .
 narn:t3 a tm:Instant ; rdfs:label "t3"@en ; rdfs:comment "Túrin arrives at Menegroth."@en .
 narn:t3b a tm:Instant ; rdfs:label "t3b"@en ; rdfs:comment "Túrin meets Beleg."@en .
 narn:t4 a tm:Instant ; rdfs:label "t4"@en ; rdfs:comment "Túrin leaves Menegroth."@en .
+narn:t4a a tm:Instant ; rdfs:label "t4a"@en ; rdfs:comment "Forweg's death."@en .
 narn:t4b a tm:Instant ; rdfs:label "t4b"@en ; rdfs:comment "Beleg's death."@en .
 narn:t4c a tm:Instant ; rdfs:label "t4c"@en ; rdfs:comment "Túrin begins the journey to Nargothrond after Beleg's death."@en .
 narn:t5 a tm:Instant ; rdfs:label "t5"@en ; rdfs:comment "Túrin arrives at Nargothrond."@en .
 narn:t6 a tm:Instant ; rdfs:label "t6"@en ; rdfs:comment "Túrin leaves Nargothrond."@en .
 narn:t7 a tm:Instant ; rdfs:label "t7"@en ; rdfs:comment "Túrin arrives in Brethil."@en .
+narn:t7a a tm:Instant ; rdfs:label "t7a"@en ; rdfs:comment "Marriage of Túrin and Niënor under the names Turambar and Níniel."@en .
 narn:t7b a tm:Instant ; rdfs:label "t7b"@en ; rdfs:comment "Niënor's death."@en .
 narn:t8 a tm:Instant ; rdfs:label "t8"@en ; rdfs:comment "Glaurung slain."@en .
+narn:t8b a tm:Instant ; rdfs:label "t8b"@en ; rdfs:comment "Brandir's death."@en .
 narn:t9 a tm:Instant ; rdfs:label "t9"@en ; rdfs:comment "Túrin's death."@en .
+narn:t9b a tm:Instant ; rdfs:label "t9b"@en ; rdfs:comment "Húrin is released after the doom of his children is fulfilled."@en .
 
 # Instant ordering
 narn:t1 tm:occursBefore narn:t2 .
-narn:t2 tm:occursBefore narn:t10 .
+narn:t2 tm:occursBefore narn:t2c .
+narn:t2c tm:occursBefore narn:t10 .
 narn:t10 tm:occursBefore narn:t10b .
 narn:t10b tm:occursBefore narn:t10c .
 narn:t10c tm:occursBefore narn:t2b .
-narn:t10c tm:occursBefore narn:t3 .
+narn:t2b tm:occursBefore narn:t2d .
+narn:t2d tm:occursBefore narn:t3 .
 narn:t3 tm:occursBefore narn:t3b .
-narn:t3b tm:occursBefore narn:t4 .
-narn:t4 tm:occursBefore narn:t4b .
+narn:t3b tm:occursBefore narn:t2e .
+narn:t2e tm:occursBefore narn:t4 .
+narn:t4 tm:occursBefore narn:t4a .
+narn:t4a tm:occursBefore narn:t4b .
 narn:t4b tm:occursBefore narn:t4c .
 narn:t4c tm:occursBefore narn:t5 .
 narn:t5 tm:occursBefore narn:t6 .
 narn:t6 tm:occursBefore narn:t7 .
-narn:t7 tm:occursBefore narn:t7b .
+narn:t7 tm:occursBefore narn:t7a .
+narn:t7a tm:occursBefore narn:t7b .
 narn:t7b tm:occursBefore narn:t8 .
-narn:t8 tm:occursBefore narn:t9 .
+narn:t8 tm:occursBefore narn:t8b .
+narn:t8b tm:occursBefore narn:t9 .
+narn:t9 tm:occursBefore narn:t9b .
 
 # Sample instant-within-interval facts
 narn:t10c tm:occursDuring narn:intCaptivityHurin .
@@ -330,9 +653,14 @@ narn:intCurse a tm:FiniteInterval ;
     rdfs:comment "Point event: Morgoth pronounces the curse after Húrin's capture."@en .
 
 narn:intCaptivityHurin a tm:FiniteInterval ;
-    tm:startsAt narn:t10b ; tm:endsAt narn:t9 ;
+    tm:startsAt narn:t10b ; tm:endsAt narn:t9b ;
     rdfs:label "Captivity of Húrin interval"@en ;
     rdfs:comment "Extended interval: ~28 years of imprisonment."@en .
+
+narn:intCaptureHurin a tm:FiniteInterval ;
+    tm:startsAt narn:t10b ; tm:endsAt narn:t10c ;
+    rdfs:label "Capture of Húrin interval"@en ;
+    rdfs:comment "Short interval between the end of the battle and Húrin's presentation before Morgoth."@en .
 
 narn:intTaunt a tm:FiniteInterval ;
     tm:startsAt narn:t10c ; tm:endsAt narn:t10c ;
@@ -369,6 +697,11 @@ narn:intJourneyToBrethil a tm:FiniteInterval ;
     rdfs:label "Journey to Brethil interval"@en ;
     rdfs:comment "Extended interval: flight to Brethil."@en .
 
+narn:intMarriageTurambarNiniel a tm:FiniteInterval ;
+    tm:startsAt narn:t7a ; tm:endsAt narn:t7a ;
+    rdfs:label "Marriage of Turambar and Níniel interval"@en ;
+    rdfs:comment "Point event: Túrin and Niënor marry while not knowing their true identities."@en .
+
 narn:intDeathNienor a tm:FiniteInterval ;
     tm:startsAt narn:t7b ; tm:endsAt narn:t7b ;
     rdfs:label "Death of Niënor interval"@en ;
@@ -389,10 +722,60 @@ narn:intReignThingol a tm:Interval, tm:InfiniteInterval ;
     rdfs:label "Reign of Thingol interval"@en ;
     rdfs:comment "Thingol's reign spans millennia. Unbounded in this model."@en .
 
+narn:intBirthLalaith a tm:FiniteInterval ;
+    tm:startsAt narn:t2c ; tm:endsAt narn:t2c ;
+    rdfs:label "Birth of Lalaith interval"@en ;
+    rdfs:comment "Point event: Lalaith's birth."@en .
+
+narn:intJourneyToDoriath a tm:FiniteInterval ;
+    tm:startsAt narn:t2d ; tm:endsAt narn:t3 ;
+    rdfs:label "Journey to Doriath interval"@en ;
+    rdfs:comment "Extended interval: Túrin's journey from Dor-lómin to Doriath."@en .
+
+narn:intDeathSaeros a tm:FiniteInterval ;
+    tm:startsAt narn:t2e ; tm:endsAt narn:t2e ;
+    rdfs:label "Death of Saeros interval"@en ;
+    rdfs:comment "Point event: Saeros dies."@en .
+
+narn:intDeathForweg a tm:FiniteInterval ;
+    tm:startsAt narn:t4a ; tm:endsAt narn:t4a ;
+    rdfs:label "Death of Forweg interval"@en ;
+    rdfs:comment "Point event: Túrin kills the outlaw leader."@en .
+
+narn:intDeathBrandir a tm:FiniteInterval ;
+    tm:startsAt narn:t8b ; tm:endsAt narn:t8b ;
+    rdfs:label "Death of Brandir interval"@en ;
+    rdfs:comment "Point event: Túrin kills Brandir in rage."@en .
+
 narn:intDeathTurin a tm:FiniteInterval ;
     tm:startsAt narn:t9 ; tm:endsAt narn:t9 ;
     rdfs:label "Death of Túrin interval"@en ;
     rdfs:comment "Point event: Túrin falls on his sword."@en .
+
+narn:intReleaseHurin a tm:FiniteInterval ;
+    tm:startsAt narn:t9b ; tm:endsAt narn:t9b ;
+    rdfs:label "Release of Húrin interval"@en ;
+    rdfs:comment "Point event: Morgoth releases Húrin after the tragedy is complete."@en .
+
+narn:intAsNeithan a tm:FiniteInterval ;
+    tm:startsAt narn:t4 ; tm:endsAt narn:t4b ;
+    rdfs:label "Túrin as Neithan interval"@en ;
+    rdfs:comment "Phase in which Túrin is known among the outlaws as Neithan, overlapping with the Gorthol persona on Amon Rûdh."@en .
+
+narn:intAsNíniel a tm:FiniteInterval ;
+    tm:startsAt narn:t7 ; tm:endsAt narn:t7b ;
+    rdfs:label "Niënor as Níniel interval"@en ;
+    rdfs:comment "Phase in which Niënor lives in Brethil under the name Níniel."@en .
+
+narn:intAsTurambar a tm:FiniteInterval ;
+    tm:startsAt narn:t7 ; tm:endsAt narn:t9 ;
+    rdfs:label "Túrin as Turambar interval"@en ;
+    rdfs:comment "Phase in which Túrin presents himself in Brethil as Turambar."@en .
+
+narn:intAsDagnirGlaurunga a tm:FiniteInterval ;
+    tm:startsAt narn:t8 ; tm:endsAt narn:t9 ;
+    rdfs:label "Túrin as Dagnir Glaurunga interval"@en ;
+    rdfs:comment "Legendary phase after Túrin slays Glaurung and is remembered as his bane."@en .
 
 # Allen relations between intervals
 narn:intMarriage tm:beforeInterval narn:intBirthTurin .
@@ -411,14 +794,21 @@ narn:intResidenceMenegroth tm:beforeInterval narn:intJourneyToNargothrond .
 narn:intDeathBeleg tm:beforeInterval narn:intJourneyToNargothrond .
 narn:intJourneyToNargothrond tm:meetsInterval narn:intResidenceNargothrond .
 narn:intResidenceNargothrond tm:meetsInterval narn:intJourneyToBrethil .
+narn:intJourneyToBrethil tm:beforeInterval narn:intMarriageTurambarNiniel .
+narn:intMarriageTurambarNiniel tm:beforeInterval narn:intDeathNienor .
 narn:intJourneyToBrethil tm:beforeInterval narn:intDeathNienor .
 narn:intDeathNienor tm:beforeInterval narn:intSlayingGlaurung .
 narn:intSlayingGlaurung tm:beforeInterval narn:intDeathTurin .
+narn:intDeathTurin tm:beforeInterval narn:intReleaseHurin .
 # The captivity spans nearly the whole story
 narn:intCaptivityHurin tm:containsInterval narn:intResidenceMenegroth .
 narn:intCaptivityHurin tm:containsInterval narn:intSlayingGlaurung .
-# Túrin's death ends at the same time the captivity ends (t9)
-narn:intDeathTurin tm:finishesInterval narn:intCaptivityHurin .
+# Húrin's release ends the captivity.
+narn:intReleaseHurin tm:finishesInterval narn:intCaptivityHurin .
+narn:intAsNeithan tm:beforeInterval narn:intResidenceNargothrond .
+narn:intResidenceNargothrond tm:beforeInterval narn:intAsNíniel .
+narn:intAsNíniel tm:duringInterval narn:intAsTurambar .
+narn:intAsDagnirGlaurunga tm:duringInterval narn:intAsTurambar .
 # The war and reign span the entire story
 narn:intWarOfJewels tm:containsInterval narn:intNirnaeth .
 narn:intReignThingol tm:containsInterval narn:intResidenceMenegroth .
@@ -426,12 +816,16 @@ narn:intReignThingol tm:containsInterval narn:intResidenceMenegroth .
 # All events are distinct
 [] a owl:AllDifferent ;
     owl:distinctMembers (
-        narn:marriageHurinMorwen narn:birthTurin narn:birthNienor
-        narn:nirnaeth narn:curseOfMorgoth narn:captivityHurin
+        narn:marriageHurinMorwen narn:TúrinBirth narn:NienorBirth
+        narn:UrwenBirth narn:NirnaethArnoeadiad narn:captureHurin narn:curseOfMorgoth narn:captivityHurin
+        narn:presenceHurinNirnaeth narn:presenceGlaurungNirnaeth
+        narn:presenceTurinBrethil narn:presenceNienorBrethil narn:presenceBrandirBrethil
         narn:residenceMenegroth narn:meetingBeleg narn:tauntOfMorgoth
-        narn:deathBeleg narn:journeyToNargothrond narn:residenceNargothrond
-        narn:journeyToBrethil narn:warOfJewels narn:reignThingol
-        narn:deathNienor narn:deathGlaurung narn:deathTurin
+        narn:deathSaeros narn:TúrinGoesToDoriath narn:deathBeleg
+        narn:journeyToNargothrond narn:residenceNargothrond
+        narn:journeyToBrethil narn:marriageTurambarNiniel narn:warOfJewels narn:reignThingol
+        narn:deathNienor narn:deathGlaurung narn:recognitionTurinNienor narn:deathTurin
+        narn:deathForweg narn:deathBrandir narn:releaseHurin
         narn:slayingGlaurung
     ) .
 
@@ -441,56 +835,102 @@ narn:intReignThingol tm:containsInterval narn:intResidenceMenegroth .
 
 narn:HostOfTheWest a evt:Faction ;
     rdfs:label "Host of the West"@en ;
-    rdfs:comment "The coalition of Elves and Men led against Angband at the Nirnaeth Arnoediad."@en .
+    rdfs:comment "The coalition of Elves and Men led against Angband at the Nirnaeth Arnoediad."@en ;
+    evt:hasMember narn:Húrin .
 
 narn:HostOfAngband a evt:Faction ;
     rdfs:label "Host of Angband"@en ;
-    rdfs:comment "The forces of Morgoth that fought at the Nirnaeth Arnoediad."@en .
+    rdfs:comment "The forces of Morgoth that fought at the Nirnaeth Arnoediad."@en ;
+    evt:hasMember narn:Glaurung .
+
+# Presence states for scene-level and co-presence queries
+narn:presenceHurinNirnaeth a evt:Presence ;
+    evt:hasPresentEntity narn:Húrin ;
+    evt:hasLocation narn:AnfauglithPlain ;
+    evt:hasTemporalExtent narn:intNirnaeth ;
+    rdfs:label "Húrin present at the Nirnaeth"@en ;
+    rdfs:comment "Húrin is explicitly present on the battlefield of Anfauglith during the Nirnaeth Arnoediad."@en .
+
+narn:presenceGlaurungNirnaeth a evt:Presence ;
+    evt:hasPresentEntity narn:Glaurung ;
+    evt:hasLocation narn:AnfauglithPlain ;
+    evt:hasTemporalExtent narn:intNirnaeth ;
+    rdfs:label "Glaurung present at the Nirnaeth"@en ;
+    rdfs:comment "Glaurung is explicitly present on the battlefield of Anfauglith during the Nirnaeth Arnoediad."@en .
+
+narn:presenceTurinBrethil a evt:Presence ;
+    evt:hasPresentEntity narn:Túrin ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intAsTurambar ;
+    rdfs:label "Túrin present in Brethil"@en ;
+    rdfs:comment "Túrin is present in Brethil during the phase in which he lives as Turambar."@en .
+
+narn:presenceNienorBrethil a evt:Presence ;
+    evt:hasPresentEntity narn:Nienor ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intAsNíniel ;
+    rdfs:label "Niënor present in Brethil"@en ;
+    rdfs:comment "Niënor is present in Brethil during the phase in which she is known as Níniel."@en .
+
+narn:presenceBrandirBrethil a evt:Presence ;
+    evt:hasPresentEntity narn:Brandir ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intAsNíniel ;
+    rdfs:label "Brandir present in Brethil"@en ;
+    rdfs:comment "Brandir is present in Brethil during Niënor's life there as Níniel."@en .
 
 # Marriage of Húrin and Morwen
 narn:marriageHurinMorwen a evt:Marriage ;
-    evt:hasHusband narn:Hurin ;
+    evt:hasHusband narn:Húrin ;
     evt:hasWife narn:Morwen ;
-    evt:hasLocation narn:DorLomin ;
+    evt:hasLocation narn:Dor-lómin ;
     evt:hasTemporalExtent narn:intMarriage ;
     rdfs:label "Marriage of Húrin and Morwen"@en ;
     rdfs:comment "Húrin and Morwen married in Dor-lómin. The text does not specify the officiant, so that role is left open under the Open World Assumption."@en .
 
 # Birth of Túrin
-narn:birthTurin a evt:Birth ;
-    evt:hasNewborn narn:Turin ;
+narn:TúrinBirth a evt:Birth ;
+    evt:hasNewborn narn:Túrin ;
     evt:hasMother narn:Morwen ;
-    evt:hasFather narn:Hurin ;
-    evt:hasLocation narn:DorLomin ;
+    evt:hasFather narn:Húrin ;
+    evt:hasLocation narn:Dor-lómin ;
     evt:hasTemporalExtent narn:intBirthTurin ;
     rdfs:label "Birth of Túrin"@en ;
     rdfs:comment "Túrin was born in Dor-lómin."@en .
 
 # Birth of Niënor
-narn:birthNienor a evt:Birth ;
+narn:NienorBirth a evt:Birth ;
     evt:hasNewborn narn:Nienor ;
     evt:hasMother narn:Morwen ;
-    evt:hasFather narn:Hurin ;
-    evt:hasLocation narn:DorLomin ;
+    evt:hasFather narn:Húrin ;
+    evt:hasLocation narn:Dor-lómin ;
     evt:hasTemporalExtent narn:intBirthNienor ;
     rdfs:label "Birth of Niënor"@en ;
     rdfs:comment "Niënor was born in Dor-lómin after Túrin was sent away."@en .
 
 # Nirnaeth Arnoediad (Battle of Unnumbered Tears)
-narn:nirnaeth a evt:Battle ;
+narn:NirnaethArnoeadiad a evt:Battle ;
     evt:hasCombatant narn:HostOfTheWest, narn:HostOfAngband ;
-    evt:hasParticipant narn:Hurin, narn:Glaurung ;
+    evt:hasParticipant narn:Húrin, narn:Glaurung ;
     evt:hasLocation narn:AnfauglithPlain ;
     evt:hasTemporalExtent narn:intNirnaeth ;
     evt:hasVictor narn:HostOfAngband ;
     rdfs:label "Nirnaeth Arnoediad"@en ;
     rdfs:comment "The Battle of Unnumbered Tears, the greatest defeat of Elves and Men. Húrin is modeled as a participant, while the victorious side is represented as the Host of Angband rather than Morgoth personally fighting on the battlefield."@en .
 
+# Húrin is taken from the battlefield to Morgoth after the battle.
+narn:captureHurin a evt:PhysicalEvent ;
+    evt:hasParticipant narn:Húrin, narn:Morgoth ;
+    evt:hasLocation narn:AnfauglithPlain, narn:Angband ;
+    evt:hasTemporalExtent narn:intCaptureHurin ;
+    rdfs:label "Capture of Húrin"@en ;
+    rdfs:comment "Húrin is seized after the Nirnaeth and brought to Angband."@en .
+
 # Morgoth's curse. This is both an event and an action.
 # Has evt:hasAgent, so it gets classified as act:Action too.
 narn:curseOfMorgoth a act:CurseAction ;
     act:hasAgent narn:Morgoth ;
-    act:hasPatient narn:Hurin ;
+    act:hasPatient narn:Húrin ;
     evt:hasLocation narn:Angband ;
     evt:hasTemporalExtent narn:intCurse ;
     act:resultsIn narn:captivityHurin ;
@@ -500,7 +940,7 @@ narn:curseOfMorgoth a act:CurseAction ;
 
 # Captivity of Húrin
 narn:captivityHurin a evt:Captivity ;
-    evt:hasCaptive narn:Hurin ;
+    evt:hasCaptive narn:Húrin ;
     evt:hasCaptor narn:Morgoth ;
     evt:hasLocation narn:Angband ;
     evt:hasTemporalExtent narn:intCaptivityHurin ;
@@ -509,7 +949,7 @@ narn:captivityHurin a evt:Captivity ;
 
 # Residence at Menegroth
 narn:residenceMenegroth a evt:Residence ;
-    evt:hasResident narn:Turin ;
+    evt:hasResident narn:Túrin ;
     evt:hasLocation narn:Menegroth ;
     evt:usesItem narn:DragonHelm ;
     evt:hasTemporalExtent narn:intResidenceMenegroth ;
@@ -518,7 +958,7 @@ narn:residenceMenegroth a evt:Residence ;
 
 # Meeting Beleg
 narn:meetingBeleg a evt:Meeting ;
-    evt:hasParticipant narn:Turin, narn:Beleg ;
+    evt:hasParticipant narn:Túrin, narn:Beleg ;
     evt:hasLocation narn:Menegroth ;
     evt:hasTemporalExtent narn:intMeetingBeleg ;
     rdfs:label "Túrin meets Beleg"@en ;
@@ -526,16 +966,44 @@ narn:meetingBeleg a evt:Meeting ;
 
 # Morgoth taunts Húrin
 narn:tauntOfMorgoth a evt:Conversation ;
-    evt:hasSpeaker narn:Morgoth, narn:Hurin ;
+    evt:hasSpeaker narn:Morgoth, narn:Húrin ;
     evt:hasLocation narn:Angband ;
     evt:hasTemporalExtent narn:intTaunt ;
     rdfs:label "Morgoth taunts Húrin"@en ;
     rdfs:comment "Morgoth reveals his curse to Húrin and gloats over his captivity."@en .
 
+# Death of Saeros
+narn:deathSaeros a evt:Death ;
+    evt:hasDeceased narn:Saeros ;
+    evt:hasKiller narn:Túrin ;
+    evt:hasLocation narn:Doriath ;
+    evt:hasTemporalExtent narn:intDeathSaeros ;
+    rdfs:label "Death of Saeros"@en ;
+    rdfs:comment "Túrin accidentally caused the death of Saeros in Doriath."@en .
+
+# Journey to Doriath
+narn:TúrinGoesToDoriath a evt:Journey ;
+    evt:hasTraveler narn:Túrin, narn:Gethron, narn:Grithnir ;
+    evt:hasOrigin narn:Dor-lómin ;
+    evt:hasDestination narn:Doriath ;
+    evt:hasTemporalExtent narn:intJourneyToDoriath ;
+    rdfs:label "Journey to Doriath"@en ;
+    rdfs:comment "Túrin travels from Dor-lómin to Doriath with Gethron and Grithnir."@en .
+
+# Birth of Lalaith
+narn:UrwenBirth a evt:Birth ;
+    evt:hasNewborn narn:Lalaith ;
+    evt:hasMother narn:Morwen ;
+    evt:hasFather narn:Húrin ;
+    evt:hasLocation narn:Dor-lómin ;
+    evt:hasTemporalExtent narn:intBirthLalaith ;
+    rdfs:label "Birth of Lalaith"@en ;
+    rdfs:comment "Urwen Lalaith was born in Dor-lómin, after Túrin."@en .
+
 # Death of Beleg
 narn:deathBeleg a evt:Death ;
     evt:hasDeceased narn:Beleg ;
-    evt:hasKiller narn:Turin ;
+    evt:hasKiller narn:Túrin ;
     evt:usesItem narn:Gurthang ;
     evt:hasLocation narn:TaurNuFuin ;
     evt:hasTemporalExtent narn:intDeathBeleg ;
@@ -544,7 +1012,7 @@ narn:deathBeleg a evt:Death ;
 
 # Journey to Nargothrond
 narn:journeyToNargothrond a evt:Journey ;
-    evt:hasTraveler narn:Turin ;
+    evt:hasTraveler narn:Túrin ;
     evt:hasOrigin narn:TaurNuFuin ;
     evt:hasDestination narn:Nargothrond ;
     evt:hasTemporalExtent narn:intJourneyToNargothrond ;
@@ -553,7 +1021,7 @@ narn:journeyToNargothrond a evt:Journey ;
 
 # Residence at Nargothrond
 narn:residenceNargothrond a evt:Residence ;
-    evt:hasResident narn:Turin ;
+    evt:hasResident narn:Túrin ;
     evt:hasLocation narn:Nargothrond ;
     evt:hasTemporalExtent narn:intResidenceNargothrond ;
     rdfs:label "Residence at Nargothrond"@en ;
@@ -561,16 +1029,25 @@ narn:residenceNargothrond a evt:Residence ;
 
 # Journey to Brethil
 narn:journeyToBrethil a evt:Journey ;
-    evt:hasTraveler narn:Turin ;
+    evt:hasTraveler narn:Túrin ;
     evt:hasOrigin narn:Nargothrond ;
     evt:hasDestination narn:Brethil ;
     evt:hasTemporalExtent narn:intJourneyToBrethil ;
     rdfs:label "Journey to Brethil"@en ;
     rdfs:comment "Túrin flees to the Forest of Brethil."@en .
 
+# Marriage under assumed names in Brethil.
+narn:marriageTurambarNiniel a evt:Marriage ;
+    evt:hasHusband narn:Túrin ;
+    evt:hasWife narn:Nienor ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intMarriageTurambarNiniel ;
+    rdfs:label "Marriage of Turambar and Níniel"@en ;
+    rdfs:comment "Túrin and Niënor marry in Brethil while unaware of their true kinship."@en .
+
 # War of the Jewels
 narn:warOfJewels a evt:War ;
-    evt:hasSubEvent narn:nirnaeth ;
+    evt:hasSubEvent narn:NirnaethArnoeadiad ;
     evt:hasLocation narn:Beleriand ;
     evt:hasTemporalExtent narn:intWarOfJewels ;
     rdfs:label "War of the Jewels"@en ;
@@ -578,7 +1055,7 @@ narn:warOfJewels a evt:War ;
 
 # Thingol's reign
 narn:reignThingol a evt:Reign ;
-    evt:hasParticipant narn:Thingol ;
+    evt:hasRuler narn:Thingol ;
     evt:hasLocation narn:Doriath ;
     evt:hasTemporalExtent narn:intReignThingol ;
     rdfs:label "Reign of Thingol"@en ;
@@ -587,29 +1064,65 @@ narn:reignThingol a evt:Reign ;
 # Death of Niënor
 narn:deathNienor a evt:Death ;
     evt:hasDeceased narn:Nienor ;
+    evt:hasKiller narn:Nienor ;
     evt:hasLocation narn:Brethil ;
     evt:hasTemporalExtent narn:intDeathNienor ;
     rdfs:label "Death of Niënor"@en ;
-    rdfs:comment "Niënor threw herself into the river Teiglin."@en .
+    rdfs:comment "Niënor threw herself into the river Teiglin (suicide)."@en .
 
 # Death of Glaurung (killed by Túrin)
 narn:deathGlaurung a evt:Death ;
     evt:hasDeceased narn:Glaurung ;
-    evt:hasKiller narn:Turin ;
+    evt:hasKiller narn:Túrin ;
     evt:hasLocation narn:Brethil ;
     evt:hasTemporalExtent narn:intSlayingGlaurung ;
     rdfs:label "Death of Glaurung"@en ;
     rdfs:comment "Túrin stabbed Glaurung from below with Gurthang."@en .
 
+# Túrin finally recognizes that Níniel was Niënor
+narn:recognitionTurinNienor a evt:Recognition ;
+    evt:hasRecognizer narn:Túrin ;
+    evt:hasRecognizedCharacter narn:Nienor ;
+    evt:recognizesAppellation narn:Níniel ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intDeathTurin ;
+    rdfs:label "Túrin recognizes Níniel as Niënor"@en ;
+    rdfs:comment "At the end of the story, Túrin recognizes that the woman he knew as Níniel was actually his sister Niënor."@en .
+
 # Death of Túrin (suicide)
 narn:deathTurin a evt:Death ;
-    evt:hasDeceased narn:Turin ;
-    evt:hasKiller narn:Turin ;
+    evt:hasDeceased narn:Túrin ;
+    evt:hasKiller narn:Túrin ;
     evt:usesItem narn:Gurthang ;
     evt:hasLocation narn:Brethil ;
     evt:hasTemporalExtent narn:intDeathTurin ;
     rdfs:label "Death of Túrin"@en ;
     rdfs:comment "Túrin killed himself by falling on Gurthang."@en .
+
+# Death of Forweg
+narn:deathForweg a evt:Death ;
+    evt:hasDeceased narn:Forweg ;
+    evt:hasKiller narn:Túrin ;
+    evt:hasTemporalExtent narn:intDeathForweg ;
+    rdfs:label "Death of Forweg"@en ;
+    rdfs:comment "Túrin killed the outlaw leader Forweg during his outlaw phase."@en .
+
+# Death of Brandir
+narn:deathBrandir a evt:Death ;
+    evt:hasDeceased narn:Brandir ;
+    evt:hasKiller narn:Túrin ;
+    evt:hasLocation narn:Brethil ;
+    evt:hasTemporalExtent narn:intDeathBrandir ;
+    rdfs:label "Death of Brandir"@en ;
+    rdfs:comment "Túrin killed Brandir in rage after learning the truth."@en .
+
+# Húrin is eventually released after the doom of his children is complete.
+narn:releaseHurin a evt:PhysicalEvent ;
+    evt:hasParticipant narn:Húrin, narn:Morgoth ;
+    evt:hasLocation narn:Angband ;
+    evt:hasTemporalExtent narn:intReleaseHurin ;
+    rdfs:label "Release of Húrin"@en ;
+    rdfs:comment "Morgoth releases Húrin after the doom of his children has been fulfilled."@en .
 
 ###############################################################
 # ITEMS
@@ -629,7 +1142,7 @@ narn:DragonHelm a evt:Artifact ;
 
 # Slaying of Glaurung
 narn:slayingGlaurung a act:AttackAction ;
-    act:hasAgent narn:Turin ;
+    act:hasAgent narn:Túrin ;
     act:hasPatient narn:Glaurung ;
     evt:usesItem narn:Gurthang ;
     evt:hasLocation narn:Brethil ;
@@ -647,14 +1160,14 @@ narn:slayingGlaurung a act:AttackAction ;
 narn:NarnBook a plot:NarrativeWork ;
     rdfs:label "The Children of Húrin (book)"@en ;
     rdfs:comment "The 2007 standalone edition of The Children of Húrin, edited by Christopher Tolkien from J.R.R. Tolkien's manuscripts."@en ;
-    owl:sameAs <https://www.wikidata.org/entity/Q473287> ;
+    rdfs:seeAlso <https://www.wikidata.org/entity/Q473287> ;
     plot:hasPublicationDate "2007-04-17T00:00:00Z"^^xsd:dateTime ;
-    plot:narrates narn:NarnStory .
+    plot:narrates narn:NarnIChînHúrin .
 
 narn:Tolkien a plot:Author ;
     rdfs:label "J.R.R. Tolkien"@en ;
     rdfs:comment "The original author of the tale, published posthumously in standalone form."@en ;
-    owl:sameAs <https://www.wikidata.org/entity/Q892> .
+    rdfs:seeAlso <https://www.wikidata.org/entity/Q892> .
 
 narn:ChristopherTolkien a plot:Editor ;
     rdfs:label "Christopher Tolkien"@en ;
@@ -668,104 +1181,188 @@ narn:NarnBook plot:hasAuthor narn:Tolkien ;
     plot:hasEditor narn:ChristopherTolkien ;
     plot:hasPublisher narn:HarperCollins .
 
-# Fictional story
-narn:NarnStory a plot:Story ;
-    rdfs:label "Narn i Chîn Húrin"@en ;
-    rdfs:comment "The fictional story of the children of Húrin as told within the legendarium."@en ;
+# Fictional story from the supplied Narn plot graph, enriched with the final
+# plot ontology and linked to the in-world event layer.
+narn:NarnIChînHúrin a plot:Story ;
     plot:hasTitle "Narn i Chîn Húrin" ;
-    plot:hasTextSummary "The tale of the children of Húrin, cursed by Morgoth." .
+    plot:hasTextSummary "The tale of the children of Húrin, cursed by Morgoth and destroyed by the unfolding of that doom." ;
+    plot:startsWith narn:NirnaethArnoediad ;
+    plot:endsWith narn:HúrinReleased .
 
-# Story sections
-narn:Prologue1 a plot:Prologue ;
-    rdfs:label "Prologue"@en ;
-    rdfs:comment "The battle of Nirnaeth, Húrin's capture, and Morgoth's curse."@en ;
+narn:Prologue a plot:Prologue ;
     plot:hasTitle "The curse of Morgoth" ;
-    plot:sectionOf narn:NarnStory ;
-    plot:startsWith narn:pe1 ;
-    plot:endsWith narn:pe2 .
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:NirnaethArnoediad ;
+    plot:endsWith narn:HúrinBoundToAChair ;
+    plot:containsPlotEvent narn:NirnaethArnoediad, narn:HúrinCapture, narn:CurseOfHúrinFamily, narn:HúrinBoundToAChair .
 
-narn:Chapter1 a plot:Chapter ;
-    rdfs:label "Chapter 1"@en ;
-    rdfs:comment "Túrin's childhood in Dor-lómin and fostering in Doriath."@en ;
-    plot:hasTitle "Childhood and Fostering" ;
+narn:TúrinEarlyYears a plot:Chapter ;
+    plot:hasTitle "The early years" ;
     plot:hasChapterNumber "1"^^xsd:positiveInteger ;
-    plot:sectionOf narn:NarnStory ;
-    plot:startsWith narn:pe3 ;
-    plot:endsWith narn:pe3 .
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:TúrinBirthInPlot ;
+    plot:endsWith narn:TúrinGoesToDoriathPlot ;
+    plot:containsPlotEvent narn:TúrinBirthInPlot, narn:UrwenBirthInPlot, narn:TúrinGoesToDoriathPlot .
 
-narn:Chapter2 a plot:Chapter ;
-    rdfs:label "Chapter 2"@en ;
-    rdfs:comment "Túrin in Nargothrond, the fall of the fortress, and the slaying of Glaurung."@en ;
-    plot:hasTitle "Nargothrond and the Dragon" ;
+narn:TúrinInDoriath a plot:Chapter ;
+    plot:hasTitle "Túrin in Doriath" ;
     plot:hasChapterNumber "2"^^xsd:positiveInteger ;
-    plot:sectionOf narn:NarnStory ;
-    plot:startsWith narn:pe4 ;
-    plot:endsWith narn:pe7 .
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:TúrinInMenegroth ;
+    plot:endsWith narn:SaerosDies ;
+    plot:containsPlotEvent narn:TúrinInMenegroth, narn:SaerosDies .
 
-narn:Epilogue1 a plot:Epilogue ;
-    rdfs:label "Epilogue"@en ;
-    rdfs:comment "The death of Túrin and the end of the curse."@en ;
-    plot:hasTitle "The doom fulfilled" ;
-    plot:sectionOf narn:NarnStory ;
-    plot:startsWith narn:pe8 ;
-    plot:endsWith narn:pe8 .
+narn:TúrinAndTheOutlaws a plot:Chapter ;
+    plot:hasTitle "The outlaws and Beleg" ;
+    plot:hasChapterNumber "3"^^xsd:positiveInteger ;
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:ForwegDies ;
+    plot:endsWith narn:BelegDies ;
+    plot:containsPlotEvent narn:ForwegDies, narn:BelegDies .
 
-narn:NarnStory plot:hasSection narn:Prologue1, narn:Chapter1, narn:Chapter2, narn:Epilogue1 .
+narn:TúrinInNargothrond a plot:Chapter ;
+    plot:hasTitle "Nargothrond" ;
+    plot:hasChapterNumber "4"^^xsd:positiveInteger ;
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:TúrinJourneysToNargothrond ;
+    plot:endsWith narn:TúrinAtNargothrond ;
+    plot:containsPlotEvent narn:TúrinJourneysToNargothrond, narn:TúrinAtNargothrond .
 
-# Plot events
-narn:pe1 a plot:PlotEvent ;
-    rdfs:label "PE: Nirnaeth Arnoediad"@en ;
-    rdfs:comment "The battle that sets the tragedy in motion."@en ;
-    plot:describesEvent narn:nirnaeth .
-narn:pe1b a plot:PlotEvent ;
-    rdfs:label "PE: Curse of Morgoth"@en ;
-    rdfs:comment "Morgoth curses Húrin and his children."@en ;
+narn:NienorTale a plot:Chapter ;
+    plot:hasTitle "The tale of Niënor" ;
+    plot:hasChapterNumber "5"^^xsd:positiveInteger ;
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:TúrinJourneysToBrethil ;
+    plot:endsWith narn:NienorDies ;
+    plot:containsPlotEvent narn:TúrinJourneysToBrethil, narn:TurambarMarriesNíniel, narn:NienorDies .
+
+narn:FinalDoom a plot:Chapter ;
+    plot:hasTitle "The final doom" ;
+    plot:hasChapterNumber "6"^^xsd:positiveInteger ;
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:GlaurungDies ;
+    plot:endsWith narn:TúrinDies ;
+    plot:containsPlotEvent narn:GlaurungDies, narn:TruthRevealed, narn:TúrinDies .
+
+narn:Epilogue a plot:Epilogue ;
+    plot:hasTitle "The end of the curse" ;
+    plot:sectionOf narn:NarnIChînHúrin ;
+    plot:startsWith narn:HúrinReleased ;
+    plot:endsWith narn:HúrinReleased ;
+    plot:containsPlotEvent narn:HúrinReleased .
+
+# Plot events reused from the supplied plot graph
+narn:NirnaethArnoediad a plot:PlotEvent ;
+    plot:describesEvent narn:NirnaethArnoeadiad .
+
+narn:HúrinCapture a plot:PlotEvent ;
+    plot:describesEvent narn:captureHurin .
+
+narn:CurseOfHúrinFamily a plot:PlotEvent ;
     plot:describesEvent narn:curseOfMorgoth .
-narn:pe2 a plot:PlotEvent ;
-    rdfs:label "PE: Birth of Túrin"@en ;
-    rdfs:comment "Túrin is born in Dor-lómin."@en ;
-    plot:describesEvent narn:birthTurin .
-narn:pe3 a plot:PlotEvent ;
-    rdfs:label "PE: Residence at Menegroth"@en ;
+
+narn:HúrinBoundToAChair a plot:PlotEvent ;
+    plot:describesEvent narn:captivityHurin .
+
+# Additional plot events extending the supplied plot graph
+narn:TúrinBirthInPlot a plot:PlotEvent ;
+    rdfs:label "Túrin's birth"@en ;
+    rdfs:comment "The birth of Túrin in Dor-lómin."@en ;
+    plot:describesEvent narn:TúrinBirth .
+
+narn:UrwenBirthInPlot a plot:PlotEvent ;
+    rdfs:label "Urwen's birth"@en ;
+    rdfs:comment "The birth of Urwen Lalaith."@en ;
+    plot:describesEvent narn:UrwenBirth .
+
+narn:TúrinGoesToDoriathPlot a plot:PlotEvent ;
+    rdfs:label "Túrin goes to Doriath"@en ;
+    rdfs:comment "Túrin is sent from Dor-lómin to Doriath."@en ;
+    plot:describesEvent narn:TúrinGoesToDoriath .
+
+narn:TúrinInMenegroth a plot:PlotEvent ;
+    rdfs:label "Túrin in Menegroth"@en ;
     rdfs:comment "Túrin lives in Menegroth as Thingol's foster-son."@en ;
     plot:describesEvent narn:residenceMenegroth .
-narn:pe4 a plot:PlotEvent ;
-    rdfs:label "PE: Journey to Nargothrond"@en ;
-    rdfs:comment "After Beleg's death, Túrin is led south from Taur-nu-Fuin to Nargothrond."@en ;
+
+narn:SaerosDies a plot:PlotEvent ;
+    rdfs:label "Saeros dies"@en ;
+    rdfs:comment "Saeros dies after his conflict with Túrin."@en ;
+    plot:describesEvent narn:deathSaeros .
+
+narn:ForwegDies a plot:PlotEvent ;
+    rdfs:label "Forweg dies"@en ;
+    rdfs:comment "Túrin kills Forweg during his outlaw phase."@en ;
+    plot:describesEvent narn:deathForweg .
+
+narn:BelegDies a plot:PlotEvent ;
+    rdfs:label "Beleg dies"@en ;
+    rdfs:comment "Beleg dies by Túrin's hand in the dark."@en ;
+    plot:describesEvent narn:deathBeleg .
+
+narn:TúrinJourneysToNargothrond a plot:PlotEvent ;
+    rdfs:label "Túrin journeys to Nargothrond"@en ;
+    rdfs:comment "Túrin is led south to Nargothrond after Beleg's death."@en ;
     plot:describesEvent narn:journeyToNargothrond .
-narn:pe5 a plot:PlotEvent ;
-    rdfs:label "PE: Residence at Nargothrond"@en ;
-    rdfs:comment "Túrin becomes a leader in Nargothrond."@en ;
+
+narn:TúrinAtNargothrond a plot:PlotEvent ;
+    rdfs:label "Túrin at Nargothrond"@en ;
+    rdfs:comment "Túrin rises to leadership in Nargothrond."@en ;
     plot:describesEvent narn:residenceNargothrond .
-narn:pe6 a plot:PlotEvent ;
-    rdfs:label "PE: Journey to Brethil"@en ;
+
+narn:TúrinJourneysToBrethil a plot:PlotEvent ;
+    rdfs:label "Túrin journeys to Brethil"@en ;
     rdfs:comment "Túrin flees to the Forest of Brethil."@en ;
     plot:describesEvent narn:journeyToBrethil .
-narn:pe7 a plot:PlotEvent ;
-    rdfs:label "PE: Death of Glaurung"@en ;
+
+narn:TurambarMarriesNíniel a plot:PlotEvent ;
+    rdfs:label "Turambar marries Níniel"@en ;
+    rdfs:comment "Túrin and Niënor marry while using the names Turambar and Níniel."@en ;
+    plot:describesEvent narn:marriageTurambarNiniel .
+
+narn:NienorDies a plot:PlotEvent ;
+    rdfs:label "Niënor dies"@en ;
+    rdfs:comment "Niënor dies after the truth is revealed."@en ;
+    plot:describesEvent narn:deathNienor .
+
+narn:GlaurungDies a plot:PlotEvent ;
+    rdfs:label "Glaurung dies"@en ;
     rdfs:comment "Túrin slays the dragon Glaurung."@en ;
     plot:describesEvent narn:deathGlaurung .
-narn:pe8 a plot:PlotEvent ;
-    rdfs:label "PE: Death of Túrin"@en ;
+
+narn:TruthRevealed a plot:PlotEvent ;
+    rdfs:label "The truth about Níniel is revealed"@en ;
+    rdfs:comment "Túrin learns that Níniel was in fact Niënor."@en ;
+    plot:describesEvent narn:recognitionTurinNienor .
+
+narn:TúrinDies a plot:PlotEvent ;
+    rdfs:label "Túrin dies"@en ;
     rdfs:comment "Túrin takes his own life."@en ;
     plot:describesEvent narn:deathTurin .
 
-# Sections contain plot events
-narn:Prologue1 plot:containsPlotEvent narn:pe1, narn:pe1b, narn:pe2 .
-narn:Chapter1 plot:containsPlotEvent narn:pe3 .
-narn:Chapter2 plot:containsPlotEvent narn:pe4, narn:pe5, narn:pe6, narn:pe7 .
-narn:Epilogue1 plot:containsPlotEvent narn:pe8 .
+narn:HúrinReleased a plot:PlotEvent ;
+    rdfs:label "Húrin is released"@en ;
+    rdfs:comment "Morgoth releases Húrin after the doom has run its course."@en ;
+    plot:describesEvent narn:releaseHurin .
 
-# Story starts and ends
-narn:NarnStory plot:startsWith narn:pe1 ;
-    plot:endsWith narn:pe8 .
+# Narrative order
+narn:NirnaethArnoediad plot:nextPlotEvent narn:HúrinCapture .
+narn:HúrinCapture plot:nextPlotEvent narn:CurseOfHúrinFamily .
+narn:CurseOfHúrinFamily plot:nextPlotEvent narn:HúrinBoundToAChair .
+narn:HúrinBoundToAChair plot:nextPlotEvent narn:TúrinBirthInPlot .
+narn:TúrinBirthInPlot plot:nextPlotEvent narn:UrwenBirthInPlot .
+narn:UrwenBirthInPlot plot:nextPlotEvent narn:TúrinGoesToDoriathPlot .
+narn:TúrinGoesToDoriathPlot plot:nextPlotEvent narn:TúrinInMenegroth .
+narn:TúrinInMenegroth plot:nextPlotEvent narn:SaerosDies .
+narn:SaerosDies plot:nextPlotEvent narn:ForwegDies .
+narn:ForwegDies plot:nextPlotEvent narn:BelegDies .
+narn:BelegDies plot:nextPlotEvent narn:TúrinJourneysToNargothrond .
+narn:TúrinJourneysToNargothrond plot:nextPlotEvent narn:TúrinAtNargothrond .
+narn:TúrinAtNargothrond plot:nextPlotEvent narn:TúrinJourneysToBrethil .
+narn:TúrinJourneysToBrethil plot:nextPlotEvent narn:TurambarMarriesNíniel .
+narn:TurambarMarriesNíniel plot:nextPlotEvent narn:NienorDies .
+narn:NienorDies plot:nextPlotEvent narn:GlaurungDies .
+narn:GlaurungDies plot:nextPlotEvent narn:TruthRevealed .
+narn:TruthRevealed plot:nextPlotEvent narn:TúrinDies .
+narn:TúrinDies plot:nextPlotEvent narn:HúrinReleased .
 
-# Plot event ordering
-narn:pe1 plot:nextPlotEvent narn:pe1b .
-narn:pe1b plot:nextPlotEvent narn:pe2 .
-narn:pe2 plot:nextPlotEvent narn:pe3 .
-narn:pe3 plot:nextPlotEvent narn:pe4 .
-narn:pe4 plot:nextPlotEvent narn:pe5 .
-narn:pe5 plot:nextPlotEvent narn:pe6 .
-narn:pe6 plot:nextPlotEvent narn:pe7 .
-narn:pe7 plot:nextPlotEvent narn:pe8 .

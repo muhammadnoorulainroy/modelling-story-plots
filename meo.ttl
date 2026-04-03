@@ -143,6 +143,58 @@ meo:morgoth a meo:EvilBeing;
             rdfs:comment "The only Vala who became evil. The enemy of all other Valar."@en .
 
 #
+# Race disjointness and covering axioms
+#
+# Vala and Maia are disjoint subtypes of Ainu.
+meo:Vala owl:disjointWith meo:Maia .
+
+# Torog and Loce are disjoint subtypes of EvilBeing.
+meo:Torog owl:disjointWith meo:Lócë .
+
+# Elves and Men are disjoint (an Elf cannot be a Man).
+meo:Quendë owl:disjointWith meo:Atan .
+
+# Dwarves are disjoint from Elves and Men.
+meo:Casar owl:disjointWith meo:Quendë .
+meo:Casar owl:disjointWith meo:Atan .
+
+# Ainur are disjoint from Eruhin (spirits vs children of Iluvatar).
+meo:Ainu owl:disjointWith meo:Eruhin .
+
+# Ainur are disjoint from Dwarves (spirits vs created beings).
+meo:Ainu owl:disjointWith meo:Casar .
+
+# Ainur are disjoint from evil creatures (Ainur can become evil,
+# via EvilBeing, but are not inherently Torog or Loce).
+meo:Ainu owl:disjointWith meo:Torog .
+meo:Ainu owl:disjointWith meo:Lócë .
+
+# Eruhin are disjoint from evil creatures.
+meo:Eruhin owl:disjointWith meo:Torog .
+meo:Eruhin owl:disjointWith meo:Lócë .
+
+# Dwarves are disjoint from evil creatures.
+meo:Casar owl:disjointWith meo:Torog .
+meo:Casar owl:disjointWith meo:Lócë .
+
+# God is disjoint from everything else (Eru is unique).
+meo:God owl:disjointWith meo:Ainu .
+meo:God owl:disjointWith meo:Eruhin .
+meo:God owl:disjointWith meo:Casar .
+meo:God owl:disjointWith meo:EvilBeing .
+meo:God owl:disjointWith meo:Mortal .
+
+# God is a subclass of Immortal (Eru is immortal).
+meo:God rdfs:subClassOf meo:Immortal .
+
+# Ainu covering: every Ainu is a Vala or a Maia.
+meo:Ainu owl:disjointUnionOf ( meo:Vala meo:Maia ) .
+
+# Peredhel is a subclass of both Immortal and Mortal? No — Peredhel
+# can choose. In the Narn's world, Peredhel are classified separately.
+# We leave Peredhel as subClassOf Eruhin without forcing Immortal/Mortal.
+
+#
 # Axioms
 #
 # Whoever serves Morgoth is evil

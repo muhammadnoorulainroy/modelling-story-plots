@@ -1,0 +1,297 @@
+#
+# Prefixes
+#
+@prefix az: <https://w3id.org/people/az/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix evnt: <https://purl.org/event/> .
+@prefix fo: <https://purl.org/family/> .
+@prefix loc: <https://purl.org/location/> .
+@prefix meo: <https://purl.org/meo/> .
+@prefix narn: <https://purl.org/narn/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix soc: <https://purl.org/social/relations/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+#
+# Ontology definition
+#
+
+<https://example.org/story/narn/base> a owl:Ontology ;
+    owl:imports <alignment.ttl> ;
+    rdfs:label "Narn Base Graph"@en ;
+    rdfs:comment "Base story graph for the Narn i Chin Hurin, using the canonical purl.org/narn identifiers."@en ;
+    dct:created "2026-04-05T00:00:00Z"^^xsd:dateTime ;
+    dct:creator az:me .
+
+
+#
+# The people
+#
+
+# Húrin was a Man, brother of Huor and married to Morwen, whom he loved. During the Nirnaeth Arnoediad, he killed 70 trolls. He used to live in Dor-lómin but was held captive in Angband for many years.
+narn:Húrin a meo:Adan;
+           rdfs:label "Húrin"@sjn;
+           skos:altLabel "Húrin Thalion"@sjn;
+           fo:isMarriedTo narn:Morwen;
+           fo:isABrotherOf narn:Huor;
+           soc:loved narn:Morwen;
+           soc:livedIn narn:Dor-lómin, narn:Angband .
+
+# Morwen was a lady, sister of Rían, married to Húrin, whom she loved. She lived in Dor-lómin, then in Doriath.
+narn:Morwen a meo:Adan;
+            rdfs:label "Morwen"@sjn;
+            skos:altLabel "Eledhwen"@sjn, "Elven-fair"@en;
+            fo:isMarriedTo narn:Húrin;
+            fo:isSisterOf narn:Rían;
+            soc:loved narn:Húrin;
+            soc:livedIn narn:Dor-lómin, narn:Doriath .
+
+# Huor was married to Rían and was the father of Tuor.
+narn:Huor a meo:Adan;
+          rdfs:label "Huor"@sjn;
+          fo:isMarriedTo narn:Rían;
+          fo:isTheFatherOf narn:Tuor .
+
+# Rían was married to Huor and was the mother of Tuor.
+narn:Rían a meo:Adan;
+          rdfs:label "Rían"@sjn;
+          fo:isMarriedTo narn:Huor;
+          fo:isTheMotherOf narn:Tuor .
+
+# Tuor, a man married to some Idril Celebrindal. He lived in Gondolin for many years.
+narn:Tuor a fo:Male, meo:Adan;
+          rdfs:label "Tuor"@sjn;
+          fo:isMarriedTo [ rdfs:label "Idril Celebrindal"@sjn ];
+          soc:livedIn narn:Gondolin .
+
+# Túrin was the son of Húrin and Morwen. He spent his youth in Dor-lómin and moved to Doriath. He accidentally killed Saeros.
+narn:Túrin a meo:Adan;
+           rdfs:label "Túrin"@en;
+           fo:isASonOf narn:Húrin, narn:Morwen;
+           soc:hasFriend narn:Labadal;
+           soc:killed narn:Saeros;
+           soc:livedIn narn:Dor-lómin, narn:Doriath .
+
+# Lalaith was the daughter of Húrin and Morwen. She lived her short life in Dor-lómin
+narn:Lalaith a meo:Adan;
+             rdfs:label "Urwen"@sjn;
+             skos:altLabel "Lalaith"@sjn, "Laughter"@en;
+             fo:isADaughterOf narn:Húrin, narn:Morwen;
+             soc:livedIn narn:Dor-lómin .
+
+# Nienor was the daughter of Húrin and Morwen, sister of Túrin. She lived in Dor-lómin, then in Doriath with her mother.
+narn:Nienor a meo:Adan;
+            rdfs:label "Nienor"@sjn;
+            fo:isADaughterOf narn:Húrin, narn:Morwen;
+            fo:isASisterOf narn:Túrin;
+            soc:livedIn narn:Dor-lómin, narn:Doriath .
+
+# Sador was a lame servant of Húrin, and a woodwright
+narn:Sador a meo:Adan, fo:Male;
+          rdfs:label "Sador"@sjn;
+          skos:altLabel "Loyal"@en;
+          soc:served narn:Húrin .
+
+# Labadal ("Hopafoot") is an alternate name for Sador.
+# Modeled as an appellation use rather than owl:sameAs to stay
+# consistent with the appellation pattern used for Turin's names.
+# The friendship with Turin is asserted directly on narn:Sador
+# in the instance file.
+
+# Gethron was a man from the house of Hador who went with Túrin and Grithnir in their travel to Doriath
+narn:Gethron a fo:Male, meo:Adan;
+             rdfs:label "Gethron" .  
+
+# Grithnir was a man from the house of Hador who went with Túrin and Gethron in their travel to Doriath
+narn:Grithnir a fo:Male, meo:Adan;
+             rdfs:label "Grithnir" .  
+
+# Beleg was a male Elf, the best friend of Túrin and served King Thingol.
+narn:Beleg a fo:Male, meo:Elda;
+           rdfs:label "Beleg"@sjn;
+           skos:altLabel "Cúthalion"@sjn, "Strongbow"@en;
+           soc:wasTheBestFriendOf narn:Túrin;
+           soc:served narn:Thingol .
+
+# Saeros was an Elf who served King Thingol and hated Túrin.
+narn:Saeros a fo:Male, meo:Elda;
+            rdfs:label "Saeros"@sjn;
+            soc:hated narn:Túrin;
+            soc:served narn:Thingol .
+
+# Nellas was an Elf-maiden who secretly loved Túrin.
+narn:Nellas a fo:Female, meo:Elda;
+            rdfs:label "Nellas"@sjn;
+            soc:loved narn:Túrin .
+
+# Thingol was the Elven King of Doriath who lived in Menegroth.
+narn:Thingol a meo:Elda;
+             rdfs:label "Thingol"@sjn, "Grey-cloak"@en;
+             skos:altLabel "Elwë"@qya, "Elwë Singollo"@qya, "Elu Thingol"@sjn;
+             soc:wasTheKingOf narn:Doriath;
+             soc:livedIn narn:Menegroth .
+
+# Neithan was an outlaw. He killed Forweg and took his place among the outlaw.
+narn:Neithan a soc:Appellation;
+             rdfs:label "Neithan"@sjn, "The Wronged"@en .
+
+# Gorthol was Neithan who took a different name when living in Amon Rûdh, before he killed Beleg.
+narn:Gorthol a soc:Appellation;
+             rdfs:label "Gorthol"@sjn, "The Dread Helm"@en .
+
+# Agarwaen was Gorthol who fled to Nargothrond to hide his identity after killing Beleg. He loved Finduilas.
+narn:Agarwaen a soc:Appellation;
+              rdfs:label "Agarwaen"@sjn, "The Bloodstained"@en .
+
+# Adanedhel was the name that people gave to Agarwaen because he looked so much like an Elf.
+narn:Adanedhel a soc:Appellation;
+               rdfs:label "Adanedhel"@sjn, "Man-Elf"@en .
+
+# Finduilas was the daughter of King Orodreth of Nargothrond, who loved Agarwaen.
+narn:Finduilas a meo:Elda;
+               rdfs:label "Finduilas"@sjn;
+               fo:isADaughterOf narn:Orodreth;
+               soc:livedIn narn:Nargothrond .
+
+# Thurin was how Finduilas called Adanedhel because she knew he had a secret.
+narn:Thurin a soc:Appellation;
+            rdfs:label "Thurin"@sjn, "Secret"@en .
+
+# Mormegil was the name people of Beleriand gave to Agarwaen as he was carrying the infamous black sword Gurthang. He served King Orodreth.
+narn:Mormegil a soc:Appellation;
+              rdfs:label "Mormegil"@sjn, "Black Sword"@en .
+
+# Orodreth was the King of Nargothrond.
+narn:Orodreth a meo:Elda;
+              rdfs:label "Orodreth"@sjn;
+              soc:wasTheKingOf narn:Nargothrond .
+
+# Níniel was the name given to the amnesiac woman that Turambar found in the woods. When she remembered she was Túrin's sister, she through herself into the gorge of Cabed-en-Aras.
+narn:Níniel a soc:Appellation;
+            rdfs:label "Níniel"@sjn, "Tear-maiden"@en .
+
+# Turambar was how Mormegil presented himself to the Woodmen of Brethil. He killed Brandir and committed suicide but was later known as the Bane of Glaurung. Turambar loved Níniel.
+narn:Turambar a soc:Appellation;
+              rdfs:label "Turambar"@qya, "Master of Doom"@en .
+
+# Brandir was the chieftain of Brethil before Turambar replaced him. He loved Níniel.
+narn:Brandir a meo:Atan;
+             rdfs:label "Brandir"@sjn .
+
+# Dagnir Glaurunga was how Túrin was often called in legends, as he was the killer of the Dragon Glaurung.
+narn:DagnirGlaurunga a soc:Appellation;
+              rdfs:label "Dagnir Glaurunga"@qya, "Bane of Glaurung"@en .
+
+# Glaurung was the father of all dragons and a servant to Morgoth.
+narn:Glaurung a narn:Lócë;
+              rdfs:label "Glaurung"@sjn;
+              soc:served meo:morgoth .
+
+
+#
+# The places
+#
+
+# The world
+narn:Arda a loc:Place;
+          rdfs:label "Arda"@qya, "Ardhon"@sjn, "The World"@en .
+
+# Middle-earth, the land that was originally located just between the two extreme East and West sides of the world
+narn:Endor a loc:Place;
+           rdfs:label "Endor"@qya, "Middle-earth"@en;
+           loc:isAPartOf narn:Arda .
+
+# The Western part of Middle Earth
+narn:Beleriand a loc:Place;
+               rdfs:label "Beleriand"@sjn;
+               loc:isAPartOf narn:Endor .
+
+# The forest East of Doriath
+narn:Brethil a loc:Forest;
+             rdfs:label "Brethil"@sjn;
+             loc:isAPartOf narn:Beleriand .
+
+# The forest and realm protected by the Girdle of Melian
+narn:Doriath a loc:Realm;
+             rdfs:label "Doriath"@sjn;
+             loc:isAPartOf narn:Beleriand .
+
+# A Northern region surrounded by mountains
+narn:Hithlum a loc:Place;
+             rdfs:label "Hithlum"@sjn;
+             loc:isAPartOf narn:Beleriand .
+
+# The South-wertern part of Hithlum
+narn:Dor-lómin a loc:Place;
+               rdfs:label "Dor-lómin"@sjn;
+               loc:isAPartOf narn:Hithlum .
+
+# The underground capital of Doriath and fortress of King Thingol and Queen Melian
+narn:Menegroth a loc:City;
+               rdfs:label "Menegroth"@sjn, "The Thousand Caves"@en;
+               loc:isAPartOf narn:Doriath .
+
+# The underground fortress on the river Narog built by King Finrod Felagund
+narn:Nargothrond a loc:City;
+                 rdfs:label "Nargothrond"@sjn;
+                 loc:isAPartOf narn:Beleriand .
+
+# The Bald Hill south of Brethil
+narn:AmonRûdh a loc:Hill;
+              rdfs:label "Amon Rûdh"@sjn, "Bald Hill"@en;
+              loc:isAPartOf narn:Beleriand .
+
+# Morgoth's fortress in the Iron Mountains
+narn:Angband a loc:Place;
+             rdfs:label "Angband"@sjn, "Iron Prison"@en;
+             loc:isAPartOf narn:Beleriand .
+
+# The hidden city of King Turgon
+narn:Gondolin a loc:City;
+              rdfs:label "Gondolin"@sjn, "Hidden Rock"@en;
+              loc:isAPartOf narn:Tumladen .
+
+# The secret valley circled by mountains where Gondolin was founded 
+narn:Tumladen a loc:Valley;
+              rdfs:label "Tumladen"@sjn;
+              loc:isAPartOf narn:Beleriand .
+
+
+#
+# The events
+#
+
+# Túrin's birth
+narn:TúrinBirth a evnt:Birth;
+                rdfs:label "Túrin’s birth"@en;
+                evnt:begets narn:Túrin;
+                evnt:precedes narn:UrwenBirth .
+
+# Lalaith's birth
+narn:UrwenBirth a evnt:Birth;
+                rdfs:label "Urwen’s birth"@en;
+                evnt:begets narn:Lalaith;
+                evnt:precedes narn:NirnaethArnoeadiad .
+
+# Nirnaeth Arnoediad (The battle of Unnumbered Tears)
+narn:NirnaethArnoeadiad a evnt:Battle;
+          rdfs:label "Nirnaeth Arnoediad"@sjn, "Unnumbered Tears"@en;
+          evnt:precedes narn:NienorBirth .
+
+# Nienor's birth
+narn:NienorBirth a evnt:Birth;
+                 rdfs:label "Nienor’s birth"@en;
+                 evnt:begets narn:Nienor .
+
+# Túrin travels from Dor-lómin to Doriath
+narn:TúrinGoesToDoriath a evnt:Travel;
+                        rdfs:label "Túrin travels from Dor-lómin to Doriath"@en;
+                        evnt:hasTraveller narn:Túrin, narn:Gethron, narn:Grithnir;
+                        evnt:starts [
+                          a evnt:Instant;
+                          evnt:before narn:NienorBirth;
+                        ] .

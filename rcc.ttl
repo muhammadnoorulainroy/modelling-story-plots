@@ -83,6 +83,80 @@ rcc:ntppi a owl:ObjectProperty, owl:TransitiveProperty ;
     rdfs:domain rcc:Region ;
     rdfs:range rcc:Region .
 
-# Pairwise disjointness (only between simple properties).
-# The rest cannot be declared disjoint due to property chains.
+# Pairwise disjointness.
+# OWL 2 DL requires properties in DisjointObjectProperties to be simple
+# (OWL 2 Structural Spec, Section 11.1). A property is non-simple if it
+# is transitive or appears as the super-property of a property chain.
+#
+# In the full project (with place.ttl loaded):
+#   dc  - simple (no transitivity, no chain)
+#   ec  - NON-simple (super-property of chain in place.ttl: adjacentTo -> ec)
+#   po  - simple (no transitivity, no chain)
+#   eq  - NON-simple (transitive)
+#   tpp, ntpp, tppi, ntppi - NON-simple (transitive + chain super-properties)
+#
+# Therefore dc and po are the ONLY pair that can be declared disjoint.
+# IrreflexiveProperty has the same simplicity requirement, which is why
+# only dc and po carry it. ec is irreflexive in RCC8 theory but cannot
+# be declared so in OWL 2 DL when place.ttl is loaded.
 rcc:dc owl:propertyDisjointWith rcc:po .
+
+###############################################################
+# Reflexivity of EQ via hasSelf
+#
+# In RCC8, eq is reflexive: every region is spatially equal to
+# itself. Declaring rcc:eq as owl:ReflexiveProperty would force
+# EVERY individual in the ontology to be a Region (because
+# ReflexiveProperty applies universally, and the domain of eq
+# is Region). Instead, we use a class-level hasSelf restriction:
+# only Region instances get the self-eq triple.
+###############################################################
+
+# hasSelf(eq) was removed because eq is transitive (non-simple),
+# and OWL 2 DL requires hasSelf properties to be simple.
+# Reflexivity of eq is part of the intended RCC8 semantics but
+# cannot be formally expressed in this ontology.
+
+###############################################################
+# RCC8 composition chains
+#
+# From the RCC8 composition table, several 2-relation compositions
+# yield a single deterministic result. The most useful:
+###############################################################
+
+# ntpp(R1,R2) ^ tpp(R2,R3) => ntpp(R1,R3)
+# R1 strictly inside R2, R2 inside R3 touching boundary.
+# R1 strictly inside R3 (doesn't touch R3's boundary because R1
+# doesn't touch R2's boundary and R2 is inside R3).
+rcc:ntpp owl:propertyChainAxiom ( rcc:ntpp rcc:tpp ) .
+
+# tpp(R1,R2) ^ ntpp(R2,R3) => ntpp(R1,R3)
+# R1 inside R2 touching boundary. R2 strictly inside R3.
+# R1 is inside R3. R2's boundary is strictly inside R3, so R1's
+# contact with R2's boundary doesn't reach R3's boundary.
+rcc:ntpp owl:propertyChainAxiom ( rcc:tpp rcc:ntpp ) .
+
+# ntpp(R1,R2) ^ eq(R2,R3) => ntpp(R1,R3)
+# R1 strictly inside R2, R2 same as R3 => R1 strictly inside R3.
+rcc:ntpp owl:propertyChainAxiom ( rcc:ntpp rcc:eq ) .
+
+# eq(R1,R2) ^ ntpp(R2,R3) => ntpp(R1,R3)
+rcc:ntpp owl:propertyChainAxiom ( rcc:eq rcc:ntpp ) .
+
+# tpp(R1,R2) ^ eq(R2,R3) => tpp(R1,R3)
+rcc:tpp owl:propertyChainAxiom ( rcc:tpp rcc:eq ) .
+
+# eq(R1,R2) ^ tpp(R2,R3) => tpp(R1,R3)
+rcc:tpp owl:propertyChainAxiom ( rcc:eq rcc:tpp ) .
+
+# Inverse compositions follow by symmetry of the axioms:
+# ntppi(R1,R2) ^ tppi(R2,R3) => ntppi(R1,R3)
+rcc:ntppi owl:propertyChainAxiom ( rcc:ntppi rcc:tppi ) .
+# tppi(R1,R2) ^ ntppi(R2,R3) => ntppi(R1,R3)
+rcc:ntppi owl:propertyChainAxiom ( rcc:tppi rcc:ntppi ) .
+# ntppi with eq
+rcc:ntppi owl:propertyChainAxiom ( rcc:ntppi rcc:eq ) .
+rcc:ntppi owl:propertyChainAxiom ( rcc:eq rcc:ntppi ) .
+# tppi with eq
+rcc:tppi owl:propertyChainAxiom ( rcc:tppi rcc:eq ) .
+rcc:tppi owl:propertyChainAxiom ( rcc:eq rcc:tppi ) .

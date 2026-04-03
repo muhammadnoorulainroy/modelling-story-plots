@@ -27,7 +27,7 @@ act: a owl:Ontology ;
     dct:created "2026-03-28T00:00:00Z"^^xsd:dateTime .
 
 ###############################################################
-# Action class, defined as Event + having an agent
+# Action = Event with an agent
 ###############################################################
 
 act:Action a owl:Class ;
@@ -41,26 +41,24 @@ act:Action a owl:Class ;
         )
     ] ;
     rdfs:label "Action"@en ;
-    rdfs:comment "An event with a deliberate agent. Defined as Action ≡ Event ⊓ ∃evt:hasAgent.⊤, so any event that has an agent gets classified as an action automatically."@en .
+    rdfs:comment "An event with a deliberate agent. Any event that has an agent gets classified as an action."@en .
 
 ###############################################################
 # Action types
 ###############################################################
 
 act:MoveAction a owl:Class ;
-    rdfs:subClassOf act:Action ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            evt:Journey
+            [ a owl:Restriction ;
+              owl:onProperty evt:hasAgent ;
+              owl:someValuesFrom owl:Thing ]
+        )
+    ] ;
     rdfs:label "Move action"@en ;
-    rdfs:comment "Moving from one place to another."@en .
-
-act:MoveAction rdfs:subClassOf
-    [ a owl:Restriction ;
-      owl:onProperty evt:hasOrigin ;
-      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onClass loc:Place ],
-    [ a owl:Restriction ;
-      owl:onProperty evt:hasDestination ;
-      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onClass loc:Place ] .
+    rdfs:comment "A journey performed by a deliberate agent. Since hasTraveler is a sub-property of hasAgent, every journey with a traveler is a MoveAction."@en .
 
 act:AttackAction a owl:Class ;
     rdfs:subClassOf act:Action,
@@ -98,6 +96,23 @@ act:CurseAction rdfs:subClassOf
       owl:onProperty act:hasPatient ;
       owl:someValuesFrom owl:Thing ] .
 
+# A curse results in an ongoing state (captivity, exile, transformation),
+# not a physical event.
+act:CurseAction rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty act:resultsIn ;
+      owl:allValuesFrom evt:State ] .
+
+# An attack must result in something (at minimum).
+act:AttackAction rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty act:resultsIn ;
+      owl:someValuesFrom evt:Event ] .
+
+# Action subtypes are pairwise disjoint (a curse is not an attack, etc.)
+[] a owl:AllDisjointClasses ;
+    owl:members ( act:MoveAction act:AttackAction act:SpeechAction ) .
+
 ###############################################################
 # Properties
 ###############################################################
@@ -126,3 +141,42 @@ act:hasPurpose a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:label "has purpose"@en ;
     rdfs:comment "Why the agent performed the action (textual description)."@en .
+
+###############################################################
+# Cross-module chains from actions
+###############################################################
+
+# If an action results in a death, the agent of the action killed
+# the deceased. Chain: agent <-- action --> resultsIn --> death --> deceased
+evt:killed owl:propertyChainAxiom (
+    [ owl:inverseOf act:hasAgent ]
+    act:resultsIn
+    evt:hasDeceased
+) .
+
+# NOTE: The chain inv(resultsIn) . usesItem => usesItem was removed
+# because it makes usesItem non-simple, breaking cardinality and
+# irreflexivity axioms. Murder weapon queries use SPARQL instead.
+
+###############################################################
+# Additional action restrictions
+###############################################################
+
+
+# An action has at most 1 purpose string.
+act:Action rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty act:hasPurpose ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+
+# An attack action results only in physical or social events
+# (not in states — an attack doesn't result in a reign).
+act:AttackAction rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty act:resultsIn ;
+      owl:allValuesFrom [ a owl:Class ;
+          owl:unionOf ( evt:PhysicalEvent evt:SocialEvent ) ] ] .
+
+# A speech action has at least 1 speaker. Since hasSpeaker is a
+# sub-property of hasAgent, the agent must be a speaker specifically.
+act:SpeechAction rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty evt:hasSpeaker ;
+      owl:someValuesFrom owl:Thing ] .
